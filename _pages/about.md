@@ -12,6 +12,15 @@ Greetings, I'm Ahmad Rammal, a dedicated individual with a profound enthusiasm f
 
 News
 ======
+## *20 January 2024*: Paper accepted at AISTATS 2024
+
+Thrilled to announce that our research paper, "Communication Compression for Byzantine Robust Learning: New Efficient Algorithms and Improved Rates," has been accepted at [AISTATS 2024](https://virtual.aistats.org/). A heartfelt thank you to everyone involved in making this outcome possible!
+
+Paper available [here](https://arxiv.org/pdf/2401.05518.pdf).
+
+
+
+
 ## *15 January 2024*: New Paper Available on arXiv
 You can access the full paper on arXiv by clicking [here](https://arxiv.org/pdf/2401.05518.pdf).
 
