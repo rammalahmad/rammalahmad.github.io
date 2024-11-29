@@ -8,9 +8,17 @@ redirect_from:
   - /about.html
 ---
 
-Greetings, I'm Ahmad Rammal, a dedicated individual with a profound enthusiasm for mathematics, machine learning, and ethics. With a background in Applied Mathematics from [Ecole polytechnique](https://www.polytechnique.edu/), and my ongoing master's studies in the [MVA](https://www.master-mva.com/) program, I enjoy addressing challenging problems in the field of AI. Beyond academics, you can find me pursuing my hobbies, which include calisthenics, playing the guitar, cycling, meditation, and reading.
+Hello! I'm Ahmad, a dedicated individual with a profound enthusiasm for mathematics, AI, and entrepreneurship. With a background in AI research from [Ecole polytechnique](https://www.polytechnique.edu/), I enjoy addressing challenging problems in the field of AI. Beyond academics, you can find me pursuing my hobbies, which include climbing, calisthenics, playing the guitar, and reading.
 
 News
+======
+## *15 October 2024*: Paper accepted at NeurIPS Math-AI Workshop 2024
+
+Thrilled to announce that our research paper, "Learning Mathematical Rules with Large Language
+Models" has been accepted at the [MATH-AI Workshop at NeurIPS'24](https://mathai2024.github.io/). A heartfelt thank you to everyone involved in making this outcome possible!
+
+Paper available [here](https://arxiv.org/pdf/2410.16973.pdf).
+
 ======
 ## *20 January 2024*: Paper accepted at AISTATS 2024
 
