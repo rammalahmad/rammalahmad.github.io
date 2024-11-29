@@ -19,7 +19,7 @@ Models" has been accepted at the [MATH-AI Workshop at NeurIPS'24](https://mathai
 
 Paper available [here](https://arxiv.org/pdf/2410.16973.pdf).
 
-======
+
 ## *20 January 2024*: Paper accepted at AISTATS 2024
 
 Thrilled to announce that our research paper, "Communication Compression for Byzantine Robust Learning: New Efficient Algorithms and Improved Rates," has been accepted at [AISTATS 2024](https://virtual.aistats.org/). A heartfelt thank you to everyone involved in making this outcome possible!
