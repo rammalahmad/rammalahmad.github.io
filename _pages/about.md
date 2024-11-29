@@ -15,7 +15,7 @@ News
 ## *15 October 2024*: Paper accepted at NeurIPS Math-AI Workshop 2024
 
 Thrilled to announce that our research paper, "Learning Mathematical Rules with Large Language
-Models" has been accepted at the [MATH-AI Workshop at NeurIPS'24](https://mathai2024.github.io/). A heartfelt thank you to everyone involved in making this outcome possible!
+Models" has been accepted at the [MATH-AI Workshop at NeurIPS'24](https://mathai2024.github.io/). This work was done during my end-of-studies internship in the AI research team at JPMorgan. A heartfelt thank you to everyone involved in making this outcome possible!
 
 Paper available [here](https://arxiv.org/pdf/2410.16973.pdf).
 
