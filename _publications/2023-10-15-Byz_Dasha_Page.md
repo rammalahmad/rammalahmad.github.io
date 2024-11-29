@@ -3,7 +3,7 @@ title: "Communication Compression for Byzantine Robust Learning: New Efficient A
 collection: publications
 permalink: /publication/Byz-DASHA-PAGE
 excerpt: 'In this paper we introduce new SOTA algorithms in the realm of communication compression along with Byzantine robustness.'
-date: 2022-09-01
+date: 2024-09-01
 venue: 'AISTATS'
 paperurl: 'https://arxiv.org/pdf/2310.09804.pdf'
 ---
