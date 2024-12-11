@@ -26,11 +26,11 @@ Semi-supervised learning offers a compelling alternative. By leveraging both lab
 
 ### Concept
 
-The Mean Model classifies text as fitting (1) or not fitting (0) a given topic based on cosine similarity. The process begins by generating a vector representation of the text (embedding) using a sentence embedding model like SBERT. Let this vector be \(E_{\text{text}}\).
+The Mean Model classifies text as fitting (1) or not fitting (0) a given topic based on cosine similarity. The process begins by generating a vector representation of the text (embedding) using a sentence embedding model like SBERT. Let this vector be $E_{\text{text}}$.
 
-The topic is also represented as a vector \(V\), derived from its keywords. The cosine similarity between \(E_{\text{text}}\) and \(V\) determines the semantic closeness of the text to the topic. A threshold \(t\) is defined such that:
+The topic is also represented as a vector $V$, derived from its keywords. The cosine similarity between $E_{\text{text}}$ and $V$ determines the semantic closeness of the text to the topic. A threshold $t$ is defined such that:
 
-> If \(\cos(E_{\text{text}}, V) > t\), the text is classified as fitting the topic. Otherwise, it does not.
+> If $\cos(E_{\text{text}}, V) > t$, the text is classified as fitting the topic. Otherwise, it does not.
 
 ![Mean Model Overview](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.001.png)
 
@@ -38,10 +38,10 @@ The topic is also represented as a vector \(V\), derived from its keywords. The 
 
 Training involves two key steps:
 
-1. **Defining the Topic Vector \(V\):**  
-   Keywords relevant to the topic are identified manually to form a dictionary. Embeddings for these keywords are generated, and their average yields the topic vector \(V\).
+1. **Defining the Topic Vector $V$:**  
+   Keywords relevant to the topic are identified manually to form a dictionary. Embeddings for these keywords are generated, and their average yields the topic vector $V$.
 
-2. **Determining the Threshold \(t\):**  
+2. **Determining the Threshold $t$:**  
    The model is tested on a labeled dataset with thresholds ranging from 0 to 1. The threshold providing the best accuracy is selected.
 
 ![Mean Training](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.002.png)
@@ -52,20 +52,20 @@ Training involves two key steps:
 
 Building upon the Mean Model, the Gram-Schmidt Model represents a topic as a vector space instead of a single vector. This space is defined by an orthonormal basis generated using the Gram-Schmidt process. 
 
-For a given text, its vector representation \(E_{\text{text}}\) is orthogonally projected onto the topic vector space. The cosine similarity between \(E_{\text{text}}\) and its projection \(p\) quantifies the semantic closeness of the text to the topic.
+For a given text, its vector representation $E_{\text{text}}$ is orthogonally projected onto the topic vector space. The cosine similarity between $E_{\text{text}}$ and its projection $p$ quantifies the semantic closeness of the text to the topic.
 
 ![Orthonormal Projection](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.004.png)
 
-As in the Mean Model, a threshold \(t\) is used to classify the text.
+As in the Mean Model, a threshold $t$ is used to classify the text.
 
 ![GS Model Overview](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.005.png)
 
 ### Training
 
-1. **Creating the Orthonormal Basis \(S\):**  
+1. **Creating the Orthonormal Basis $S$:**  
    Relevant keywords are manually selected, and their embeddings generate the topic’s vector space. The Gram-Schmidt process is then applied to produce an orthonormal basis.
 
-2. **Determining the Threshold \(t\):**  
+2. **Determining the Threshold $t$:**  
    Similar to the Mean Model, the threshold is selected based on performance on a labeled dataset.
 
 ![GS Training](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.006.png)
