@@ -12,6 +12,15 @@ Hello! I'm Ahmad, a dedicated individual with a profound enthusiasm for mathemat
 
 News
 ======
+## *9 December 2024*: Paper Selected for Oral Presentation at NeurIPS Math-AI Workshop 2024
+
+Our research paper, *"Learning Mathematical Rules with Large Language Models,"* has been selected for an **oral presentation** at the [MATH-AI Workshop at NeurIPS'24](https://mathai2024.github.io/). This recognition places it among the **top 4% of submissions**. 
+
+Paper available [here](https://arxiv.org/pdf/2410.16973.pdf).
+
+---
+
+
 ## *15 October 2024*: Paper accepted at NeurIPS Math-AI Workshop 2024
 
 Thrilled to announce that our research paper, "Learning Mathematical Rules with Large Language

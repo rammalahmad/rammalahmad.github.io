@@ -1,143 +1,90 @@
 ---
-title: 'Gram-Schmidt orthonormal Model'
+title: 'Gram-Schmidt Orthonormal Model'
 date: 2022-09-01
 permalink: /posts/2022/09/Gram-Schmidt
 tags:
   - NLP
-  - Semi-Sueprvised
+  - Semi-Supervised
   - Heuristics
 ---
 
-This blog introduces a semi-supervised approach applied on binary classification task for topics. The main advantage of using this approach is the minor amount of labeled data that is required in order to train the models. We’re therefore solving the main constraint behind the supervised approach in NLP: getting better results for less data.
+This blog explores a semi-supervised approach to binary classification for topic modeling. The primary advantage of this approach is the reduced need for large labeled datasets, addressing a key limitation in supervised learning for natural language processing (NLP): achieving strong performance with minimal labeled data.
 
-
-*A state of the art semi-supervised approach for binary classification tasks.*
+*A state-of-the-art semi-supervised method for binary classification.*
 
 **Author: Ahmad Rammal**
 
-# About
-The classical way to deal with binary classification is the supervised approach. By analyzing the training data, a supervised learning algorithm produces an inferred function that can be used for mapping new examples. 
+# Introduction
 
-Nonetheless, the constraint with such approach is the large amount of labeled data that is required in order to train a supervised model; especially in the NLP field as it is not easy for computers to understand the rules that govern the passing of information using natural languages.  A human agent is often required in order to create labeled data for a learning problem. Therefore, the cost of labeling is likely to make the acquisition of large, fully labeled training sets unfeasible. 
+Binary classification in NLP is traditionally approached using supervised learning. In this framework, models learn to map new examples by analyzing labeled training data. However, supervised methods require substantial labeled datasets, which are costly and time-consuming to create. This is particularly challenging in NLP, where human annotators are often needed to produce high-quality labels.
 
-A semi-supervised learning approach could prove to be very useful in such situations. In addition, the explicit dissociation in those semi-supervised models between the creation of embeddings and the classification task opens the door to an opportunity of using the embedded data on other NLP tasks efficiently.
+Semi-supervised learning offers a compelling alternative. By leveraging both labeled and unlabeled data, semi-supervised methods significantly reduce the dependence on extensive labeled datasets. Furthermore, these models decouple the embedding generation process from classification, enabling efficient reuse of embeddings for other NLP tasks.
 
-# Models Overview:
+# Model Overview
 
 ## I. Mean Model
 
-**Overview:**
+### Concept
 
-Using the cosine similarity we’re going to classify a text as 1 (fits the topic) or 0 (does not fit)
+The Mean Model classifies text as fitting (1) or not fitting (0) a given topic based on cosine similarity. The process begins by generating a vector representation of the text (embedding) using a sentence embedding model like SBERT. Let this vector be \( E_{\text{text}} \).
 
-We start by finding the text’s vector representation known as embedding using a sentence embedder like SBert. We’ll call this vector representation E\_text.
+The topic is also represented as a vector \( V \), derived from its keywords. The cosine similarity between \( E_{\text{text}} \) and \( V \) determines the semantic closeness of the text to the topic. A threshold \( t \) is defined such that:
 
-Now suppose that the topic could also be represented by a vector V. The cosine similarity between E\_text and V would tell us how semantically close the text and the topic are. 
+\[
+\text{If } \cos(E_{\text{text}}, V) > t, \text{ the text is classified as fitting the topic. Otherwise, it does not.}
+\]
 
-What’s left to do is to define a threshold t above which this cosine similarity implicates that the text fits the topic or not. In other term we take a float t such that:
+![Mean Model Overview](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.001.png)
 
-If cos(E\_text, V) > t then the text is considered “close enough” to the topic. Otherwise the text doesn’t fit the topic.
+### Training
 
-![Image](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.001.png)
+Training involves two key steps:
 
-`          `*Fig. 1: Overview on the Mean Model* 
+1. **Defining the Topic Vector \( V \):**  
+   Keywords relevant to the topic are identified manually to form a dictionary. Embeddings for these keywords are generated, and their average yields the topic vector \( V \).
 
-With that being said, we still need to find the two following parameters:
+2. **Determining the Threshold \( t \):**  
+   The model is tested on a labeled dataset with thresholds ranging from 0 to 1. The threshold providing the best accuracy is selected.
 
-- The array that represents the topic V
-- The threshold t
-
-**Training:**
-
-The training is where our model learns to identify a certain topic. The procedure is divided into two tasks:
-
-- Finding V the vector representing the topic 
-- Finding t the threshold above which we classify the text as in the topic
-
-**Finding the topic’s vector representation:**
-
-In order to represent a topic by a vector we start by finding keywords that are most relevant to the topic. Those keywords are the topic’s dictionary. That’s the hardest part of the training since we have to do it by hand. 
-
-Once we have the dictionary we generate the embeddings of that dictionary, then we calculate the average of those embeddings. The outcome will be V the vector representing the topic
-
-`        `![Image](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.002.png)
-
-*Fig. 2: Finding the topic’s vector representation*
-
-**Finding the threshold:**
-
-As for the threshold, we simply test our model on a training set (a sample of labeled data) using different thresholds ranging from 0 to 1. We save the threshold that provides us with the best accuracy.
-
-![Image](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.003.png)
-
-*Fig. 3: Finding Mean model’s threshold*
+![Topic Vector Generation](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.002.png)  
+![Threshold Selection](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.003.png)
 
 ## II. Gram-Schmidt Model
 
-**Overview:**
+### Concept
 
-In order to further improve our previous model we could consider generalizing the mathematical tools that were applied. 
+Building upon the Mean Model, the Gram-Schmidt Model represents a topic as a vector space instead of a single vector. This space is defined by an orthonormal basis generated using the Gram-Schmidt process. 
 
-In our case instead of representing a topic by a simple vector we’re going to represent it by a vector space. More precisely in the implementation we will use a set of vectors which constitute the orthonormal basis of the vector space
+For a given text, its vector representation \( E_{\text{text}} \) is orthogonally projected onto the topic vector space. The cosine similarity between \( E_{\text{text}} \) and its projection \( p \) quantifies the semantic closeness of the text to the topic.
 
-Now for a certain text, just like before we start by finding the text’s vector representation E\_text.
+![Orthonormal Projection](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.004.png)
 
-Since we have a vector space representing the topic now instead of a simple vector, in order to evaluate how close E\_text is to that plane we start by finding the orthonormal projection p of E\_text on our vector space. Then we calculate the cosine between E\_text and p. This value would tell us how close is E\_text is to the topic’s vector space, thus in a way we find out how semantically close is the text to the topic.
+As in the Mean Model, a threshold \( t \) is used to classify the text.
 
-![Image](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.004.png)
+### Training
 
-*Fig. 4: The orthogonal projection of E\_text on the Plane representation of the topic*
+1. **Creating the Orthonormal Basis \( S \):**  
+   Relevant keywords are manually selected, and their embeddings generate the topic’s vector space. The Gram-Schmidt process is then applied to produce an orthonormal basis.
 
-Finally, just like the previous model we’ll need a threshold t above which this cosine similarity implicates that the text fits the topic or not. 
+2. **Determining the Threshold \( t \):**  
+   Similar to the Mean Model, the threshold is selected based on performance on a labeled dataset.
 
-![Image](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.005.png)
+![Basis Generation](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.006.png)  
+![Threshold Selection](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.007.png)
 
-`          `*Fig. 5: Overview on the Gram-Schmidt Model* 
+# Advantages of the Approach
 
-**Training:**
+This semi-supervised structure relies solely on generic models like SBERT, eliminating the need for fine-tuning. By decoupling embedding creation from classification, embeddings can be reused for tasks like clustering or different classification problems, saving significant computational resources.
 
-The procedure is also divided into two tasks:
+# Performance Evaluation
 
-- Finding S, an orthonormal basis for a space vector representation of the topic 
-- Finding t the threshold above which we classify the text as in the topic
+Metrics for an environmental classification task are summarized below:
 
-**Finding an orthonormal basis for a vector space representation of the topic**
+| Metric      | FinBERT | Mean | Gram-Schmidt (GS) |
+|-------------|---------|------|-------------------|
+| **Accuracy** | 0.903   | 0.849 | **0.926**         |
+| **Precision**| 0.924   | 0.832 | **0.939**         |
+| **Recall**   | 0.877   | 0.873 | **0.910**         |
+| **F1-Score** | 0.900   | 0.852 | **0.924**         |
 
-We start by looking for keywords that are relevant to the topic. These keywords constitute the topic’s dictionary. We then calculate the embeddings of those keywords. Unlike the mean model we won’t just find the average of those embeddings. Instead we will consider that those vectors generate the vector space representation of the topic. 
-
-Therefore the vector space representation of our topic is nothing other than the vector space generated by the embeddings of the topic’s dictionary.
-
-We need however an orthonormal basis of our vector space in order to calculate the orthonormal projection later on… That’s why we use the Gram-Schmidt process in order to create an orthonormal basis from the regular one we found earlier. The outcome is indeed what we were looking for: a set of vectors that form an orthonormal basis for a vector space representation of the topic.
-
-`                     `**![Image](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.006.png)**
-
-*Fig. 6: Finding an orthonormal base for the plane representation of the topic*
-
-**Finding the threshold:**
-
-Exactly like the previous model, we test our model on a training set using different thresholds ranging from 0 to 1. We save the threshold that provides us with the best accuracy.
-
-![Image](/images/Blogs/Gram-Schmidt/Aspose.Words.88ad23da-b2a6-4d11-b15e-e1f4a6e03cd7.007.png)
-
-*Fig. 7: Finding Gram-Schmidt model’s threshold*
-
-## Advantages of this structure
-The main advantage of such structure is that it only relies on a generic Deep Learning model like SBERT therefore exceeding the need for a classical finetuning process. SBERT is thus sufficient for the creation of a binary classifier independently from the topic at hand.
-
-In addition, this model dissociates the creation of the embeddings from the classification task. The generated embeddings could be saved and used again on another binary classifier task or even employed on other NLP tasks such as clustering. This would greatly save time since the creation of the embeddings is the most costly part of the process.
-
-Now that we’ve established the multiple benefits of using this model we need to evaluate its performance on a classication task.
-
-
-On the example of the environment we get the following metrics
-
-||FinBERT|MEAN|GS|
-| - | - | - | - |
-|Accuracy|0.903|0.849|**0.926**|
-|Precision|0.924|0.832|**0.939**|
-|Recall|0.877|0.873|**0.910**|
-|F score|0.900|0.852|**0.924**|
-
-                          
-
-Overall the metrics above suggest that the GS model clearly outperforms FinBERT in this task. The Mean model scores below the latter but still gives fairly good results. Thus the semi-supervised approach proves itself to be an adequate alternative to the classical supervised approach.
+The Gram-Schmidt Model outperforms FinBERT, with the Mean Model achieving respectable results. These findings demonstrate the efficacy of semi-supervised methods as a viable alternative to traditional supervised approaches.
