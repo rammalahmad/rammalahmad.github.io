@@ -12,7 +12,7 @@ Hello! I’m Ahmad, an AI researcher with a strong enthusiasm for mathematics an
 
 My research interests include formal mathematical reasoning, formal provers, self-play, and automatic theory creation.
 
-Beyond academics, you can find me pursuing my hobbies, which include climbing, calisthenics, playing the guitar, and reading. Feel free to reach out if you’d like to connect and have a chat ;)
+Beyond academics, you can find me pursuing my hobbies, which include climbing, calisthenics, playing the guitar, and reading. Feel free to reach out if you’d like to connect and have a chat  `;)`
 
 
 # News
