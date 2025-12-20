@@ -15,7 +15,7 @@ My research interests include formal mathematical reasoning, formal provers, sel
 Beyond academics, you can find me pursuing my hobbies, which include climbing, calisthenics, playing the guitar, and reading. Feel free to reach out if you’d like to connect and have a chat  `;)`
 
 
-# News
+News
 
 
 ======
