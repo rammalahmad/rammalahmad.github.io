@@ -8,10 +8,25 @@ redirect_from:
   - /about.html
 ---
 
-Hello! I'm Ahmad, a dedicated individual with a profound enthusiasm for mathematics, AI, and entrepreneurship. With a background in AI research from [Ecole polytechnique](https://www.polytechnique.edu/), I enjoy addressing challenging problems in the field of AI. Beyond academics, you can find me pursuing my hobbies, which include climbing, calisthenics, playing the guitar, and reading.
+Hello! I’m Ahmad, an AI researcher with a strong enthusiasm for mathematics and artificial intelligence. I graduated from [École Polytechnique](https://www.polytechnique.edu/) and am currently pursuing my PhD at Meta FAIR in Paris, under the supervision of [Rémi Munos](https://scholar.google.com/citations?hl=en&user=OvKEnVwAAAAJ) and [Amaury Hayat](https://cermics.enpc.fr/~hayata/index_en.html).
+
+My research interests include formal mathematical reasoning, formal provers, self-play, and automatic theory creation.
+
+Beyond academics, you can find me pursuing my hobbies, which include climbing, calisthenics, playing the guitar, and reading. Feel free to reach out if you’d like to connect and have a chat ;)
+
 
 News
+
+
 ======
+
+## *15 April 2025*: Paper Selected for Oral Presentation at UAI 2025
+
+Thrilled to announce that our research paper, "Correlated Quantization for Faster Nonconvex Distributed Optimization" has been accepted at [UAI 2025](https://www.auai.org/uai2025/). A heartfelt thank you to everyone involved in making this outcome possible!
+
+Paper available [here](https://arxiv.org/pdf/2401.05518.pdf).
+---
+
 ## *9 December 2024*: Paper Selected for Oral Presentation at NeurIPS Math-AI Workshop 2024
 
 Our research paper, *"Learning Mathematical Rules with Large Language Models,"* has been selected for an **oral presentation** at the [MATH-AI Workshop at NeurIPS'24](https://mathai2024.github.io/). This recognition places it among the **top 4% of submissions**. 
