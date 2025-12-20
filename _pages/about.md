@@ -14,14 +14,16 @@ My research interests include formal mathematical reasoning, formal provers, sel
 
 Beyond academics, you can find me pursuing my hobbies, which include climbing, calisthenics, playing the guitar, and reading. Feel free to reach out if you’d like to connect and have a chat  `;)`
 
+---
 
-# News---
+# News
 
 ## *15 April 2025*: Paper Selected for Oral Presentation at UAI 2025
 
 Thrilled to announce that our research paper, "Correlated Quantization for Faster Nonconvex Distributed Optimization" has been accepted at [UAI 2025](https://www.auai.org/uai2025/). A heartfelt thank you to everyone involved in making this outcome possible!
 
 Paper available [here](https://arxiv.org/pdf/2401.05518.pdf).
+
 ---
 
 ## *9 December 2024*: Paper Selected for Oral Presentation at NeurIPS Math-AI Workshop 2024
