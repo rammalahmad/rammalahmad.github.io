@@ -15,17 +15,13 @@ My research interests include formal mathematical reasoning, formal provers, sel
 Beyond academics, you can find me pursuing my hobbies, which include climbing, calisthenics, playing the guitar, and reading. Feel free to reach out if you’d like to connect and have a chat  `;)`
 
 
-News
-
-
-======
+# News---
 
 ## *15 April 2025*: Paper Selected for Oral Presentation at UAI 2025
 
 Thrilled to announce that our research paper, "Correlated Quantization for Faster Nonconvex Distributed Optimization" has been accepted at [UAI 2025](https://www.auai.org/uai2025/). A heartfelt thank you to everyone involved in making this outcome possible!
 
 Paper available [here](https://arxiv.org/pdf/2401.05518.pdf).
-
 ---
 
 ## *9 December 2024*: Paper Selected for Oral Presentation at NeurIPS Math-AI Workshop 2024
@@ -51,7 +47,7 @@ Thrilled to announce that our research paper, "Communication Compression for Byz
 
 Paper available [here](https://arxiv.org/pdf/2401.05518.pdf).
 
----
+
 
 
 ## *15 January 2024*: New Paper Available on arXiv
@@ -64,7 +60,7 @@ Optimization" is now available on arXiv. This work was conducted during my inter
 In this paper we focus on the use of correlated quantizers, introduced by Suresh et al. in 2022, and demonstrate how these quantizers offer benefits over traditional independent quantizers in terms of communication complexity. The paper's primary contribution is the analysis and improvement of the MARINA algorithm, a leading distributed non-convex optimization method. By incorporating correlated quantizers, we show that their enhanced version of MARINA outperforms both the original MARINA and the distributed Stochastic Gradient Descent (SGD) method of Suresh et al. in terms of communication efficiency.
 This expansion significantly broadens the usability of the MARINA algorithm beyond the conventional setup, which typically involves independent and unbiased compressors. The paper also presents extensive experimental results that support our theoretical claims.
 
----
+
 
 ## *15 October 2023*: New Paper Available on arXiv
 You can access the full paper on arXiv by clicking [here](https://arxiv.org/abs/2310.09804).
