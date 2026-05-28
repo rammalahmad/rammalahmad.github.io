@@ -1,0 +1,439 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.GeometryOfManifolds.code.BundleDFS</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.GeometryOfManifolds.code.BundleDFS";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">GeometryOfManifolds</span>.<span class="name">code</span>.<span class="name">BundleDFS</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Mathlib/Analysis/Complex/Basic.html">Mathlib.Analysis.Complex.Basic</a></li><li><a href="../../.././Mathlib/LinearAlgebra/Alternating/Basic.html">Mathlib.LinearAlgebra.Alternating.Basic</a></li><li><a href="../../.././Mathlib/Topology/VectorBundle/Basic.html">Mathlib.Topology.VectorBundle.Basic</a></li><li><a href="../../.././Mathlib/Geometry/Manifold/VectorBundle/Basic.html">Mathlib.Geometry.Manifold.VectorBundle.Basic</a></li><li><a href="../../.././Mathlib/Geometry/Manifold/VectorBundle/Tangent.html">Mathlib.Geometry.Manifold.VectorBundle.Tangent</a></li><li><a href="../../.././Mathlib/Geometry/Manifold/VectorBundle/CovariantDerivative/Basic.html">Mathlib.Geometry.Manifold.VectorBundle.CovariantDerivative.Basic</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.GeometryOfManifolds.code.BundleDFS" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#SmoothVectorBundleDFS"><span class="name">SmoothVectorBundleDFS</span></a></div><div class="nav_link"><a class="break_within" href="#SmoothSections"><span class="name">SmoothSections</span></a></div><div class="nav_link"><a class="break_within" href="#SmoothSections.instAddCommGroup"><span class="name">SmoothSections</span>.<span class="name">instAddCommGroup</span></a></div><div class="nav_link"><a class="break_within" href="#SmoothSections.instModule"><span class="name">SmoothSections</span>.<span class="name">instModule</span></a></div><div class="nav_link"><a class="break_within" href="#SmoothSections.eval"><span class="name">SmoothSections</span>.<span class="name">eval</span></a></div><div class="nav_link"><a class="break_within" href="#SmoothSections.instZero"><span class="name">SmoothSections</span>.<span class="name">instZero</span></a></div><div class="nav_link"><a class="break_within" href="#ConnectionDFS"><span class="name">ConnectionDFS</span></a></div><div class="nav_link"><a class="break_within" href="#ConnectionDFS.apply"><span class="name">ConnectionDFS</span>.<span class="name">apply</span></a></div><div class="nav_link"><a class="break_within" href="#ConnectionDFS.difference"><span class="name">ConnectionDFS</span>.<span class="name">difference</span></a></div><div class="nav_link"><a class="break_within" href="#NormalBundleData"><span class="name">NormalBundleData</span></a></div><div class="nav_link"><a class="break_within" href="#SpinCStructureDFS"><span class="name">SpinCStructureDFS</span></a></div><div class="nav_link"><a class="break_within" href="#SpinCStructureDFS.instACGPlus"><span class="name">SpinCStructureDFS</span>.<span class="name">instACGPlus</span></a></div><div class="nav_link"><a class="break_within" href="#SpinCStructureDFS.instModPlus"><span class="name">SpinCStructureDFS</span>.<span class="name">instModPlus</span></a></div><div class="nav_link"><a class="break_within" href="#SpinCStructureDFS.instACGMinus"><span class="name">SpinCStructureDFS</span>.<span class="name">instACGMinus</span></a></div><div class="nav_link"><a class="break_within" href="#SpinCStructureDFS.instModMinus"><span class="name">SpinCStructureDFS</span>.<span class="name">instModMinus</span></a></div><div class="nav_link"><a class="break_within" href="#SpinCStructureDFS.SectionsPlus"><span class="name">SpinCStructureDFS</span>.<span class="name">SectionsPlus</span></a></div><div class="nav_link"><a class="break_within" href="#SpinCStructureDFS.SectionsMinus"><span class="name">SpinCStructureDFS</span>.<span class="name">SectionsMinus</span></a></div></nav><main>
+<div class="decl" id="SmoothVectorBundleDFS"><div class="class"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L14-L26">source</a></div><div class="decl_header"><span class="decl_kind">class</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothVectorBundleDFS"><span class="name">SmoothVectorBundleDFS</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_5</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<a href="../../.././Mathlib/Data/Bundle.html#Bundle.TotalSpace">Bundle.TotalSpace</a> <span class="fn">F</span> <span class="fn">V</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/FiberBundle/Basic.html#FiberBundle">FiberBundle</a> <span class="fn">F</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/VectorBundle/Basic.html#VectorBundle">VectorBundle</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>Typeclass wrapper recording that a vector bundle $V \to M$ has smooth transition functions (modeled in the DFS framework).</p><ul class="structure_fields" id="SmoothVectorBundleDFS.mk"><li id="SmoothVectorBundleDFS.smoothTransitions" class="structure_field"><div class="structure_field_info">smoothTransitions : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/VectorBundle/Basic.html#ContMDiffVectorBundle">ContMDiffVectorBundle</a> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">F</span> <span class="fn">V</span> <span class="fn">I</span></span></div></li></ul><details class="instances"><summary>Instances</summary><ul id="instances-list-SmoothVectorBundleDFS" class="instances-list"></ul></details></div></div><div class="decl" id="SmoothSections"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L29-L30">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections"><span class="name">SmoothSections</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_2</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_1 u_2)</div></div><p>The space of (smooth) sections of a vector bundle $V \to M$, identified with the dependent function type $\prod_{x \in M} V_x$.</p><details id="instances-for-list-SmoothSections" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="SmoothSections.instAddCommGroup"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L34-L37">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections.instAddCommGroup"><span class="name">SmoothSections</span>.<span class="name">instAddCommGroup</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_2</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections">SmoothSections</a> <span class="fn">V</span>)</span></span></div></div><p>Sections form an abelian group under pointwise addition.</p></div></div><div class="decl" id="SmoothSections.instModule"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L39-L43">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections.instModule"><span class="name">SmoothSections</span>.<span class="name">instModule</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_2</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections">SmoothSections</a> <span class="fn">V</span>)</span></span></div></div><p>Sections form a real vector space under pointwise scalar multiplication.</p></div></div><div class="decl" id="SmoothSections.eval"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L45-L46">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections.eval"><span class="name">SmoothSections</span>.<span class="name">eval</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_2</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">σ</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections">SmoothSections</a> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">V</span> <span class="fn">x</span></span></div></div><p>Evaluation of a section $\sigma$ at a point $x \in M$.</p><details id="instances-for-list-SmoothSections.eval" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="SmoothSections.instZero"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L48-L51">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections.instZero"><span class="name">SmoothSections</span>.<span class="name">instZero</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_2</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Init/Prelude.html#Zero">Zero</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Init/Prelude.html#Zero">Zero</a> <span class="fn">(<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SmoothSections">SmoothSections</a> <span class="fn">V</span>)</span></span></div></div><p>The zero section of a vector bundle.</p></div></div><div class="decl" id="ConnectionDFS"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L56-L70">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#ConnectionDFS"><span class="name">ConnectionDFS</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_5</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<a href="../../.././Mathlib/Data/Bundle.html#Bundle.TotalSpace">Bundle.TotalSpace</a> <span class="fn">F</span> <span class="fn">V</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#IsTopologicalAddGroup">IsTopologicalAddGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/FiberBundle/Basic.html#FiberBundle">FiberBundle</a> <span class="fn">F</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max (max u_1 u_3) u_5)</div></div><p>A connection $\nabla$ on a vector bundle $V \to M$: a covariant derivative sending a section $\sigma$ and a tangent vector $X_x$ to $\nabla_X \sigma \in V_x$.</p><ul class="structure_fields" id="ConnectionDFS.mk"><li id="ConnectionDFS.nabla" class="structure_field"><div class="structure_field_info">nabla : <span class="fn"><span class="fn">((<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><span class="fn">V</span> <span class="fn">x</span></span>)</span> → <span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#TangentSpace">TangentSpace</a> <span class="fn">I</span> <span class="fn">x</span></span> <a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">→L[</a><a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a><a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">]</a> <span class="fn"><span class="fn">V</span> <span class="fn">x</span></span></span></span></div></li><li id="ConnectionDFS.isCovariantDerivative" class="structure_field"><div class="structure_field_info">isCovariantDerivative : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/VectorBundle/CovariantDerivative/Basic.html#IsCovariantDerivativeOn">IsCovariantDerivativeOn</a> <span class="fn">F</span> <span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#ConnectionDFS.nabla">nabla</a></span></span></div></li></ul><details id="instances-for-list-ConnectionDFS" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ConnectionDFS.apply"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L86-L89">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#ConnectionDFS.apply"><span class="name">ConnectionDFS</span>.<span class="name">apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_5</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<a href="../../.././Mathlib/Data/Bundle.html#Bundle.TotalSpace">Bundle.TotalSpace</a> <span class="fn">F</span> <span class="fn">V</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#IsTopologicalAddGroup">IsTopologicalAddGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/FiberBundle/Basic.html#FiberBundle">FiberBundle</a> <span class="fn">F</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">conn</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#ConnectionDFS">ConnectionDFS</a> <span class="fn">I</span> <span class="fn">M</span> <span class="fn">F</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">σ</span> : <span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><span class="fn">V</span> <span class="fn">x</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#TangentSpace">TangentSpace</a> <span class="fn">I</span> <span class="fn">x</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">V</span> <span class="fn">x</span></span></div></div><p>Apply a connection: $(\nabla_X \sigma)_x = \mathtt{conn.apply}\ \sigma\ x\ X$.</p><details id="instances-for-list-ConnectionDFS.apply" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ConnectionDFS.difference"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L91-L94">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#ConnectionDFS.difference"><span class="name">ConnectionDFS</span>.<span class="name">difference</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_5</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<a href="../../.././Mathlib/Data/Bundle.html#Bundle.TotalSpace">Bundle.TotalSpace</a> <span class="fn">F</span> <span class="fn">V</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#IsTopologicalAddGroup">IsTopologicalAddGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/FiberBundle/Basic.html#FiberBundle">FiberBundle</a> <span class="fn">F</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">conn₁ </span><span class="fn">conn₂</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#ConnectionDFS">ConnectionDFS</a> <span class="fn">I</span> <span class="fn">M</span> <span class="fn">F</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">((<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><span class="fn">V</span> <span class="fn">x</span></span>)</span> → <span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#TangentSpace">TangentSpace</a> <span class="fn">I</span> <span class="fn">x</span></span> <a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">→L[</a><a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a><a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">]</a> <span class="fn"><span class="fn">V</span> <span class="fn">x</span></span></span></span></div></div><p>The difference $\nabla_1 - \nabla_2$ of two connections (an $\mathrm{End}(V)$-valued $1$-form).</p><details id="instances-for-list-ConnectionDFS.difference" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="NormalBundleData"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L99-L113">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#NormalBundleData"><span class="name">NormalBundleData</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EN</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EN</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EN</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HN</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HN</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">IN</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EN</span> <span class="fn">HN</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HN</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">IM</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_6)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max (max u_3 u_6) (u_7 + 1))</div></div><p>Data for the normal bundle of an embedding $\iota : N \hookrightarrow M$: fibers $\mathcal{N}_x$, module structure, and the normal rank.</p><ul class="structure_fields" id="NormalBundleData.mk"><li id="NormalBundleData.ι" class="structure_field"><div class="structure_field_info">ι : <span class="fn"><span class="fn">N</span> → <span class="fn">M</span></span></div></li><li id="NormalBundleData.NormalFiber" class="structure_field"><div class="structure_field_info">NormalFiber : <span class="fn"><span class="fn">N</span> → <a href="../../.././foundational_types.html">Type</a> u_7</span></div></li><li id="NormalBundleData.instACG" class="structure_field"><div class="structure_field_info">instACG<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">N</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#NormalBundleData.NormalFiber">NormalFiber</a></span> <span class="fn">x</span>)</span></span></div></li><li id="NormalBundleData.instMod" class="structure_field"><div class="structure_field_info">instMod<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">N</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#NormalBundleData.NormalFiber">NormalFiber</a></span> <span class="fn">x</span>)</span></span></div></li><li id="NormalBundleData.normalRank" class="structure_field"><div class="structure_field_info">normalRank : <a href="../../.././Init/Prelude.html#Nat">ℕ</a></div></li></ul><details id="instances-for-list-NormalBundleData" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="SpinCStructureDFS"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L131-L146">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS"><span class="name">SpinCStructureDFS</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#IsManifold">IsManifold</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max (max (max u_1 u_3) (u_4 + 1)) (u_5 + 1))</div></div><p>A $\operatorname{Spin}^{\mathbb{C}}$ structure on $M$: complex spinor bundles $W^+, W^-$ with Clifford multiplication maps $\gamma_{\pm} : TM \otimes W^{\pm} \to W^{\mp}$ and first Chern class $c_1$ of the determinant line bundle.</p><ul class="structure_fields" id="SpinCStructureDFS.mk"><li id="SpinCStructureDFS.SpinorPlusFiber" class="structure_field"><div class="structure_field_info">SpinorPlusFiber : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_4</span></div></li><li id="SpinCStructureDFS.SpinorMinusFiber" class="structure_field"><div class="structure_field_info">SpinorMinusFiber : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_5</span></div></li><li id="SpinCStructureDFS.instACG_plus" class="structure_field"><div class="structure_field_info">instACG_plus<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorPlusFiber">SpinorPlusFiber</a></span> <span class="fn">x</span>)</span></span></div></li><li id="SpinCStructureDFS.instMod_plus" class="structure_field"><div class="structure_field_info">instMod_plus<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorPlusFiber">SpinorPlusFiber</a></span> <span class="fn">x</span>)</span></span></div></li><li id="SpinCStructureDFS.instACG_minus" class="structure_field"><div class="structure_field_info">instACG_minus<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorMinusFiber">SpinorMinusFiber</a></span> <span class="fn">x</span>)</span></span></div></li><li id="SpinCStructureDFS.instMod_minus" class="structure_field"><div class="structure_field_info">instMod_minus<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorMinusFiber">SpinorMinusFiber</a></span> <span class="fn">x</span>)</span></span></div></li><li id="SpinCStructureDFS.γ_plus_to_minus" class="structure_field"><div class="structure_field_info">γ_plus_to_minus<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+ : <span class="fn"><span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#TangentSpace">TangentSpace</a> <span class="fn">I</span> <span class="fn">x</span></span> → <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorPlusFiber">SpinorPlusFiber</a></span> <span class="fn">x</span></span> <a href="../../.././Mathlib/Algebra/Module/LinearMap/Defs.html#LinearMap">→ₗ[</a><a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a><a href="../../.././Mathlib/Algebra/Module/LinearMap/Defs.html#LinearMap">]</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorMinusFiber">SpinorMinusFiber</a></span> <span class="fn">x</span></span></span></div></li><li id="SpinCStructureDFS.γ_minus_to_plus" class="structure_field"><div class="structure_field_info">γ_minus_to_plus<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+ : <span class="fn"><span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#TangentSpace">TangentSpace</a> <span class="fn">I</span> <span class="fn">x</span></span> → <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorMinusFiber">SpinorMinusFiber</a></span> <span class="fn">x</span></span> <a href="../../.././Mathlib/Algebra/Module/LinearMap/Defs.html#LinearMap">→ₗ[</a><a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a><a href="../../.././Mathlib/Algebra/Module/LinearMap/Defs.html#LinearMap">]</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorPlusFiber">SpinorPlusFiber</a></span> <span class="fn">x</span></span></span></div></li><li id="SpinCStructureDFS.c₁" class="structure_field"><div class="structure_field_info">c₁ : <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a></div></li></ul><details id="instances-for-list-SpinCStructureDFS" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="SpinCStructureDFS.instACGPlus"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L156-L158">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.instACGPlus"><span class="name">SpinCStructureDFS</span>.<span class="name">instACGPlus</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#IsManifold">IsManifold</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">spinc</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS">SpinCStructureDFS</a> <span class="fn">I</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn"><span class="fn">spinc</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorPlusFiber">SpinorPlusFiber</a></span> <span class="fn">x</span>)</span></span></div></div><p>The positive spinor fiber $W^+_x$ inherits an abelian group structure.</p></div></div><div class="decl" id="SpinCStructureDFS.instModPlus"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L160-L162">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.instModPlus"><span class="name">SpinCStructureDFS</span>.<span class="name">instModPlus</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#IsManifold">IsManifold</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">spinc</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS">SpinCStructureDFS</a> <span class="fn">I</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">(<span class="fn"><span class="fn">spinc</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorPlusFiber">SpinorPlusFiber</a></span> <span class="fn">x</span>)</span></span></div></div><p>The positive spinor fiber $W^+_x$ is a complex vector space.</p></div></div><div class="decl" id="SpinCStructureDFS.instACGMinus"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L164-L166">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.instACGMinus"><span class="name">SpinCStructureDFS</span>.<span class="name">instACGMinus</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#IsManifold">IsManifold</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">spinc</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS">SpinCStructureDFS</a> <span class="fn">I</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn"><span class="fn">spinc</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorMinusFiber">SpinorMinusFiber</a></span> <span class="fn">x</span>)</span></span></div></div><p>The negative spinor fiber $W^-_x$ inherits an abelian group structure.</p></div></div><div class="decl" id="SpinCStructureDFS.instModMinus"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L168-L170">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.instModMinus"><span class="name">SpinCStructureDFS</span>.<span class="name">instModMinus</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#IsManifold">IsManifold</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">spinc</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS">SpinCStructureDFS</a> <span class="fn">I</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">(<span class="fn"><span class="fn">spinc</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SpinorMinusFiber">SpinorMinusFiber</a></span> <span class="fn">x</span>)</span></span></div></div><p>The negative spinor fiber $W^-_x$ is a complex vector space.</p></div></div><div class="decl" id="SpinCStructureDFS.SectionsPlus"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L172-L174">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SectionsPlus"><span class="name">SpinCStructureDFS</span>.<span class="name">SectionsPlus</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#IsManifold">IsManifold</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">spinc</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS">SpinCStructureDFS</a> <span class="fn">I</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_4 u_3)</div></div><p>Sections $\Gamma(W^+)$ of the positive spinor bundle.</p><details id="instances-for-list-SpinCStructureDFS.SectionsPlus" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="SpinCStructureDFS.SectionsMinus"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/BundleDFS.lean#L176-L178">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS.SectionsMinus"><span class="name">SpinCStructureDFS</span>.<span class="name">SectionsMinus</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">EM</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">HM</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">HM</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">EM</span> <span class="fn">HM</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">HM</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#IsManifold">IsManifold</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">spinc</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/BundleDFS.html#SpinCStructureDFS">SpinCStructureDFS</a> <span class="fn">I</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_5 u_3)</div></div><p>Sections $\Gamma(W^-)$ of the negative spinor bundle.</p><details id="instances-for-list-SpinCStructureDFS.SectionsMinus" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

@@ -1,0 +1,241 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.GeometryOfManifolds.code.ChernFormGrading</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.GeometryOfManifolds.code.ChernFormGrading";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">GeometryOfManifolds</span>.<span class="name">code</span>.<span class="name">ChernFormGrading</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/ChernFormGrading.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Atlas/GeometryOfManifolds/code/ConnectionsCurvature.html">Atlas.GeometryOfManifolds.code.ConnectionsCurvature</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.GeometryOfManifolds.code.ChernFormGrading" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#ComplexDifferentialFormAlgebra"><span class="name">ComplexDifferentialFormAlgebra</span></a></div><div class="nav_link"><a class="break_within" href="#ChernFormGeometricData"><span class="name">ChernFormGeometricData</span></a></div><div class="nav_link"><a class="break_within" href="#totalChernFormGeometric"><span class="name">totalChernFormGeometric</span></a></div><div class="nav_link"><a class="break_within" href="#chernFormDegree"><span class="name">chernFormDegree</span></a></div></nav><main>
+<div class="decl" id="ComplexDifferentialFormAlgebra"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/ChernFormGrading.lean#L5-L16">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ComplexDifferentialFormAlgebra"><span class="name">ComplexDifferentialFormAlgebra</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nat">ℕ</a> → <a href="../../.././foundational_types.html">Type</a> u_1</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">VF</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">inst</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/DifferentialForms.html#DifferentialFormSpace">DifferentialFormSpace</a> <span class="fn">Ω</span> <span class="fn">VF</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ConnectionsCurvature.html#IsGradedFormAlgebra">IsGradedFormAlgebra</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_1 u_3)</div></div><p>A $\mathbb{C}$-algebra $R$ realizing the graded algebra of complex differential forms:
+each $\Omega^p$ embeds $\mathbb{R}$-linearly into a homogeneous component of degree $p$ in
+$R$, with an inverse extraction map.</p><ul class="structure_fields" id="ComplexDifferentialFormAlgebra.mk"><li id="ComplexDifferentialFormAlgebra.embed" class="structure_field"><div class="structure_field_info">embed<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn">Ω</span> <span class="fn">p</span></span> → <span class="fn">R</span></span></div></li><li id="ComplexDifferentialFormAlgebra.embed_linear" class="structure_field"><div class="structure_field_info">embed_linear<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a </span><span class="fn">b</span> : <span class="fn"><span class="fn">Ω</span> <span class="fn">p</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ComplexDifferentialFormAlgebra.embed">embed</a></span> <span class="fn">p</span> (<span class="fn">c</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">a</span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn">b</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Defs.html#algebraMap">algebraMap</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">R</span>)</span> <span class="fn">c</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ComplexDifferentialFormAlgebra.embed">embed</a></span> <span class="fn">p</span> <span class="fn">a</span></span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ComplexDifferentialFormAlgebra.embed">embed</a></span> <span class="fn">p</span> <span class="fn">b</span></span></div></li><li id="ComplexDifferentialFormAlgebra.embed_homog" class="structure_field"><div class="structure_field_info">embed_homog<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn"><span class="fn">Ω</span> <span class="fn">p</span></span>)</span></span>
+ : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ConnectionsCurvature.html#IsGradedFormAlgebra.IsHomog">IsGradedFormAlgebra.IsHomog</a> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ComplexDifferentialFormAlgebra.embed">embed</a></span> <span class="fn">p</span> <span class="fn">α</span>)</span> <span class="fn">p</span></span></div></li><li id="ComplexDifferentialFormAlgebra.extract" class="structure_field"><div class="structure_field_info">extract<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>)</span></span>
+ : <span class="fn"><span class="fn">R</span> → <span class="fn"><span class="fn">Ω</span> <span class="fn">p</span></span></span></div></li><li id="ComplexDifferentialFormAlgebra.extract_embed" class="structure_field"><div class="structure_field_info">extract_embed<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn"><span class="fn">Ω</span> <span class="fn">p</span></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ComplexDifferentialFormAlgebra.extract">extract</a></span> <span class="fn">p</span> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ComplexDifferentialFormAlgebra.embed">embed</a></span> <span class="fn">p</span> <span class="fn">α</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">α</span></div></li></ul><details id="instances-for-list-ComplexDifferentialFormAlgebra" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ChernFormGeometricData"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/ChernFormGrading.lean#L18-L51">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ChernFormGeometricData"><span class="name">ChernFormGeometricData</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">𝕜</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Field/Basic.html#NontriviallyNormedField">NontriviallyNormedField</a> <span class="fn">𝕜</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_mod</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E_mod</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <span class="fn">𝕜</span> <span class="fn">E_mod</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <span class="fn">𝕜</span> <span class="fn">E_mod</span> <span class="fn">H</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_5)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <span class="fn">𝕜</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_6</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<a href="../../.././Mathlib/Data/Bundle.html#Bundle.TotalSpace">Bundle.TotalSpace</a> <span class="fn">F</span> <span class="fn">V</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">𝕜</span> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#IsTopologicalAddGroup">IsTopologicalAddGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">𝕜</span> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/FiberBundle/Basic.html#FiberBundle">FiberBundle</a> <span class="fn">F</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">r</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nat">ℕ</a> → <a href="../../.././foundational_types.html">Type</a> u_7</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">VF</span> : <a href="../../.././foundational_types.html">Type</a> u_8)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/DifferentialForms.html#DifferentialFormSpace">DifferentialFormSpace</a> <span class="fn">Ω</span> <span class="fn">VF</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_9)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ConnectionsCurvature.html#IsGradedFormAlgebra">IsGradedFormAlgebra</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max (max (max (max u_2 u_4) u_6) u_7) u_9)</div></div><p>All geometric data needed to define the Chern forms of a rank-$r$ vector bundle
+$V \to M$ with connection $\nabla$: the connection, its curvature $R^\nabla$ (antisymmetric
+in tangent vectors), an embedding of the form algebra into a $\mathbb{C}$-algebra $R$, the
+$r \times r$ curvature matrix realised in $R$ (with each entry homogeneous of degree $2$),
+and a &quot;degree-$0$ scalar&quot; hypothesis on the leading Chern scalar.</p><ul class="structure_fields" id="ChernFormGeometricData.mk"><li id="ChernFormGeometricData.connection" class="structure_field"><div class="structure_field_info">connection : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/VectorBundle/CovariantDerivative/Basic.html#CovariantDerivative">CovariantDerivative</a> <span class="fn">I</span> <span class="fn">F</span> <span class="fn">V</span></span></div></li><li id="ChernFormGeometricData.curvature" class="structure_field"><div class="structure_field_info">curvature<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+ : <span class="fn"><span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#TangentSpace">TangentSpace</a> <span class="fn">I</span> <span class="fn">x</span></span> → <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#TangentSpace">TangentSpace</a> <span class="fn">I</span> <span class="fn">x</span></span> → <span class="fn"><span class="fn">V</span> <span class="fn">x</span></span> <a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">→L[</a><span class="fn">𝕜</span><a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">]</a> <span class="fn"><span class="fn">V</span> <span class="fn">x</span></span></span></div></li><li id="ChernFormGeometricData.curvature_antisymm" class="structure_field"><div class="structure_field_info">curvature_antisymm<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#TangentSpace">TangentSpace</a> <span class="fn">I</span> <span class="fn">x</span></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ChernFormGeometricData.curvature">curvature</a></span> <span class="fn">x</span> <span class="fn">X</span> <span class="fn">Y</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <a href="../../.././Init/Prelude.html#Neg.neg">-</a><span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ChernFormGeometricData.curvature">curvature</a></span> <span class="fn">x</span> <span class="fn">Y</span> <span class="fn">X</span></span></div></li><li id="ChernFormGeometricData.formAlgebra" class="structure_field"><div class="structure_field_info">formAlgebra : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ComplexDifferentialFormAlgebra">ComplexDifferentialFormAlgebra</a> <span class="fn">Ω</span> <span class="fn">VF</span> <span class="fn">R</span></span></div></li><li id="ChernFormGeometricData.curvatureMatrix" class="structure_field"><div class="structure_field_info">curvatureMatrix : <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/Matrix/Defs.html#Matrix">Matrix</a> <span class="fn">(<a href="../../.././Init/Prelude.html#Fin">Fin</a> <span class="fn">r</span>)</span> <span class="fn">(<a href="../../.././Init/Prelude.html#Fin">Fin</a> <span class="fn">r</span>)</span> <span class="fn">R</span></span></div></li><li id="ChernFormGeometricData.curvatureMatrix_deg2" class="structure_field"><div class="structure_field_info">curvatureMatrix_deg2 : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ConnectionsCurvature.html#CurvatureMatrixDegreeTwo">CurvatureMatrixDegreeTwo</a> <span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ChernFormGeometricData.curvatureMatrix">curvatureMatrix</a></span></span></div></li><li id="ChernFormGeometricData.chernScalar_deg0" class="structure_field"><div class="structure_field_info">chernScalar_deg0 : <a href="../../.././Atlas/GeometryOfManifolds/code/ConnectionsCurvature.html#ChernScalarHomogZero">ChernScalarHomogZero</a></div></li></ul><details id="instances-for-list-ChernFormGeometricData" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="totalChernFormGeometric"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/ChernFormGrading.lean#L53-L72">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#totalChernFormGeometric"><span class="name">totalChernFormGeometric</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">𝕜</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Field/Basic.html#NontriviallyNormedField">NontriviallyNormedField</a> <span class="fn">𝕜</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_mod</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E_mod</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <span class="fn">𝕜</span> <span class="fn">E_mod</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <span class="fn">𝕜</span> <span class="fn">E_mod</span> <span class="fn">H</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <span class="fn">𝕜</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_6</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<a href="../../.././Mathlib/Data/Bundle.html#Bundle.TotalSpace">Bundle.TotalSpace</a> <span class="fn">F</span> <span class="fn">V</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">𝕜</span> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#IsTopologicalAddGroup">IsTopologicalAddGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">𝕜</span> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/FiberBundle/Basic.html#FiberBundle">FiberBundle</a> <span class="fn">F</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">r</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Ω</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nat">ℕ</a> → <a href="../../.././foundational_types.html">Type</a> u_7</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">VF</span> : <a href="../../.././foundational_types.html">Type</a> u_8}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/DifferentialForms.html#DifferentialFormSpace">DifferentialFormSpace</a> <span class="fn">Ω</span> <span class="fn">VF</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_9}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ConnectionsCurvature.html#IsGradedFormAlgebra">IsGradedFormAlgebra</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">data</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ChernFormGeometricData">ChernFormGeometricData</a> <span class="fn">𝕜</span> <span class="fn">E_mod</span> <span class="fn">H</span> <span class="fn">I</span> <span class="fn">M</span> <span class="fn">F</span> <span class="fn">V</span> <span class="fn">r</span> <span class="fn">Ω</span> <span class="fn">VF</span> <span class="fn">R</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">R</span></div></div><p>The <strong>total Chern form</strong> of $(E, \nabla)$:
+$$c(E, \nabla) = \det\!\left(I + \frac{i}{2\pi} R^\nabla\right) \in \Omega^\bullet(M, \mathbb{C}),$$
+defined via the curvature matrix and the appropriate scalar normalization.</p><details id="instances-for-list-totalChernFormGeometric" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="chernFormDegree"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/542ca9cb23b917be048b314b24180a8dc1cd36b3/Atlas/GeometryOfManifolds/code/ChernFormGrading.lean#L74-L94">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#chernFormDegree"><span class="name">chernFormDegree</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">𝕜</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Field/Basic.html#NontriviallyNormedField">NontriviallyNormedField</a> <span class="fn">𝕜</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_mod</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E_mod</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <span class="fn">𝕜</span> <span class="fn">E_mod</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <span class="fn">𝕜</span> <span class="fn">E_mod</span> <span class="fn">H</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <span class="fn">𝕜</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <span class="fn"><span class="fn">M</span> → <a href="../../.././foundational_types.html">Type</a> u_6</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<a href="../../.././Mathlib/Data/Bundle.html#Bundle.TotalSpace">Bundle.TotalSpace</a> <span class="fn">F</span> <span class="fn">V</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">𝕜</span> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">(<span class="fn">x</span> : <span class="fn">M</span>) → <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#IsTopologicalAddGroup">IsTopologicalAddGroup</a> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">∀ (<span class="fn">x</span> : <span class="fn">M</span>), <span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">𝕜</span> <span class="fn">(<span class="fn">V</span> <span class="fn">x</span>)</span></span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/FiberBundle/Basic.html#FiberBundle">FiberBundle</a> <span class="fn">F</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">r</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Ω</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nat">ℕ</a> → <a href="../../.././foundational_types.html">Type</a> u_7</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">VF</span> : <a href="../../.././foundational_types.html">Type</a> u_8}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/DifferentialForms.html#DifferentialFormSpace">DifferentialFormSpace</a> <span class="fn">Ω</span> <span class="fn">VF</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_9}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ConnectionsCurvature.html#IsGradedFormAlgebra">IsGradedFormAlgebra</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">data</span> : <span class="fn"><a href="../../.././Atlas/GeometryOfManifolds/code/ChernFormGrading.html#ChernFormGeometricData">ChernFormGeometricData</a> <span class="fn">𝕜</span> <span class="fn">E_mod</span> <span class="fn">H</span> <span class="fn">I</span> <span class="fn">M</span> <span class="fn">F</span> <span class="fn">V</span> <span class="fn">r</span> <span class="fn">Ω</span> <span class="fn">VF</span> <span class="fn">R</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">j</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">R</span></div></div><p>The <strong>$j$-th Chern form</strong> $c_j(E, \nabla) \in \Omega^{2j}(M, \mathbb{C})$, obtained as
+the degree-$2j$ component of the total Chern form
+$\det(I + \frac{i}{2\pi} R^\nabla) = \sum_j c_j$.</p><details id="instances-for-list-chernFormDegree" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>
