@@ -69,12 +69,20 @@ h1 { font-size: 32px; font-weight: 700; color: #111; }
 </head>
 <body>
 <div class="header">
-  <img src="logo.svg" alt="ATLAS" style="max-width:320px;margin-bottom:12px;">
-  <p class="subtitle">Lean 4 Formalization of Mathematics</p>
+  <img src="logo.svg" alt="ATLAS" style="max-width:320px;margin-bottom:8px;">
+  <p class="subtitle">Autoformalized Textbook Library At Scale</p>
+  <p style="font-size:13px;color:#666;max-width:640px;margin:8px auto 0;line-height:1.5;">
+    A Lean 4 library of textbook mathematics autoformalized by LLMs. Informal statements and proofs from undergraduate and graduate textbooks, translated into verified Lean code.
+  </p>
   <div class="stats-bar">
     <div><span class="stat-value" id="total-books">0</span> books</div>
     <div><span class="stat-value" id="total-stmts">0</span> statements</div>
     <div><span class="stat-value" id="avg-pass">0%</span> avg pass rate</div>
+  </div>
+  <div style="margin-top:12px;display:flex;justify-content:center;gap:16px;font-size:13px;">
+    <a href="https://github.com/facebookresearch/atlas" style="color:#4a6cf7;text-decoration:none;">GitHub</a>
+    <a href="https://github.com/facebookresearch/autoform-bot" style="color:#4a6cf7;text-decoration:none;">AutoformBot</a>
+    <a href="https://github.com/facebookresearch/atlas/blob/main/formalizing_mathematics_at_scale.pdf" style="color:#4a6cf7;text-decoration:none;">Paper</a>
   </div>
 </div>
 <div class="container">
