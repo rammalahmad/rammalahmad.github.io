@@ -1,0 +1,314 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.TensorCategories.code.MonoidalFunctorProps</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.TensorCategories.code.MonoidalFunctorProps";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">TensorCategories</span>.<span class="name">code</span>.<span class="name">MonoidalFunctorProps</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html">Mathlib.CategoryTheory.Monoidal.Functor</a></li><li><a href="../../.././Mathlib/CategoryTheory/Monoidal/NaturalTransformation.html">Mathlib.CategoryTheory.Monoidal.NaturalTransformation</a></li><li><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html">Mathlib.CategoryTheory.Monoidal.Rigid.Basic</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.TensorCategories.code.MonoidalFunctorProps" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.Definition_1_4_1_MonoidalFunctor"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">Definition_1_4_1_MonoidalFunctor</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.def_1_4_1_MonoidalNatTrans"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">def_1_4_1_MonoidalNatTrans</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.Prop_1_4_3_left"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">Prop_1_4_3_left</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.def_1_4_5_MonoidalNatTrans"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">def_1_4_5_MonoidalNatTrans</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.monoidalFunctor_exactPairing"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalFunctor_exactPairing</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_unit"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_isIso_unit</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_tensor"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_isIso_tensor</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_inv"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_inv</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_tensorHom_comp_eval"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_tensorHom_comp_eval</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_coev_comp_tensorHom"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_coev_comp_tensorHom</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_of_hasRightDual"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_isIso_of_hasRightDual</span></a></div><div class="nav_link"><a class="break_within" href="#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_of_rigid"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_isIso_of_rigid</span></a></div></nav><main>
+<div class="decl" id="TensorCategories.MonoidalFunctorProps.Definition_1_4_1_MonoidalFunctor"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L26-L29">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.Definition_1_4_1_MonoidalFunctor"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">Definition_1_4_1_MonoidalFunctor</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{u_3, u_1}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{u_4, u_2}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_1 u_4)</div></div><p>EGNO Definition 1.4.1: a monoidal functor <code>F : C ⥤ D</code>, expressed as the existence of
+a <code>Functor.Monoidal</code> structure on <code>F</code>.</p><details id="instances-for-list-TensorCategories.MonoidalFunctorProps.Definition_1_4_1_MonoidalFunctor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.def_1_4_1_MonoidalNatTrans"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L31-L35">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.def_1_4_1_MonoidalNatTrans"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">def_1_4_1_MonoidalNatTrans</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.LaxMonoidal">LaxMonoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.LaxMonoidal">LaxMonoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">η</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>EGNO Definition 1.4.1 (natural transformations): a monoidal natural transformation
+between lax monoidal functors.</p><details id="instances-for-list-TensorCategories.MonoidalFunctorProps.def_1_4_1_MonoidalNatTrans" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.Prop_1_4_3_left"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L37-L42">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.Prop_1_4_3_left"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">Prop_1_4_3_left</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.LaxMonoidal">LaxMonoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.leftUnitor">CategoryTheory.MonoidalCategoryStruct.leftUnitor</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span>)</span>)</span>.<a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso.hom">hom</a></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryTheory.CategoryStruct.comp</a>
+    <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.whiskerRight">CategoryTheory.MonoidalCategoryStruct.whiskerRight</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.LaxMonoidal.ε">CategoryTheory.Functor.LaxMonoidal.ε</a> <span class="fn">F</span>)</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span>)</span>)</span>
+    <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryTheory.CategoryStruct.comp</a>
+      <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.LaxMonoidal.μ">CategoryTheory.Functor.LaxMonoidal.μ</a> <span class="fn">F</span> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">CategoryTheory.MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span> <span class="fn">X</span>)</span>
+      <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.map">map</a></span> <span class="fn"><span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.leftUnitor">CategoryTheory.MonoidalCategoryStruct.leftUnitor</a> <span class="fn">X</span>)</span>.<a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso.hom">hom</a></span>)</span>)</span></span></div></div><p>EGNO Proposition 1.4.3 (left unitality): for a lax monoidal functor <code>F</code>, the left
+unitor of <code>F X</code> factors through <code>ε ▷ F X</code> and <code>μ (𝟙_ C) X</code> followed by <code>F (λ_ X).hom</code>.</p></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.def_1_4_5_MonoidalNatTrans"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L44-L48">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.def_1_4_5_MonoidalNatTrans"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">def_1_4_5_MonoidalNatTrans</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.LaxMonoidal">LaxMonoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.LaxMonoidal">LaxMonoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">η</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>EGNO Definition 1.4.5: a monoidal natural transformation between lax monoidal
+functors.</p><details id="instances-for-list-TensorCategories.MonoidalFunctorProps.def_1_4_5_MonoidalNatTrans" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.monoidalFunctor_exactPairing"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L73-L110">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.monoidalFunctor_exactPairing"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalFunctor_exactPairing</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.ExactPairing">CategoryTheory.ExactPairing</a> <span class="fn">X</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.ExactPairing">CategoryTheory.ExactPairing</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span>)</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">Y</span>)</span></span></div></div><p>A monoidal functor preserves exact pairings: if <code>(X, Y)</code> is an exact pairing in <code>C</code>,
+then <code>(F X, F Y)</code> is an exact pairing in <code>D</code>, with evaluation and coevaluation conjugated
+by the monoidal structure isomorphisms.</p></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_unit"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L116-L123">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_unit"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_isIso_unit</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/NaturalTransformation.html#CategoryTheory.NatTrans.IsMonoidal">CategoryTheory.NatTrans.IsMonoidal</a> <span class="fn">α</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.IsIso">CategoryTheory.IsIso</a> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">CategoryTheory.MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span>)</span></span></div></div><p>Part of EGNO Exercise 1.10.15: a monoidal natural transformation between strong
+monoidal functors has invertible component at the unit object.</p></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_tensor"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L125-L136">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_tensor"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_isIso_tensor</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/NaturalTransformation.html#CategoryTheory.NatTrans.IsMonoidal">CategoryTheory.NatTrans.IsMonoidal</a> <span class="fn">α</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.IsIso">CategoryTheory.IsIso</a> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">X</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.IsIso">CategoryTheory.IsIso</a> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">Y</span>)</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.IsIso">CategoryTheory.IsIso</a> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorObj">CategoryTheory.MonoidalCategoryStruct.tensorObj</a> <span class="fn">X</span> <span class="fn">Y</span>)</span>)</span></span></div></div><p>Part of EGNO Exercise 1.10.15: a monoidal natural transformation between strong
+monoidal functors has invertible component at a tensor product whenever it has invertible
+components at the factors.</p></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.monoidalNatTrans_inv"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L138-L148">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_inv"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_inv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/NaturalTransformation.html#CategoryTheory.NatTrans.IsMonoidal">CategoryTheory.NatTrans.IsMonoidal</a> <span class="fn">α</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.HasRightDual">CategoryTheory.HasRightDual</a> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span></span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span></span></div></div><p>Candidate inverse of <code>α.app X</code> at a right-dualizable object <code>X</code>, built from the
+evaluation/coevaluation of the right dual together with the inverse component <code>α.app Xᘁ</code>.</p><details id="instances-for-list-TensorCategories.MonoidalFunctorProps.monoidalNatTrans_inv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.monoidalNatTrans_tensorHom_comp_eval"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L150-L172">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_tensorHom_comp_eval"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_tensorHom_comp_eval</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/NaturalTransformation.html#CategoryTheory.NatTrans.IsMonoidal">CategoryTheory.NatTrans.IsMonoidal</a> <span class="fn">α</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.ExactPairing">CategoryTheory.ExactPairing</a> <span class="fn">X</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryTheory.CategoryStruct.comp</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorHom">CategoryTheory.MonoidalCategoryStruct.tensorHom</a> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">Y</span>)</span> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">X</span>)</span>)</span>
+    <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.ExactPairing.evaluation">ε_</a> <span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span>)</span> <span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">Y</span>)</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.ExactPairing.evaluation">ε_</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span>)</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">Y</span>)</span></span></div></div><p>Compatibility of a monoidal natural transformation with the evaluation of an exact
+pairing transported through <code>F</code> and <code>G</code>.</p></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.monoidalNatTrans_coev_comp_tensorHom"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L174-L196">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_coev_comp_tensorHom"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_coev_comp_tensorHom</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/NaturalTransformation.html#CategoryTheory.NatTrans.IsMonoidal">CategoryTheory.NatTrans.IsMonoidal</a> <span class="fn">α</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.ExactPairing">CategoryTheory.ExactPairing</a> <span class="fn">X</span> <span class="fn">Y</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryTheory.CategoryStruct.comp</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.ExactPairing.coevaluation">η_</a> <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span>)</span> <span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">Y</span>)</span>)</span>
+    <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorHom">CategoryTheory.MonoidalCategoryStruct.tensorHom</a> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">X</span>)</span> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">Y</span>)</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.ExactPairing.coevaluation">η_</a> <span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">X</span>)</span> <span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">Y</span>)</span></span></div></div><p>Compatibility of a monoidal natural transformation with the coevaluation of an exact
+pairing transported through <code>F</code> and <code>G</code>.</p></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_of_hasRightDual"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L198-L270">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_of_hasRightDual"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_isIso_of_hasRightDual</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/NaturalTransformation.html#CategoryTheory.NatTrans.IsMonoidal">CategoryTheory.NatTrans.IsMonoidal</a> <span class="fn">α</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.HasRightDual">CategoryTheory.HasRightDual</a> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.IsIso">CategoryTheory.IsIso</a> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">X</span>)</span></span></div></div><p>Part of EGNO Exercise 1.10.15: a monoidal natural transformation between strong
+monoidal functors has invertible component at any right-dualizable object.</p></div></div><div class="decl" id="TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_of_rigid"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/MonoidalFunctorProps.lean#L272-L279">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/MonoidalFunctorProps.html#TensorCategories.MonoidalFunctorProps.monoidalNatTrans_isIso_of_rigid"><span class="name">TensorCategories</span>.<span class="name">MonoidalFunctorProps</span>.<span class="name">monoidalNatTrans_isIso_of_rigid</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{v₂, u₂}</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">CategoryTheory.MonoidalCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.RightRigidCategory">CategoryTheory.RightRigidCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Rigid/Basic.html#CategoryTheory.RightRigidCategory">CategoryTheory.RightRigidCategory</a> <span class="fn">D</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">CategoryTheory.Functor</a> <span class="fn">C</span> <span class="fn">D</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">F</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">G</span>.<a href="../../.././Mathlib/CategoryTheory/Monoidal/Functor.html#CategoryTheory.Functor.Monoidal">Monoidal</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn">F</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/NaturalTransformation.html#CategoryTheory.NatTrans.IsMonoidal">CategoryTheory.NatTrans.IsMonoidal</a> <span class="fn">α</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.IsIso">CategoryTheory.IsIso</a> <span class="fn">(<span class="fn"><span class="fn">α</span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">X</span>)</span></span></div></div><p>EGNO Exercise 1.10.15 (rigid case): when both <code>C</code> and <code>D</code> are right-rigid, every
+monoidal natural transformation between strong monoidal functors is a natural
+isomorphism.</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

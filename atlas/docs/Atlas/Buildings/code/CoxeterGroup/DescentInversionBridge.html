@@ -1,0 +1,456 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../../.././style.css"></link><link rel="icon" href="../../../.././favicon.svg"></link><link rel="mask-icon" href="../../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.Buildings.code.CoxeterGroup.DescentInversionBridge</title><script defer="true" src="../../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../../.././";</script><script>const MODULE_NAME="Atlas.Buildings.code.CoxeterGroup.DescentInversionBridge";</script><script type="module" src="../../../.././jump-src.js"></script><script type="module" src="../../../.././search.js"></script><script type="module" src="../../../.././expand-nav.js"></script><script type="module" src="../../../.././how-about.js"></script><script type="module" src="../../../.././instances.js"></script><script type="module" src="../../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">Buildings</span>.<span class="name">code</span>.<span class="name">CoxeterGroup</span>.<span class="name">DescentInversionBridge</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../../.././Init.html">Init</a></li><li><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/InversionMultiplication.html">Atlas.Buildings.code.CoxeterGroup.InversionMultiplication</a></li><li><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/SignChangeExchangeFinal.html">Atlas.Buildings.code.CoxeterGroup.SignChangeExchangeFinal</a></li><li><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/SimpleReflectionInversions.html">Atlas.Buildings.code.CoxeterGroup.SimpleReflectionInversions</a></li><li><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/StrongExchangeBridge.html">Atlas.Buildings.code.CoxeterGroup.StrongExchangeBridge</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.Buildings.code.CoxeterGroup.DescentInversionBridge" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.wordSigma_eq_of_wordProd_eq"><span class="name">DescentInversionBridge</span>.<span class="name">wordSigma_eq_of_wordProd_eq</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.descent_implies_isNegative"><span class="name">DescentInversionBridge</span>.<span class="name">descent_implies_isNegative</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.isNegative_implies_descent'"><span class="name">DescentInversionBridge</span>.<span class="name">isNegative_implies_descent'</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.descent_iff_isNegative"><span class="name">DescentInversionBridge</span>.<span class="name">descent_iff_isNegative</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.ascent_implies_isPositive"><span class="name">DescentInversionBridge</span>.<span class="name">ascent_implies_isPositive</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.isPositive_implies_ascent"><span class="name">DescentInversionBridge</span>.<span class="name">isPositive_implies_ascent</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.ascent_iff_isPositive"><span class="name">DescentInversionBridge</span>.<span class="name">ascent_iff_isPositive</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.wordSigma_append_isNegative_toggle"><span class="name">DescentInversionBridge</span>.<span class="name">wordSigma_append_isNegative_toggle</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.wordSigma_append_isPositive_toggle"><span class="name">DescentInversionBridge</span>.<span class="name">wordSigma_append_isPositive_toggle</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.descent_toggle_append"><span class="name">DescentInversionBridge</span>.<span class="name">descent_toggle_append</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.exists_reduced_word_ending_in_descent'"><span class="name">DescentInversionBridge</span>.<span class="name">exists_reduced_word_ending_in_descent'</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.descent_iff_isNegative_any_word"><span class="name">DescentInversionBridge</span>.<span class="name">descent_iff_isNegative_any_word</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.mem_bilinInversions_implies_isRightDescent"><span class="name">DescentInversionBridge</span>.<span class="name">mem_bilinInversions_implies_isRightDescent</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.wordSigma_ne_zero"><span class="name">DescentInversionBridge</span>.<span class="name">wordSigma_ne_zero</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.isNegative_exists_neg_component"><span class="name">DescentInversionBridge</span>.<span class="name">isNegative_exists_neg_component</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.descent_exists_neg_component"><span class="name">DescentInversionBridge</span>.<span class="name">descent_exists_neg_component</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.ascent_exists_pos_component"><span class="name">DescentInversionBridge</span>.<span class="name">ascent_exists_pos_component</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.bilinInversions_eq_of_wordProd_eq"><span class="name">DescentInversionBridge</span>.<span class="name">bilinInversions_eq_of_wordProd_eq</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.bilinInversions_self_toggle_of_ne_zero"><span class="name">DescentInversionBridge</span>.<span class="name">bilinInversions_self_toggle_of_ne_zero</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.bilinInversions_nil'"><span class="name">DescentInversionBridge</span>.<span class="name">bilinInversions_nil'</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.bilinInversions_singleton'"><span class="name">DescentInversionBridge</span>.<span class="name">bilinInversions_singleton'</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.isRightDescent_of_reduced_append"><span class="name">DescentInversionBridge</span>.<span class="name">isRightDescent_of_reduced_append</span></a></div><div class="nav_link"><a class="break_within" href="#DescentInversionBridge.not_isRightDescent_of_reduced_prefix"><span class="name">DescentInversionBridge</span>.<span class="name">not_isRightDescent_of_reduced_prefix</span></a></div></nav><main>
+<div class="decl" id="DescentInversionBridge.wordSigma_eq_of_wordProd_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L15-L25">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.wordSigma_eq_of_wordProd_eq"><span class="name">DescentInversionBridge</span>.<span class="name">wordSigma_eq_of_wordProd_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word₁ </span><span class="fn">word₂</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word₁</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word₂</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn"><span class="fn">B</span> → <a href="../../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word₁</span> <span class="fn">v</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word₂</span> <span class="fn">v</span></span></div></div><p>If two words have the same product in $W$, they induce the same action on
+the geometric representation.</p></div></div><div class="decl" id="DescentInversionBridge.descent_implies_isNegative"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L28-L39">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.descent_implies_isNegative"><span class="name">DescentInversionBridge</span>.<span class="name">descent_implies_isNegative</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hdesc</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">i</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsNegative">CoxeterGroup.IsNegative</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">i</span>)</span>)</span></span></div></div><p>Right-descent implies negative root: if a reduced word ends with a right
+descent at $i$, then its action on $e_i$ is a negative root.</p></div></div><div class="decl" id="DescentInversionBridge.isNegative_implies_descent'"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L41-L51">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.isNegative_implies_descent'"><span class="name">DescentInversionBridge</span>.<span class="name">isNegative_implies_descent'</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hneg</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsNegative">CoxeterGroup.IsNegative</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">i</span>)</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">i</span></span></div></div><p>Converse: if a reduced word's action on $e_i$ is a negative root, then $i$
+is a right descent of the corresponding group element.</p></div></div><div class="decl" id="DescentInversionBridge.descent_iff_isNegative"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L53-L62">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.descent_iff_isNegative"><span class="name">DescentInversionBridge</span>.<span class="name">descent_iff_isNegative</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">i</span></span> <a href="../../../.././Init/Core.html#Iff">↔</a> <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsNegative">CoxeterGroup.IsNegative</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">i</span>)</span>)</span></span></div></div><p>Descent-negativity equivalence for reduced words: $i$ is a right descent
+iff the word's action on $e_i$ gives a negative root.</p></div></div><div class="decl" id="DescentInversionBridge.ascent_implies_isPositive"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L65-L77">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.ascent_implies_isPositive"><span class="name">DescentInversionBridge</span>.<span class="name">ascent_implies_isPositive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hasc</span> : <a href="../../../.././Init/Prelude.html#Not">¬</a><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">i</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsPositive">CoxeterGroup.IsPositive</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">i</span>)</span>)</span></span></div></div><p>Ascent implies positive root: if $i$ is not a right descent, the word's
+action on $e_i$ is a positive root.</p></div></div><div class="decl" id="DescentInversionBridge.isPositive_implies_ascent"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L79-L93">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.isPositive_implies_ascent"><span class="name">DescentInversionBridge</span>.<span class="name">isPositive_implies_ascent</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hpos</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsPositive">CoxeterGroup.IsPositive</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">i</span>)</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././Init/Prelude.html#Not">¬</a><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">i</span></span></div></div><p>Converse: if a reduced word's action on $e_i$ is a positive root, then $i$
+is not a right descent.</p></div></div><div class="decl" id="DescentInversionBridge.ascent_iff_isPositive"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L95-L103">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.ascent_iff_isPositive"><span class="name">DescentInversionBridge</span>.<span class="name">ascent_iff_isPositive</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././Init/Prelude.html#Not">¬</a><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">i</span></span> <a href="../../../.././Init/Core.html#Iff">↔</a> <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsPositive">CoxeterGroup.IsPositive</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">i</span>)</span>)</span></span></div></div><p>Ascent-positivity equivalence for reduced words.</p></div></div><div class="decl" id="DescentInversionBridge.wordSigma_append_isNegative_toggle"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L106-L121">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.wordSigma_append_isNegative_toggle"><span class="name">DescentInversionBridge</span>.<span class="name">wordSigma_append_isNegative_toggle</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsNegative">CoxeterGroup.IsNegative</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> (<span class="fn">word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>) <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span>)</span></span> <a href="../../../.././Init/Core.html#Iff">↔</a>   <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsPositive">CoxeterGroup.IsPositive</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span>)</span></span></div></div><p>Appending $s$ to a word toggles negativity at $e_s$: the result is a
+negative root iff the original was a positive root.</p></div></div><div class="decl" id="DescentInversionBridge.wordSigma_append_isPositive_toggle"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L123-L139">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.wordSigma_append_isPositive_toggle"><span class="name">DescentInversionBridge</span>.<span class="name">wordSigma_append_isPositive_toggle</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsPositive">CoxeterGroup.IsPositive</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> (<span class="fn">word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>) <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span>)</span></span> <a href="../../../.././Init/Core.html#Iff">↔</a>   <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsNegative">CoxeterGroup.IsNegative</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span>)</span></span></div></div><p>The other direction: appending $s$ to a word toggles positivity at
+$e_s$.</p></div></div><div class="decl" id="DescentInversionBridge.descent_toggle_append"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L142-L154">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.descent_toggle_append"><span class="name">DescentInversionBridge</span>.<span class="name">descent_toggle_append</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred_word</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred_app</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> (<span class="fn">word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>)</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> (<span class="fn">word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>))</span> <span class="fn">s</span></span> <a href="../../../.././Init/Core.html#Iff">↔</a> <a href="../../../.././Init/Prelude.html#Not">¬</a><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">s</span></span></div></div><p>Right-descent toggle for an append: when both $\omega$ and $\omega \cdot s$ are reduced, $s$ is a right descent of $\omega s$ iff it is not a right
+descent of $\omega$.</p></div></div><div class="decl" id="DescentInversionBridge.exists_reduced_word_ending_in_descent'"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L157-L167">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.exists_reduced_word_ending_in_descent'"><span class="name">DescentInversionBridge</span>.<span class="name">exists_reduced_word_ending_in_descent'</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">w</span> : <span class="fn">W</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hdesc</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">w</span> <span class="fn">s</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">prefix_word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>), <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> (<span class="fn">prefix_word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>)</span> <a href="../../../.././Init/Prelude.html#And">∧</a> <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> (<span class="fn">prefix_word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>)</span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">w</span></span></div></div><p>For any right descent $s$ of $w$, there exists a reduced word for $w$
+ending in $s$.</p></div></div><div class="decl" id="DescentInversionBridge.descent_iff_isNegative_any_word"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L170-L179">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.descent_iff_isNegative_any_word"><span class="name">DescentInversionBridge</span>.<span class="name">descent_iff_isNegative_any_word</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">w</span> : <span class="fn">W</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hprod</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">w</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">w</span> <span class="fn">s</span></span> <a href="../../../.././Init/Core.html#Iff">↔</a> <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsNegative">CoxeterGroup.IsNegative</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span>)</span></span></div></div><p>The descent-negativity equivalence stated in terms of a general
+representative reduced word.</p></div></div><div class="decl" id="DescentInversionBridge.mem_bilinInversions_implies_isRightDescent"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L182-L193">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.mem_bilinInversions_implies_isRightDescent"><span class="name">DescentInversionBridge</span>.<span class="name">mem_bilinInversions_implies_isRightDescent</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hmem</span> : <span class="fn">s</span> <a href="../../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/InversionSet.html#CoxeterGroup.bilinInversions">CoxeterGroup.bilinInversions</a> <span class="fn">M</span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">s</span></span></div></div><p>Membership in the bilinear-inversion set implies a right descent.</p></div></div><div class="decl" id="DescentInversionBridge.wordSigma_ne_zero"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L196-L203">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.wordSigma_ne_zero"><span class="name">DescentInversionBridge</span>.<span class="name">wordSigma_ne_zero</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span></span> <a href="../../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span></div></div><p>The action of any word on a basis vector $e_s$ is nonzero.</p></div></div><div class="decl" id="DescentInversionBridge.isNegative_exists_neg_component"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L206-L215">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.isNegative_exists_neg_component"><span class="name">DescentInversionBridge</span>.<span class="name">isNegative_exists_neg_component</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hneg</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Roots.html#CoxeterGroup.IsNegative">CoxeterGroup.IsNegative</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">t</span> : <span class="fn">B</span>), <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span> <span class="fn">t</span></span> <a href="../../../.././Init/Prelude.html#LT.lt">&lt;</a> <span class="fn">0</span></span></div></div><p>A negative root has a strictly negative component.</p></div></div><div class="decl" id="DescentInversionBridge.descent_exists_neg_component"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L217-L226">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.descent_exists_neg_component"><span class="name">DescentInversionBridge</span>.<span class="name">descent_exists_neg_component</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hdesc</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">s</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">t</span> : <span class="fn">B</span>), <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span> <span class="fn">t</span></span> <a href="../../../.././Init/Prelude.html#LT.lt">&lt;</a> <span class="fn">0</span></span></div></div><p>For a reduced word and a right descent $s$, the action on $e_s$ has a
+strictly negative component.</p></div></div><div class="decl" id="DescentInversionBridge.ascent_exists_pos_component"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L228-L241">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.ascent_exists_pos_component"><span class="name">DescentInversionBridge</span>.<span class="name">ascent_exists_pos_component</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> <span class="fn">word</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hasc</span> : <a href="../../../.././Init/Prelude.html#Not">¬</a><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">s</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">t</span> : <span class="fn">B</span>), <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span> <span class="fn">t</span></span> <a href="../../../.././Init/Prelude.html#GT.gt">&gt;</a> <span class="fn">0</span></span></div></div><p>For a reduced word and a right ascent at $s$, the action on $e_s$ has a
+strictly positive component.</p></div></div><div class="decl" id="DescentInversionBridge.bilinInversions_eq_of_wordProd_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L244-L256">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.bilinInversions_eq_of_wordProd_eq"><span class="name">DescentInversionBridge</span>.<span class="name">bilinInversions_eq_of_wordProd_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word₁ </span><span class="fn">word₂</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word₁</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word₂</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/InversionSet.html#CoxeterGroup.bilinInversions">CoxeterGroup.bilinInversions</a> <span class="fn">M</span> <span class="fn">word₁</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/InversionSet.html#CoxeterGroup.bilinInversions">CoxeterGroup.bilinInversions</a> <span class="fn">M</span> <span class="fn">word₂</span></span></div></div><p>The bilinear-inversion set depends only on the group element, not on the
+chosen reduced expression.</p></div></div><div class="decl" id="DescentInversionBridge.bilinInversions_self_toggle_of_ne_zero"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L258-L265">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.bilinInversions_self_toggle_of_ne_zero"><span class="name">DescentInversionBridge</span>.<span class="name">bilinInversions_self_toggle_of_ne_zero</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hne</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/GeometricRepresentation.html#CoxeterGroup.wordSigma">CoxeterGroup.wordSigma</a> <span class="fn">M</span> <span class="fn">word</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/CoxeterGroup/Basic.html#CoxeterGroup.e">CoxeterGroup.e</a> <span class="fn">s</span>)</span> <span class="fn">s</span></span> <a href="../../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">s</span> <a href="../../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/InversionSet.html#CoxeterGroup.bilinInversions">CoxeterGroup.bilinInversions</a> <span class="fn">M</span> (<span class="fn">word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>)</span> <a href="../../../.././Init/Core.html#Iff">↔</a> <span class="fn"><span class="fn">s</span> ∉ <span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/InversionSet.html#CoxeterGroup.bilinInversions">CoxeterGroup.bilinInversions</a> <span class="fn">M</span> <span class="fn">word</span></span></span></div></div><p>Self-toggle for bilinear inversions: when the $s$-component is nonzero,
+membership of $s$ in $\mathtt{bilinInversions}(\omega s)$ is the negation of
+membership in $\mathtt{bilinInversions}(\omega)$.</p></div></div><div class="decl" id="DescentInversionBridge.bilinInversions_nil'"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L268-L271">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.bilinInversions_nil'"><span class="name">DescentInversionBridge</span>.<span class="name">bilinInversions_nil'</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/InversionSet.html#CoxeterGroup.bilinInversions">CoxeterGroup.bilinInversions</a> <span class="fn">M</span> <a href="../../../.././Init/Prelude.html#List.nil">[</a><a href="../../../.././Init/Prelude.html#List.nil">]</a></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <a href="../../../.././Init/Core.html#EmptyCollection.emptyCollection">∅</a></div></div><p>The bilinear-inversion set of the empty word is empty.</p></div></div><div class="decl" id="DescentInversionBridge.bilinInversions_singleton'"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L273-L276">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.bilinInversions_singleton'"><span class="name">DescentInversionBridge</span>.<span class="name">bilinInversions_singleton'</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/CoxeterGroup/InversionSet.html#CoxeterGroup.bilinInversions">CoxeterGroup.bilinInversions</a> <span class="fn">M</span> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <a href="../../../.././Init/Core.html#Singleton.singleton">{</a><span class="fn">s</span><a href="../../../.././Init/Core.html#Singleton.singleton">}</a></div></div><p>The bilinear-inversion set of a singleton word $[s]$ is $\{s\}$.</p></div></div><div class="decl" id="DescentInversionBridge.isRightDescent_of_reduced_append"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L280-L295">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.isRightDescent_of_reduced_append"><span class="name">DescentInversionBridge</span>.<span class="name">isRightDescent_of_reduced_append</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> (<span class="fn">word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>)</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> (<span class="fn">word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>))</span> <span class="fn">s</span></span></div></div><p>If $\omega \cdot s$ is reduced, then $s$ is a right descent of
+$\omega \cdot s$.</p></div></div><div class="decl" id="DescentInversionBridge.not_isRightDescent_of_reduced_prefix"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.lean#L298-L315">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/CoxeterGroup/DescentInversionBridge.html#DescentInversionBridge.not_isRightDescent_of_reduced_prefix"><span class="name">DescentInversionBridge</span>.<span class="name">not_isRightDescent_of_reduced_prefix</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Matrix.html#CoxeterMatrix">CoxeterMatrix</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">cs</span> : <span class="fn"><a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem">CoxeterSystem</a> <span class="fn">M</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">word</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#List">List</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">s</span> : <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hred</span> : <span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsReduced">IsReduced</a></span> (<span class="fn">word</span> <a href="../../../.././Init/Prelude.html#HAppend.hAppend">++</a> <a href="../../../.././Init/Prelude.html#List.cons">[</a><span class="fn">s</span><a href="../../../.././Init/Prelude.html#List.cons">]</a>)</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././Init/Prelude.html#Not">¬</a><span class="fn"><span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Length.html#CoxeterSystem.IsRightDescent">IsRightDescent</a></span> <span class="fn">(<span class="fn"><span class="fn">cs</span>.<a href="../../../.././Mathlib/GroupTheory/Coxeter/Basic.html#CoxeterSystem.wordProd">wordProd</a></span> <span class="fn">word</span>)</span> <span class="fn">s</span></span></div></div><p>If $\omega \cdot s$ is reduced, then $s$ is not a right descent of
+$\omega$ (otherwise $\omega \cdot s$ would have length $&lt; |\omega| + 1$).</p></div></div></main>
+<nav class="nav"><iframe src="../../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

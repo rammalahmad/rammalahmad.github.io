@@ -1,0 +1,699 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.TensorCategories.code.ZPlusModules</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.TensorCategories.code.ZPlusModules";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">TensorCategories</span>.<span class="name">code</span>.<span class="name">ZPlusModules</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Mathlib/Algebra/BigOperators/Ring/Finset.html">Mathlib.Algebra.BigOperators.Ring.Finset</a></li><li><a href="../../.././Mathlib/Topology/Algebra/InfiniteSum/Basic.html">Mathlib.Topology.Algebra.InfiniteSum.Basic</a></li><li><a href="../../.././Mathlib/Algebra/BigOperators/Group/Finset/Basic.html">Mathlib.Algebra.BigOperators.Group.Finset.Basic</a></li><li><a href="../../.././Mathlib/Algebra/BigOperators/Group/Finset/Sigma.html">Mathlib.Algebra.BigOperators.Group.Finset.Sigma</a></li><li><a href="../../.././Mathlib/Algebra/Order/BigOperators/Group/Finset.html">Mathlib.Algebra.Order.BigOperators.Group.Finset</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.TensorCategories.code.ZPlusModules" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#ZPlusRingGen"><span class="name">ZPlusRingGen</span></a></div><div class="nav_link"><a class="break_within" href="#Definition_1_42_1"><span class="name">Definition_1_42_1</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusRing"><span class="name">ZPlusRing</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusRingGen.toZPlusRing"><span class="name">ZPlusRingGen</span>.<span class="name">toZPlusRing</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusRing.toZPlusRingGen"><span class="name">ZPlusRing</span>.<span class="name">toZPlusRingGen</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusRing.squaredCoeff"><span class="name">ZPlusRing</span>.<span class="name">squaredCoeff</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusRing.maxSquaredCoeff"><span class="name">ZPlusRing</span>.<span class="name">maxSquaredCoeff</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusRing.squaredCoeff_le_maxSquaredCoeff"><span class="name">ZPlusRing</span>.<span class="name">squaredCoeff_le_maxSquaredCoeff</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule"><span class="name">ZPlusModule</span></a></div><div class="nav_link"><a class="break_within" href="#Definition_2_8_1"><span class="name">Definition_2_8_1</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.act_unit_self"><span class="name">ZPlusModule</span>.<span class="name">act_unit_self</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsZPlusSubmodule"><span class="name">ZPlusModule</span>.<span class="name">IsZPlusSubmodule</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsIrreducible"><span class="name">ZPlusModule</span>.<span class="name">IsIrreducible</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.def_2_8_3"><span class="name">ZPlusModule</span>.<span class="name">def_2_8_3</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.actCoeffSum"><span class="name">ZPlusModule</span>.<span class="name">actCoeffSum</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.totalActCoeff"><span class="name">ZPlusModule</span>.<span class="name">totalActCoeff</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.actCoeffSum_unit"><span class="name">ZPlusModule</span>.<span class="name">actCoeffSum_unit</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.totalActCoeff_le_of_min"><span class="name">ZPlusModule</span>.<span class="name">totalActCoeff_le_of_min</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.act_pos_of_irreducible"><span class="name">ZPlusModule</span>.<span class="name">act_pos_of_irreducible</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.card_le_totalActCoeff_of_irreducible"><span class="name">ZPlusModule</span>.<span class="name">card_le_totalActCoeff_of_irreducible</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.prop_2_8_7"><span class="name">ZPlusModule</span>.<span class="name">prop_2_8_7</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.regularModule"><span class="name">ZPlusModule</span>.<span class="name">regularModule</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.ZPlusModuleHom"><span class="name">ZPlusModule</span>.<span class="name">ZPlusModuleHom</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsIsomorphism"><span class="name">ZPlusModule</span>.<span class="name">IsIsomorphism</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsIndecomposable"><span class="name">ZPlusModule</span>.<span class="name">IsIndecomposable</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsIrreducible.isIndecomposable"><span class="name">ZPlusModule</span>.<span class="name">IsIrreducible</span>.<span class="name">isIndecomposable</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsExact"><span class="name">ZPlusModule</span>.<span class="name">IsExact</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.lemma_2_8_5"><span class="name">ZPlusModule</span>.<span class="name">lemma_2_8_5</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsActionClosed"><span class="name">ZPlusModule</span>.<span class="name">IsActionClosed</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsIndecomposablePiece"><span class="name">ZPlusModule</span>.<span class="name">IsIndecomposablePiece</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsIrreduciblePiece"><span class="name">ZPlusModule</span>.<span class="name">IsIrreduciblePiece</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.IsZPlusDecomposition"><span class="name">ZPlusModule</span>.<span class="name">IsZPlusDecomposition</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.decompose_finset_aux"><span class="name">ZPlusModule</span>.<span class="name">decompose_finset_aux</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.exists_indecomposable_decomposition"><span class="name">ZPlusModule</span>.<span class="name">exists_indecomposable_decomposition</span></a></div><div class="nav_link"><a class="break_within" href="#ZPlusModule.indecomposable_piece_irreducible_of_exact"><span class="name">ZPlusModule</span>.<span class="name">indecomposable_piece_irreducible_of_exact</span></a></div><div class="nav_link"><a class="break_within" href="#Proposition_2_8_7"><span class="name">Proposition_2_8_7</span></a></div></nav><main>
+<div class="decl" id="ZPlusRingGen"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L9-L21">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen"><span class="name">ZPlusRingGen</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> u_1</div></div><p>A <code>ℤ_+</code>-ring (general version, not requiring <code>ι</code> to be finite): a set <code>ι</code> of
+distinguished basis elements with nonnegative integer structure constants <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a> i j k</code>
+satisfying unitality and associativity, and with finite multiplicative support.</p><ul class="structure_fields" id="ZPlusRingGen.mk"><li id="ZPlusRingGen.N" class="structure_field"><div class="structure_field_info">N : <span class="fn"><span class="fn">ι</span> → <span class="fn">ι</span> → <span class="fn">ι</span> → <a href="../../.././Init/Prelude.html#Nat">ℕ</a></span></div></li><li id="ZPlusRingGen.I₀" class="structure_field"><div class="structure_field_info">I₀ : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">ι</span></span></div></li><li id="ZPlusRingGen.finite_support" class="structure_field"><div class="structure_field_info">finite_support<span class="decl_args">
+<span class="fn">(<span class="fn">i </span><span class="fn">j</span> : <span class="fn">ι</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Data/Set/Defs.html#setOf">{</a><span class="fn">k</span> <a href="../../.././Mathlib/Data/Set/Defs.html#setOf">:</a> <span class="fn">ι</span> <a href="../../.././Mathlib/Data/Set/Defs.html#setOf">|</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">i</span> <span class="fn">j</span> <span class="fn">k</span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span><a href="../../.././Mathlib/Data/Set/Defs.html#setOf">}</a>.<a href="../../.././Mathlib/Data/Finite/Defs.html#Set.Finite">Finite</a></span></div></li><li id="ZPlusRingGen.unit_mul" class="structure_field"><div class="structure_field_info">unit_mul<span class="decl_args">
+<span class="fn">(<span class="fn">j </span><span class="fn">k</span> : <span class="fn">ι</span>)</span></span>
+ : <span class="fn">∑ <span class="fn">s</span> ∈ <span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.I₀">I₀</a></span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">s</span> <span class="fn">j</span> <span class="fn">k</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <a href="../../.././Init/Prelude.html#ite">if</a> <span class="fn">j</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">k</span> <a href="../../.././Init/Prelude.html#ite">then</a> <span class="fn">1</span> <a href="../../.././Init/Prelude.html#ite">else</a> <span class="fn">0</span></div></li><li id="ZPlusRingGen.mul_unit" class="structure_field"><div class="structure_field_info">mul_unit<span class="decl_args">
+<span class="fn">(<span class="fn">i </span><span class="fn">k</span> : <span class="fn">ι</span>)</span></span>
+ : <span class="fn">∑ <span class="fn">s</span> ∈ <span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.I₀">I₀</a></span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">i</span> <span class="fn">s</span> <span class="fn">k</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <a href="../../.././Init/Prelude.html#ite">if</a> <span class="fn">i</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">k</span> <a href="../../.././Init/Prelude.html#ite">then</a> <span class="fn">1</span> <a href="../../.././Init/Prelude.html#ite">else</a> <span class="fn">0</span></div></li><li id="ZPlusRingGen.assoc" class="structure_field"><div class="structure_field_info">assoc<span class="decl_args">
+<span class="fn">(<span class="fn">i </span><span class="fn">j </span><span class="fn">k </span><span class="fn">l</span> : <span class="fn">ι</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Data/Set/Defs.html#setOf">{</a><span class="fn">m</span> <a href="../../.././Mathlib/Data/Set/Defs.html#setOf">:</a> <span class="fn">ι</span> <a href="../../.././Mathlib/Data/Set/Defs.html#setOf">|</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">i</span> <span class="fn">j</span> <span class="fn">m</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">m</span> <span class="fn">k</span> <span class="fn">l</span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span><a href="../../.././Mathlib/Data/Set/Defs.html#setOf">}</a>.<a href="../../.././Mathlib/Data/Finite/Defs.html#Set.Finite">Finite</a></span> <a href="../../.././Init/Prelude.html#And">∧</a>   <span class="fn"><a href="../../.././Mathlib/Data/Set/Defs.html#setOf">{</a><span class="fn">m</span> <a href="../../.././Mathlib/Data/Set/Defs.html#setOf">:</a> <span class="fn">ι</span> <a href="../../.././Mathlib/Data/Set/Defs.html#setOf">|</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">j</span> <span class="fn">k</span> <span class="fn">m</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">i</span> <span class="fn">m</span> <span class="fn">l</span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span><a href="../../.././Mathlib/Data/Set/Defs.html#setOf">}</a>.<a href="../../.././Mathlib/Data/Finite/Defs.html#Set.Finite">Finite</a></span> <a href="../../.././Init/Prelude.html#And">∧</a>     <span class="fn"><a href="../../.././Mathlib/Algebra/BigOperators/Finprod.html#finsum">∑ᶠ</a> (<span class="fn">m</span> : <span class="fn">ι</span>)<a href="../../.././Mathlib/Algebra/BigOperators/Finprod.html#finsum">,</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">i</span> <span class="fn">j</span> <span class="fn">m</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">m</span> <span class="fn">k</span> <span class="fn">l</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Mathlib/Algebra/BigOperators/Finprod.html#finsum">∑ᶠ</a> (<span class="fn">m</span> : <span class="fn">ι</span>)<a href="../../.././Mathlib/Algebra/BigOperators/Finprod.html#finsum">,</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">j</span> <span class="fn">k</span> <span class="fn">m</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></span> <span class="fn">i</span> <span class="fn">m</span> <span class="fn">l</span></span></span></div></li></ul><details id="instances-for-list-ZPlusRingGen" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Definition_1_42_1"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L23-L25">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#Definition_1_42_1"><span class="name">Definition_1_42_1</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> u_1</div></div><p>Alias for Definition 1.42.1 of Etingof–Gelaki–Nikshych–Ostrik: a <code>ℤ_+</code>-ring is the
+general (possibly infinite-index) version <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen">ZPlusRingGen</a></code>.</p><details id="instances-for-list-Definition_1_42_1" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusRing"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L27-L35">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing"><span class="name">ZPlusRing</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> u_1</div></div><p>A <code>ℤ_+</code>-ring with finite index set <code>ι</code>: nonnegative integer structure constants
+<code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a> i j k</code>, a unit subset <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.I₀">I₀</a></code>, and the unitality and associativity axioms expressed
+with ordinary finite sums.</p><ul class="structure_fields" id="ZPlusRing.mk"><li id="ZPlusRing.N" class="structure_field"><div class="structure_field_info">N : <span class="fn"><span class="fn">ι</span> → <span class="fn">ι</span> → <span class="fn">ι</span> → <a href="../../.././Init/Prelude.html#Nat">ℕ</a></span></div></li><li id="ZPlusRing.I₀" class="structure_field"><div class="structure_field_info">I₀ : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">ι</span></span></div></li><li id="ZPlusRing.unit_mul" class="structure_field"><div class="structure_field_info">unit_mul<span class="decl_args">
+<span class="fn">(<span class="fn">j </span><span class="fn">k</span> : <span class="fn">ι</span>)</span></span>
+ : <span class="fn">∑ <span class="fn">s</span> ∈ <span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.I₀">I₀</a></span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.N">N</a></span> <span class="fn">s</span> <span class="fn">j</span> <span class="fn">k</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <a href="../../.././Init/Prelude.html#ite">if</a> <span class="fn">j</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">k</span> <a href="../../.././Init/Prelude.html#ite">then</a> <span class="fn">1</span> <a href="../../.././Init/Prelude.html#ite">else</a> <span class="fn">0</span></div></li><li id="ZPlusRing.mul_unit" class="structure_field"><div class="structure_field_info">mul_unit<span class="decl_args">
+<span class="fn">(<span class="fn">i </span><span class="fn">k</span> : <span class="fn">ι</span>)</span></span>
+ : <span class="fn">∑ <span class="fn">s</span> ∈ <span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.I₀">I₀</a></span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.N">N</a></span> <span class="fn">i</span> <span class="fn">s</span> <span class="fn">k</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <a href="../../.././Init/Prelude.html#ite">if</a> <span class="fn">i</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">k</span> <a href="../../.././Init/Prelude.html#ite">then</a> <span class="fn">1</span> <a href="../../.././Init/Prelude.html#ite">else</a> <span class="fn">0</span></div></li><li id="ZPlusRing.assoc" class="structure_field"><div class="structure_field_info">assoc<span class="decl_args">
+<span class="fn">(<span class="fn">i </span><span class="fn">j </span><span class="fn">k </span><span class="fn">l</span> : <span class="fn">ι</span>)</span></span>
+ : <span class="fn">∑ <span class="fn">m</span> : <span class="fn">ι</span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.N">N</a></span> <span class="fn">i</span> <span class="fn">j</span> <span class="fn">m</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.N">N</a></span> <span class="fn">m</span> <span class="fn">k</span> <span class="fn">l</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">∑ <span class="fn">m</span> : <span class="fn">ι</span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.N">N</a></span> <span class="fn">j</span> <span class="fn">k</span> <span class="fn">m</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.N">N</a></span> <span class="fn">i</span> <span class="fn">m</span> <span class="fn">l</span></span></span></div></li></ul><details id="instances-for-list-ZPlusRing" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusRingGen.toZPlusRing"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L37-L47">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.toZPlusRing"><span class="name">ZPlusRingGen</span>.<span class="name">toZPlusRing</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen">ZPlusRingGen</a> <span class="fn">ι</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span></div></div><p>When the index set <code>ι</code> is finite, a general <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen">ZPlusRingGen</a></code> collapses to a
+<code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a></code>: the <code><a href="../../.././Mathlib/Algebra/BigOperators/Finprod.html#finsum">finsum</a></code> associativity becomes an ordinary <code><a href="../../.././Mathlib/Algebra/BigOperators/Group/Finset/Defs.html#Finset.sum">Finset.sum</a></code>.</p><details id="instances-for-list-ZPlusRingGen.toZPlusRing" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusRing.toZPlusRingGen"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L49-L61">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.toZPlusRingGen"><span class="name">ZPlusRing</span>.<span class="name">toZPlusRingGen</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen">ZPlusRingGen</a> <span class="fn">ι</span></span></div></div><p>A <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a></code> over a finite index set <code>ι</code> can always be regarded as a <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen">ZPlusRingGen</a></code>,
+since finiteness automatically supplies the finite-support and <code><a href="../../.././Mathlib/Algebra/BigOperators/Finprod.html#finsum">finsum</a></code> data.</p><details id="instances-for-list-ZPlusRing.toZPlusRingGen" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusRing.squaredCoeff"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L65-L68">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.squaredCoeff"><span class="name">ZPlusRing</span>.<span class="name">squaredCoeff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <span class="fn">ι</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././Init/Prelude.html#Nat">ℕ</a></div></div><p>The squared coefficient at <code>k</code>: the total <code>∑_{i,j} N(i, j, k)</code> of structure
+constants whose product lands at <code>k</code>. This bounds dimensions of irreducible modules.</p><details id="instances-for-list-ZPlusRing.squaredCoeff" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusRing.maxSquaredCoeff"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L70-L73">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.maxSquaredCoeff"><span class="name">ZPlusRing</span>.<span class="name">maxSquaredCoeff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././Init/Prelude.html#Nat">ℕ</a></div></div><p>The maximum of <code>R.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.squaredCoeff">squaredCoeff</a> k</code> over all basis elements <code>k</code>, which bounds
+the size of any irreducible <code>ℤ_+</code>-module over <code>R</code>.</p><details id="instances-for-list-ZPlusRing.maxSquaredCoeff" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusRing.squaredCoeff_le_maxSquaredCoeff"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L75-L78">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.squaredCoeff_le_maxSquaredCoeff"><span class="name">ZPlusRing</span>.<span class="name">squaredCoeff_le_maxSquaredCoeff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <span class="fn">ι</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.squaredCoeff">squaredCoeff</a></span> <span class="fn">k</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.maxSquaredCoeff">maxSquaredCoeff</a></span></div></div><p>Each squared coefficient is bounded by the maximum squared coefficient over <code>ι</code>.</p></div></div><div class="decl" id="ZPlusModule"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L80-L87">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule"><span class="name">ZPlusModule</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_1 u_2)</div></div><p>A <code>ℤ_+</code>-module over a <code>ℤ_+</code>-ring <code>R</code>: a finite basis set <code>κ</code> together with
+nonnegative integer action constants <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a> i l k</code>, satisfying unitality from <code>R.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.I₀">I₀</a></code>
+and a compatibility expressing associativity of the action.</p><ul class="structure_fields" id="ZPlusModule.mk"><li id="ZPlusModule.act" class="structure_field"><div class="structure_field_info">act : <span class="fn"><span class="fn">ι</span> → <span class="fn"><span class="fn">κ</span> → <span class="fn">κ</span> → <a href="../../.././Init/Prelude.html#Nat">ℕ</a></span></span></div></li><li id="ZPlusModule.act_unit" class="structure_field"><div class="structure_field_info">act_unit<span class="decl_args">
+<span class="fn">(<span class="fn">l </span><span class="fn">k</span> : <span class="fn">κ</span>)</span></span>
+ : <span class="fn">∑ <span class="fn">s</span> ∈ <span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.I₀">I₀</a></span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">s</span> <span class="fn">l</span> <span class="fn">k</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <a href="../../.././Init/Prelude.html#ite">if</a> <span class="fn">l</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">k</span> <a href="../../.././Init/Prelude.html#ite">then</a> <span class="fn">1</span> <a href="../../.././Init/Prelude.html#ite">else</a> <span class="fn">0</span></div></li><li id="ZPlusModule.act_compat" class="structure_field"><div class="structure_field_info">act_compat<span class="decl_args">
+<span class="fn">(<span class="fn">i </span><span class="fn">j</span> : <span class="fn">ι</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l </span><span class="fn">k</span> : <span class="fn">κ</span>)</span></span>
+ : <span class="fn">∑ <span class="fn">m</span> : <span class="fn">ι</span>, <span class="fn"><span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.N">N</a></span> <span class="fn">i</span> <span class="fn">j</span> <span class="fn">m</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">m</span> <span class="fn">l</span> <span class="fn">k</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">∑ <span class="fn">n</span> : <span class="fn">κ</span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">j</span> <span class="fn">l</span> <span class="fn">n</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">i</span> <span class="fn">n</span> <span class="fn">k</span></span></span></div></li></ul><details id="instances-for-list-ZPlusModule" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Definition_2_8_1"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L89-L91">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#Definition_2_8_1"><span class="name">Definition_2_8_1</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_2 u_3)</div></div><p>Alias for Definition 2.8.1 of Etingof–Gelaki–Nikshych–Ostrik: a <code>ℤ_+</code>-module
+over a <code>ℤ_+</code>-ring is what <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a></code> formalizes.</p><details id="instances-for-list-Definition_2_8_1" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.act_unit_self"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L99-L103">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act_unit_self"><span class="name">ZPlusModule</span>.<span class="name">act_unit_self</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn">κ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∑ <span class="fn">s</span> ∈ <span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.I₀">I₀</a></span>, <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">s</span> <span class="fn">l</span> <span class="fn">l</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">1</span></div></div><p>The diagonal unitality identity for a <code>ℤ_+</code>-module: summing the action of the
+unit elements <code>s ∈ R.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.I₀">I₀</a></code> on <code>l</code> against itself gives <code>1</code>.</p></div></div><div class="decl" id="ZPlusModule.IsZPlusSubmodule"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L105-L110">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsZPlusSubmodule"><span class="name">ZPlusModule</span>.<span class="name">IsZPlusSubmodule</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A nonempty proper subset <code>S ⊆ κ</code> is a <code>ℤ_+</code>-submodule of <code>M</code> if it is closed
+under the action: <code>M.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a> i l k ≠ 0</code> and <code>l ∈ S</code> implies <code>k ∈ S</code>.</p><ul class="structure_fields" id="ZPlusModule.IsZPlusSubmodule.mk"><li id="ZPlusModule.IsZPlusSubmodule.nonempty" class="structure_field"><div class="structure_field_info">nonempty : <span class="fn"><span class="fn">S</span>.<a href="../../.././Mathlib/Data/Finset/Empty.html#Finset.Nonempty">Nonempty</a></span></div></li><li id="ZPlusModule.IsZPlusSubmodule.proper" class="structure_field"><div class="structure_field_info">proper : <span class="fn">S</span> <a href="../../.././Init/Core.html#Ne">≠</a> <a href="../../.././Mathlib/Data/Fintype/Defs.html#Finset.univ">Finset.univ</a></div></li><li id="ZPlusModule.IsZPlusSubmodule.closed" class="structure_field"><div class="structure_field_info">closed<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">ι</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn">κ</span>)</span></span>
+ : <span class="fn"><span class="fn">l</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">S</span> → <span class="fn">∀ (<span class="fn">k</span> : <span class="fn">κ</span>), <span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">i</span> <span class="fn">l</span> <span class="fn">k</span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span> → <span class="fn">k</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">S</span></span></span></span></div></li></ul><details id="instances-for-list-ZPlusModule.IsZPlusSubmodule" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.IsIrreducible"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L112-L113">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreducible"><span class="name">ZPlusModule</span>.<span class="name">IsIrreducible</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A <code>ℤ_+</code>-module is irreducible if it has no proper nonempty <code>ℤ_+</code>-submodule.</p><details id="instances-for-list-ZPlusModule.IsIrreducible" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.def_2_8_3"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L115-L116">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.def_2_8_3"><span class="name">ZPlusModule</span>.<span class="name">def_2_8_3</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>Alias for Definition 2.8.3: irreducibility of a <code>ℤ_+</code>-module.</p><details id="instances-for-list-ZPlusModule.def_2_8_3" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.actCoeffSum"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L118-L119">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.actCoeffSum"><span class="name">ZPlusModule</span>.<span class="name">actCoeffSum</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">ι</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn">κ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././Init/Prelude.html#Nat">ℕ</a></div></div><p>The sum <code>∑_{k} act(i, l, k)</code> of action coefficients of <code>i ∈ ι</code> acting on <code>l ∈ κ</code>.</p><details id="instances-for-list-ZPlusModule.actCoeffSum" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.totalActCoeff"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L121-L122">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff"><span class="name">ZPlusModule</span>.<span class="name">totalActCoeff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn">κ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././Init/Prelude.html#Nat">ℕ</a></div></div><p>The total action coefficient at <code>l ∈ κ</code>: the sum over all <code>i ∈ ι</code> of <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.actCoeffSum">actCoeffSum</a> i l</code>.</p><details id="instances-for-list-ZPlusModule.totalActCoeff" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.actCoeffSum_unit"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L124-L131">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.actCoeffSum_unit"><span class="name">ZPlusModule</span>.<span class="name">actCoeffSum_unit</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn">κ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∑ <span class="fn">s</span> ∈ <span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.I₀">I₀</a></span>, <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.actCoeffSum">actCoeffSum</a></span> <span class="fn">s</span> <span class="fn">l</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">1</span></div></div><p>Summing <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.actCoeffSum">actCoeffSum</a> s l</code> over <code>s ∈ R.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.I₀">I₀</a></code> gives <code>1</code>, a consequence of unitality
+of the <code>ℤ_+</code>-module action.</p></div></div><div class="decl" id="ZPlusModule.totalActCoeff_le_of_min"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L133-L196">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff_le_of_min"><span class="name">ZPlusModule</span>.<span class="name">totalActCoeff_le_of_min</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">l₀</span> : <span class="fn">κ</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hmin</span> : <span class="fn">∀ (<span class="fn">n</span> : <span class="fn">κ</span>), <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff">totalActCoeff</a></span> <span class="fn">l₀</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff">totalActCoeff</a></span> <span class="fn">n</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff">totalActCoeff</a></span> <span class="fn">l₀</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.maxSquaredCoeff">maxSquaredCoeff</a></span></div></div><p>If <code>l₀ ∈ κ</code> minimizes <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff">totalActCoeff</a></code>, then <code>M.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff">totalActCoeff</a> l₀</code> is bounded by
+<code>R.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.maxSquaredCoeff">maxSquaredCoeff</a></code>. This is the key inequality underlying Proposition 2.8.7.</p></div></div><div class="decl" id="ZPlusModule.act_pos_of_irreducible"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L198-L244">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act_pos_of_irreducible"><span class="name">ZPlusModule</span>.<span class="name">act_pos_of_irreducible</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hirr</span> : <span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreducible">IsIrreducible</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l </span><span class="fn">k</span> : <span class="fn">κ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">i</span> : <span class="fn">ι</span>), <span class="fn">0</span> <a href="../../.././Init/Prelude.html#LT.lt">&lt;</a> <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">i</span> <span class="fn">l</span> <span class="fn">k</span></span></span></div></div><p>In an irreducible <code>ℤ_+</code>-module, for every pair <code>l, k ∈ κ</code> there exists some
+<code>i ∈ ι</code> whose action takes <code>l</code> to a positive coefficient at <code>k</code>.</p></div></div><div class="decl" id="ZPlusModule.card_le_totalActCoeff_of_irreducible"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L246-L262">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.card_le_totalActCoeff_of_irreducible"><span class="name">ZPlusModule</span>.<span class="name">card_le_totalActCoeff_of_irreducible</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hirr</span> : <span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreducible">IsIrreducible</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn">κ</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Data/Fintype/Card.html#Fintype.card">Fintype.card</a> <span class="fn">κ</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff">totalActCoeff</a></span> <span class="fn">l</span></span></div></div><p>For an irreducible <code>ℤ_+</code>-module the cardinality of the basis <code>κ</code> is bounded
+above by <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.totalActCoeff">totalActCoeff</a> l</code> for every <code>l ∈ κ</code>.</p></div></div><div class="decl" id="ZPlusModule.prop_2_8_7"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L264-L273">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.prop_2_8_7"><span class="name">ZPlusModule</span>.<span class="name">prop_2_8_7</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hirr</span> : <span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreducible">IsIrreducible</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">hκ</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Data/Fintype/Card.html#Fintype.card">Fintype.card</a> <span class="fn">κ</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.maxSquaredCoeff">maxSquaredCoeff</a></span></div></div><p>Proposition 2.8.7 (Etingof–Gelaki–Nikshych–Ostrik): if <code>M</code> is an irreducible
+<code>ℤ_+</code>-module over a <code>ℤ_+</code>-ring <code>R</code>, then <code>|κ| ≤ R.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.maxSquaredCoeff">maxSquaredCoeff</a></code>.</p></div></div><div class="decl" id="ZPlusModule.regularModule"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L275-L280">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.regularModule"><span class="name">ZPlusModule</span>.<span class="name">regularModule</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">ι</span></span></div></div><p>The regular <code>ℤ_+</code>-module of a <code>ℤ_+</code>-ring <code>R</code>: <code>R</code> acting on its own basis <code>ι</code>
+via the structure constants <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRingGen.N">N</a></code>.</p><details id="instances-for-list-ZPlusModule.regularModule" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.ZPlusModuleHom"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L282-L290">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.ZPlusModuleHom"><span class="name">ZPlusModule</span>.<span class="name">ZPlusModuleHom</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ₁</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ₂</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ₂</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M₁</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ₁</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M₂</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ₂</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_3 u_4)</div></div><p>A morphism of <code>ℤ_+</code>-modules over the same <code>ℤ_+</code>-ring <code>R</code>: a nonnegative integer
+matrix <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.ZPlusModuleHom.toMatrix">toMatrix</a> : κ₁ → κ₂ → ℕ</code> that intertwines the two actions of <code>R</code>.</p><ul class="structure_fields" id="ZPlusModule.ZPlusModuleHom.mk"><li id="ZPlusModule.ZPlusModuleHom.toMatrix" class="structure_field"><div class="structure_field_info">toMatrix : <span class="fn"><span class="fn">κ₁</span> → <span class="fn"><span class="fn">κ₂</span> → <a href="../../.././Init/Prelude.html#Nat">ℕ</a></span></span></div></li><li id="ZPlusModule.ZPlusModuleHom.equivariant" class="structure_field"><div class="structure_field_info">equivariant<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">ι</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l</span> : <span class="fn">κ₁</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">k₂</span> : <span class="fn">κ₂</span>)</span></span>
+ : <span class="fn">∑ <span class="fn">k₁</span> : <span class="fn">κ₁</span>, <span class="fn"><span class="fn"><span class="fn">M₁</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">i</span> <span class="fn">l</span> <span class="fn">k₁</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.ZPlusModuleHom.toMatrix">toMatrix</a></span> <span class="fn">k₁</span> <span class="fn">k₂</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">∑ <span class="fn">n</span> : <span class="fn">κ₂</span>, <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.ZPlusModuleHom.toMatrix">toMatrix</a></span> <span class="fn">l</span> <span class="fn">n</span></span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn"><span class="fn">M₂</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">i</span> <span class="fn">n</span> <span class="fn">k₂</span></span></span></div></li></ul><details id="instances-for-list-ZPlusModule.ZPlusModuleHom" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.IsIsomorphism"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L292-L298">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIsomorphism"><span class="name">ZPlusModule</span>.<span class="name">IsIsomorphism</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ₁</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ₂</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ₂</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M₁</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ₁</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">M₂</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ₂</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u_3 u_4)</div></div><p>An isomorphism between two <code>ℤ_+</code>-modules: a bijection of basis sets <code>κ₁ ≃ κ₂</code>
+that intertwines the two actions of <code>R</code>.</p><ul class="structure_fields" id="ZPlusModule.IsIsomorphism.mk"><li id="ZPlusModule.IsIsomorphism.equiv" class="structure_field"><div class="structure_field_info">equiv : <span class="fn">κ₁</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">κ₂</span></div></li><li id="ZPlusModule.IsIsomorphism.compat" class="structure_field"><div class="structure_field_info">compat<span class="decl_args">
+<span class="fn">(<span class="fn">i</span> : <span class="fn">ι</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">l </span><span class="fn">k</span> : <span class="fn">κ₁</span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn">M₁</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">i</span> <span class="fn">l</span> <span class="fn">k</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">M₂</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a></span> <span class="fn">i</span> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIsomorphism.equiv">equiv</a></span> <span class="fn">l</span>)</span> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIsomorphism.equiv">equiv</a></span> <span class="fn">k</span>)</span></span></div></li></ul><details id="instances-for-list-ZPlusModule.IsIsomorphism" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.IsIndecomposable"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L300-L307">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIndecomposable"><span class="name">ZPlusModule</span>.<span class="name">IsIndecomposable</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A <code>ℤ_+</code>-module is indecomposable if its basis <code>κ</code> cannot be split into two
+nonempty disjoint action-closed subsets covering <code>κ</code>.</p><details id="instances-for-list-ZPlusModule.IsIndecomposable" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.IsIrreducible.isIndecomposable"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L309-L320">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreducible.isIndecomposable"><span class="name">ZPlusModule</span>.<span class="name">IsIrreducible</span>.<span class="name">isIndecomposable</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hirr</span> : <span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreducible">IsIrreducible</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIndecomposable">IsIndecomposable</a></span></div></div><p>Every irreducible <code>ℤ_+</code>-module is indecomposable: a proper action-closed
+nonempty subset would contradict irreducibility.</p></div></div><div class="decl" id="ZPlusModule.IsExact"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L322-L325">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsExact"><span class="name">ZPlusModule</span>.<span class="name">IsExact</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>Exactness of a <code>ℤ_+</code>-module: whenever <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a> i l k ≠ 0</code> there exists some <code>j ∈ ι</code>
+with <code><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a> j k l ≠ 0</code>, i.e. the action is symmetric up to relabeling.</p><details id="instances-for-list-ZPlusModule.IsExact" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.lemma_2_8_5"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L327-L348">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.lemma_2_8_5"><span class="name">ZPlusModule</span>.<span class="name">lemma_2_8_5</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hindec</span> : <span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIndecomposable">IsIndecomposable</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hexact</span> : <span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsExact">IsExact</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreducible">IsIrreducible</a></span></div></div><p>Lemma 2.8.5 of Etingof–Gelaki–Nikshych–Ostrik: an indecomposable, exact
+<code>ℤ_+</code>-module is irreducible.</p></div></div><div class="decl" id="ZPlusModule.IsActionClosed"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L350-L353">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsActionClosed"><span class="name">ZPlusModule</span>.<span class="name">IsActionClosed</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A subset <code>S ⊆ κ</code> is action-closed under <code>M</code> if whenever <code>l ∈ S</code> and
+<code>M.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.act">act</a> i l k ≠ 0</code> we have <code>k ∈ S</code>.</p><details id="instances-for-list-ZPlusModule.IsActionClosed" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.IsIndecomposablePiece"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L355-L360">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIndecomposablePiece"><span class="name">ZPlusModule</span>.<span class="name">IsIndecomposablePiece</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>An action-closed subset <code>S ⊆ κ</code> is an indecomposable piece if it cannot be
+partitioned into two nonempty disjoint action-closed subsets.</p><details id="instances-for-list-ZPlusModule.IsIndecomposablePiece" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.IsIrreduciblePiece"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L362-L365">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreduciblePiece"><span class="name">ZPlusModule</span>.<span class="name">IsIrreduciblePiece</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>An action-closed subset <code>S ⊆ κ</code> is an irreducible piece if it contains no
+proper nonempty action-closed subset.</p><details id="instances-for-list-ZPlusModule.IsIrreduciblePiece" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.IsZPlusDecomposition"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L367-L373">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsZPlusDecomposition"><span class="name">ZPlusModule</span>.<span class="name">IsZPlusDecomposition</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">parts</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">(<a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A <code>ℤ_+</code>-decomposition of <code>M</code>: a finite family of nonempty pairwise disjoint
+action-closed subsets of <code>κ</code> whose union covers <code>κ</code>.</p><ul class="structure_fields" id="ZPlusModule.IsZPlusDecomposition.mk"><li id="ZPlusModule.IsZPlusDecomposition.covers" class="structure_field"><div class="structure_field_info">covers<span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <span class="fn">κ</span>)</span></span>
+ : <span class="fn">∃ <span class="fn">P</span> ∈ <span class="fn">parts</span>, <span class="fn">k</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">P</span></span></div></li><li id="ZPlusModule.IsZPlusDecomposition.pairwise_disjoint" class="structure_field"><div class="structure_field_info">pairwise_disjoint<span class="decl_args">
+<span class="fn">(<span class="fn">P₁</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+ : <span class="fn"><span class="fn">P₁</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">parts</span> → <span class="fn">∀ <span class="fn">P₂</span> ∈ <span class="fn">parts</span>, <span class="fn"><span class="fn">P₁</span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">P₂</span> → <span class="fn"><a href="../../.././Mathlib/Order/Disjoint.html#Disjoint">Disjoint</a> <span class="fn">P₁</span> <span class="fn">P₂</span></span></span></span></span></div></li><li id="ZPlusModule.IsZPlusDecomposition.nonempty" class="structure_field"><div class="structure_field_info">nonempty<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+ : <span class="fn"><span class="fn">P</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">parts</span> → <span class="fn"><span class="fn">P</span>.<a href="../../.././Mathlib/Data/Finset/Empty.html#Finset.Nonempty">Nonempty</a></span></span></div></li><li id="ZPlusModule.IsZPlusDecomposition.closed" class="structure_field"><div class="structure_field_info">closed<span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+ : <span class="fn"><span class="fn">P</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">parts</span> → <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsActionClosed">IsActionClosed</a></span> <span class="fn">P</span></span></span></div></li></ul><details id="instances-for-list-ZPlusModule.IsZPlusDecomposition" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ZPlusModule.decompose_finset_aux"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L375-L458">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.decompose_finset_aux"><span class="name">ZPlusModule</span>.<span class="name">decompose_finset_aux</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">S</span>.<a href="../../.././Mathlib/Data/Finset/Empty.html#Finset.Nonempty">Nonempty</a></span> →
+  <span class="fn"><span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsActionClosed">IsActionClosed</a></span> <span class="fn">S</span></span> →
+    <span class="fn">∃ (<span class="fn">parts</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">(<a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span>)</span></span>),
+      <span class="fn">(∀ (<span class="fn">k</span> : <span class="fn">κ</span>), <span class="fn">k</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">S</span> <a href="../../.././Init/Core.html#Iff">↔</a> <span class="fn">∃ <span class="fn">P</span> ∈ <span class="fn">parts</span>, <span class="fn">k</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">P</span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>         <span class="fn">(∀ <span class="fn">P₁</span> ∈ <span class="fn">parts</span>, <span class="fn">∀ <span class="fn">P₂</span> ∈ <span class="fn">parts</span>, <span class="fn"><span class="fn">P₁</span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">P₂</span> → <span class="fn"><a href="../../.././Mathlib/Order/Disjoint.html#Disjoint">Disjoint</a> <span class="fn">P₁</span> <span class="fn">P₂</span></span></span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>           <span class="fn">(∀ <span class="fn">P</span> ∈ <span class="fn">parts</span>, <span class="fn"><span class="fn">P</span>.<a href="../../.././Mathlib/Data/Finset/Empty.html#Finset.Nonempty">Nonempty</a></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn">(∀ <span class="fn">P</span> ∈ <span class="fn">parts</span>, <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsActionClosed">IsActionClosed</a></span> <span class="fn">P</span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn">∀ <span class="fn">P</span> ∈ <span class="fn">parts</span>, <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIndecomposablePiece">IsIndecomposablePiece</a></span> <span class="fn">P</span></span></span></span></span></span></div></div><p>Auxiliary recursion lemma: every nonempty action-closed subset <code>S ⊆ κ</code> admits
+a partition into nonempty pairwise disjoint action-closed indecomposable pieces.</p></div></div><div class="decl" id="ZPlusModule.exists_indecomposable_decomposition"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L460-L473">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.exists_indecomposable_decomposition"><span class="name">ZPlusModule</span>.<span class="name">exists_indecomposable_decomposition</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">parts</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">(<a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span>)</span></span>), <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsZPlusDecomposition">IsZPlusDecomposition</a></span> <span class="fn">parts</span></span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn">∀ <span class="fn">P</span> ∈ <span class="fn">parts</span>, <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIndecomposablePiece">IsIndecomposablePiece</a></span> <span class="fn">P</span></span></span></span></div></div><p>Every <code>ℤ_+</code>-module (with nonempty basis) admits a <code>ℤ_+</code>-decomposition into
+indecomposable pieces.</p></div></div><div class="decl" id="ZPlusModule.indecomposable_piece_irreducible_of_exact"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L475-L496">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.indecomposable_piece_irreducible_of_exact"><span class="name">ZPlusModule</span>.<span class="name">indecomposable_piece_irreducible_of_exact</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hexact</span> : <span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsExact">IsExact</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">S</span> : <span class="fn"><a href="../../.././Mathlib/Data/Finset/Defs.html#Finset">Finset</a> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hclosed</span> : <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsActionClosed">IsActionClosed</a></span> <span class="fn">S</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hindec</span> : <span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIndecomposablePiece">IsIndecomposablePiece</a></span> <span class="fn">S</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreduciblePiece">IsIrreduciblePiece</a></span> <span class="fn">S</span></span></div></div><p>For exact <code>ℤ_+</code>-modules, every indecomposable piece is automatically irreducible:
+a proper action-closed subset would split off its complement using exactness.</p></div></div><div class="decl" id="Proposition_2_8_7"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ZPlusModules.lean#L500-L509">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#Proposition_2_8_7"><span class="name">Proposition_2_8_7</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ι</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">ι</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing">ZPlusRing</a> <span class="fn">ι</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">κ</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Data/Fintype/Defs.html#Fintype">Fintype</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">κ</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule">ZPlusModule</a> <span class="fn">R</span> <span class="fn">κ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hirr</span> : <span class="fn"><span class="fn">M</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusModule.IsIrreducible">IsIrreducible</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Data/Fintype/Card.html#Fintype.card">Fintype.card</a> <span class="fn">κ</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">R</span>.<a href="../../.././Atlas/TensorCategories/code/ZPlusModules.html#ZPlusRing.maxSquaredCoeff">maxSquaredCoeff</a></span></div></div><p>Proposition 2.8.7 (Etingof–Gelaki–Nikshych–Ostrik): the cardinality of the basis
+of any irreducible <code>ℤ_+</code>-module is bounded by the maximum squared coefficient of <code>R</code>.</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

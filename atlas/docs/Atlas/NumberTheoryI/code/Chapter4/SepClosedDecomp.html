@@ -1,0 +1,221 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../../.././style.css"></link><link rel="icon" href="../../../.././favicon.svg"></link><link rel="mask-icon" href="../../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.NumberTheoryI.code.Chapter4.SepClosedDecomp</title><script defer="true" src="../../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../../.././";</script><script>const MODULE_NAME="Atlas.NumberTheoryI.code.Chapter4.SepClosedDecomp";</script><script type="module" src="../../../.././jump-src.js"></script><script type="module" src="../../../.././search.js"></script><script type="module" src="../../../.././expand-nav.js"></script><script type="module" src="../../../.././how-about.js"></script><script type="module" src="../../../.././instances.js"></script><script type="module" src="../../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">NumberTheoryI</span>.<span class="name">code</span>.<span class="name">Chapter4</span>.<span class="name">SepClosedDecomp</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../../.././Init.html">Init</a></li><li><a href="../../../.././Mathlib.html">Mathlib</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.NumberTheoryI.code.Chapter4.SepClosedDecomp" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.algHom_card_eq_finrank_of_isSepClosed"><span class="name">SepClosedDecomposition</span>.<span class="name">algHom_card_eq_finrank_of_isSepClosed</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.evalAlgHom"><span class="name">SepClosedDecomposition</span>.<span class="name">evalAlgHom</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.tensorSepClosedAlgHom"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgHom</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.algHom_linearIndependent"><span class="name">SepClosedDecomposition</span>.<span class="name">algHom_linearIndependent</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.column_functions_linearIndependent"><span class="name">SepClosedDecomposition</span>.<span class="name">column_functions_linearIndependent</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.tensorSepClosedAlgHom_injective"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgHom_injective</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.finrank_tensor_eq_finrank_pi_of_isSepClosed"><span class="name">SepClosedDecomposition</span>.<span class="name">finrank_tensor_eq_finrank_pi_of_isSepClosed</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.tensorSepClosedAlgHom_surjective"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgHom_surjective</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.tensorSepClosedAlgHom_bijective"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgHom_bijective</span></a></div><div class="nav_link"><a class="break_within" href="#SepClosedDecomposition.tensorSepClosedAlgEquiv"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgEquiv</span></a></div></nav><main>
+<div class="decl" id="SepClosedDecomposition.algHom_card_eq_finrank_of_isSepClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L16-L19">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.algHom_card_eq_finrank_of_isSepClosed"><span class="name">SepClosedDecomposition</span>.<span class="name">algHom_card_eq_finrank_of_isSepClosed</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/IsSepClosed.html#IsSepClosed">IsSepClosed</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Mathlib/Data/Fintype/Card.html#Fintype.card">Fintype.card</a> (<span class="fn">L</span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">K</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">Ω</span>)</span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">K</span> <span class="fn">L</span></span></div></div></div></div><div class="decl" id="SepClosedDecomposition.evalAlgHom"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L21-L27">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.evalAlgHom"><span class="name">SepClosedDecomposition</span>.<span class="name">evalAlgHom</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn">L</span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">K</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">(<span class="fn">L</span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">K</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">Ω</span>) → <span class="fn">Ω</span></span></div></div><details id="instances-for-list-SepClosedDecomposition.evalAlgHom" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="SepClosedDecomposition.tensorSepClosedAlgHom"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L29-L30">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.tensorSepClosedAlgHom"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgHom</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/TensorProduct/Defs.html#TensorProduct">TensorProduct</a> <span class="fn">K</span> <span class="fn">Ω</span> <span class="fn">L</span></span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">Ω</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">(<span class="fn">L</span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">K</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">Ω</span>) → <span class="fn">Ω</span></span></div></div><details id="instances-for-list-SepClosedDecomposition.tensorSepClosedAlgHom" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="SepClosedDecomposition.algHom_linearIndependent"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L32-L35">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.algHom_linearIndependent"><span class="name">SepClosedDecomposition</span>.<span class="name">algHom_linearIndependent</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/IsSepClosed.html#IsSepClosed">IsSepClosed</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/LinearIndependent/Defs.html#LinearIndependent">LinearIndependent</a> <span class="fn">Ω</span> <span class="fn">fun (<span class="fn">σ</span> : <span class="fn">L</span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">K</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">Ω</span>) (<span class="fn">l</span> : <span class="fn">L</span>) =&gt; <span class="fn"><span class="fn">σ</span> <span class="fn">l</span></span></span></span></div></div></div></div><div class="decl" id="SepClosedDecomposition.column_functions_linearIndependent"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L37-L57">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.column_functions_linearIndependent"><span class="name">SepClosedDecomposition</span>.<span class="name">column_functions_linearIndependent</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/IsSepClosed.html#IsSepClosed">IsSepClosed</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/LinearIndependent/Defs.html#LinearIndependent">LinearIndependent</a> <span class="fn">Ω</span> <span class="fn">fun (<span class="fn">i</span> : <span class="fn"><a href="../../../.././Init/Prelude.html#Fin">Fin</a> <span class="fn">(<a href="../../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">K</span> <span class="fn">L</span>)</span></span>) (<span class="fn">φ</span> : <span class="fn">L</span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">K</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">Ω</span>) =&gt; <span class="fn"><span class="fn">φ</span> <span class="fn">(<span class="fn">(<a href="../../../.././Mathlib/LinearAlgebra/Dimension/Free.html#Module.finBasis">Module.finBasis</a> <span class="fn">K</span> <span class="fn">L</span>)</span> <span class="fn">i</span>)</span></span></span></span></div></div></div></div><div class="decl" id="SepClosedDecomposition.tensorSepClosedAlgHom_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L59-L70">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.tensorSepClosedAlgHom_injective"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgHom_injective</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/IsSepClosed.html#IsSepClosed">IsSepClosed</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Init/Data/Function.html#Function.Injective">Function.Injective</a> <span class="fn">⇑<span class="fn">(<a href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.tensorSepClosedAlgHom">tensorSepClosedAlgHom</a> <span class="fn">K</span> <span class="fn">L</span> <span class="fn">Ω</span>)</span></span></span></div></div></div></div><div class="decl" id="SepClosedDecomposition.finrank_tensor_eq_finrank_pi_of_isSepClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L72-L75">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.finrank_tensor_eq_finrank_pi_of_isSepClosed"><span class="name">SepClosedDecomposition</span>.<span class="name">finrank_tensor_eq_finrank_pi_of_isSepClosed</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/IsSepClosed.html#IsSepClosed">IsSepClosed</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">Ω</span> <span class="fn">(<a href="../../../.././Mathlib/LinearAlgebra/TensorProduct/Defs.html#TensorProduct">TensorProduct</a> <span class="fn">K</span> <span class="fn">Ω</span> <span class="fn">L</span>)</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">Ω</span> <span class="fn">((<span class="fn">L</span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">K</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">Ω</span>) → <span class="fn">Ω</span>)</span></span></div></div></div></div><div class="decl" id="SepClosedDecomposition.tensorSepClosedAlgHom_surjective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L77-L80">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.tensorSepClosedAlgHom_surjective"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgHom_surjective</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/IsSepClosed.html#IsSepClosed">IsSepClosed</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Init/Data/Function.html#Function.Surjective">Function.Surjective</a> <span class="fn">⇑<span class="fn">(<a href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.tensorSepClosedAlgHom">tensorSepClosedAlgHom</a> <span class="fn">K</span> <span class="fn">L</span> <span class="fn">Ω</span>)</span></span></span></div></div></div></div><div class="decl" id="SepClosedDecomposition.tensorSepClosedAlgHom_bijective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L82-L83">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.tensorSepClosedAlgHom_bijective"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgHom_bijective</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/IsSepClosed.html#IsSepClosed">IsSepClosed</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Mathlib/Logic/Function/Defs.html#Function.Bijective">Function.Bijective</a> <span class="fn">⇑<span class="fn">(<a href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.tensorSepClosedAlgHom">tensorSepClosedAlgHom</a> <span class="fn">K</span> <span class="fn">L</span> <span class="fn">Ω</span>)</span></span></span></div></div></div></div><div class="decl" id="SepClosedDecomposition.tensorSepClosedAlgEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.lean#L85-L86">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/NumberTheoryI/code/Chapter4/SepClosedDecomp.html#SepClosedDecomposition.tensorSepClosedAlgEquiv"><span class="name">SepClosedDecomposition</span>.<span class="name">tensorSepClosedAlgEquiv</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ω</span> : <a href="../../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/FieldTheory/IsSepClosed.html#IsSepClosed">IsSepClosed</a> <span class="fn">Ω</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/TensorProduct/Defs.html#TensorProduct">TensorProduct</a> <span class="fn">K</span> <span class="fn">Ω</span> <span class="fn">L</span></span> <a href="../../../.././Mathlib/Algebra/Algebra/Equiv.html#AlgEquiv">≃ₐ[</a><span class="fn">Ω</span><a href="../../../.././Mathlib/Algebra/Algebra/Equiv.html#AlgEquiv">]</a> <span class="fn">(<span class="fn">L</span> <a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">→ₐ[</a><span class="fn">K</span><a href="../../../.././Mathlib/Algebra/Algebra/Hom.html#AlgHom">]</a> <span class="fn">Ω</span>) → <span class="fn">Ω</span></span></div></div><details id="instances-for-list-SepClosedDecomposition.tensorSepClosedAlgEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div></main>
+<nav class="nav"><iframe src="../../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

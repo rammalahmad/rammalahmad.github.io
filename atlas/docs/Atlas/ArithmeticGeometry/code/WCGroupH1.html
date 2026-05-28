@@ -1,0 +1,695 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.ArithmeticGeometry.code.WCGroupH1</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.ArithmeticGeometry.code.WCGroupH1";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">ArithmeticGeometry</span>.<span class="name">code</span>.<span class="name">WCGroupH1</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html">Atlas.ArithmeticGeometry.code.GaloisCohomology</a></li><li><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html">Atlas.ArithmeticGeometry.code.WeilChatelet</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.ArithmeticGeometry.code.WCGroupH1" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#WCH1Data"><span class="name">WCH1Data</span></a></div><div class="nav_link"><a class="break_within" href="#GaloisActionOnTorsor"><span class="name">GaloisActionOnTorsor</span></a></div><div class="nav_link"><a class="break_within" href="#canonical_torsor_cocycle"><span class="name">canonical_torsor_cocycle</span></a></div><div class="nav_link"><a class="break_within" href="#galois_descent_surjective"><span class="name">galois_descent_surjective</span></a></div><div class="nav_link"><a class="break_within" href="#galoisActionOnTorsor_exists"><span class="name">galoisActionOnTorsor_exists</span></a></div><div class="nav_link"><a class="break_within" href="#galoisAction_mul_compat"><span class="name">galoisAction_mul_compat</span></a></div><div class="nav_link"><a class="break_within" href="#cocycleCondition_of_galoisAction"><span class="name">cocycleCondition_of_galoisAction</span></a></div><div class="nav_link"><a class="break_within" href="#cocycleMap_construction"><span class="name">cocycleMap_construction</span></a></div><div class="nav_link"><a class="break_within" href="#galoisAction_kIsom_compat"><span class="name">galoisAction_kIsom_compat</span></a></div><div class="nav_link"><a class="break_within" href="#galoisEquivariance_of_kIsom"><span class="name">galoisEquivariance_of_kIsom</span></a></div><div class="nav_link"><a class="break_within" href="#cocycleMap_wellDefined_proof"><span class="name">cocycleMap_wellDefined_proof</span></a></div><div class="nav_link"><a class="break_within" href="#cocycleMap_injective_proof"><span class="name">cocycleMap_injective_proof</span></a></div><div class="nav_link"><a class="break_within" href="#galoisDescent_torsor_exists"><span class="name">galoisDescent_torsor_exists</span></a></div><div class="nav_link"><a class="break_within" href="#galoisDescent_torsor_of_cocycle"><span class="name">galoisDescent_torsor_of_cocycle</span></a></div><div class="nav_link"><a class="break_within" href="#cocycleMap_surjective_proof"><span class="name">cocycleMap_surjective_proof</span></a></div><div class="nav_link"><a class="break_within" href="#WCH1Data.mk'"><span class="name">WCH1Data</span>.<span class="name">mk'</span></a></div><div class="nav_link"><a class="break_within" href="#wc_equiv_h1"><span class="name">wc_equiv_h1</span></a></div><div class="nav_link"><a class="break_within" href="#wc_h1_setEquiv"><span class="name">wc_h1_setEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#WC.addCommGroupOfData"><span class="name">WC</span>.<span class="name">addCommGroupOfData</span></a></div><div class="nav_link"><a class="break_within" href="#wc_h1_equiv"><span class="name">wc_h1_equiv</span></a></div><div class="nav_link"><a class="break_within" href="#corollary_26_25"><span class="name">corollary_26_25</span></a></div></nav><main>
+<div class="decl" id="WCH1Data"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L10-L23">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data"><span class="name">WCH1Data</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (u + 1)</div></div><p>Data witnessing the bijection between the Weil-Châtelet set of $E$-torsors over $k$ (mod
+$k$-isomorphism) and the first cohomology group $H^1(G, E_{\mathrm{pts}})$: a well-defined,
+injective, and surjective <code><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data.cocycleMap">cocycleMap</a></code>.</p><ul class="structure_fields" id="WCH1Data.mk"><li id="WCH1Data.cocycleMap" class="structure_field"><div class="structure_field_info">cocycleMap : <span class="fn"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span> → <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.H1">GaloisCohomology.H1</a> <span class="fn">G</span> <span class="fn">E_pts</span></span></span></div></li><li id="WCH1Data.cocycleMap_wellDefined" class="structure_field"><div class="structure_field_info">cocycleMap_wellDefined<span class="decl_args">
+<span class="fn">(<span class="fn">T₁ </span><span class="fn">T₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.Equiv">Equiv</a></span> <span class="fn">T₂</span></span> → <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data.cocycleMap">cocycleMap</a></span> <span class="fn">T₁</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data.cocycleMap">cocycleMap</a></span> <span class="fn">T₂</span></span></span></div></li><li id="WCH1Data.cocycleMap_injective" class="structure_field"><div class="structure_field_info">cocycleMap_injective<span class="decl_args">
+<span class="fn">(<span class="fn">T₁ </span><span class="fn">T₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data.cocycleMap">cocycleMap</a></span> <span class="fn">T₁</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data.cocycleMap">cocycleMap</a></span> <span class="fn">T₂</span></span> → <span class="fn"><span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.Equiv">Equiv</a></span> <span class="fn">T₂</span></span></span></div></li><li id="WCH1Data.cocycleMap_surjective" class="structure_field"><div class="structure_field_info">cocycleMap_surjective : <span class="fn"><a href="../../.././Init/Data/Function.html#Function.Surjective">Function.Surjective</a> <span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data.cocycleMap">cocycleMap</a></span></span></div></li></ul><details id="instances-for-list-WCH1Data" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="GaloisActionOnTorsor"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L25-L39">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor"><span class="name">GaloisActionOnTorsor</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> u</div></div><p>Data of a Galois action on a torsor <code>T</code>: a Galois map $\sigma \mapsto \sigma_C$ acting on
+points of <code>T</code>, equivariant with the $E$-action and a group homomorphism in $\sigma$, together
+with a continuity condition.</p><ul class="structure_fields" id="GaloisActionOnTorsor.mk"><li id="GaloisActionOnTorsor.σ_C" class="structure_field"><div class="structure_field_info">σ_C : <span class="fn"><span class="fn">G</span> → <span class="fn"><span class="fn"><span class="fn">T</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span> → <span class="fn"><span class="fn">T</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span></span></span></div></li><li id="GaloisActionOnTorsor.compat" class="structure_field"><div class="structure_field_info">compat<span class="decl_args">
+<span class="fn">(<span class="fn">σ</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">p</span> : <span class="fn">E_pts</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <span class="fn"><span class="fn">T</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> (<span class="fn">p</span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#HVAdd.hVAdd">+ᵥ</a> <span class="fn">c</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">σ</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">p</span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#HVAdd.hVAdd">+ᵥ</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">c</span></span></div></li><li id="GaloisActionOnTorsor.mul_compat" class="structure_field"><div class="structure_field_info">mul_compat<span class="decl_args">
+<span class="fn">(<span class="fn">τ </span><span class="fn">σ</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <span class="fn"><span class="fn">T</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+ : <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> (<span class="fn">τ</span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">σ</span>) <span class="fn">c</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">τ</span> <span class="fn">(<span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">c</span>)</span></span></div></li><li id="GaloisActionOnTorsor.cont" class="structure_field"><div class="structure_field_info">cont<span class="decl_args">
+<span class="fn">(<span class="fn">Q₀</span> : <span class="fn"><span class="fn">T</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#Continuous">Continuous</a> <span class="fn">fun (<span class="fn">σ</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">Q₀</span></span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#VSub.vsub">-ᵥ</a> <span class="fn">Q₀</span></span></span></div></li></ul><details id="instances-for-list-GaloisActionOnTorsor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="canonical_torsor_cocycle"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L41-L48">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#canonical_torsor_cocycle"><span class="name">canonical_torsor_cocycle</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.ContCrossedHom">GaloisCohomology.ContCrossedHom</a> <span class="fn">G</span> <span class="fn">E_pts</span></span></div></div><p>The canonical cocycle attached to a torsor <code>T</code>: deferred to a <code>sorry</code>; it should produce a
+continuous crossed homomorphism $G \to E_{\mathrm{pts}}$ from the Galois action on <code>T</code>.</p><details id="instances-for-list-canonical_torsor_cocycle" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="galois_descent_surjective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L50-L59">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#galois_descent_surjective"><span class="name">galois_descent_surjective</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.ContCrossedHom">GaloisCohomology.ContCrossedHom</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">T</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>), <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#canonical_torsor_cocycle">canonical_torsor_cocycle</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">α</span></span></div></div><p>Galois descent (surjectivity onto cocycles): every continuous crossed homomorphism
+$\alpha \colon G \to E_{\mathrm{pts}}$ arises as the canonical cocycle of some $E$-torsor over
+$k$.</p></div></div><div class="decl" id="galoisActionOnTorsor_exists"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L61-L105">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#galoisActionOnTorsor_exists"><span class="name">galoisActionOnTorsor_exists</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor">GaloisActionOnTorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T</span></span></div></div><p>Existence of a Galois action on any torsor <code>T</code>: explicit construction via twisting by the
+canonical cocycle at a chosen base point.</p><details id="instances-for-list-galoisActionOnTorsor_exists" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="galoisAction_mul_compat"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L107-L118">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#galoisAction_mul_compat"><span class="name">galoisAction_mul_compat</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">ga</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor">GaloisActionOnTorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">τ </span><span class="fn">σ</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <span class="fn"><span class="fn">T</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> (<span class="fn">τ</span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">σ</span>) <span class="fn">c</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">τ</span> <span class="fn">(<span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">c</span>)</span></span></div></div><p>Restatement of the group-action axiom for <code><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor">GaloisActionOnTorsor</a></code>: $\sigma_C(\tau\sigma) = \sigma_C(\tau) \circ \sigma_C(\sigma)$.</p></div></div><div class="decl" id="cocycleCondition_of_galoisAction"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L120-L144">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleCondition_of_galoisAction"><span class="name">cocycleCondition_of_galoisAction</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">ga</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor">GaloisActionOnTorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Q₀</span> : <span class="fn"><span class="fn">T</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.IsCrossedHom">GaloisCohomology.IsCrossedHom</a> <span class="fn">fun (<span class="fn">σ</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">Q₀</span></span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#VSub.vsub">-ᵥ</a> <span class="fn">Q₀</span></span></span></div></div><p>For any base point $Q_0 \in C_T$, the function $\sigma \mapsto \sigma_C(Q_0) -_v Q_0$ is a
+crossed homomorphism $G \to E_{\mathrm{pts}}$.</p></div></div><div class="decl" id="cocycleMap_construction"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L146-L169">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_construction"><span class="name">cocycleMap_construction</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span> → <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.H1">GaloisCohomology.H1</a> <span class="fn">G</span> <span class="fn">E_pts</span></span></span></div></div><p>The construction of the cocycle map at the level of $E$-torsors: given a torsor $T$, choose a
+base point, take the Galois-action cocycle $\sigma \mapsto \sigma_C(Q_0) -_v Q_0$, and pass to
+its class in $H^1$.</p><details id="instances-for-list-cocycleMap_construction" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="galoisAction_kIsom_compat"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L171-L187">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#galoisAction_kIsom_compat"><span class="name">galoisAction_kIsom_compat</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">T₁ </span><span class="fn">T₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn"><span class="fn">T₂</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">_hcompat</span> : <span class="fn">∀ (<span class="fn">p</span> : <span class="fn">E_pts</span>) (<span class="fn">q</span> : <span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>), <span class="fn"><span class="fn">e</span> (<span class="fn">p</span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#HVAdd.hVAdd">+ᵥ</a> <span class="fn">q</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">p</span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#HVAdd.hVAdd">+ᵥ</a> <span class="fn"><span class="fn">e</span> <span class="fn">q</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">ga₁</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor">GaloisActionOnTorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T₁</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">ga₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor">GaloisActionOnTorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T₂</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hgal</span> : <span class="fn">∀ (<span class="fn">σ</span> : <span class="fn">G</span>) (<span class="fn">q</span> : <span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>), <span class="fn"><span class="fn">e</span> <span class="fn">(<span class="fn"><span class="fn">ga₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">q</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">ga₂</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">(<span class="fn">e</span> <span class="fn">q</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">σ</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">e</span> <span class="fn">(<span class="fn"><span class="fn">ga₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">q</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">ga₂</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">(<span class="fn">e</span> <span class="fn">q</span>)</span></span></div></div><p>Restated compatibility: a $k$-isomorphism $e$ between torsors that intertwines the
+$E$-actions also intertwines the Galois actions, when this is given as a hypothesis.</p></div></div><div class="decl sorried" id="galoisEquivariance_of_kIsom"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L189-L202">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#galoisEquivariance_of_kIsom"><span class="name">galoisEquivariance_of_kIsom</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">T₁ </span><span class="fn">T₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn"><span class="fn">T₂</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcompat</span> : <span class="fn">∀ (<span class="fn">p</span> : <span class="fn">E_pts</span>) (<span class="fn">q</span> : <span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>), <span class="fn"><span class="fn">e</span> (<span class="fn">p</span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#HVAdd.hVAdd">+ᵥ</a> <span class="fn">q</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">p</span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#HVAdd.hVAdd">+ᵥ</a> <span class="fn"><span class="fn">e</span> <span class="fn">q</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">ga₁</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor">GaloisActionOnTorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T₁</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">ga₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor">GaloisActionOnTorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T₂</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">σ</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">q</span> : <span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">e</span> <span class="fn">(<span class="fn"><span class="fn">ga₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">q</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">ga₂</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">(<span class="fn">e</span> <span class="fn">q</span>)</span></span></div></div><p>A $k$-isomorphism between torsors is automatically Galois-equivariant: the proof is deferred.</p></div></div><div class="decl" id="cocycleMap_wellDefined_proof"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L204-L258">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_wellDefined_proof"><span class="name">cocycleMap_wellDefined_proof</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T₁ </span><span class="fn">T₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.Equiv">Equiv</a></span> <span class="fn">T₂</span></span> → <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_construction">cocycleMap_construction</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T₁</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_construction">cocycleMap_construction</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T₂</span></span></span></div></div><p>The cocycle map is well-defined on equivalence classes of $E$-torsors: equivalent torsors
+produce cohomologous cocycles, hence equal classes in $H^1$.</p></div></div><div class="decl" id="cocycleMap_injective_proof"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L260-L287">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_injective_proof"><span class="name">cocycleMap_injective_proof</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">T₁ </span><span class="fn">T₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_construction">cocycleMap_construction</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T₁</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_construction">cocycleMap_construction</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T₂</span></span> → <span class="fn"><span class="fn"><span class="fn">T₁</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.Equiv">Equiv</a></span> <span class="fn">T₂</span></span></span></div></div><p>The cocycle map is injective on torsor equivalence classes: torsors that map to the same
+class in $H^1$ are equivalent (as $k$-isomorphic torsors).</p></div></div><div class="decl" id="galoisDescent_torsor_exists"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L289-L318">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#galoisDescent_torsor_exists"><span class="name">galoisDescent_torsor_exists</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.ContCrossedHom">GaloisCohomology.ContCrossedHom</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">T</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>) (<span class="fn">Q₀</span> : <span class="fn"><span class="fn">T</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor.C_pts">C_pts</a></span>),
+  <span class="fn">have <span class="fn">ga</span> := <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#galoisActionOnTorsor_exists">galoisActionOnTorsor_exists</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T</span></span>;
+  <span class="fn">∀ (<span class="fn">σ</span> : <span class="fn">G</span>), <span class="fn"><span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#GaloisActionOnTorsor.σ_C">σ_C</a></span> <span class="fn">σ</span> <span class="fn">Q₀</span></span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#VSub.vsub">-ᵥ</a> <span class="fn">Q₀</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">α</span> <span class="fn">σ</span></span></span></span></span></div></div><p>For any continuous crossed homomorphism $\alpha$, there is a torsor $T$ and a point
+$Q_0 \in C_T$ such that the Galois action on $T$ realises $\alpha$ as $\sigma \mapsto \sigma_C(Q_0) -_v Q_0$.</p></div></div><div class="decl" id="galoisDescent_torsor_of_cocycle"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L320-L374">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#galoisDescent_torsor_of_cocycle"><span class="name">galoisDescent_torsor_of_cocycle</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">α</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.ContCrossedHom">GaloisCohomology.ContCrossedHom</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">T</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#ETorsor">ETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span>), <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_construction">cocycleMap_construction</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span> <span class="fn">T</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.H1.mk">GaloisCohomology.H1.mk</a> <span class="fn">G</span> <span class="fn">E_pts</span> <span class="fn">α</span></span></span></div></div><p>For each continuous crossed homomorphism $\alpha$, there is an $E$-torsor $T$ whose image
+under <code><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_construction">cocycleMap_construction</a></code> is the class of $\alpha$ in $H^1$.</p></div></div><div class="decl" id="cocycleMap_surjective_proof"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L376-L388">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_surjective_proof"><span class="name">cocycleMap_surjective_proof</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Init/Data/Function.html#Function.Surjective">Function.Surjective</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#cocycleMap_construction">cocycleMap_construction</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span>)</span></span></div></div><p>The cocycle map $\mathrm{ETorsor}(k, W, E) \to H^1(G, E_{\mathrm{pts}})$ is surjective.</p></div></div><div class="decl" id="WCH1Data.mk'"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L390-L401">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data.mk'"><span class="name">WCH1Data</span>.<span class="name">mk'</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data">WCH1Data</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span></span></div></div><p>Bundled <code><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data">WCH1Data</a></code>: the cocycle map together with its well-definedness, injectivity, and
+surjectivity proofs.</p><details id="instances-for-list-WCH1Data.mk'" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="wc_equiv_h1"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L403-L429">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#wc_equiv_h1"><span class="name">wc_equiv_h1</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">f</span> : <span class="fn"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#WC">WC</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span> → <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.H1">GaloisCohomology.H1</a> <span class="fn">G</span> <span class="fn">E_pts</span></span></span>), <span class="fn"><a href="../../.././Mathlib/Logic/Function/Defs.html#Function.Bijective">Function.Bijective</a> <span class="fn">f</span></span></span></div></div><p>The Weil-Châtelet set is in bijection with $H^1(G, E_{\mathrm{pts}})$: existence of a
+bijection $\mathrm{WC}(E/k) \simeq H^1$.</p></div></div><div class="decl" id="wc_h1_setEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L431-L454">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#wc_h1_setEquiv"><span class="name">wc_h1_setEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">data</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data">WCH1Data</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#WC">WC</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.H1">GaloisCohomology.H1</a> <span class="fn">G</span> <span class="fn">E_pts</span></span></div></div><p>Explicit bijection $\mathrm{WC}(E/k) \simeq H^1(G, E_{\mathrm{pts}})$ given a choice of
+<code><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data">WCH1Data</a></code>.</p><details id="instances-for-list-wc_h1_setEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="WC.addCommGroupOfData"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L456-L466">source</a></div><div class="attributes">@[reducible]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WC.addCommGroupOfData"><span class="name">WC</span>.<span class="name">addCommGroupOfData</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">data</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data">WCH1Data</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#WC">WC</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span>)</span></span></div></div><p>Transport the abelian group structure on $H^1$ to <code><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#WC">WC</a></code> via the bijection of
+<code><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#wc_h1_setEquiv">wc_h1_setEquiv</a></code>, making <code><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#WC">WC</a> k W E_pts</code> into an <code><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a></code>.</p><details id="instances-for-list-WC.addCommGroupOfData" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="wc_h1_equiv"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L468-L479">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#wc_h1_equiv"><span class="name">wc_h1_equiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">data</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#WCH1Data">WCH1Data</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#WC">WC</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span> <a href="../../.././Mathlib/Algebra/Group/Equiv/Defs.html#AddEquiv">≃+</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.H1">GaloisCohomology.H1</a> <span class="fn">G</span> <span class="fn">E_pts</span></span></div></div><p>The Weil-Châtelet group is isomorphic, as an additive group, to $H^1(G, E_{\mathrm{pts}})$,
+once we transport the group structure via the bijection of <code><a href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#wc_h1_setEquiv">wc_h1_setEquiv</a></code>.</p><details id="instances-for-list-wc_h1_equiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="corollary_26_25"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/WCGroupH1.lean#L481-L494">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/WCGroupH1.html#corollary_26_25"><span class="name">corollary_26_25</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/GroupWithZero/Action/Defs.html#DistribMulAction">DistribMulAction</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Monoid/Defs.html#ContinuousAdd">ContinuousAdd</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/Group/Defs.html#ContinuousNeg">ContinuousNeg</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Algebra/MulAction.html#ContinuousSMul">ContinuousSMul</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">grp</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#WC">WC</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span>)</span></span>), <span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> (<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#WC">WC</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span></span> <a href="../../.././Mathlib/Algebra/Group/Equiv/Defs.html#AddEquiv">≃+</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/GaloisCohomology.html#GaloisCohomology.H1">GaloisCohomology.H1</a> <span class="fn">G</span> <span class="fn">E_pts</span></span>)</span></span></div></div><p>Corollary 26.25: the Weil-Châtelet set $\mathrm{WC}(E/k)$ admits an abelian group structure
+under which it is isomorphic to $H^1(\mathrm{Gal}(\bar k/k), E(\bar k))$.</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

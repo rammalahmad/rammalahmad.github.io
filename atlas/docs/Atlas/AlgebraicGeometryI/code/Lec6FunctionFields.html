@@ -1,0 +1,635 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.AlgebraicGeometryI.code.Lec6FunctionFields</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.AlgebraicGeometryI.code.Lec6FunctionFields";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">AlgebraicGeometryI</span>.<span class="name">code</span>.<span class="name">Lec6FunctionFields</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Mathlib/AlgebraicGeometry/FunctionField.html">Mathlib.AlgebraicGeometry.FunctionField</a></li><li><a href="../../.././Mathlib/CategoryTheory/Yoneda.html">Mathlib.CategoryTheory.Yoneda</a></li><li><a href="../../.././Mathlib/FieldTheory/Separable.html">Mathlib.FieldTheory.Separable</a></li><li><a href="../../.././Mathlib/RingTheory/Discriminant.html">Mathlib.RingTheory.Discriminant</a></li><li><a href="../../.././Mathlib/RingTheory/FiniteType.html">Mathlib.RingTheory.FiniteType</a></li><li><a href="../../.././Mathlib/Data/Set/Card.html">Mathlib.Data.Set.Card</a></li><li><a href="../../.././Mathlib/NumberTheory/RamificationInertia/Basic.html">Mathlib.NumberTheory.RamificationInertia.Basic</a></li><li><a href="../../.././Mathlib/RingTheory/DedekindDomain/Basic.html">Mathlib.RingTheory.DedekindDomain.Basic</a></li><li><a href="../../.././Mathlib/RingTheory/DedekindDomain/IntegralClosure.html">Mathlib.RingTheory.DedekindDomain.IntegralClosure</a></li><li><a href="../../.././Mathlib/RingTheory/DiscreteValuationRing/TFAE.html">Mathlib.RingTheory.DiscreteValuationRing.TFAE</a></li><li><a href="../../.././Mathlib/RingTheory/Ideal/Over.html">Mathlib.RingTheory.Ideal.Over</a></li><li><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html">Mathlib.RingTheory.IntegralClosure.IntegrallyClosed</a></li><li><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html">Mathlib.RingTheory.Localization.FractionRing</a></li><li><a href="../../.././Mathlib/RingTheory/Localization/NormTrace.html">Mathlib.RingTheory.Localization.NormTrace</a></li><li><a href="../../.././Mathlib/RingTheory/Nilpotent/Lemmas.html">Mathlib.RingTheory.Nilpotent.Lemmas</a></li><li><a href="../../.././Mathlib/RingTheory/RegularLocalRing/Defs.html">Mathlib.RingTheory.RegularLocalRing.Defs</a></li><li><a href="../../.././Mathlib/RingTheory/Spectrum/Prime/Topology.html">Mathlib.RingTheory.Spectrum.Prime.Topology</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.AlgebraicGeometryI.code.Lec6FunctionFields" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#Lec6.functionField_field"><span class="name">Lec6</span>.<span class="name">functionField_field</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.functionField_germ_injective"><span class="name">Lec6</span>.<span class="name">functionField_germ_injective</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.functionField_isFractionRing_affine"><span class="name">Lec6</span>.<span class="name">functionField_isFractionRing_affine</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.functionField_isFractionRing_of_affineOpen"><span class="name">Lec6</span>.<span class="name">functionField_isFractionRing_of_affineOpen</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.functionField"><span class="name">Lec6</span>.<span class="name">functionField</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.functionField.field"><span class="name">Lec6</span>.<span class="name">functionField</span>.<span class="name">field</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.functionField.algebra"><span class="name">Lec6</span>.<span class="name">functionField</span>.<span class="name">algebra</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.functionField.isFractionRing"><span class="name">Lec6</span>.<span class="name">functionField</span>.<span class="name">isFractionRing</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.degreeDominantMap"><span class="name">Lec6</span>.<span class="name">degreeDominantMap</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.lec6_fiber_card_le_degree"><span class="name">Lec6</span>.<span class="name">lec6_fiber_card_le_degree</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.Lec6IsUnramifiedOver"><span class="name">Lec6</span>.<span class="name">Lec6IsUnramifiedOver</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.Lec6IsRamifiedOver"><span class="name">Lec6</span>.<span class="name">Lec6IsRamifiedOver</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.RamificationLocus"><span class="name">Lec6</span>.<span class="name">RamificationLocus</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.ramificationLocus_isClosed"><span class="name">Lec6</span>.<span class="name">ramificationLocus_isClosed</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.ramificationLocus_ne_univ_of_discr_ne_zero"><span class="name">Lec6</span>.<span class="name">ramificationLocus_ne_univ_of_discr_ne_zero</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.discr_ne_zero_of_separable_functionField"><span class="name">Lec6</span>.<span class="name">discr_ne_zero_of_separable_functionField</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.ramificationLocus_ne_univ_of_separable"><span class="name">Lec6</span>.<span class="name">ramificationLocus_ne_univ_of_separable</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.ramificationLocus_properClosed_of_separable"><span class="name">Lec6</span>.<span class="name">ramificationLocus_properClosed_of_separable</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.normalization_is_normal"><span class="name">Lec6</span>.<span class="name">normalization_is_normal</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.normalization_map_injective"><span class="name">Lec6</span>.<span class="name">normalization_map_injective</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.normalization_finite_module"><span class="name">Lec6</span>.<span class="name">normalization_finite_module</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.integral_closure_noetherian"><span class="name">Lec6</span>.<span class="name">integral_closure_noetherian</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.normalization_finiteType"><span class="name">Lec6</span>.<span class="name">normalization_finiteType</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.yoneda_fully_faithful"><span class="name">Lec6</span>.<span class="name">yoneda_fully_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.yoneda_full"><span class="name">Lec6</span>.<span class="name">yoneda_full</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.yoneda_faithful"><span class="name">Lec6</span>.<span class="name">yoneda_faithful</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.yoneda_injective_on_objects"><span class="name">Lec6</span>.<span class="name">yoneda_injective_on_objects</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.IsNormalVariety"><span class="name">Lec6</span>.<span class="name">IsNormalVariety</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.isNormalVariety_of_integrallyClosed"><span class="name">Lec6</span>.<span class="name">isNormalVariety_of_integrallyClosed</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.normalization_isNormalVariety"><span class="name">Lec6</span>.<span class="name">normalization_isNormalVariety</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.dedekindDomain_localRing_isRegularLocalRing"><span class="name">Lec6</span>.<span class="name">dedekindDomain_localRing_isRegularLocalRing</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.dedekindDomain_isIntegrallyClosed"><span class="name">Lec6</span>.<span class="name">dedekindDomain_isIntegrallyClosed</span></a></div><div class="nav_link"><a class="break_within" href="#Lec6.dedekindDomain_isNormalVariety"><span class="name">Lec6</span>.<span class="name">dedekindDomain_isNormalVariety</span></a></div></nav><main>
+<div class="decl" id="Lec6.functionField_field"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L33-L36">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField_field"><span class="name">Lec6</span>.<span class="name">functionField_field</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme">AlgebraicGeometry.Scheme</a>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Properties.html#AlgebraicGeometry.IsIntegral">AlgebraicGeometry.IsIntegral</a> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">↑<span class="fn"><span class="fn">X</span>.<a href="../../.././Mathlib/AlgebraicGeometry/FunctionField.html#AlgebraicGeometry.Scheme.functionField">functionField</a></span></span></span></div></div><p>The function field <code>K(X)</code> of an integral scheme <code>X</code> is a field
+(Lec 6, Def 14 setting).</p></div></div><div class="decl" id="Lec6.functionField_germ_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L38-L43">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField_germ_injective"><span class="name">Lec6</span>.<span class="name">functionField_germ_injective</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme">AlgebraicGeometry.Scheme</a>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Properties.html#AlgebraicGeometry.IsIntegral">AlgebraicGeometry.IsIntegral</a> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><span class="fn">X</span>.<a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme.Opens">Opens</a></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">↥<span class="fn">↑<span class="fn">U</span></span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Init/Data/Function.html#Function.Injective">Function.Injective</a> <span class="fn">⇑<span class="fn">(<a href="../../.././Mathlib/CategoryTheory/ConcreteCategory/Basic.html#CategoryTheory.ConcreteCategory.hom">CategoryTheory.ConcreteCategory.hom</a> <span class="fn">(<span class="fn"><span class="fn">X</span>.<a href="../../.././Mathlib/AlgebraicGeometry/FunctionField.html#AlgebraicGeometry.Scheme.germToFunctionField">germToFunctionField</a></span> <span class="fn">U</span>)</span>)</span></span></span></div></div><p>The germ map from sections over a nonempty open of an integral scheme
+into the function field <code>K(X)</code> is injective (Lec 6, Def 14).</p></div></div><div class="decl" id="Lec6.functionField_isFractionRing_affine"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L45-L49">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField_isFractionRing_affine"><span class="name">Lec6</span>.<span class="name">functionField_isFractionRing_affine</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././Mathlib/Algebra/Category/Ring/Basic.html#CommRingCat">CommRingCat</a>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">↑<span class="fn">R</span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">↑<span class="fn">R</span></span> <span class="fn">↑<span class="fn"><span class="fn">(<a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Spec">AlgebraicGeometry.Spec</a> <span class="fn">R</span>)</span>.<a href="../../.././Mathlib/AlgebraicGeometry/FunctionField.html#AlgebraicGeometry.Scheme.functionField">functionField</a></span></span></span></div></div><p>For affine <code>Spec R</code> with <code>R</code> a domain, the function field is the
+fraction field of <code>R</code> (Lec 6, Def 14 in the affine case).</p></div></div><div class="decl" id="Lec6.functionField_isFractionRing_of_affineOpen"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L51-L56">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField_isFractionRing_of_affineOpen"><span class="name">Lec6</span>.<span class="name">functionField_isFractionRing_of_affineOpen</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme">AlgebraicGeometry.Scheme</a>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Properties.html#AlgebraicGeometry.IsIntegral">AlgebraicGeometry.IsIntegral</a> <span class="fn">X</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><span class="fn">X</span>.<a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme.Opens">Opens</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/AffineScheme.html#AlgebraicGeometry.IsAffineOpen">AlgebraicGeometry.IsAffineOpen</a> <span class="fn">U</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">↥<span class="fn">↑<span class="fn">U</span></span></span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">↑<span class="fn">(<span class="fn"><span class="fn"><span class="fn">X</span>.<a href="../../.././Mathlib/Geometry/RingedSpace/PresheafedSpace.html#AlgebraicGeometry.PresheafedSpace.presheaf">presheaf</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">(<a href="../../.././Mathlib/Data/Opposite.html#Opposite.op">Opposite.op</a> <span class="fn">U</span>)</span>)</span></span> <span class="fn">↑<span class="fn"><span class="fn">X</span>.<a href="../../.././Mathlib/AlgebraicGeometry/FunctionField.html#AlgebraicGeometry.Scheme.functionField">functionField</a></span></span></span></div></div><p>On an affine open <code>U</code> of an integral scheme <code>X</code>, the function field
+<code>K(X)</code> is the fraction field of <code>Γ(X, U)</code> (Lec 6, Def 14).</p></div></div><div class="decl" id="Lec6.functionField"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L58-L61">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField"><span class="name">Lec6</span>.<span class="name">functionField</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> u_1</div></div><p>The function field of a domain <code>R</code>, defined as its fraction field
+(Lec 6, Def 14, affine viewpoint).</p><details id="instances-for-list-Lec6.functionField" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Lec6.functionField.field"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L63-L65">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField.field"><span class="name">Lec6</span>.<span class="name">functionField</span>.<span class="name">field</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">(<a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField">functionField</a> <span class="fn">R</span>)</span></span></div></div><p>The function field of a domain is a field.</p></div></div><div class="decl" id="Lec6.functionField.algebra"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L67-L69">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField.algebra"><span class="name">Lec6</span>.<span class="name">functionField</span>.<span class="name">algebra</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">R</span> <span class="fn">(<a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField">functionField</a> <span class="fn">R</span>)</span></span></div></div><p>The domain <code>R</code> is an algebra over its function field.</p></div></div><div class="decl" id="Lec6.functionField.isFractionRing"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L71-L73">source</a></div><div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField.isFractionRing"><span class="name">Lec6</span>.<span class="name">functionField</span>.<span class="name">isFractionRing</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">R</span> <span class="fn">(<a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.functionField">functionField</a> <span class="fn">R</span>)</span></span></div></div><p>The function field of a domain is its fraction field.</p></div></div><div class="decl" id="Lec6.degreeDominantMap"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L75-L81">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.degreeDominantMap"><span class="name">Lec6</span>.<span class="name">degreeDominantMap</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#FractionRing">FractionRing</a> <span class="fn">B</span>)</span> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#FractionRing">FractionRing</a> <span class="fn">A</span>)</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././Init/Prelude.html#Nat">ℕ</a></div></div><p>Degree of a dominant map <code>Spec A → Spec B</code> of integral affine schemes,
+defined as the degree of the corresponding extension of function fields
+(Lec 6, Def 15).</p><details id="instances-for-list-Lec6.degreeDominantMap" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="Lec6.lec6_fiber_card_le_degree"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L84-L93">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.lec6_fiber_card_le_degree"><span class="name">Lec6</span>.<span class="name">lec6_fiber_card_le_degree</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">B</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/NoZeroSMulDivisors/Defs.html#NoZeroSMulDivisors">NoZeroSMulDivisors</a> <span class="fn">B</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">𝔭</span> : <span class="fn"><a href="../../.././Mathlib/RingTheory/Ideal/Defs.html#Ideal">Ideal</a> <span class="fn">B</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">𝔭</span>.<a href="../../.././Mathlib/RingTheory/Ideal/Prime.html#Ideal.IsPrime">IsPrime</a></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/SetTheory/Cardinal/Finite.html#Nat.card">Nat.card</a> <span class="fn">↑<a href="../../.././Mathlib/Data/Set/Defs.html#setOf">{</a><span class="fn">q</span> <a href="../../.././Mathlib/Data/Set/Defs.html#setOf">:</a> <span class="fn"><a href="../../.././Mathlib/RingTheory/Ideal/Defs.html#Ideal">Ideal</a> <span class="fn">A</span></span> <a href="../../.././Mathlib/Data/Set/Defs.html#setOf">|</a> <span class="fn"><span class="fn">q</span>.<a href="../../.././Mathlib/RingTheory/Ideal/Prime.html#Ideal.IsPrime">IsPrime</a></span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn"><a href="../../.././Mathlib/RingTheory/Ideal/Maps.html#Ideal.comap">Ideal.comap</a> <span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Defs.html#algebraMap">algebraMap</a> <span class="fn">B</span> <span class="fn">A</span>)</span> <span class="fn">q</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">𝔭</span><a href="../../.././Mathlib/Data/Set/Defs.html#setOf">}</a></span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a>   <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#FractionRing">FractionRing</a> <span class="fn">B</span>)</span> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#FractionRing">FractionRing</a> <span class="fn">A</span>)</span></span></div></div><p>Lec 6, Lem 13: for a finite extension <code>B → A</code> with <code>B</code> normal,
+the number of primes of <code>A</code> lying over a prime <code>𝔭</code> of <code>B</code> is at most the
+degree of the corresponding extension of function fields.</p></div></div><div class="decl" id="Lec6.Lec6IsUnramifiedOver"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L96-L103">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.Lec6IsUnramifiedOver"><span class="name">Lec6</span>.<span class="name">Lec6IsUnramifiedOver</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#FractionRing">FractionRing</a> <span class="fn">B</span>)</span> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#FractionRing">FractionRing</a> <span class="fn">A</span>)</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">𝔭</span> : <span class="fn"><a href="../../.././Mathlib/RingTheory/Ideal/Defs.html#Ideal">Ideal</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A prime <code>𝔭</code> of <code>B</code> is unramified in <code>A</code> if the number of primes of
+<code>A</code> over <code>𝔭</code> equals the degree of the function field extension
+(Lec 6, Def 16).</p><details id="instances-for-list-Lec6.Lec6IsUnramifiedOver" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Lec6.Lec6IsRamifiedOver"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L106-L112">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.Lec6IsRamifiedOver"><span class="name">Lec6</span>.<span class="name">Lec6IsRamifiedOver</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#FractionRing">FractionRing</a> <span class="fn">B</span>)</span> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#FractionRing">FractionRing</a> <span class="fn">A</span>)</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">𝔭</span> : <span class="fn"><a href="../../.././Mathlib/RingTheory/Ideal/Defs.html#Ideal">Ideal</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A prime <code>𝔭</code> of <code>B</code> is ramified in <code>A</code> if it is not unramified
+(Lec 6, Def 16).</p><details id="instances-for-list-Lec6.Lec6IsRamifiedOver" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Lec6.RamificationLocus"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L114-L119">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.RamificationLocus"><span class="name">Lec6</span>.<span class="name">RamificationLocus</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FreeModule/Basic.html#Module.Free">Module.Free</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Data/Set/Defs.html#Set">Set</a> <span class="fn">(<a href="../../.././Mathlib/RingTheory/Spectrum/Prime/Defs.html#PrimeSpectrum">PrimeSpectrum</a> <span class="fn">A</span>)</span></span></div></div><p>The ramification locus in <code>Spec A</code> of a finite free extension <code>A → B</code>,
+defined as the zero locus of the discriminant
+(Lec 6, Prop 7 setting).</p><details id="instances-for-list-Lec6.RamificationLocus" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Lec6.ramificationLocus_isClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L121-L125">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.ramificationLocus_isClosed"><span class="name">Lec6</span>.<span class="name">ramificationLocus_isClosed</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FreeModule/Basic.html#Module.Free">Module.Free</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#IsClosed">IsClosed</a> <span class="fn">(<a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.RamificationLocus">RamificationLocus</a> <span class="fn">A</span> <span class="fn">B</span>)</span></span></div></div><p>Lec 6, Prop 7: the ramification locus is closed in <code>Spec A</code>.</p></div></div><div class="decl" id="Lec6.ramificationLocus_ne_univ_of_discr_ne_zero"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L127-L138">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.ramificationLocus_ne_univ_of_discr_ne_zero"><span class="name">Lec6</span>.<span class="name">ramificationLocus_ne_univ_of_discr_ne_zero</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FreeModule/Basic.html#Module.Free">Module.Free</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hd</span> : <span class="fn"><a href="../../.././Mathlib/RingTheory/Discriminant.html#Algebra.discr">Algebra.discr</a> <span class="fn">A</span> <span class="fn">⇑<span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/FreeModule/Basic.html#Module.Free.chooseBasis">Module.Free.chooseBasis</a> <span class="fn">A</span> <span class="fn">B</span>)</span></span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.RamificationLocus">RamificationLocus</a> <span class="fn">A</span> <span class="fn">B</span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <a href="../../.././Mathlib/Data/Set/Defs.html#Set.univ">Set.univ</a></div></div><p>If the discriminant of <code>A → B</code> is nonzero, then the ramification
+locus is a proper subset of <code>Spec A</code> (Lec 6, Prop 7).</p></div></div><div class="decl" id="Lec6.discr_ne_zero_of_separable_functionField"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L140-L164">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.discr_ne_zero_of_separable_functionField"><span class="name">Lec6</span>.<span class="name">discr_ne_zero_of_separable_functionField</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FreeModule/Basic.html#Module.Free">Module.Free</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/Defs.html#IsLocalization">IsLocalization</a> <span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Basic.html#Algebra.algebraMapSubmonoid">Algebra.algebraMapSubmonoid</a> <span class="fn">B</span> <span class="fn">(<a href="../../.././Mathlib/Algebra/GroupWithZero/NonZeroDivisors.html#nonZeroDivisors">nonZeroDivisors</a> <span class="fn">A</span>)</span>)</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/Discriminant.html#Algebra.discr">Algebra.discr</a> <span class="fn">A</span> <span class="fn">⇑<span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/FreeModule/Basic.html#Module.Free.chooseBasis">Module.Free.chooseBasis</a> <span class="fn">A</span> <span class="fn">B</span>)</span></span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span></div></div><p>Helper for Lec 6, Prop 7: if the function field extension <code>K → L</code>
+is finite separable, the discriminant of <code>A → B</code> is nonzero.</p></div></div><div class="decl" id="Lec6.ramificationLocus_ne_univ_of_separable"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L166-L179">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.ramificationLocus_ne_univ_of_separable"><span class="name">Lec6</span>.<span class="name">ramificationLocus_ne_univ_of_separable</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FreeModule/Basic.html#Module.Free">Module.Free</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/Defs.html#IsLocalization">IsLocalization</a> <span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Basic.html#Algebra.algebraMapSubmonoid">Algebra.algebraMapSubmonoid</a> <span class="fn">B</span> <span class="fn">(<a href="../../.././Mathlib/Algebra/GroupWithZero/NonZeroDivisors.html#nonZeroDivisors">nonZeroDivisors</a> <span class="fn">A</span>)</span>)</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.RamificationLocus">RamificationLocus</a> <span class="fn">A</span> <span class="fn">B</span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <a href="../../.././Mathlib/Data/Set/Defs.html#Set.univ">Set.univ</a></div></div><p>Lec 6, Prop 7: under separability of the function field extension,
+the ramification locus is a proper subset.</p></div></div><div class="decl" id="Lec6.ramificationLocus_properClosed_of_separable"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L181-L194">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.ramificationLocus_properClosed_of_separable"><span class="name">Lec6</span>.<span class="name">ramificationLocus_properClosed_of_separable</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FreeModule/Basic.html#Module.Free">Module.Free</a> <span class="fn">A</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/Defs.html#IsLocalization">IsLocalization</a> <span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Basic.html#Algebra.algebraMapSubmonoid">Algebra.algebraMapSubmonoid</a> <span class="fn">B</span> <span class="fn">(<a href="../../.././Mathlib/Algebra/GroupWithZero/NonZeroDivisors.html#nonZeroDivisors">nonZeroDivisors</a> <span class="fn">A</span>)</span>)</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#IsClosed">IsClosed</a> <span class="fn">(<a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.RamificationLocus">RamificationLocus</a> <span class="fn">A</span> <span class="fn">B</span>)</span></span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn"><a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.RamificationLocus">RamificationLocus</a> <span class="fn">A</span> <span class="fn">B</span></span> <a href="../../.././Init/Core.html#Ne">≠</a> <a href="../../.././Mathlib/Data/Set/Defs.html#Set.univ">Set.univ</a></div></div><p>Lec 6, Prop 7: the ramification locus is a proper closed subset of
+<code>Spec A</code> when the function field extension is separable.</p></div></div><div class="decl" id="Lec6.normalization_is_normal"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L196-L204">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.normalization_is_normal"><span class="name">Lec6</span>.<span class="name">normalization_is_normal</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">R</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">R</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">R</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">R</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">R</span> <span class="fn">L</span>)</span></span></span></div></div><p>The normalization of <code>R</code> in a finite extension of its fraction field
+is integrally closed (Lec 6, normalization).</p></div></div><div class="decl" id="Lec6.normalization_map_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L206-L216">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.normalization_map_injective"><span class="name">Lec6</span>.<span class="name">normalization_map_injective</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">B</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">B</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Init/Data/Function.html#Function.Injective">Function.Injective</a> <span class="fn">⇑<span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Defs.html#algebraMap">algebraMap</a> <span class="fn">B</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">B</span> <span class="fn">L</span>)</span></span>)</span></span></span></div></div><p>The structure map from a domain <code>B</code> into its integral closure in an
+extension <code>L</code> of its fraction field is injective.</p></div></div><div class="decl" id="Lec6.normalization_finite_module"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L218-L228">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.normalization_finite_module"><span class="name">Lec6</span>.<span class="name">normalization_finite_module</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Noetherian/Defs.html#IsNoetherianRing">IsNoetherianRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">B</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">B</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">B</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">B</span> <span class="fn">L</span>)</span></span></span></div></div><p>The integral closure of a noetherian, integrally closed domain <code>B</code>
+in a finite separable extension of its fraction field is a finite
+<code>B</code>-module.</p></div></div><div class="decl" id="Lec6.integral_closure_noetherian"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L230-L240">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.integral_closure_noetherian"><span class="name">Lec6</span>.<span class="name">integral_closure_noetherian</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Noetherian/Defs.html#IsNoetherianRing">IsNoetherianRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">R</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">R</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">R</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">R</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/Noetherian/Defs.html#IsNoetherianRing">IsNoetherianRing</a> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">R</span> <span class="fn">L</span>)</span></span></span></div></div><p>The integral closure of a noetherian, integrally closed domain in a
+finite separable extension of its fraction field is noetherian.</p></div></div><div class="decl" id="Lec6.normalization_finiteType"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L242-L258">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.normalization_finiteType"><span class="name">Lec6</span>.<span class="name">normalization_finiteType</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">B</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/FiniteType.html#Algebra.FiniteType">Algebra.FiniteType</a> <span class="fn">k</span> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Noetherian/Defs.html#IsNoetherianRing">IsNoetherianRing</a> <span class="fn">B</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">B</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">k</span> <span class="fn">B</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">B</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">k</span> <span class="fn">B</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/FiniteType.html#Algebra.FiniteType">Algebra.FiniteType</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">B</span> <span class="fn">L</span>)</span></span></span></div></div><p>The integral closure of a finite-type <code>k</code>-algebra <code>B</code> (assumed nice)
+in a finite separable extension of its fraction field remains a finite-type
+<code>k</code>-algebra.</p></div></div><div class="decl" id="Lec6.yoneda_fully_faithful"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L260-L263">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.yoneda_fully_faithful"><span class="name">Lec6</span>.<span class="name">yoneda_fully_faithful</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{u_2, u_1}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Yoneda.html#CategoryTheory.coyoneda">CategoryTheory.coyoneda</a>.<a href="../../.././Mathlib/CategoryTheory/Functor/FullyFaithful.html#CategoryTheory.Functor.FullyFaithful">FullyFaithful</a></span></div></div><p>Lec 6, Lem 14 (Yoneda): the coyoneda embedding is fully faithful.</p><details id="instances-for-list-Lec6.yoneda_fully_faithful" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Lec6.yoneda_full"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L265-L268">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.yoneda_full"><span class="name">Lec6</span>.<span class="name">yoneda_full</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{u_2, u_1}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Yoneda.html#CategoryTheory.coyoneda">CategoryTheory.coyoneda</a>.<a href="../../.././Mathlib/CategoryTheory/Functor/FullyFaithful.html#CategoryTheory.Functor.Full">Full</a></span></div></div><p>Lec 6, Lem 14 (Yoneda): the coyoneda embedding is full.</p></div></div><div class="decl" id="Lec6.yoneda_faithful"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L270-L273">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.yoneda_faithful"><span class="name">Lec6</span>.<span class="name">yoneda_faithful</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{u_2, u_1}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Yoneda.html#CategoryTheory.coyoneda">CategoryTheory.coyoneda</a>.<a href="../../.././Mathlib/CategoryTheory/Functor/FullyFaithful.html#CategoryTheory.Functor.Faithful">Faithful</a></span></div></div><p>Lec 6, Lem 14 (Yoneda): the coyoneda embedding is faithful.</p></div></div><div class="decl" id="Lec6.yoneda_injective_on_objects"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L275-L281">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.yoneda_injective_on_objects"><span class="name">Lec6</span>.<span class="name">yoneda_injective_on_objects</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">CategoryTheory.Category.{u_2, u_1}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">x </span><span class="fn">y</span> : <span class="fn">C</span><a href="../../.././Mathlib/Data/Opposite.html#Opposite">ᵒᵖ</a>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Yoneda.html#CategoryTheory.coyoneda">CategoryTheory.coyoneda</a>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">x</span></span> <a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso">≅</a> <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Yoneda.html#CategoryTheory.coyoneda">CategoryTheory.coyoneda</a>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">y</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">x</span> <a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso">≅</a> <span class="fn">y</span></div></div><p>Lec 6, Lem 14 (Yoneda): the coyoneda embedding reflects isomorphisms,
+giving an iso <code>x ≅ y</code> from any iso of representable functors.</p><details id="instances-for-list-Lec6.yoneda_injective_on_objects" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Lec6.IsNormalVariety"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L283-L286">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.IsNormalVariety"><span class="name">Lec6</span>.<span class="name">IsNormalVariety</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>An affine variety <code>Spec R</code> is normal if <code>R</code> is an integrally closed
+domain (Lec 6, normalization).</p><details id="instances-for-list-Lec6.IsNormalVariety" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Lec6.isNormalVariety_of_integrallyClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L288-L292">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.isNormalVariety_of_integrallyClosed"><span class="name">Lec6</span>.<span class="name">isNormalVariety_of_integrallyClosed</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.IsNormalVariety">IsNormalVariety</a> <span class="fn">R</span></span></div></div><p>An integrally closed domain defines a normal affine variety.</p></div></div><div class="decl" id="Lec6.normalization_isNormalVariety"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L294-L302">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.normalization_isNormalVariety"><span class="name">Lec6</span>.<span class="name">normalization_isNormalVariety</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">R</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">R</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">L</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">R</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">R</span> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">L</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.IsNormalVariety">IsNormalVariety</a> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">R</span> <span class="fn">L</span>)</span></span></span></div></div><p>The normalization of a domain in a finite extension of its fraction
+field is a normal variety (Lec 6, normalization).</p></div></div><div class="decl" id="Lec6.dedekindDomain_localRing_isRegularLocalRing"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L304-L315">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.dedekindDomain_localRing_isRegularLocalRing"><span class="name">Lec6</span>.<span class="name">dedekindDomain_localRing_isRegularLocalRing</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/DedekindDomain/Basic.html#IsDedekindDomain">IsDedekindDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/LocalRing/Defs.html#IsLocalRing">IsLocalRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <a href="../../.././Init/Prelude.html#Not">¬</a><span class="fn"><a href="../../.././Mathlib/Algebra/Field/IsField.html#IsField">IsField</a> <span class="fn">R</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/RegularLocalRing/Defs.html#IsRegularLocalRing">IsRegularLocalRing</a> <span class="fn">R</span></span></div></div><p>A local Dedekind domain that is not a field is a regular local ring,
+i.e. a DVR (Lec 6, normalization in dimension one).</p></div></div><div class="decl" id="Lec6.dedekindDomain_isIntegrallyClosed"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L317-L320">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.dedekindDomain_isIntegrallyClosed"><span class="name">Lec6</span>.<span class="name">dedekindDomain_isIntegrallyClosed</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/DedekindDomain/Basic.html#IsDedekindDomain">IsDedekindDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">R</span></span></div></div><p>A Dedekind domain is integrally closed.</p></div></div><div class="decl" id="Lec6.dedekindDomain_isNormalVariety"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.lean#L322-L326">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.dedekindDomain_isNormalVariety"><span class="name">Lec6</span>.<span class="name">dedekindDomain_isNormalVariety</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/DedekindDomain/Basic.html#IsDedekindDomain">IsDedekindDomain</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/AlgebraicGeometryI/code/Lec6FunctionFields.html#Lec6.IsNormalVariety">IsNormalVariety</a> <span class="fn">R</span></span></div></div><p>A Dedekind domain defines a normal affine variety.</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

@@ -1,0 +1,233 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.TensorCategories.code.Lemma_1_30_2</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.TensorCategories.code.Lemma_1_30_2";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">TensorCategories</span>.<span class="name">code</span>.<span class="name">Lemma_1_30_2</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html">Mathlib.LinearAlgebra.GeneralLinearGroup.Basic</a></li><li><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html">Mathlib.RingTheory.Finiteness.Defs</a></li><li><a href="../../.././Mathlib/RingTheory/Nilpotent/Defs.html">Mathlib.RingTheory.Nilpotent.Defs</a></li><li><a href="../../.././Mathlib/Algebra/Group/Subgroup/Basic.html">Mathlib.Algebra.Group.Subgroup.Basic</a></li><li><a href="../../.././Mathlib/Algebra/Module/Submodule/Lattice.html">Mathlib.Algebra.Module.Submodule.Lattice</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.TensorCategories.code.Lemma_1_30_2" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#IsUnipotentElem"><span class="name">IsUnipotentElem</span></a></div><div class="nav_link"><a class="break_within" href="#IsUnipotentSubgroup"><span class="name">IsUnipotentSubgroup</span></a></div><div class="nav_link"><a class="break_within" href="#IsReductiveSubgroup"><span class="name">IsReductiveSubgroup</span></a></div><div class="nav_link"><a class="break_within" href="#IsInvariantSubmodule"><span class="name">IsInvariantSubmodule</span></a></div><div class="nav_link"><a class="break_within" href="#IsCompletelyReducibleRep"><span class="name">IsCompletelyReducibleRep</span></a></div><div class="nav_link"><a class="break_within" href="#invariantsSubmodule"><span class="name">invariantsSubmodule</span></a></div><div class="nav_link"><a class="break_within" href="#kolchin_fixed_point"><span class="name">kolchin_fixed_point</span></a></div><div class="nav_link"><a class="break_within" href="#mem_invariantsSubmodule"><span class="name">mem_invariantsSubmodule</span></a></div><div class="nav_link"><a class="break_within" href="#invariants_G_invariant"><span class="name">invariants_G_invariant</span></a></div><div class="nav_link"><a class="break_within" href="#invariant_of_le"><span class="name">invariant_of_le</span></a></div><div class="nav_link"><a class="break_within" href="#trivial_of_invariants_eq_top"><span class="name">trivial_of_invariants_eq_top</span></a></div><div class="nav_link"><a class="break_within" href="#reductive_of_isCompletelyReducible"><span class="name">reductive_of_isCompletelyReducible</span></a></div><div class="nav_link"><a class="break_within" href="#isCompletelyReducible_of_reductive"><span class="name">isCompletelyReducible_of_reductive</span></a></div><div class="nav_link"><a class="break_within" href="#Lemma_1_30_2"><span class="name">Lemma_1_30_2</span></a></div></nav><main>
+<div class="decl" id="IsUnipotentElem"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L13-L15">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsUnipotentElem"><span class="name">IsUnipotentElem</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>An element of <code>GL(V)</code> is unipotent if <code>g - <a href="../../.././Init/Prelude.html#id">id</a></code> is a nilpotent linear endomorphism.</p><details id="instances-for-list-IsUnipotentElem" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="IsUnipotentSubgroup"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L17-L19">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsUnipotentSubgroup"><span class="name">IsUnipotentSubgroup</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A subgroup <code>N ≤ GL(V)</code> is unipotent if every element is unipotent.</p><details id="instances-for-list-IsUnipotentSubgroup" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="IsReductiveSubgroup"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L21-L25">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsReductiveSubgroup"><span class="name">IsReductiveSubgroup</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A subgroup <code>G ≤ GL(V)</code> is reductive (in the sense of Definition 1.30.1) if its only
+unipotent normal subgroup is trivial.</p><details id="instances-for-list-IsReductiveSubgroup" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="IsInvariantSubmodule"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L27-L32">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsInvariantSubmodule"><span class="name">IsInvariantSubmodule</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A submodule <code>W ≤ V</code> is invariant under <code>G ≤ GL(V)</code> if every element of <code>G</code> maps <code>W</code> to
+itself.</p><details id="instances-for-list-IsInvariantSubmodule" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="IsCompletelyReducibleRep"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L34-L40">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsCompletelyReducibleRep"><span class="name">IsCompletelyReducibleRep</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>The defining representation of <code>G ≤ GL(V)</code> on <code>V</code> is completely reducible if every
+<code>G</code>-invariant submodule admits a <code>G</code>-invariant complement.</p><details id="instances-for-list-IsCompletelyReducibleRep" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="invariantsSubmodule"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L42-L47">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#invariantsSubmodule"><span class="name">invariantsSubmodule</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span></div></div><p>The submodule <code>V^N</code> of vectors fixed by every element of <code>N ≤ GL(V)</code>.</p><details id="instances-for-list-invariantsSubmodule" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="kolchin_fixed_point"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L49-L59">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#kolchin_fixed_point"><span class="name">kolchin_fixed_point</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hN</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsUnipotentSubgroup">IsUnipotentSubgroup</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hW</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsInvariantSubmodule">IsInvariantSubmodule</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">N</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hWne</span> : <span class="fn">W</span> <a href="../../.././Init/Core.html#Ne">≠</a> <a href="../../.././Mathlib/Order/Notation.html#Bot.bot">⊥</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ <span class="fn">w</span> ∈ <span class="fn">W</span>, <span class="fn">w</span> <a href="../../.././Init/Core.html#Ne">≠</a> <span class="fn">0</span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn">∀ <span class="fn">g</span> ∈ <span class="fn">N</span>, <span class="fn"><span class="fn">↑<span class="fn">g</span></span> <span class="fn">w</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">w</span></span></span></div></div><p>Kolchin's fixed point theorem: a unipotent subgroup <code>N ≤ GL(V)</code> acting on a finite-dimensional
+nonzero invariant subspace <code>W</code> has a nonzero common fixed vector.</p></div></div><div class="decl" id="mem_invariantsSubmodule"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L61-L64">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#mem_invariantsSubmodule"><span class="name">mem_invariantsSubmodule</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">w</span> : <span class="fn">V</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">w</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#invariantsSubmodule">invariantsSubmodule</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">N</span></span> <a href="../../.././Init/Core.html#Iff">↔</a> <span class="fn">∀ <span class="fn">g</span> ∈ <span class="fn">N</span>, <span class="fn"><span class="fn">↑<span class="fn">g</span></span> <span class="fn">w</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">w</span></span></div></div><p>Membership in the invariants submodule unfolds to the pointwise fixedness condition.</p></div></div><div class="decl" id="invariants_G_invariant"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L66-L82">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#invariants_G_invariant"><span class="name">invariants_G_invariant</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G </span><span class="fn">N</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">_hNG</span> : <span class="fn">N</span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hNormal</span> : <span class="fn"><span class="fn">N</span>.<a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup.Normal">Normal</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsInvariantSubmodule">IsInvariantSubmodule</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">G</span> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#invariantsSubmodule">invariantsSubmodule</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">N</span>)</span></span></div></div><p>For a normal subgroup <code>N ⊴ G</code>, the submodule of <code>N</code>-invariants is itself <code>G</code>-invariant.</p></div></div><div class="decl" id="invariant_of_le"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L84-L91">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#invariant_of_le"><span class="name">invariant_of_le</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G </span><span class="fn">N</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hNG</span> : <span class="fn">N</span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hW</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsInvariantSubmodule">IsInvariantSubmodule</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">G</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsInvariantSubmodule">IsInvariantSubmodule</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">N</span> <span class="fn">W</span></span></div></div><p>A subgroup of an invariance group still leaves the subspace invariant.</p></div></div><div class="decl" id="trivial_of_invariants_eq_top"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L93-L105">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#trivial_of_invariants_eq_top"><span class="name">trivial_of_invariants_eq_top</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#invariantsSubmodule">invariantsSubmodule</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">N</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">N</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <a href="../../.././Mathlib/Order/Notation.html#Bot.bot">⊥</a></div></div><p>If every vector of <code>V</code> is <code>N</code>-invariant, then <code>N</code> is trivial.</p></div></div><div class="decl" id="reductive_of_isCompletelyReducible"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L107-L137">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#reductive_of_isCompletelyReducible"><span class="name">reductive_of_isCompletelyReducible</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hcr</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsCompletelyReducibleRep">IsCompletelyReducibleRep</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsReductiveSubgroup">IsReductiveSubgroup</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">G</span></span></div></div><p>Easy direction of Lemma 1.30.2. If <code>G</code> acts completely reducibly on <code>V</code>, then <code>G</code> is
+reductive: any unipotent normal subgroup has a <code>G</code>-invariant complement to its fixed subspace,
+but the complement must be trivial by Kolchin's theorem.</p></div></div><div class="decl sorried" id="isCompletelyReducible_of_reductive"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L139-L146">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#isCompletelyReducible_of_reductive"><span class="name">isCompletelyReducible_of_reductive</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/CharZero/Defs.html#CharZero">CharZero</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hG</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsReductiveSubgroup">IsReductiveSubgroup</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsCompletelyReducibleRep">IsCompletelyReducibleRep</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">G</span></span></div></div><p>Hard direction of Lemma 1.30.2 (in characteristic zero). A reductive subgroup of <code>GL(V)</code>
+acts completely reducibly on <code>V</code>.</p></div></div><div class="decl" id="Lemma_1_30_2"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/Lemma_1_30_2.lean#L148-L155">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#Lemma_1_30_2"><span class="name">Lemma_1_30_2</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">V</span> : <a href="../../.././foundational_types.html">Type</a> v)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/CharZero/Defs.html#CharZero">CharZero</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Subgroup/Defs.html#Subgroup">Subgroup</a> <span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/GeneralLinearGroup/Basic.html#LinearMap.GeneralLinearGroup">LinearMap.GeneralLinearGroup</a> <span class="fn">k</span> <span class="fn">V</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsCompletelyReducibleRep">IsCompletelyReducibleRep</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">G</span></span> <a href="../../.././Init/Core.html#Iff">↔</a> <span class="fn"><a href="../../.././Atlas/TensorCategories/code/Lemma_1_30_2.html#IsReductiveSubgroup">IsReductiveSubgroup</a> <span class="fn">k</span> <span class="fn">V</span> <span class="fn">G</span></span></div></div><p>Lemma 1.30.2 (EGNO). For a subgroup <code>G ≤ GL(V)</code> in characteristic zero acting on a
+finite-dimensional vector space, complete reducibility is equivalent to reductivity.</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

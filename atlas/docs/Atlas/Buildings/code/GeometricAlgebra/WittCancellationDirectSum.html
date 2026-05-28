@@ -1,0 +1,350 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../../.././style.css"></link><link rel="icon" href="../../../.././favicon.svg"></link><link rel="mask-icon" href="../../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.Buildings.code.GeometricAlgebra.WittCancellationDirectSum</title><script defer="true" src="../../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../../.././";</script><script>const MODULE_NAME="Atlas.Buildings.code.GeometricAlgebra.WittCancellationDirectSum";</script><script type="module" src="../../../.././jump-src.js"></script><script type="module" src="../../../.././search.js"></script><script type="module" src="../../../.././expand-nav.js"></script><script type="module" src="../../../.././how-about.js"></script><script type="module" src="../../../.././instances.js"></script><script type="module" src="../../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">Buildings</span>.<span class="name">code</span>.<span class="name">GeometricAlgebra</span>.<span class="name">WittCancellationDirectSum</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../../.././Init.html">Init</a></li><li><a href="../../../.././Mathlib/LinearAlgebra/Projection.html">Mathlib.LinearAlgebra.Projection</a></li><li><a href="../../../.././Mathlib/Order/RelClasses.html">Mathlib.Order.RelClasses</a></li><li><a href="../../../.././Mathlib/LinearAlgebra/BilinearForm/Basic.html">Mathlib.LinearAlgebra.BilinearForm.Basic</a></li><li><a href="../../../.././Mathlib/LinearAlgebra/BilinearForm/Orthogonal.html">Mathlib.LinearAlgebra.BilinearForm.Orthogonal</a></li><li><a href="../../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html">Mathlib.LinearAlgebra.Dimension.Finrank</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.Buildings.code.GeometricAlgebra.WittCancellationDirectSum" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#Garrett.IsFormedSpaceIso"><span class="name">Garrett</span>.<span class="name">IsFormedSpaceIso</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.orthogonalSumForm"><span class="name">Garrett</span>.<span class="name">orthogonalSumForm</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.orthogonalSumForm_apply"><span class="name">Garrett</span>.<span class="name">orthogonalSumForm_apply</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.IsNondegenerate'"><span class="name">Garrett</span>.<span class="name">IsNondegenerate'</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.IsSymmetric'"><span class="name">Garrett</span>.<span class="name">IsSymmetric'</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.witt_extension_identity_on_U"><span class="name">Garrett</span>.<span class="name">witt_extension_identity_on_U</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.first_component_zero"><span class="name">Garrett</span>.<span class="name">first_component_zero</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.extractEquiv"><span class="name">Garrett</span>.<span class="name">extractEquiv</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.extractEquiv_isometry"><span class="name">Garrett</span>.<span class="name">extractEquiv_isometry</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.witt_cancellation_direct_sum"><span class="name">Garrett</span>.<span class="name">witt_cancellation_direct_sum</span></a></div></nav><main>
+<div class="decl" id="Garrett.IsFormedSpaceIso"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L14-L21">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso"><span class="name">Garrett</span>.<span class="name">IsFormedSpaceIso</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V₁</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V₂</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V₂</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B₁</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V₁</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B₂</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V₂</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">φ</span> : <span class="fn">V₁</span> <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">V₂</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././foundational_types.html">Prop</a></div></div><p><code>φ : V₁ ≃ₗ V₂</code> is an isometry of formed spaces with respect to <code>B₁</code> and <code>B₂</code>
+if it preserves the bilinear forms.</p><details id="instances-for-list-Garrett.IsFormedSpaceIso" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Garrett.orthogonalSumForm"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L23-L33">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm"><span class="name">Garrett</span>.<span class="name">orthogonalSumForm</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B_U</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_W</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> (<span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">W</span>)</span></div></div><p>Orthogonal direct sum of two bilinear forms <code>B_U</code> on <code>U</code> and <code>B_W</code> on <code>W</code>.</p><details id="instances-for-list-Garrett.orthogonalSumForm" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Garrett.orthogonalSumForm_apply"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L35-L42">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm_apply"><span class="name">Garrett</span>.<span class="name">orthogonalSumForm_apply</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Data/NeZero.html#NeZero">NeZero</a> <span class="fn">2</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B_U</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_W</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">W</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_W</span>)</span> <span class="fn">x</span>)</span> <span class="fn">y</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">(<span class="fn">B_U</span> <span class="fn"><span class="fn">x</span>.1</span>)</span> <span class="fn"><span class="fn">y</span>.1</span></span> <a href="../../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn"><span class="fn">(<span class="fn">B_W</span> <span class="fn"><span class="fn">x</span>.2</span>)</span> <span class="fn"><span class="fn">y</span>.2</span></span></div></div><p>Evaluation formula for the orthogonal direct sum bilinear form.</p></div></div><div class="decl" id="Garrett.IsNondegenerate'"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L44-L49">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'"><span class="name">Garrett</span>.<span class="name">IsNondegenerate'</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././foundational_types.html">Prop</a></div></div><p>A bilinear form is nondegenerate (in the orthogonal-complement sense) if
+the orthogonal complement of the whole space is trivial.</p><details id="instances-for-list-Garrett.IsNondegenerate'" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Garrett.IsSymmetric'"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L51-L55">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsSymmetric'"><span class="name">Garrett</span>.<span class="name">IsSymmetric'</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././foundational_types.html">Prop</a></div></div><p>A bilinear form is symmetric: <code>B x y = B y x</code> for all <code>x, y</code>.</p><details id="instances-for-list-Garrett.IsSymmetric'" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="Garrett.witt_extension_identity_on_U"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L58-L77">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.witt_extension_identity_on_U"><span class="name">Garrett</span>.<span class="name">witt_extension_identity_on_U</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Data/NeZero.html#NeZero">NeZero</a> <span class="fn">2</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B_U</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_V</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_W</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU_symm</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsSymmetric'">IsSymmetric'</a> <span class="fn">B_U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hV_symm</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsSymmetric'">IsSymmetric'</a> <span class="fn">B_V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hW_symm</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsSymmetric'">IsSymmetric'</a> <span class="fn">B_W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hV_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hW_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">φ</span> : (<span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">V</span>) <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">W</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hφ</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso">IsFormedSpaceIso</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_V</span>)</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_W</span>)</span> <span class="fn">φ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">Ψ</span> : (<span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">V</span>) <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">W</span>),
+  <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso">IsFormedSpaceIso</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_V</span>)</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_W</span>)</span> <span class="fn">Ψ</span></span> <a href="../../../.././Init/Prelude.html#And">∧</a> <span class="fn">∀ (<span class="fn">u</span> : <span class="fn">U</span>), <span class="fn"><span class="fn">Ψ</span> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">u</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">u</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a></span></span></div></div><p>Witt extension lemma: any isometry <code>φ : U ⊕ V ≃ U ⊕ W</code> can be modified to
+an isometry <code>Ψ</code> of the same formed spaces that fixes the <code>U</code>-summand pointwise.</p></div></div><div class="decl" id="Garrett.first_component_zero"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L80-L104">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.first_component_zero"><span class="name">Garrett</span>.<span class="name">first_component_zero</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Data/NeZero.html#NeZero">NeZero</a> <span class="fn">2</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B_U</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_V</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_W</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ψ</span> : (<span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">V</span>) <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">W</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hΨ</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso">IsFormedSpaceIso</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_V</span>)</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_W</span>)</span> <span class="fn">Ψ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hΨ_U</span> : <span class="fn">∀ (<span class="fn">u</span> : <span class="fn">U</span>), <span class="fn"><span class="fn">Ψ</span> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">u</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">u</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">V</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">Ψ</span> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">v</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a>)</span>.1</span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span></div></div><p>If <code>Ψ</code> is an isometry of <code>U ⊕ V</code> and <code>U ⊕ W</code> fixing the <code>U</code>-summand, then the
+first component of <code>Ψ (0, v)</code> vanishes for every <code>v ∈ V</code>.</p></div></div><div class="decl" id="Garrett.extractEquiv"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L107-L149">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.extractEquiv"><span class="name">Garrett</span>.<span class="name">extractEquiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Data/NeZero.html#NeZero">NeZero</a> <span class="fn">2</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B_U</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_V</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_W</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ψ</span> : (<span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">V</span>) <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">W</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hΨ</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso">IsFormedSpaceIso</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_V</span>)</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_W</span>)</span> <span class="fn">Ψ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hΨ_U</span> : <span class="fn">∀ (<span class="fn">u</span> : <span class="fn">U</span>), <span class="fn"><span class="fn">Ψ</span> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">u</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">u</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">V</span> <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">W</span></div></div><p>Extract a linear equivalence <code>V ≃ₗ W</code> from a <code>U</code>-fixing isometry <code>Ψ</code> of
+<code>U ⊕ V</code> and <code>U ⊕ W</code>, by sending <code>v</code> to the second component of <code>Ψ (0, v)</code>.</p><details id="instances-for-list-Garrett.extractEquiv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Garrett.extractEquiv_isometry"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L151-L174">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.extractEquiv_isometry"><span class="name">Garrett</span>.<span class="name">extractEquiv_isometry</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Data/NeZero.html#NeZero">NeZero</a> <span class="fn">2</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B_U</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_V</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_W</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Ψ</span> : (<span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">V</span>) <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">W</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hΨ</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso">IsFormedSpaceIso</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_V</span>)</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_W</span>)</span> <span class="fn">Ψ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hΨ_U</span> : <span class="fn">∀ (<span class="fn">u</span> : <span class="fn">U</span>), <span class="fn"><span class="fn">Ψ</span> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">u</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <a href="../../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">u</span><a href="../../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">0</span><a href="../../../.././Init/Prelude.html#Prod.mk">)</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso">IsFormedSpaceIso</a> <span class="fn">B_V</span> <span class="fn">B_W</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.extractEquiv">extractEquiv</a> <span class="fn">B_U</span> <span class="fn">B_V</span> <span class="fn">B_W</span> <span class="fn">hU_nd</span> <span class="fn">Ψ</span> <span class="fn">hΨ</span> <span class="fn">hΨ_U</span>)</span></span></div></div><p>The extracted linear equivalence <code>V ≃ₗ W</code> is an isometry of the formed
+spaces <code>(V, B_V)</code> and <code>(W, B_W)</code>.</p></div></div><div class="decl" id="Garrett.witt_cancellation_direct_sum"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.lean#L177-L200">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.witt_cancellation_direct_sum"><span class="name">Garrett</span>.<span class="name">witt_cancellation_direct_sum</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Init/Data/NeZero.html#NeZero">NeZero</a> <span class="fn">2</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">U</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <a href="../../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">W</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B_U</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_V</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">B_W</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU_symm</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsSymmetric'">IsSymmetric'</a> <span class="fn">B_U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hV_symm</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsSymmetric'">IsSymmetric'</a> <span class="fn">B_V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hW_symm</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsSymmetric'">IsSymmetric'</a> <span class="fn">B_W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hU_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hV_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hW_nd</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsNondegenerate'">IsNondegenerate'</a> <span class="fn">B_W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">φ</span> : (<span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">V</span>) <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">U</span> <a href="../../../.././Init/Prelude.html#Prod">×</a> <span class="fn">W</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hφ</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso">IsFormedSpaceIso</a> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_V</span>)</span> <span class="fn">(<a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.orthogonalSumForm">orthogonalSumForm</a> <span class="fn">B_U</span> <span class="fn">B_W</span>)</span> <span class="fn">φ</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">ψ</span> : <span class="fn">V</span> <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">W</span>), <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/WittCancellationDirectSum.html#Garrett.IsFormedSpaceIso">IsFormedSpaceIso</a> <span class="fn">B_V</span> <span class="fn">B_W</span> <span class="fn">ψ</span></span></span></div></div><p>Witt cancellation for orthogonal direct sums: if <code>U ⊕ V</code> is isometric to
+<code>U ⊕ W</code> (with the same nondegenerate <code>U</code>-summand), then <code>V</code> is isometric to <code>W</code>.</p></div></div></main>
+<nav class="nav"><iframe src="../../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

@@ -1,0 +1,167 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../../.././style.css"></link><link rel="icon" href="../../../.././favicon.svg"></link><link rel="mask-icon" href="../../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.Buildings.code.GeometricAlgebra.ExtendingIsometries</title><script defer="true" src="../../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../../.././";</script><script>const MODULE_NAME="Atlas.Buildings.code.GeometricAlgebra.ExtendingIsometries";</script><script type="module" src="../../../.././jump-src.js"></script><script type="module" src="../../../.././search.js"></script><script type="module" src="../../../.././expand-nav.js"></script><script type="module" src="../../../.././how-about.js"></script><script type="module" src="../../../.././instances.js"></script><script type="module" src="../../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">Buildings</span>.<span class="name">code</span>.<span class="name">GeometricAlgebra</span>.<span class="name">ExtendingIsometries</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../../.././Init.html">Init</a></li><li><a href="../../../.././Mathlib/LinearAlgebra/Projection.html">Mathlib.LinearAlgebra.Projection</a></li><li><a href="../../../.././Mathlib/Order/RelClasses.html">Mathlib.Order.RelClasses</a></li><li><a href="../../../.././Mathlib/LinearAlgebra/BilinearForm/Basic.html">Mathlib.LinearAlgebra.BilinearForm.Basic</a></li><li><a href="../../../.././Mathlib/LinearAlgebra/BilinearForm/Orthogonal.html">Mathlib.LinearAlgebra.BilinearForm.Orthogonal</a></li><li><a href="../../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html">Mathlib.LinearAlgebra.Dimension.Finrank</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.Buildings.code.GeometricAlgebra.ExtendingIsometries" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#Garrett.IsTotallyIsotropic"><span class="name">Garrett</span>.<span class="name">IsTotallyIsotropic</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.IsSubspaceIsometry"><span class="name">Garrett</span>.<span class="name">IsSubspaceIsometry</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.WittExtensionProp"><span class="name">Garrett</span>.<span class="name">WittExtensionProp</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.WittCancellationProp"><span class="name">Garrett</span>.<span class="name">WittCancellationProp</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.LinearEquiv.ofEq_coe"><span class="name">Garrett</span>.<span class="name">LinearEquiv</span>.<span class="name">ofEq_coe</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.orth_cross_zero"><span class="name">Garrett</span>.<span class="name">orth_cross_zero</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.bilinForm_decomp"><span class="name">Garrett</span>.<span class="name">bilinForm_decomp</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.WittCancellation"><span class="name">Garrett</span>.<span class="name">WittCancellation</span></a></div><div class="nav_link"><a class="break_within" href="#Garrett.WittExtension"><span class="name">Garrett</span>.<span class="name">WittExtension</span></a></div></nav><main>
+<div class="decl" id="Garrett.IsTotallyIsotropic"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L12-L15">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.IsTotallyIsotropic"><span class="name">Garrett</span>.<span class="name">IsTotallyIsotropic</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././foundational_types.html">Prop</a></div></div><p>A submodule <code>U</code> is totally isotropic for <code>B</code> when <code>B</code> vanishes on all pairs of
+elements of <code>U</code>.</p><details id="instances-for-list-Garrett.IsTotallyIsotropic" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Garrett.IsSubspaceIsometry"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L17-L21">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.IsSubspaceIsometry"><span class="name">Garrett</span>.<span class="name">IsSubspaceIsometry</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U </span><span class="fn">W</span> : <span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">φ</span> : <span class="fn">↥<span class="fn">U</span></span> <a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">≃ₗ[</a><span class="fn">k</span><a href="../../../.././Mathlib/Algebra/Module/Equiv/Defs.html#LinearEquiv">]</a> <span class="fn">↥<span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././foundational_types.html">Prop</a></div></div><p>A linear isomorphism <code>φ : U ≃ₗ W</code> between two submodules is a subspace
+isometry for <code>B</code> when it preserves the values of <code>B</code>.</p><details id="instances-for-list-Garrett.IsSubspaceIsometry" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Garrett.WittExtensionProp"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L24-L32">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.WittExtensionProp"><span class="name">Garrett</span>.<span class="name">WittExtensionProp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././foundational_types.html">Prop</a></div></div><p>Witt extension property for <code>B</code>: when <code>B</code> is nondegenerate, every subspace
+isometry between two submodules extends to a global isometry of <code>V</code>.</p><details id="instances-for-list-Garrett.WittExtensionProp" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Garrett.WittCancellationProp"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L34-L45">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.WittCancellationProp"><span class="name">Garrett</span>.<span class="name">WittCancellationProp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../../.././foundational_types.html">Prop</a></div></div><p>Witt cancellation property for <code>B</code>: when <code>B</code> is nondegenerate, every
+isometry between two submodules induces an isometry between their orthogonal
+complements.</p><details id="instances-for-list-Garrett.WittCancellationProp" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="Garrett.LinearEquiv.ofEq_coe"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L48-L53">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.LinearEquiv.ofEq_coe"><span class="name">Garrett</span>.<span class="name">LinearEquiv</span>.<span class="name">ofEq_coe</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#Semiring">Semiring</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommMonoid">AddCommMonoid</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">p </span><span class="fn">q</span> : <span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">R</span> <span class="fn">M</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn">p</span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">q</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x</span> : <span class="fn">↥<span class="fn">p</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">↑<span class="fn">(<span class="fn">(<a href="../../../.././Mathlib/Algebra/Module/Submodule/Equiv.html#LinearEquiv.ofEq">LinearEquiv.ofEq</a> <span class="fn">p</span> <span class="fn">q</span> <span class="fn">h</span>)</span> <span class="fn">x</span>)</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">↑<span class="fn">x</span></span></div></div><p>The underlying value of <code><a href="../../../.././Mathlib/Algebra/Module/Submodule/Equiv.html#LinearEquiv.ofEq">LinearEquiv.ofEq</a> p q h x</code> agrees with that of <code>x</code>
+since both submodules are equal.</p></div></div><div class="decl" id="Garrett.orth_cross_zero"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L55-L64">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.orth_cross_zero"><span class="name">Garrett</span>.<span class="name">orth_cross_zero</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB_ref</span> : <span class="fn">∀ (<span class="fn">x </span><span class="fn">y</span> : <span class="fn">V</span>), <span class="fn"><span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">x</span>)</span> <span class="fn">y</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span> → <span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">y</span>)</span> <span class="fn">x</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">u</span> : <span class="fn">↥<span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">↥<span class="fn">(<span class="fn"><span class="fn">B</span>.<a href="../../../.././Mathlib/LinearAlgebra/BilinearForm/Orthogonal.html#LinearMap.BilinForm.orthogonal">orthogonal</a></span> <span class="fn">U</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">↑<span class="fn">u</span></span>)</span> <span class="fn">↑<span class="fn">v</span></span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span> <a href="../../../.././Init/Prelude.html#And">∧</a> <span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">↑<span class="fn">v</span></span>)</span> <span class="fn">↑<span class="fn">u</span></span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span></div></div><p>For a reflexive bilinear form <code>B</code>, any pair <code>(u, v)</code> with <code>u ∈ U</code> and
+<code>v</code> in the orthogonal complement of <code>U</code> satisfies <code>B u v = 0</code> and <code>B v u = 0</code>.</p></div></div><div class="decl" id="Garrett.bilinForm_decomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L66-L77">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.bilinForm_decomp"><span class="name">Garrett</span>.<span class="name">bilinForm_decomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB_ref</span> : <span class="fn">∀ (<span class="fn">x </span><span class="fn">y</span> : <span class="fn">V</span>), <span class="fn"><span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">x</span>)</span> <span class="fn">y</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span> → <span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">y</span>)</span> <span class="fn">x</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">U</span> : <span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">a </span><span class="fn">b</span> : <span class="fn">↥<span class="fn">U</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c </span><span class="fn">d</span> : <span class="fn">↥<span class="fn">(<span class="fn"><span class="fn">B</span>.<a href="../../../.././Mathlib/LinearAlgebra/BilinearForm/Orthogonal.html#LinearMap.BilinForm.orthogonal">orthogonal</a></span> <span class="fn">U</span>)</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn">B</span> (<span class="fn">↑<span class="fn">a</span></span> <a href="../../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn">↑<span class="fn">c</span></span>))</span> (<span class="fn">↑<span class="fn">b</span></span> <a href="../../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn">↑<span class="fn">d</span></span>)</span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">↑<span class="fn">a</span></span>)</span> <span class="fn">↑<span class="fn">b</span></span></span> <a href="../../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">↑<span class="fn">c</span></span>)</span> <span class="fn">↑<span class="fn">d</span></span></span></div></div><p>For a reflexive form <code>B</code>, the bilinear values on sums <code>a + c</code> and <code>b + d</code>
+(with <code>a, b ∈ U</code> and <code>c, d</code> in the orthogonal complement of <code>U</code>) split into
+<code>B a b + B c d</code> because the cross terms vanish.</p></div></div><div class="decl" id="Garrett.WittCancellation"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L80-L128">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.WittCancellation"><span class="name">Garrett</span>.<span class="name">WittCancellation</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hWE</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.WittExtensionProp">WittExtensionProp</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.WittCancellationProp">WittCancellationProp</a> <span class="fn">B</span></span></div></div><p>Witt extension implies Witt cancellation: if every subspace isometry of <code>B</code>
+extends globally, then any isometry between two submodules also induces an
+isometry between their orthogonal complements.</p></div></div><div class="decl" id="Garrett.WittExtension"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.lean#L131-L181">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.WittExtension"><span class="name">Garrett</span>.<span class="name">WittExtension</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">V</span> : <a href="../../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">V</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">k</span> <span class="fn">V</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">B</span> : <span class="fn"><a href="../../../.././Mathlib/LinearAlgebra/BilinearMap.html#LinearMap.BilinForm">LinearMap.BilinForm</a> <span class="fn">k</span> <span class="fn">V</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hWC</span> : <span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.WittCancellationProp">WittCancellationProp</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB_ref</span> : <span class="fn">∀ (<span class="fn">x </span><span class="fn">y</span> : <span class="fn">V</span>), <span class="fn"><span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">x</span>)</span> <span class="fn">y</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span> → <span class="fn"><span class="fn">(<span class="fn">B</span> <span class="fn">y</span>)</span> <span class="fn">x</span></span> <a href="../../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hCompl</span> : <span class="fn">∀ (<span class="fn">S</span> : <span class="fn"><a href="../../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">V</span></span>), <span class="fn"><a href="../../../.././Mathlib/Order/Disjoint.html#IsCompl">IsCompl</a> <span class="fn">S</span> <span class="fn">(<span class="fn"><span class="fn">B</span>.<a href="../../../.././Mathlib/LinearAlgebra/BilinearForm/Orthogonal.html#LinearMap.BilinForm.orthogonal">orthogonal</a></span> <span class="fn">S</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../../.././Atlas/Buildings/code/GeometricAlgebra/ExtendingIsometries.html#Garrett.WittExtensionProp">WittExtensionProp</a> <span class="fn">B</span></span></div></div><p>Witt cancellation implies Witt extension, given that <code>B</code> is reflexive and
+each subspace is complemented by its orthogonal complement: any subspace
+isometry of <code>B</code> then extends to a global isometry.</p></div></div></main>
+<nav class="nav"><iframe src="../../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

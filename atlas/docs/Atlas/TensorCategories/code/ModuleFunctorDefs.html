@@ -1,0 +1,754 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.TensorCategories.code.ModuleFunctorDefs</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.TensorCategories.code.ModuleFunctorDefs";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">TensorCategories</span>.<span class="name">code</span>.<span class="name">ModuleFunctorDefs</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html">Atlas.TensorCategories.code.ExactModuleCategory</a></li><li><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Preserves.html">Mathlib.CategoryTheory.Preadditive.Projective.Preserves</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.TensorCategories.code.ModuleFunctorDefs" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.Definition_2_1_2_ModuleFunctor"><span class="name">CategoryTheory</span>.<span class="name">Definition_2_1_2_ModuleFunctor</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorHom"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorHom.compat_assoc"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">compat_assoc</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorHom.ext"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">ext</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorHom.ext_iff"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">ext_iff</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorHom.id"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">id</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorHom.id_natTrans"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">id_natTrans</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorHom.comp"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">comp</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorHom.comp_natTrans"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">comp_natTrans</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleFunctorCategory"><span class="name">CategoryTheory</span>.<span class="name">moduleFunctorCategory</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ModuleFunctorIsExact"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorIsExact</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleCat_action_split_mono_of_exact"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_action_split_mono_of_exact</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleAction_reflects_mono"><span class="name">CategoryTheory</span>.<span class="name">moduleAction_reflects_mono</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleAction_reflects_epi"><span class="name">CategoryTheory</span>.<span class="name">moduleAction_reflects_epi</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleCat_action_reflects_mono"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_action_reflects_mono</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleCat_splitEpi_of_projective"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_splitEpi_of_projective</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleCat_action_reflects_epi"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_action_reflects_epi</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleCat_action_preserves_epi"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_action_preserves_epi</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleFunctorExactBetweenExact"><span class="name">CategoryTheory</span>.<span class="name">moduleFunctorExactBetweenExact</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.FiniteMultitensorBase"><span class="name">CategoryTheory</span>.<span class="name">FiniteMultitensorBase</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.ExactModuleInfra"><span class="name">CategoryTheory</span>.<span class="name">ExactModuleInfra</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.proposition_2_7_8"><span class="name">CategoryTheory</span>.<span class="name">proposition_2_7_8</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.compositionBifunctorBiexact_postcomp"><span class="name">CategoryTheory</span>.<span class="name">compositionBifunctorBiexact_postcomp</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.compositionBifunctorBiexact_precomp"><span class="name">CategoryTheory</span>.<span class="name">compositionBifunctorBiexact_precomp</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.exactModFunctor_hasLeftAdjoint"><span class="name">CategoryTheory</span>.<span class="name">exactModFunctor_hasLeftAdjoint</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.exactModFunctor_hasRightAdjoint"><span class="name">CategoryTheory</span>.<span class="name">exactModFunctor_hasRightAdjoint</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.exactModFunctor_rightAdjoint_preservesEpi"><span class="name">CategoryTheory</span>.<span class="name">exactModFunctor_rightAdjoint_preservesEpi</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.exactFunctorBetweenExactModCat_adjointData"><span class="name">CategoryTheory</span>.<span class="name">exactFunctorBetweenExactModCat_adjointData</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleFunctorHasAdjoints"><span class="name">CategoryTheory</span>.<span class="name">moduleFunctorHasAdjoints</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.moduleFunctorPreservesProjectives"><span class="name">CategoryTheory</span>.<span class="name">moduleFunctorPreservesProjectives</span></a></div><div class="nav_link"><a class="break_within" href="#CategoryTheory.corollary_2_13_4"><span class="name">CategoryTheory</span>.<span class="name">corollary_2_13_4</span></a></div></nav><main>
+<div class="decl" id="CategoryTheory.Definition_2_1_2_ModuleFunctor"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L12-L18">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.Definition_2_1_2_ModuleFunctor"><span class="name">CategoryTheory</span>.<span class="name">Definition_2_1_2_ModuleFunctor</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max (max (max (max u₁ u₂) u₃) v₂) v₃)</div></div><p>Alias for <code>ModuleFunctor</code> matching the textbook numbering of Definition 2.1.2 (the
+notion of a module functor between left <code>C</code>-module categories) in EGNO.</p><details id="instances-for-list-CategoryTheory.Definition_2_1_2_ModuleFunctor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="CategoryTheory.ModuleFunctorHom"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L20-L31">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u₂ v₃)</div></div><p>A morphism of module functors between two left <code>C</code>-module categories: a natural
+transformation <code>F.toFunctor ⟶ G.toFunctor</code> whose components are compatible with the module
+structure isomorphisms of <code>F</code> and <code>G</code>.</p><ul class="structure_fields" id="CategoryTheory.ModuleFunctorHom.mk"><li id="CategoryTheory.ModuleFunctorHom.natTrans" class="structure_field"><div class="structure_field_info">natTrans : <span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn"><span class="fn">G</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span></div></li><li id="CategoryTheory.ModuleFunctorHom.compat" class="structure_field"><div class="structure_field_info">compat<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <span class="fn">M</span>)</span></span>
+ : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actObj">LeftModuleCategoryStruct.actObj</a> <span class="fn">X</span> <span class="fn">A</span>)</span>)</span> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.strIso">strIso</a></span> <span class="fn">X</span> <span class="fn">A</span>)</span>.<a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso.hom">hom</a></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.strIso">strIso</a></span> <span class="fn">X</span> <span class="fn">A</span>)</span>.<a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso.hom">hom</a></span> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actWhiskerLeft">LeftModuleCategoryStruct.actWhiskerLeft</a> <span class="fn">X</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">A</span>)</span>)</span></span></div></li></ul><details id="instances-for-list-CategoryTheory.ModuleFunctorHom" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="CategoryTheory.ModuleFunctorHom.compat_assoc"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L33-L33">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.compat_assoc"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">compat_assoc</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">self</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">F</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">C</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <span class="fn">M</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">Z</span> : <span class="fn">N</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actObj">LeftModuleCategoryStruct.actObj</a> <span class="fn">X</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">A</span>)</span></span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">Z</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actObj">LeftModuleCategoryStruct.actObj</a> <span class="fn">X</span> <span class="fn">A</span>)</span>)</span>
+    <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">G</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.strIso">strIso</a></span> <span class="fn">X</span> <span class="fn">A</span>)</span>.<a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso.hom">hom</a></span> <span class="fn">h</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.strIso">strIso</a></span> <span class="fn">X</span> <span class="fn">A</span>)</span>.<a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso.hom">hom</a></span>
+    <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actWhiskerLeft">LeftModuleCategoryStruct.actWhiskerLeft</a> <span class="fn">X</span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">self</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">A</span>)</span>)</span> <span class="fn">h</span>)</span></span></div></div></div></div><div class="decl" id="CategoryTheory.ModuleFunctorHom.ext"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L41-L46">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.ext"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">ext</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">η </span><span class="fn">θ</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">F</span> <span class="fn">G</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">θ</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">η</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">θ</span></div></div><p>Two module functor homs are equal whenever their underlying natural transformations are
+equal.</p></div></div><div class="decl" id="CategoryTheory.ModuleFunctorHom.ext_iff"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L43-L43">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.ext_iff"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">ext_iff</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F </span><span class="fn">G</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">η </span><span class="fn">θ</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">F</span> <span class="fn">G</span></span>}</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn">η</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">θ</span> <a href="../../.././Init/Core.html#Iff">↔</a> <span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">θ</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span></div></div></div></div><div class="decl" id="CategoryTheory.ModuleFunctorHom.id"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L48-L52">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.id"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">id</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">F</span> <span class="fn">F</span></span></div></div><p>The identity module functor hom on <code>F</code>, given by the identity natural transformation.</p><details id="instances-for-list-CategoryTheory.ModuleFunctorHom.id" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="CategoryTheory.ModuleFunctorHom.id_natTrans"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L49-L49">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.id_natTrans"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">id_natTrans</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.id">ModuleFunctorHom.id</a> <span class="fn">F</span>)</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.id">CategoryStruct.id</a> <span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span></span></div></div></div></div><div class="decl" id="CategoryTheory.ModuleFunctorHom.comp"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L54-L69">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.comp"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">comp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F </span><span class="fn">G </span><span class="fn">H</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">η</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">F</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">θ</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">G</span> <span class="fn">H</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">F</span> <span class="fn">H</span></span></div></div><p>Composition of module functor homs: the underlying natural transformations are composed
+and the compatibility square is verified.</p><details id="instances-for-list-CategoryTheory.ModuleFunctorHom.comp" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="CategoryTheory.ModuleFunctorHom.comp_natTrans"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L56-L56">source</a></div><div class="attributes">@[simp]</div>
+<div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.comp_natTrans"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorHom</span>.<span class="name">comp_natTrans</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F </span><span class="fn">G </span><span class="fn">H</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">η</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">F</span> <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">θ</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom">ModuleFunctorHom</a> <span class="fn">G</span> <span class="fn">H</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.comp">comp</a></span> <span class="fn">θ</span>)</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span> <span class="fn"><span class="fn">θ</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span></span></div></div></div></div><div class="decl" id="CategoryTheory.moduleFunctorCategory"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L73-L91">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleFunctorCategory"><span class="name">CategoryTheory</span>.<span class="name">moduleFunctorCategory</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{max u₂ v₃, max (max (max (max u₃ u₂) u₁) v₃) v₂}</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span>)</span></span></div></div><p>The category structure on <code>ModuleFunctor C M N</code> with module functor homs as morphisms,
+identity and composition as defined by <code><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.id">ModuleFunctorHom.id</a></code> and <code><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.comp">ModuleFunctorHom.comp</a></code>.</p></div></div><div class="decl" id="CategoryTheory.ModuleFunctorIsExact"><div class="class"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L93-L101">source</a></div><div class="decl_header"><span class="decl_kind">class</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorIsExact"><span class="name">CategoryTheory</span>.<span class="name">ModuleFunctorIsExact</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A module functor is exact if its underlying functor preserves both monomorphisms and
+epimorphisms.</p><ul class="structure_fields" id="CategoryTheory.ModuleFunctorIsExact.mk"><li id="CategoryTheory.ModuleFunctorIsExact.preserves_mono" class="structure_field"><div class="structure_field_info">preserves_mono<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+ : <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">f</span></span> → <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.map">map</a></span> <span class="fn">f</span>)</span></span></span></div></li><li id="CategoryTheory.ModuleFunctorIsExact.preserves_epi" class="structure_field"><div class="structure_field_info">preserves_epi<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+ : <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">f</span></span> → <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.map">map</a></span> <span class="fn">f</span>)</span></span></span></div></li></ul><details class="instances"><summary>Instances</summary><ul id="instances-list-CategoryTheory.ModuleFunctorIsExact" class="instances-list"></ul></details></div></div><div class="decl" id="CategoryTheory.moduleCat_action_split_mono_of_exact"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L103-L113">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleCat_action_split_mono_of_exact"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_action_split_mono_of_exact</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Abelian/Basic.html#CategoryTheory.Abelian">Abelian</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory.ActionRightExact">ExactModuleCategory.ActionRightExact</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">r</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actObj">LeftModuleCategoryStruct.actObj</a> <span class="fn">P</span> <span class="fn">B</span></span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actObj">LeftModuleCategoryStruct.actObj</a> <span class="fn">P</span> <span class="fn">A</span></span>),
+  <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actWhiskerLeft">LeftModuleCategoryStruct.actWhiskerLeft</a> <span class="fn">P</span> <span class="fn">f</span>)</span> <span class="fn">r</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>     <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.id">CategoryStruct.id</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actObj">LeftModuleCategoryStruct.actObj</a> <span class="fn">P</span> <span class="fn">A</span>)</span></span></span></div></div><p>In an exact module category, whiskering a monomorphism <code>f</code> by a projective object <code>P</code>
+yields a split monomorphism, witnessed by an explicit retraction.</p></div></div><div class="decl" id="CategoryTheory.moduleAction_reflects_mono"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L115-L131">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleAction_reflects_mono"><span class="name">CategoryTheory</span>.<span class="name">moduleAction_reflects_mono</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">N</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn">∀ (<span class="fn">P</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">P</span></span> → <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actWhiskerLeft">LeftModuleCategoryStruct.actWhiskerLeft</a> <span class="fn">P</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">g</span></span></div></div><p>A morphism <code>g</code> in a module category is a monomorphism if whiskering by every projective
+object of <code>C</code> (in particular the projective unit) yields a monomorphism.</p></div></div><div class="decl" id="CategoryTheory.moduleAction_reflects_epi"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L133-L146">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleAction_reflects_epi"><span class="name">CategoryTheory</span>.<span class="name">moduleAction_reflects_epi</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">N</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn">∀ (<span class="fn">P</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">P</span></span> → <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actWhiskerLeft">LeftModuleCategoryStruct.actWhiskerLeft</a> <span class="fn">P</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">g</span></span></div></div><p>A morphism <code>g</code> in a module category is an epimorphism if whiskering by every projective
+object of <code>C</code> (in particular the projective unit) yields an epimorphism.</p></div></div><div class="decl" id="CategoryTheory.moduleCat_action_reflects_mono"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L148-L156">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleCat_action_reflects_mono"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_action_reflects_mono</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">N</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn">∀ (<span class="fn">P</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">P</span></span> → <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actWhiskerLeft">LeftModuleCategoryStruct.actWhiskerLeft</a> <span class="fn">P</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">g</span></span></div></div><p>Alias of <code><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleAction_reflects_mono">moduleAction_reflects_mono</a></code>: the action of <code>C</code> reflects monomorphisms when
+the unit is projective.</p></div></div><div class="decl" id="CategoryTheory.moduleCat_splitEpi_of_projective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L158-L167">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleCat_splitEpi_of_projective"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_splitEpi_of_projective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">e</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">e</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hB</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">B</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">s</span> : <span class="fn">B</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">A</span>), <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryStruct.comp</a> <span class="fn">s</span> <span class="fn">e</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.id">CategoryStruct.id</a> <span class="fn">B</span></span></span></div></div><p>An epimorphism <code>e : A ⟶ B</code> with projective target <code>B</code> splits, i.e. admits a section
+<code>s : B ⟶ A</code> with <code>s ≫ e = 𝟙 B</code>.</p></div></div><div class="decl" id="CategoryTheory.moduleCat_action_reflects_epi"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L169-L177">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleCat_action_reflects_epi"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_action_reflects_epi</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">N</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn">∀ (<span class="fn">P</span> : <span class="fn">C</span>), <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">P</span></span> → <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actWhiskerLeft">LeftModuleCategoryStruct.actWhiskerLeft</a> <span class="fn">P</span> <span class="fn">g</span>)</span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">g</span></span></div></div><p>Alias of <code><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleAction_reflects_epi">moduleAction_reflects_epi</a></code>: the action of <code>C</code> reflects epimorphisms when
+the unit is projective.</p></div></div><div class="decl" id="CategoryTheory.moduleCat_action_preserves_epi"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L179-L187">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleCat_action_preserves_epi"><span class="name">CategoryTheory</span>.<span class="name">moduleCat_action_preserves_epi</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Abelian/Basic.html#CategoryTheory.Abelian">Abelian</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory.BiexactAction">ExactModuleCategory.BiexactAction</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">P</span> : <span class="fn">C</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn">M</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn">A</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">B</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">(<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategoryStruct.actWhiskerLeft">LeftModuleCategoryStruct.actWhiskerLeft</a> <span class="fn">P</span> <span class="fn">f</span>)</span></span></div></div><p>In an exact module category with biexact action, left whiskering by any object <code>P : C</code>
+preserves epimorphisms.</p></div></div><div class="decl" id="CategoryTheory.moduleFunctorExactBetweenExact"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L189-L280">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleFunctorExactBetweenExact"><span class="name">CategoryTheory</span>.<span class="name">moduleFunctorExactBetweenExact</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Abelian/Basic.html#CategoryTheory.Abelian">Abelian</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory.ActionRightExact">ExactModuleCategory.ActionRightExact</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory.BiexactAction">ExactModuleCategory.BiexactAction</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorIsExact">ModuleFunctorIsExact</a> <span class="fn">F</span></span></div></div><p>Any module functor <code>F</code> whose source is an exact module category (with biexact action and
+projective unit) is automatically exact, i.e. preserves monomorphisms and epimorphisms.</p></div></div><div class="decl" id="CategoryTheory.FiniteMultitensorBase"><div class="class"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L282-L285">source</a></div><div class="decl_header"><span class="decl_kind">class</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.FiniteMultitensorBase"><span class="name">CategoryTheory</span>.<span class="name">FiniteMultitensorBase</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>Baseline assumption for a finite multitensor category: the monoidal unit <code>𝟙_ C</code> is
+projective.</p><ul class="structure_fields" id="CategoryTheory.FiniteMultitensorBase.mk"><li id="CategoryTheory.FiniteMultitensorBase.unit_projective" class="structure_field"><div class="structure_field_info">unit_projective : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span></span></div></li></ul><details class="instances"><summary>Instances</summary><ul id="instances-list-CategoryTheory.FiniteMultitensorBase" class="instances-list"></ul></details></div></div><div class="decl" id="CategoryTheory.ExactModuleInfra"><div class="class"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L287-L293">source</a></div><div class="decl_header"><span class="decl_kind">class</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ExactModuleInfra"><span class="name">CategoryTheory</span>.<span class="name">ExactModuleInfra</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> (max u₂ v₂)</div></div><p>Bundle of the standard exactness infrastructure on a module category <code>M</code>: abelianness,
+right-exactness of the action, and biexactness of the action bifunctor.</p><ul class="structure_fields" id="CategoryTheory.ExactModuleInfra.mk"><li id="CategoryTheory.ExactModuleInfra.abelian" class="structure_field"><div class="structure_field_info">abelian : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Abelian/Basic.html#CategoryTheory.Abelian">Abelian</a> <span class="fn">M</span></span></div></li><li id="CategoryTheory.ExactModuleInfra.actionRightExact" class="structure_field"><div class="structure_field_info">actionRightExact : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory.ActionRightExact">ExactModuleCategory.ActionRightExact</a> <span class="fn">C</span> <span class="fn">M</span></span></div></li><li id="CategoryTheory.ExactModuleInfra.biexact" class="structure_field"><div class="structure_field_info">biexact : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory.BiexactAction">ExactModuleCategory.BiexactAction</a> <span class="fn">C</span> <span class="fn">M</span></span></div></li></ul><details class="instances"><summary>Instances</summary><ul id="instances-list-CategoryTheory.ExactModuleInfra" class="instances-list"></ul></details></div></div><div class="decl" id="CategoryTheory.proposition_2_7_8"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L299-L309">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.proposition_2_7_8"><span class="name">CategoryTheory</span>.<span class="name">proposition_2_7_8</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.FiniteMultitensorBase">FiniteMultitensorBase</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ExactModuleInfra">ExactModuleInfra</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.LeftModuleCategory">LeftModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorIsExact">ModuleFunctorIsExact</a> <span class="fn">F</span></span></div></div><p>Proposition 2.7.8 (EGNO): Any module functor from an exact module category over a finite
+multitensor category to another module category is exact.</p></div></div><div class="decl" id="CategoryTheory.compositionBifunctorBiexact_postcomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L311-L331">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.compositionBifunctorBiexact_postcomp"><span class="name">CategoryTheory</span>.<span class="name">compositionBifunctorBiexact_postcomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Basic.html#CategoryTheory.Projective">Projective</a> <span class="fn">(<a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategoryStruct.tensorUnit">MonoidalCategoryStruct.tensorUnit</a> <span class="fn">C</span>)</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M₁</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M₂</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">M₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Abelian/Basic.html#CategoryTheory.Abelian">Abelian</a> <span class="fn">M₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory.ActionRightExact">ExactModuleCategory.ActionRightExact</a> <span class="fn">C</span> <span class="fn">M₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory.BiexactAction">ExactModuleCategory.BiexactAction</a> <span class="fn">C</span> <span class="fn">M₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M₃</span> : <a href="../../.././foundational_types.html">Type</a> u₄}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₄, u₄}</a> <span class="fn">M₃</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M₃</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M₂</span> <span class="fn">M₃</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F₁ </span><span class="fn">F₂</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M₁</span> <span class="fn">M₂</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">η</span> : <span class="fn">F₁</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">F₂</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">(∀ (<span class="fn">A</span> : <span class="fn">M₁</span>), <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">A</span>)</span></span> → <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.map">map</a></span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">A</span>)</span>)</span></span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>   <span class="fn">∀ (<span class="fn">A</span> : <span class="fn">M₁</span>), <span class="fn"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">A</span>)</span></span> → <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">G</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.map">map</a></span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">A</span>)</span>)</span></span></span></span></div></div><p>Post-composition leg of the biexactness of the composition bifunctor: post-composing a
+module natural transformation <code>η : F₁ ⟶ F₂</code> with an exact module functor <code>G</code> preserves both
+monomorphism and epimorphism components.</p></div></div><div class="decl" id="CategoryTheory.compositionBifunctorBiexact_precomp"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L333-L349">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.compositionBifunctorBiexact_precomp"><span class="name">CategoryTheory</span>.<span class="name">compositionBifunctorBiexact_precomp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M₁</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M₁</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M₂</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">M₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Abelian/Basic.html#CategoryTheory.Abelian">Abelian</a> <span class="fn">M₂</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M₃</span> : <a href="../../.././foundational_types.html">Type</a> u₄}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₄, u₄}</a> <span class="fn">M₃</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M₃</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M₁</span> <span class="fn">M₂</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G₁ </span><span class="fn">G₂</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M₂</span> <span class="fn">M₃</span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">η</span> : <span class="fn">G₁</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">G₂</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">(<span class="fn">(∀ (<span class="fn">B</span> : <span class="fn">M₂</span>), <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">B</span>)</span></span>)</span> → <span class="fn">∀ (<span class="fn">A</span> : <span class="fn">M₁</span>), <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Mono">Mono</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">A</span>)</span>)</span></span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>   <span class="fn">(<span class="fn">(∀ (<span class="fn">B</span> : <span class="fn">M₂</span>), <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">B</span>)</span></span>)</span> → <span class="fn">∀ (<span class="fn">A</span> : <span class="fn">M₁</span>), <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Epi">Epi</a> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">η</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.ModuleFunctorHom.natTrans">natTrans</a></span>.<a href="../../.././Mathlib/CategoryTheory/NatTrans.html#CategoryTheory.NatTrans.app">app</a></span> <span class="fn">(<span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">A</span>)</span>)</span></span></span>)</span></div></div><p>Pre-composition leg of the biexactness of the composition bifunctor: pre-composing a
+module natural transformation <code>η : G₁ ⟶ G₂</code> with a module functor <code>F : M₁ ⥤ M₂</code> transports
+the mono/epi component conditions appropriately.</p></div></div><div class="decl sorried" id="CategoryTheory.exactModFunctor_hasLeftAdjoint"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L351-L359">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.exactModFunctor_hasLeftAdjoint"><span class="name">CategoryTheory</span>.<span class="name">exactModFunctor_hasLeftAdjoint</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">L</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">Functor</a> <span class="fn">N</span> <span class="fn">M</span></span>) (<span class="fn">x</span> : <span class="fn">L</span> <a href="../../.././Mathlib/CategoryTheory/Adjunction/Basic.html#CategoryTheory.Adjunction">⊣</a> <span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>), <a href="../../.././Init/Prelude.html#True">True</a></span></div></div><p>Every module functor between exact module categories admits a left adjoint at the level
+of underlying functors.</p></div></div><div class="decl sorried" id="CategoryTheory.exactModFunctor_hasRightAdjoint"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L361-L369">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.exactModFunctor_hasRightAdjoint"><span class="name">CategoryTheory</span>.<span class="name">exactModFunctor_hasRightAdjoint</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">R</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">Functor</a> <span class="fn">N</span> <span class="fn">M</span></span>) (<span class="fn">x</span> : <span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span> <a href="../../.././Mathlib/CategoryTheory/Adjunction/Basic.html#CategoryTheory.Adjunction">⊣</a> <span class="fn">R</span>), <a href="../../.././Init/Prelude.html#True">True</a></span></div></div><p>Every module functor between exact module categories admits a right adjoint at the level
+of underlying functors.</p></div></div><div class="decl sorried" id="CategoryTheory.exactModFunctor_rightAdjoint_preservesEpi"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L371-L380">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.exactModFunctor_rightAdjoint_preservesEpi"><span class="name">CategoryTheory</span>.<span class="name">exactModFunctor_rightAdjoint_preservesEpi</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">R</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">Functor</a> <span class="fn">N</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∀ (<span class="fn">x</span> : <span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span> <a href="../../.././Mathlib/CategoryTheory/Adjunction/Basic.html#CategoryTheory.Adjunction">⊣</a> <span class="fn">R</span>), <span class="fn"><span class="fn">R</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/EpiMono.html#CategoryTheory.Functor.PreservesEpimorphisms">PreservesEpimorphisms</a></span></span></div></div><p>The right adjoint to a module functor between exact module categories preserves
+epimorphisms.</p></div></div><div class="decl" id="CategoryTheory.exactFunctorBetweenExactModCat_adjointData"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L382-L393">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.exactFunctorBetweenExactModCat_adjointData"><span class="name">CategoryTheory</span>.<span class="name">exactFunctorBetweenExactModCat_adjointData</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">L</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">Functor</a> <span class="fn">N</span> <span class="fn">M</span></span>) (<span class="fn">R</span> : <span class="fn"><a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor">Functor</a> <span class="fn">N</span> <span class="fn">M</span></span>) (<span class="fn">x</span> : <span class="fn">L</span> <a href="../../.././Mathlib/CategoryTheory/Adjunction/Basic.html#CategoryTheory.Adjunction">⊣</a> <span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>) (<span class="fn">x</span> : <span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span> <a href="../../.././Mathlib/CategoryTheory/Adjunction/Basic.html#CategoryTheory.Adjunction">⊣</a> <span class="fn">R</span>), <span class="fn"><span class="fn">R</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/EpiMono.html#CategoryTheory.Functor.PreservesEpimorphisms">PreservesEpimorphisms</a></span></span></div></div><p>A module functor between exact module categories has both a left and a right adjoint,
+and the right adjoint preserves epimorphisms.</p></div></div><div class="decl" id="CategoryTheory.moduleFunctorHasAdjoints"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L395-L406">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleFunctorHasAdjoints"><span class="name">CategoryTheory</span>.<span class="name">moduleFunctorHasAdjoints</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Adjunction/Basic.html#CategoryTheory.Functor.IsLeftAdjoint">IsLeftAdjoint</a></span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Adjunction/Basic.html#CategoryTheory.Functor.IsRightAdjoint">IsRightAdjoint</a></span></div></div><p>The underlying functor of a module functor between exact module categories is both a
+left and a right adjoint.</p></div></div><div class="decl" id="CategoryTheory.moduleFunctorPreservesProjectives"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L408-L421">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.moduleFunctorPreservesProjectives"><span class="name">CategoryTheory</span>.<span class="name">moduleFunctorPreservesProjectives</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Preserves.html#CategoryTheory.Functor.PreservesProjectiveObjects">PreservesProjectiveObjects</a></span></div></div><p>A module functor between exact module categories preserves projective objects, derived
+from the existence of an epi-preserving right adjoint.</p></div></div><div class="decl" id="CategoryTheory.corollary_2_13_4"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/TensorCategories/code/ModuleFunctorDefs.lean#L423-L431">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/TensorCategories/code/ModuleFunctorDefs.html#CategoryTheory.corollary_2_13_4"><span class="name">CategoryTheory</span>.<span class="name">corollary_2_13_4</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C</span> : <a href="../../.././foundational_types.html">Type</a> u₁}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₁, u₁}</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Monoidal/Category.html#CategoryTheory.MonoidalCategory">MonoidalCategory</a> <span class="fn">C</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u₂}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₂, u₂}</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">N</span> : <a href="../../.././foundational_types.html">Type</a> u₃}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.Category">Category.{v₃, u₃}</a> <span class="fn">N</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/TensorCategories/code/ExactModuleCategory.html#CategoryTheory.ExactModuleCategory">ExactModuleCategory</a> <span class="fn">C</span> <span class="fn">N</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">F</span> : <span class="fn"><a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor">ModuleFunctor</a> <span class="fn">C</span> <span class="fn">M</span> <span class="fn">N</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">F</span>.<a href="../../.././Atlas/TensorCategories/code/ModuleCategory.html#CategoryTheory.ModuleFunctor.toFunctor">toFunctor</a></span>.<a href="../../.././Mathlib/CategoryTheory/Preadditive/Projective/Preserves.html#CategoryTheory.Functor.PreservesProjectiveObjects">PreservesProjectiveObjects</a></span></div></div><p>Corollary 2.13.4 (EGNO): A module functor between exact module categories preserves
+projective objects.</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

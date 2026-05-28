@@ -1,0 +1,1166 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.LieGroups.code.SmoothVectorsProps</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.LieGroups.code.SmoothVectorsProps";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">LieGroups</span>.<span class="name">code</span>.<span class="name">SmoothVectorsProps</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Atlas/LieGroups/code/KFinite.html">Atlas.LieGroups.code.KFinite</a></li><li><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html">Atlas.LieGroups.code.SmoothVectors</a></li><li><a href="../../.././Mathlib/Algebra/Lie/Basic.html">Mathlib.Algebra.Lie.Basic</a></li><li><a href="../../.././Mathlib/Geometry/Manifold/BumpFunction.html">Mathlib.Geometry.Manifold.BumpFunction</a></li><li><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html">Mathlib.MeasureTheory.Integral.Bochner.Basic</a></li><li><a href="../../.././Mathlib/MeasureTheory/Measure/Haar/Basic.html">Mathlib.MeasureTheory.Measure.Haar.Basic</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.LieGroups.code.SmoothVectorsProps" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.smoothVector_zero"><span class="name">ContinuousRep</span>.<span class="name">smoothVector_zero</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.smoothVector_add"><span class="name">ContinuousRep</span>.<span class="name">smoothVector_add</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.smoothVector_smul"><span class="name">ContinuousRep</span>.<span class="name">smoothVector_smul</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.contDiffWithinAt_deriv_parametric"><span class="name">ContinuousRep</span>.<span class="name">contDiffWithinAt_deriv_parametric</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.derivedRep_maps_smooth"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_maps_smooth</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.contDiff_orbitMap_comp_lieExp"><span class="name">ContinuousRep</span>.<span class="name">contDiff_orbitMap_comp_lieExp</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.derivedRep_eq_fderiv"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_eq_fderiv</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.derivedRep_linear"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_linear</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.derivedRep_bracket"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_bracket</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.repOfFunction"><span class="name">ContinuousRep</span>.<span class="name">repOfFunction</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.IsSmoothCompactlySupportedFunction"><span class="name">ContinuousRep</span>.<span class="name">IsSmoothCompactlySupportedFunction</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.gardingSubspace"><span class="name">ContinuousRep</span>.<span class="name">gardingSubspace</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.contDiffOn_convolution_chartCoord"><span class="name">ContinuousRep</span>.<span class="name">contDiffOn_convolution_chartCoord</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.contMDiff_convolution_integral"><span class="name">ContinuousRep</span>.<span class="name">contMDiff_convolution_integral</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.continuous_lieGroup_convolution"><span class="name">ContinuousRep</span>.<span class="name">continuous_lieGroup_convolution</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.contDiffOn_lieGroup_convolution_chartCoord"><span class="name">ContinuousRep</span>.<span class="name">contDiffOn_lieGroup_convolution_chartCoord</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.orbitMap_gardingVector_eq"><span class="name">ContinuousRep</span>.<span class="name">orbitMap_gardingVector_eq</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.gardingVector_isSmooth"><span class="name">ContinuousRep</span>.<span class="name">gardingVector_isSmooth</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.exists_smooth_dirac_sequence"><span class="name">ContinuousRep</span>.<span class="name">exists_smooth_dirac_sequence</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.smooth_dirac_convolution_tendsto"><span class="name">ContinuousRep</span>.<span class="name">smooth_dirac_convolution_tendsto</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.exists_gardingVector_tendsto"><span class="name">ContinuousRep</span>.<span class="name">exists_gardingVector_tendsto</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.gardingSubspace_dense"><span class="name">ContinuousRep</span>.<span class="name">gardingSubspace_dense</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.leftInvariantDeriv"><span class="name">ContinuousRep</span>.<span class="name">leftInvariantDeriv</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.derivedRep_gardingVector"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_gardingVector</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.contMDiff_orbitMap_of_finiteDimensional"><span class="name">ContinuousRep</span>.<span class="name">contMDiff_orbitMap_of_finiteDimensional</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.lieGroup_finiteDimOrbit_smooth_orbitMap"><span class="name">ContinuousRep</span>.<span class="name">lieGroup_finiteDimOrbit_smooth_orbitMap</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.finDimRep_orbitMap_smooth"><span class="name">ContinuousRep</span>.<span class="name">finDimRep_orbitMap_smooth</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.orbitMap_smooth_of_finiteDim_span"><span class="name">ContinuousRep</span>.<span class="name">orbitMap_smooth_of_finiteDim_span</span></a></div><div class="nav_link"><a class="break_within" href="#ContinuousRep.kfinite_le_smooth"><span class="name">ContinuousRep</span>.<span class="name">kfinite_le_smooth</span></a></div></nav><main>
+<div class="decl" id="ContinuousRep.smoothVector_zero"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L36-L38">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.smoothVector_zero"><span class="name">ContinuousRep</span>.<span class="name">smoothVector_zero</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">0</span></span></div></div></div></div><div class="decl" id="ContinuousRep.smoothVector_add"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L41-L44">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.smoothVector_add"><span class="name">ContinuousRep</span>.<span class="name">smoothVector_add</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">v </span><span class="fn">w</span> : <span class="fn">F</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hv</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">v</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hw</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">w</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> (<span class="fn">v</span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn">w</span>)</span></div></div></div></div><div class="decl" id="ContinuousRep.smoothVector_smul"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L47-L50">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.smoothVector_smul"><span class="name">ContinuousRep</span>.<span class="name">smoothVector_smul</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">c</span> : <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">v</span> : <span class="fn">F</span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hv</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">v</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> (<span class="fn">c</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">v</span>)</span></div></div></div></div><div class="decl" id="ContinuousRep.contDiffWithinAt_deriv_parametric"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L64-L75">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.contDiffWithinAt_deriv_parametric"><span class="name">ContinuousRep</span>.<span class="name">contDiffWithinAt_deriv_parametric</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E₀</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F₀</span> : <a href="../../.././foundational_types.html">Type</a> u_6}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E₀</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E₀</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F₀</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F₀</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">f</span> : <span class="fn"><span class="fn">E₀</span> → <span class="fn"><a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> → <span class="fn">F₀</span></span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">s</span> : <span class="fn"><a href="../../.././Mathlib/Data/Set/Defs.html#Set">Set</a> <span class="fn">E₀</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">e₀</span> : <span class="fn">E₀</span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">y₀</span> : <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Mathlib/Analysis/Calculus/ContDiff/Defs.html#ContDiffWithinAt">ContDiffWithinAt</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a>)</span> <span class="fn">(<a href="../../.././Init/Data/Function.html#Function.uncurry">Function.uncurry</a> <span class="fn">f</span>)</span> (<span class="fn">s</span> <a href="../../.././Mathlib/Data/SProd.html#SProd.sprod">×ˢ</a> <a href="../../.././Mathlib/Data/Set/Defs.html#Set.univ">Set.univ</a>) <a href="../../.././Init/Prelude.html#Prod.mk">(</a><span class="fn">e₀</span><a href="../../.././Init/Prelude.html#Prod.mk">,</a> <span class="fn">y₀</span><a href="../../.././Init/Prelude.html#Prod.mk">)</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">he₀</span> : <span class="fn">e₀</span> <a href="../../.././Init/Prelude.html#Membership.mem">∈</a> <span class="fn">s</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Analysis/Calculus/ContDiff/Defs.html#ContDiffWithinAt">ContDiffWithinAt</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a>)</span> <span class="fn">(fun (<span class="fn">e</span> : <span class="fn">E₀</span>) =&gt; <span class="fn"><a href="../../.././Mathlib/Analysis/Calculus/Deriv/Basic.html#deriv">deriv</a> <span class="fn">(<span class="fn">f</span> <span class="fn">e</span>)</span> <span class="fn">y₀</span></span>)</span> <span class="fn">s</span> <span class="fn">e₀</span></span></div></div></div></div><div class="decl" id="ContinuousRep.derivedRep_maps_smooth"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L78-L163">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.derivedRep_maps_smooth"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_maps_smooth</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">lieExp</span> : <span class="fn"><span class="fn">E</span> → <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span>)</span> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">lieExp</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp1</span> : <span class="fn"><span class="fn">lieExp</span> <span class="fn">0</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">1</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">E</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hv</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">v</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <span class="fn">b</span> <span class="fn">v</span>)</span></span></div></div></div></div><div class="decl" id="ContinuousRep.contDiff_orbitMap_comp_lieExp"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L166-L175">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.contDiff_orbitMap_comp_lieExp"><span class="name">ContinuousRep</span>.<span class="name">contDiff_orbitMap_comp_lieExp</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">lieExp</span> : <span class="fn"><span class="fn">E</span> → <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span>)</span> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">lieExp</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hv</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">v</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Analysis/Calculus/ContDiff/Defs.html#ContDiff">ContDiff</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a></span> <span class="fn">fun (<span class="fn">x</span> : <span class="fn">E</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep.toMonoidHom">toMonoidHom</a></span> <span class="fn">(<span class="fn">lieExp</span> <span class="fn">x</span>)</span>)</span> <span class="fn">v</span></span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.derivedRep_eq_fderiv"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L178-L196">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.derivedRep_eq_fderiv"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_eq_fderiv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">lieExp</span> : <span class="fn"><span class="fn">E</span> → <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span>)</span> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">lieExp</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">b</span> : <span class="fn">E</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hv</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">v</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <span class="fn">b</span> <span class="fn">v</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">(<a href="../../.././Mathlib/Analysis/Calculus/FDeriv/Defs.html#fderiv">fderiv</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(fun (<span class="fn">x</span> : <span class="fn">E</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep.toMonoidHom">toMonoidHom</a></span> <span class="fn">(<span class="fn">lieExp</span> <span class="fn">x</span>)</span>)</span> <span class="fn">v</span></span>)</span> <span class="fn">0</span>)</span> <span class="fn">b</span></span></div></div></div></div><div class="decl" id="ContinuousRep.derivedRep_linear"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L200-L216">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.derivedRep_linear"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_linear</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">lieExp</span> : <span class="fn"><span class="fn">E</span> → <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span>)</span> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">lieExp</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">_hExp1</span> : <span class="fn"><span class="fn">lieExp</span> <span class="fn">0</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">1</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hv</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">v</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/LinearMap/Defs.html#IsLinearMap">IsLinearMap</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">fun (<span class="fn">b</span> : <span class="fn">E</span>) =&gt; <span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <span class="fn">b</span> <span class="fn">v</span></span></span></span></div></div></div></div><div class="decl sorried" id="ContinuousRep.derivedRep_bracket"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L221-L242">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.derivedRep_bracket"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_bracket</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Lie/Basic.html#LieRing">LieRing</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Lie/Basic.html#LieAlgebra">LieAlgebra</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">lieExp</span> : <span class="fn"><span class="fn">E</span> → <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span>)</span> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">lieExp</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp1</span> : <span class="fn"><span class="fn">lieExp</span> <span class="fn">0</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">1</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExpAdd</span> : <span class="fn">∀ (<span class="fn">X</span> : <span class="fn">E</span>) (<span class="fn">t </span><span class="fn">s</span> : <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a>), <span class="fn"><span class="fn">lieExp</span> ((<span class="fn">t</span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn">s</span>) <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">X</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">lieExp</span> (<span class="fn">t</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">X</span>)</span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn">lieExp</span> (<span class="fn">s</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">X</span>)</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h_bracket</span> :
+  <span class="fn">∀ (<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">E</span>),
+    <a href="../../.././Mathlib/Data/Bracket.html#Bracket.bracket">⁅</a><span class="fn">X</span><a href="../../.././Mathlib/Data/Bracket.html#Bracket.bracket">,</a> <span class="fn">Y</span><a href="../../.././Mathlib/Data/Bracket.html#Bracket.bracket">⁆</a> <a href="../../.././Init/Prelude.html#Eq">=</a>       <span class="fn"><span class="fn">(<a href="../../.././Mathlib/Analysis/Calculus/FDeriv/Defs.html#fderiv">fderiv</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a>
+          <span class="fn">(fun (<span class="fn">s</span> : <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a>) =&gt;
+            <span class="fn"><span class="fn">(<a href="../../.././Mathlib/Analysis/Calculus/FDeriv/Defs.html#fderiv">fderiv</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a>
+                <span class="fn">(fun (<span class="fn">t</span> : <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a>) =&gt;
+                  <span class="fn"><span class="fn">↑<span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/ExtChartAt.html#extChartAt">extChartAt</a> <span class="fn">I</span> <span class="fn">1</span>)</span></span> (<span class="fn"><span class="fn">lieExp</span> (<span class="fn">t</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">X</span>)</span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn"><span class="fn">lieExp</span> (<span class="fn">s</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">Y</span>)</span> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">(<span class="fn">lieExp</span> (<span class="fn">t</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">X</span>))</span><a href="../../.././Init/Prelude.html#Inv.inv">⁻¹</a> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">(<span class="fn">lieExp</span> (<span class="fn">s</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn">Y</span>))</span><a href="../../.././Init/Prelude.html#Inv.inv">⁻¹</a>)</span>)</span>
+                <span class="fn">0</span>)</span>
+              <span class="fn">1</span></span>)</span>
+          <span class="fn">0</span>)</span>
+        <span class="fn">1</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X </span><span class="fn">Y</span> : <span class="fn">E</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hv</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">v</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <a href="../../.././Mathlib/Data/Bracket.html#Bracket.bracket">⁅</a><span class="fn">X</span><a href="../../.././Mathlib/Data/Bracket.html#Bracket.bracket">,</a> <span class="fn">Y</span><a href="../../.././Mathlib/Data/Bracket.html#Bracket.bracket">⁆</a> <span class="fn">v</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <span class="fn">X</span> <span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <span class="fn">Y</span> <span class="fn">v</span>)</span></span> <a href="../../.././Init/Prelude.html#HSub.hSub">-</a> <span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <span class="fn">Y</span> <span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <span class="fn">X</span> <span class="fn">v</span>)</span></span></div></div></div></div><div class="decl" id="ContinuousRep.repOfFunction"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L260-L261">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.repOfFunction"><span class="name">ContinuousRep</span>.<span class="name">repOfFunction</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">F</span></div></div><details id="instances-for-list-ContinuousRep.repOfFunction" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ContinuousRep.IsSmoothCompactlySupportedFunction"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L263-L264">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction"><span class="name">ContinuousRep</span>.<span class="name">IsSmoothCompactlySupportedFunction</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><details id="instances-for-list-ContinuousRep.IsSmoothCompactlySupportedFunction" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="ContinuousRep.gardingSubspace"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L266-L269">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.gardingSubspace"><span class="name">ContinuousRep</span>.<span class="name">gardingSubspace</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span></div></div><details id="instances-for-list-ContinuousRep.gardingSubspace" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="ContinuousRep.contDiffOn_convolution_chartCoord"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L272-L280">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.contDiffOn_convolution_chartCoord"><span class="name">ContinuousRep</span>.<span class="name">contDiffOn_convolution_chartCoord</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Group/Arithmetic.html#MeasurableMul">MeasurableMul</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Defs.html#MeasureTheory.Measure.IsMulLeftInvariant">IsMulLeftInvariant</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">w</span> : <span class="fn"><span class="fn">G</span> → <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x₀</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Analysis/Calculus/ContDiff/Defs.html#ContDiffOn">ContDiffOn</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a>)</span> <span class="fn">(fun (<span class="fn">x</span> : <span class="fn">E</span>) =&gt; <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">∫</a> (<span class="fn">g</span> : <span class="fn">G</span>)<a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">,</a> <span class="fn"><span class="fn">f</span> (<span class="fn">(<span class="fn">↑<span class="fn"><span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/ExtChartAt.html#extChartAt">extChartAt</a> <span class="fn">I</span> <span class="fn">x₀</span>)</span>.<a href="../../.././Mathlib/Logic/Equiv/PartialEquiv.html#PartialEquiv.symm">symm</a></span></span> <span class="fn">x</span>)</span><a href="../../.././Init/Prelude.html#Inv.inv">⁻¹</a> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">g</span>)</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn"><span class="fn">w</span> <span class="fn">g</span></span></span>)</span> <span class="fn"><span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/ExtChartAt.html#extChartAt">extChartAt</a> <span class="fn">I</span> <span class="fn">x₀</span>)</span>.<a href="../../.././Mathlib/Logic/Equiv/PartialEquiv.html#PartialEquiv.target">target</a></span></span></div></div></div></div><div class="decl" id="ContinuousRep.contMDiff_convolution_integral"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L282-L322">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.contMDiff_convolution_integral"><span class="name">ContinuousRep</span>.<span class="name">contMDiff_convolution_integral</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Group/Arithmetic.html#MeasurableMul">MeasurableMul</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Defs.html#MeasureTheory.Measure.IsMulLeftInvariant">IsMulLeftInvariant</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">w</span> : <span class="fn"><span class="fn">G</span> → <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">I</span> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span>)</span> <span class="fn">↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a></span> <span class="fn">fun (<span class="fn">h</span> : <span class="fn">G</span>) =&gt; <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">∫</a> (<span class="fn">g</span> : <span class="fn">G</span>)<a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">,</a> <span class="fn"><span class="fn">f</span> (<span class="fn">h</span><a href="../../.././Init/Prelude.html#Inv.inv">⁻¹</a> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">g</span>)</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn"><span class="fn">w</span> <span class="fn">g</span></span></span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.continuous_lieGroup_convolution"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L324-L328">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.continuous_lieGroup_convolution"><span class="name">ContinuousRep</span>.<span class="name">continuous_lieGroup_convolution</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Group/Arithmetic.html#MeasurableMul">MeasurableMul</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Defs.html#MeasureTheory.Measure.IsMulLeftInvariant">IsMulLeftInvariant</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">w</span> : <span class="fn"><span class="fn">G</span> → <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#Continuous">Continuous</a> <span class="fn">fun (<span class="fn">h</span> : <span class="fn">G</span>) =&gt; <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">∫</a> (<span class="fn">g</span> : <span class="fn">G</span>)<a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">,</a> <span class="fn"><span class="fn">f</span> (<span class="fn">h</span><a href="../../.././Init/Prelude.html#Inv.inv">⁻¹</a> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">g</span>)</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn"><span class="fn">w</span> <span class="fn">g</span></span></span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.contDiffOn_lieGroup_convolution_chartCoord"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L330-L341">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.contDiffOn_lieGroup_convolution_chartCoord"><span class="name">ContinuousRep</span>.<span class="name">contDiffOn_lieGroup_convolution_chartCoord</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Group/Arithmetic.html#MeasurableMul">MeasurableMul</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Defs.html#MeasureTheory.Measure.IsMulLeftInvariant">IsMulLeftInvariant</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">w</span> : <span class="fn"><span class="fn">G</span> → <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x₀</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">y₀</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Analysis/Calculus/ContDiff/Defs.html#ContDiffOn">ContDiffOn</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">(↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a>)</span>
+  (<span class="fn">↑<span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/ExtChartAt.html#extChartAt">extChartAt</a> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span>)</span> <span class="fn">y₀</span>)</span></span> <a href="../../.././Init/Prelude.html#Function.comp">∘</a>     <span class="fn">(fun (<span class="fn">h</span> : <span class="fn">G</span>) =&gt; <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">∫</a> (<span class="fn">g</span> : <span class="fn">G</span>)<a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">,</a> <span class="fn"><span class="fn">f</span> (<span class="fn">h</span><a href="../../.././Init/Prelude.html#Inv.inv">⁻¹</a> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">g</span>)</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn"><span class="fn">w</span> <span class="fn">g</span></span></span>)</span> <a href="../../.././Init/Prelude.html#Function.comp">∘</a> <span class="fn">↑<span class="fn"><span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/ExtChartAt.html#extChartAt">extChartAt</a> <span class="fn">I</span> <span class="fn">x₀</span>)</span>.<a href="../../.././Mathlib/Logic/Equiv/PartialEquiv.html#PartialEquiv.symm">symm</a></span></span>)
+  (<span class="fn"><span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/ExtChartAt.html#extChartAt">extChartAt</a> <span class="fn">I</span> <span class="fn">x₀</span>)</span>.<a href="../../.././Mathlib/Logic/Equiv/PartialEquiv.html#PartialEquiv.target">target</a></span> <a href="../../.././Init/Core.html#Inter.inter">∩</a>     <span class="fn">↑<span class="fn"><span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/ExtChartAt.html#extChartAt">extChartAt</a> <span class="fn">I</span> <span class="fn">x₀</span>)</span>.<a href="../../.././Mathlib/Logic/Equiv/PartialEquiv.html#PartialEquiv.symm">symm</a></span></span> <a href="../../.././Mathlib/Data/Set/Operations.html#Set.preimage">⁻¹'</a>       (<span class="fn">(fun (<span class="fn">h</span> : <span class="fn">G</span>) =&gt; <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">∫</a> (<span class="fn">g</span> : <span class="fn">G</span>)<a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">,</a> <span class="fn"><span class="fn">f</span> (<span class="fn">h</span><a href="../../.././Init/Prelude.html#Inv.inv">⁻¹</a> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">g</span>)</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn"><span class="fn">w</span> <span class="fn">g</span></span></span>)</span> <a href="../../.././Mathlib/Data/Set/Operations.html#Set.preimage">⁻¹'</a> <span class="fn"><span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/ExtChartAt.html#extChartAt">extChartAt</a> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span>)</span> <span class="fn">y₀</span>)</span>.<a href="../../.././Mathlib/Logic/Equiv/PartialEquiv.html#PartialEquiv.source">source</a></span>))</span></div></div></div></div><div class="decl" id="ContinuousRep.orbitMap_gardingVector_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L344-L365">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.orbitMap_gardingVector_eq"><span class="name">ContinuousRep</span>.<span class="name">orbitMap_gardingVector_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Group/Arithmetic.html#MeasurableMul">MeasurableMul</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Defs.html#MeasureTheory.Measure.IsMulLeftInvariant">IsMulLeftInvariant</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hint</span> : <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Function/L1Space/Integrable.html#MeasureTheory.Integrable">MeasureTheory.Integrable</a> <span class="fn">(fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn">f</span> <span class="fn">g</span></span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep.toMonoidHom">toMonoidHom</a></span> <span class="fn">g</span>)</span> <span class="fn">v</span></span>)</span> <a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.orbitMap">orbitMap</a></span> <span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.repOfFunction">repOfFunction</a></span> <span class="fn">f</span> <span class="fn">v</span>)</span> <span class="fn">h</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">∫</a> (<span class="fn">g</span> : <span class="fn">G</span>)<a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">,</a> <span class="fn"><span class="fn">f</span> (<span class="fn">h</span><a href="../../.././Init/Prelude.html#Inv.inv">⁻¹</a> <a href="../../.././Init/Prelude.html#HMul.hMul">*</a> <span class="fn">g</span>)</span> <a href="../../.././Init/Prelude.html#HSMul.hSMul">•</a> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep.toMonoidHom">toMonoidHom</a></span> <span class="fn">g</span>)</span> <span class="fn">v</span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.gardingVector_isSmooth"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L367-L392">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.gardingVector_isSmooth"><span class="name">ContinuousRep</span>.<span class="name">gardingVector_isSmooth</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Group/Arithmetic.html#MeasurableMul">MeasurableMul</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Defs.html#MeasureTheory.Measure.IsMulLeftInvariant">IsMulLeftInvariant</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.IsSmoothVector">IsSmoothVector</a> <span class="fn">I</span> <span class="fn">π</span> <span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.repOfFunction">repOfFunction</a></span> <span class="fn">f</span> <span class="fn">v</span>)</span></span></div></div></div></div><div class="decl" id="ContinuousRep.exists_smooth_dirac_sequence"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L395-L476">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.exists_smooth_dirac_sequence"><span class="name">ContinuousRep</span>.<span class="name">exists_smooth_dirac_sequence</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Measure.html#MeasureTheory.Measure.IsHaarMeasure">IsHaarMeasure</a></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">φ</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nat">ℕ</a> → <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span></span>),
+  <span class="fn">(∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">(<span class="fn">φ</span> <span class="fn">n</span>)</span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>     <span class="fn">(∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>) (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn">(<span class="fn">φ</span> <span class="fn">n</span> <span class="fn">g</span>)</span>.<a href="../../.././Mathlib/Data/Complex/Basic.html#Complex.im">im</a></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn">0</span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">(<span class="fn">φ</span> <span class="fn">n</span> <span class="fn">g</span>)</span>.<a href="../../.././Mathlib/Data/Complex/Basic.html#Complex.re">re</a></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>       <span class="fn">(∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">∫</a> (<span class="fn">g</span> : <span class="fn">G</span>)<a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">,</a> <span class="fn"><span class="fn">(<span class="fn">φ</span> <span class="fn">n</span> <span class="fn">g</span>)</span>.<a href="../../.././Mathlib/Data/Complex/Basic.html#Complex.re">re</a></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">1</span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn">∀ <span class="fn">U</span> ∈ <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#nhds">nhds</a> <span class="fn">1</span></span>, <span class="fn">∃ (<span class="fn">N</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn">∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn"><span class="fn">N</span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn">n</span> → <span class="fn"><a href="../../.././Mathlib/Algebra/Notation/Support.html#Function.support">Function.support</a> <span class="fn">(<span class="fn">φ</span> <span class="fn">n</span>)</span></span> <a href="../../.././Init/Core.html#HasSubset.Subset">⊆</a> <span class="fn">U</span></span></span></span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.smooth_dirac_convolution_tendsto"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L480-L569">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.smooth_dirac_convolution_tendsto"><span class="name">ContinuousRep</span>.<span class="name">smooth_dirac_convolution_tendsto</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Measure.html#MeasureTheory.Measure.IsHaarMeasure">IsHaarMeasure</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">φ</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nat">ℕ</a> → <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hφsmooth</span> : <span class="fn">∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">(<span class="fn">φ</span> <span class="fn">n</span>)</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hφnonneg</span> : <span class="fn">∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>) (<span class="fn">g</span> : <span class="fn">G</span>), <span class="fn"><span class="fn">(<span class="fn">φ</span> <span class="fn">n</span> <span class="fn">g</span>)</span>.<a href="../../.././Mathlib/Data/Complex/Basic.html#Complex.im">im</a></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn">0</span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">(<span class="fn">φ</span> <span class="fn">n</span> <span class="fn">g</span>)</span>.<a href="../../.././Mathlib/Data/Complex/Basic.html#Complex.re">re</a></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hφnorm</span> : <span class="fn">∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn"><a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">∫</a> (<span class="fn">g</span> : <span class="fn">G</span>)<a href="../../.././Mathlib/MeasureTheory/Integral/Bochner/Basic.html#MeasureTheory.integral">,</a> <span class="fn"><span class="fn">(<span class="fn">φ</span> <span class="fn">n</span> <span class="fn">g</span>)</span>.<a href="../../.././Mathlib/Data/Complex/Basic.html#Complex.re">re</a></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">1</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hφshrink</span> : <span class="fn">∀ <span class="fn">U</span> ∈ <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#nhds">nhds</a> <span class="fn">1</span></span>, <span class="fn">∃ (<span class="fn">N</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn">∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn"><span class="fn">N</span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn">n</span> → <span class="fn"><a href="../../.././Mathlib/Algebra/Notation/Support.html#Function.support">Function.support</a> <span class="fn">(<span class="fn">φ</span> <span class="fn">n</span>)</span></span> <a href="../../.././Init/Core.html#HasSubset.Subset">⊆</a> <span class="fn">U</span></span></span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Order/Filter/Defs.html#Filter.Tendsto">Filter.Tendsto</a> <span class="fn">(fun (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>) =&gt; <span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.repOfFunction">repOfFunction</a></span> <span class="fn">(<span class="fn">φ</span> <span class="fn">n</span>)</span> <span class="fn">v</span></span>)</span> <a href="../../.././Mathlib/Order/Filter/AtTopBot/Defs.html#Filter.atTop">Filter.atTop</a> <span class="fn">(<a href="../../.././Mathlib/Topology/Defs/Filter.html#nhds">nhds</a> <span class="fn">v</span>)</span></span></div></div></div></div><div class="decl" id="ContinuousRep.exists_gardingVector_tendsto"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L573-L585">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.exists_gardingVector_tendsto"><span class="name">ContinuousRep</span>.<span class="name">exists_gardingVector_tendsto</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Measure.html#MeasureTheory.Measure.IsHaarMeasure">IsHaarMeasure</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">φ</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nat">ℕ</a> → <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span></span>),
+  <span class="fn">(∀ (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>), <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">(<span class="fn">φ</span> <span class="fn">n</span>)</span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>     <span class="fn"><a href="../../.././Mathlib/Order/Filter/Defs.html#Filter.Tendsto">Filter.Tendsto</a> <span class="fn">(fun (<span class="fn">n</span> : <a href="../../.././Init/Prelude.html#Nat">ℕ</a>) =&gt; <span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.repOfFunction">repOfFunction</a></span> <span class="fn">(<span class="fn">φ</span> <span class="fn">n</span>)</span> <span class="fn">v</span></span>)</span> <a href="../../.././Mathlib/Order/Filter/AtTopBot/Defs.html#Filter.atTop">Filter.atTop</a> <span class="fn">(<a href="../../.././Mathlib/Topology/Defs/Filter.html#nhds">nhds</a> <span class="fn">v</span>)</span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.gardingSubspace_dense"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L588-L602">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.gardingSubspace_dense"><span class="name">ContinuousRep</span>.<span class="name">gardingSubspace_dense</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Separation/Hausdorff.html#T2Space">T2Space</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#BorelSpace">BorelSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Bases.html#SecondCountableTopology">SecondCountableTopology</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Filter.html#LocallyCompactSpace">LocallyCompactSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Measure.html#MeasureTheory.Measure.IsHaarMeasure">IsHaarMeasure</a></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#Dense">Dense</a> <span class="fn">↑<span class="fn">(<a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.gardingSubspace">gardingSubspace</a> <span class="fn">I</span> <span class="fn">π</span>)</span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.leftInvariantDeriv"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L617-L618">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.leftInvariantDeriv"><span class="name">ContinuousRep</span>.<span class="name">leftInvariantDeriv</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">lieExp</span> : <span class="fn"><span class="fn">E</span> → <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">E</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">g</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></div></div><details id="instances-for-list-ContinuousRep.leftInvariantDeriv" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="ContinuousRep.derivedRep_gardingVector"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L621-L631">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.derivedRep_gardingVector"><span class="name">ContinuousRep</span>.<span class="name">derivedRep_gardingVector</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace">MeasureTheory.MeasureSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/UniformSpace/Cauchy.html#CompleteSpace">CompleteSpace</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Group/Arithmetic.html#MeasurableMul">MeasurableMul</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.MeasureSpace.volume">MeasureTheory.volume</a>.<a href="../../.././Mathlib/MeasureTheory/Group/Defs.html#MeasureTheory.Measure.IsMulLeftInvariant">IsMulLeftInvariant</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">lieExp</span> : <span class="fn"><span class="fn">E</span> → <span class="fn">G</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span>)</span> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">lieExp</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hExp1</span> : <span class="fn"><span class="fn">lieExp</span> <span class="fn">0</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">1</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">X</span> : <span class="fn">E</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn"><span class="fn">G</span> → <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hf</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.IsSmoothCompactlySupportedFunction">IsSmoothCompactlySupportedFunction</a> <span class="fn">I</span> <span class="fn">f</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.derivedRep">derivedRep</a></span> <span class="fn">lieExp</span> <span class="fn">X</span> <span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.repOfFunction">repOfFunction</a></span> <span class="fn">f</span> <span class="fn">v</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.repOfFunction">repOfFunction</a></span> <span class="fn">(<a href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.leftInvariantDeriv">leftInvariantDeriv</a> <span class="fn">lieExp</span> <span class="fn">X</span> <span class="fn">f</span>)</span> <span class="fn">v</span></span></div></div></div></div><div class="decl sorried" id="ContinuousRep.contMDiff_orbitMap_of_finiteDimensional"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L635-L649">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.contMDiff_orbitMap_of_finiteDimensional"><span class="name">ContinuousRep</span>.<span class="name">contMDiff_orbitMap_of_finiteDimensional</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">↥<span class="fn">W</span></span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ρ</span> : <span class="fn">G</span> <a href="../../.././Mathlib/Algebra/Group/Hom/Defs.html#MonoidHom">→*</a> <span class="fn">↥<span class="fn">W</span></span> <a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">→L[</a><a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a><a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">]</a> <span class="fn">↥<span class="fn">W</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hρ_cont</span> : <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#Continuous">Continuous</a> <span class="fn">fun (<span class="fn">p</span> : <span class="fn">G</span> <a href="../../.././Init/Prelude.html#Prod">×</a> <span class="fn">↥<span class="fn">W</span></span>) =&gt; <span class="fn"><span class="fn">(<span class="fn">ρ</span> <span class="fn"><span class="fn">p</span>.1</span>)</span> <span class="fn"><span class="fn">p</span>.2</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">w</span> : <span class="fn">↥<span class="fn">W</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">I</span> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span>)</span> <span class="fn">↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a></span> <span class="fn">fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn">↑<span class="fn">(<span class="fn">(<span class="fn">ρ</span> <span class="fn">g</span>)</span> <span class="fn">w</span>)</span></span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.lieGroup_finiteDimOrbit_smooth_orbitMap"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L660-L733">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.lieGroup_finiteDimOrbit_smooth_orbitMap"><span class="name">ContinuousRep</span>.<span class="name">lieGroup_finiteDimOrbit_smooth_orbitMap</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_6}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_7}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_8}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn">G</span> <a href="../../.././Mathlib/Algebra/Group/Hom/Defs.html#MonoidHom">→*</a> <span class="fn">F</span> <a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">→L[</a><a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a><a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">]</a> <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hπ_cont</span> : <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#Continuous">Continuous</a> <span class="fn">fun (<span class="fn">p</span> : <span class="fn">G</span> <a href="../../.././Init/Prelude.html#Prod">×</a> <span class="fn">F</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn">π</span> <span class="fn"><span class="fn">p</span>.1</span>)</span> <span class="fn"><span class="fn">p</span>.2</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfin</span> : <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/Span/Defs.html#Submodule.span">Submodule.span</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">(<a href="../../.././Mathlib/Data/Set/Operations.html#Set.range">Set.range</a> <span class="fn">fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn">π</span> <span class="fn">g</span>)</span> <span class="fn">v</span></span></span>)</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">I</span> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span>)</span> <span class="fn">↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a></span> <span class="fn">fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn">π</span> <span class="fn">g</span>)</span> <span class="fn">v</span></span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.finDimRep_orbitMap_smooth"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L735-L748">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.finDimRep_orbitMap_smooth"><span class="name">ContinuousRep</span>.<span class="name">finDimRep_orbitMap_smooth</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_6}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_7}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_8}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn">G</span> <a href="../../.././Mathlib/Algebra/Group/Hom/Defs.html#MonoidHom">→*</a> <span class="fn">F</span> <a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">→L[</a><a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a><a href="../../.././Mathlib/Topology/Algebra/Module/LinearMap.html#ContinuousLinearMap">]</a> <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hπ_cont</span> : <span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#Continuous">Continuous</a> <span class="fn">fun (<span class="fn">p</span> : <span class="fn">G</span> <a href="../../.././Init/Prelude.html#Prod">×</a> <span class="fn">F</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn">π</span> <span class="fn"><span class="fn">p</span>.1</span>)</span> <span class="fn"><span class="fn">p</span>.2</span></span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfin</span> : <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/Span/Defs.html#Submodule.span">Submodule.span</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">(<a href="../../.././Mathlib/Data/Set/Operations.html#Set.range">Set.range</a> <span class="fn">fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn">π</span> <span class="fn">g</span>)</span> <span class="fn">v</span></span></span>)</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">I</span> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span>)</span> <span class="fn">↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a></span> <span class="fn">fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn">π</span> <span class="fn">g</span>)</span> <span class="fn">v</span></span></span></span></div></div></div></div><div class="decl" id="ContinuousRep.orbitMap_smooth_of_finiteDim_span"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L750-L763">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.orbitMap_smooth_of_finiteDim_span"><span class="name">ContinuousRep</span>.<span class="name">orbitMap_smooth_of_finiteDim_span</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_6}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_7}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_8}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">v</span> : <span class="fn">F</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hfin</span> : <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/Span/Defs.html#Submodule.span">Submodule.span</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">(<a href="../../.././Mathlib/Data/Set/Operations.html#Set.range">Set.range</a> <span class="fn">fun (<span class="fn">g</span> : <span class="fn">G</span>) =&gt; <span class="fn"><span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep.toMonoidHom">toMonoidHom</a></span> <span class="fn">g</span>)</span> <span class="fn">v</span></span></span>)</span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ContMDiff/Defs.html#ContMDiff">ContMDiff</a> <span class="fn">I</span> <span class="fn">(<a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#modelWithCornersSelf">modelWithCornersSelf</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">F</span>)</span> <span class="fn">(↑<a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a>)</span> <span class="fn">(<span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.orbitMap">orbitMap</a></span> <span class="fn">v</span>)</span></span></div></div></div></div><div class="decl" id="ContinuousRep.kfinite_le_smooth"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/LieGroups/code/SmoothVectorsProps.lean#L765-L789">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/LieGroups/code/SmoothVectorsProps.html#ContinuousRep.kfinite_le_smooth"><span class="name">ContinuousRep</span>.<span class="name">kfinite_le_smooth</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">H</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">H</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">I</span> : <span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/IsManifold/Basic.html#ModelWithCorners">ModelWithCorners</a> <a href="../../.././Mathlib/Data/Real/Basic.html#Real">ℝ</a> <span class="fn">E</span> <span class="fn">H</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u_3}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Topology/Defs/Basic.html#TopologicalSpace">TopologicalSpace</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/ChartedSpace.html#ChartedSpace">ChartedSpace</a> <span class="fn">H</span> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Geometry/Manifold/Algebra/LieGroup.html#LieGroup">LieGroup</a> <span class="fn">I</span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Group/Defs.html#NormedAddCommGroup">NormedAddCommGroup</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Analysis/Normed/Module/Basic.html#NormedSpace">NormedSpace</a> <a href="../../.././Mathlib/Data/Complex/Basic.html#Complex">ℂ</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">π</span> : <span class="fn"><a href="../../.././Atlas/LieGroups/code/ContinuousRep.html#ContinuousRep">ContinuousRep</a> <span class="fn">G</span> <span class="fn">F</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><span class="fn">π</span>.<a href="../../.././Atlas/LieGroups/code/KFinite.html#ContinuousRep.kFiniteSubspace">kFiniteSubspace</a></span> <a href="../../.././Mathlib/Order/Notation.html#Top.top">⊤</a></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><a href="../../.././Atlas/LieGroups/code/SmoothVectors.html#ContinuousRep.smoothSubspace">smoothSubspace</a> <span class="fn">I</span> <span class="fn">π</span></span></div></div></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

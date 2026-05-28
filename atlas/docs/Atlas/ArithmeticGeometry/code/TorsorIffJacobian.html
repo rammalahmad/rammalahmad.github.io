@@ -1,0 +1,327 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.ArithmeticGeometry.code.TorsorIffJacobian</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.ArithmeticGeometry.code.TorsorIffJacobian";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">ArithmeticGeometry</span>.<span class="name">code</span>.<span class="name">TorsorIffJacobian</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Atlas/ArithmeticGeometry/code/JInvariant.html">Atlas.ArithmeticGeometry.code.JInvariant</a></li><li><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html">Atlas.ArithmeticGeometry.code.WeilChatelet</a></li><li><a href="../../.././Mathlib/FieldTheory/IsAlgClosed/AlgebraicClosure.html">Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.ArithmeticGeometry.code.TorsorIffJacobian" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#AbsGaloisGroup"><span class="name">AbsGaloisGroup</span></a></div><div class="nav_link"><a class="break_within" href="#AbsGaloisGroup.instGroup"><span class="name">AbsGaloisGroup</span>.<span class="name">instGroup</span></a></div><div class="nav_link"><a class="break_within" href="#GaloisAction"><span class="name">GaloisAction</span></a></div><div class="nav_link"><a class="break_within" href="#GaloisAction.IsEquivariant"><span class="name">GaloisAction</span>.<span class="name">IsEquivariant</span></a></div><div class="nav_link"><a class="break_within" href="#GaloisAction.vsub_compat"><span class="name">GaloisAction</span>.<span class="name">vsub_compat</span></a></div><div class="nav_link"><a class="break_within" href="#IsGaloisCompatible"><span class="name">IsGaloisCompatible</span></a></div><div class="nav_link"><a class="break_within" href="#IsJacobianOf"><span class="name">IsJacobianOf</span></a></div><div class="nav_link"><a class="break_within" href="#jacobian_weierstrass_descent"><span class="name">jacobian_weierstrass_descent</span></a></div><div class="nav_link"><a class="break_within" href="#jacobian_exists"><span class="name">jacobian_exists</span></a></div><div class="nav_link"><a class="break_within" href="#galois_descent_k_isomorphism"><span class="name">galois_descent_k_isomorphism</span></a></div><div class="nav_link"><a class="break_within" href="#rigidity_additive"><span class="name">rigidity_additive</span></a></div><div class="nav_link"><a class="break_within" href="#jacobian_galois_descent"><span class="name">jacobian_galois_descent</span></a></div><div class="nav_link"><a class="break_within" href="#torsor_basepoint_galois_compat"><span class="name">torsor_basepoint_galois_compat</span></a></div><div class="nav_link"><a class="break_within" href="#galois_action_of_k_torsor"><span class="name">galois_action_of_k_torsor</span></a></div><div class="nav_link"><a class="break_within" href="#isETorsor_imp_isJacobianOf"><span class="name">isETorsor_imp_isJacobianOf</span></a></div><div class="nav_link"><a class="break_within" href="#isActionMorphismOverk_of_galoisCompat"><span class="name">isActionMorphismOverk_of_galoisCompat</span></a></div><div class="nav_link"><a class="break_within" href="#isJacobianOf_imp_isETorsor"><span class="name">isJacobianOf_imp_isETorsor</span></a></div><div class="nav_link"><a class="break_within" href="#eTorsor_iff_jacobian"><span class="name">eTorsor_iff_jacobian</span></a></div></nav><main>
+<div class="decl" id="AbsGaloisGroup"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L11-L14">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#AbsGaloisGroup"><span class="name">AbsGaloisGroup</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> u</div></div><p>The <em>absolute Galois group</em> $\mathrm{Gal}(\bar k / k)$ of a field $k$: ring automorphisms of an
+algebraic closure of $k$.</p><details id="instances-for-list-AbsGaloisGroup" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="AbsGaloisGroup.instGroup"><div class="instance"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L16-L19">source</a></div><div class="attributes">@[implicit_reducible]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable instance</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#AbsGaloisGroup.instGroup"><span class="name">AbsGaloisGroup</span>.<span class="name">instGroup</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#AbsGaloisGroup">AbsGaloisGroup</a> <span class="fn">k</span>)</span></span></div></div><p>The absolute Galois group <code><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#AbsGaloisGroup">AbsGaloisGroup</a> k</code> is a group under composition.</p></div></div><div class="decl" id="GaloisAction"><div class="structure"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L21-L26">source</a></div><div class="decl_header"><span class="decl_kind">structure</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction"><span class="name">GaloisAction</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Type</a> u</div></div><p>A <code><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> G E_pts C_pts</code> packages an action of the group $G$ on both the elliptic curve
+points $E$ (as additive equivalences) and on a torsor candidate $C$ (as set equivalences).</p><ul class="structure_fields" id="GaloisAction.mk"><li id="GaloisAction.actE" class="structure_field"><div class="structure_field_info">actE : <span class="fn"><span class="fn">G</span> → <span class="fn">E_pts</span> <a href="../../.././Mathlib/Algebra/Group/Equiv/Defs.html#AddEquiv">≃+</a> <span class="fn">E_pts</span></span></div></li><li id="GaloisAction.actC" class="structure_field"><div class="structure_field_info">actC : <span class="fn"><span class="fn">G</span> → <span class="fn">C_pts</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">C_pts</span></span></div></li></ul><details id="instances-for-list-GaloisAction" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="GaloisAction.IsEquivariant"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L28-L33">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction.IsEquivariant"><span class="name">GaloisAction</span>.<span class="name">IsEquivariant</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/AddTorsor/Defs.html#AddTorsor">AddTorsor</a> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ga</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> <span class="fn">G</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A Galois action is <em>equivariant</em> for the torsor structure if it commutes with $+_v$:
+$\sigma(g +_v c) = \sigma(g) +_v \sigma(c)$ for all $\sigma, g, c$.</p><details id="instances-for-list-GaloisAction.IsEquivariant" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="GaloisAction.vsub_compat"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L35-L44">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction.vsub_compat"><span class="name">GaloisAction</span>.<span class="name">vsub_compat</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/AddTorsor/Defs.html#AddTorsor">AddTorsor</a> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ga</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> <span class="fn">G</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hga</span> : <span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction.IsEquivariant">IsEquivariant</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">σ</span> : <span class="fn">G</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">P </span><span class="fn">Q</span> : <span class="fn">C_pts</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">(<span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction.actE">actE</a></span> <span class="fn">σ</span>)</span> (<span class="fn">P</span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#VSub.vsub">-ᵥ</a> <span class="fn">Q</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction.actC">actC</a></span> <span class="fn">σ</span>)</span> <span class="fn">P</span></span> <a href="../../.././Mathlib/Algebra/Notation/Defs.html#VSub.vsub">-ᵥ</a> <span class="fn"><span class="fn">(<span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction.actC">actC</a></span> <span class="fn">σ</span>)</span> <span class="fn">Q</span></span></div></div><p>Consequence of equivariance: $\sigma$ commutes with $-_v$, i.e.
+$\sigma(P - Q) = \sigma(P) - \sigma(Q)$.</p></div></div><div class="decl" id="IsGaloisCompatible"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L46-L53">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsGaloisCompatible"><span class="name">IsGaloisCompatible</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ga</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> <span class="fn">G</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">φ</span> : <span class="fn">C_pts</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">E_pts</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>A bijection $\varphi \colon C \to E$ is <em>Galois compatible</em> with respect to $\mathrm{ga}$ if
+for every $\sigma$ there exists $P_\sigma \in E$ such that
+$\sigma(\varphi Q) = \varphi(\sigma Q) + P_\sigma$ for all $Q$; this expresses that $\varphi$
+differs from a Galois-equivariant map by a cocycle.</p><details id="instances-for-list-IsGaloisCompatible" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="IsJacobianOf"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L55-L63">source</a></div><div class="decl_header"><span class="decl_kind">def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsJacobianOf"><span class="name">IsJacobianOf</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././foundational_types.html">Prop</a></div></div><p>$W$ is a Jacobian of $C$ over $k$ if $C$ is a genus-one curve and there exists a Galois action
+together with a Galois-compatible bijection $\varphi \colon C \to E(W)$.</p><details id="instances-for-list-IsJacobianOf" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="jacobian_weierstrass_descent"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L65-L72">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#jacobian_weierstrass_descent"><span class="name">jacobian_weierstrass_descent</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hC</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsGenusOneCurvePoints">IsGenusOneCurvePoints</a> <span class="fn">k</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>) (_ : <span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>) (<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u) (<span class="fn">x</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>) (<span class="fn">ga</span> :
+  <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#AbsGaloisGroup">AbsGaloisGroup</a> <span class="fn">k</span>)</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>) (<span class="fn">φ</span> : <span class="fn">C_pts</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">E_pts</span>), <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsGaloisCompatible">IsGaloisCompatible</a> <span class="fn">ga</span> <span class="fn">φ</span></span></span></div></div><p>Galois descent: every genus-one curve $C$ over $k$ has a Jacobian Weierstrass model $W/k$,
+together with a Galois action on $E(W)$ and a Galois-compatible bijection $C \to E(W)$.</p></div></div><div class="decl" id="jacobian_exists"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L74-L83">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#jacobian_exists"><span class="name">jacobian_exists</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hC</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsGenusOneCurvePoints">IsGenusOneCurvePoints</a> <span class="fn">k</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>) (<span class="fn">x</span> : <span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>) (<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u) (<span class="fn">x_1</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>), <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsJacobianOf">IsJacobianOf</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span></span></div></div><p>Existence of a Jacobian: every genus-one curve $C$ over $k$ admits an elliptic curve $W/k$
+that is its Jacobian.</p></div></div><div class="decl sorried" id="galois_descent_k_isomorphism"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L85-L102">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#galois_descent_k_isomorphism"><span class="name">galois_descent_k_isomorphism</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W₁</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W₁</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E₁_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E₁_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W₂</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W₂</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E₂_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E₂_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">φ₁</span> : <span class="fn">C_pts</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">E₁_pts</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">φ₂</span> : <span class="fn">C_pts</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">E₂_pts</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">ga₁</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#AbsGaloisGroup">AbsGaloisGroup</a> <span class="fn">k</span>)</span> <span class="fn">E₁_pts</span> <span class="fn">C_pts</span></span>}</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsGaloisCompatible">IsGaloisCompatible</a> <span class="fn">ga₁</span> <span class="fn">φ₁</span></span> →
+  <span class="fn">∀ {<span class="fn">ga₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#AbsGaloisGroup">AbsGaloisGroup</a> <span class="fn">k</span>)</span> <span class="fn">E₂_pts</span> <span class="fn">C_pts</span></span>},
+    <span class="fn"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsGaloisCompatible">IsGaloisCompatible</a> <span class="fn">ga₂</span> <span class="fn">φ₂</span></span> →
+      <span class="fn">have <span class="fn">ψ₀</span> := <span class="fn"><span class="fn"><span class="fn"><span class="fn">φ₁</span>.<a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv.symm">symm</a></span>.<a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv.trans">trans</a></span> <span class="fn">φ₂</span></span>;
+      <span class="fn">have <span class="fn">P₀</span> := <span class="fn"><span class="fn">ψ₀</span> <span class="fn">0</span></span>;
+      <span class="fn">have <span class="fn">ψ</span> := <span class="fn"><span class="fn"><span class="fn">ψ₀</span>.<a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv.trans">trans</a></span> <span class="fn">(<a href="../../.././Mathlib/Algebra/Group/Units/Equiv.html#Equiv.subRight">Equiv.subRight</a> <span class="fn">P₀</span>)</span></span>;
+      <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsKIsomorphism">IsKIsomorphism</a> <span class="fn">k</span> <span class="fn">E₁_pts</span> <span class="fn">E₂_pts</span> <span class="fn">ψ</span></span></span></span></span></span></span></span></div></div><p>Uniqueness of Jacobian (descent step): the bijection $\psi$ obtained by composing two
+Galois-compatible bijections $\varphi_1, \varphi_2$ and translating to fix the basepoint is a
+$k$-isomorphism of elliptic curves.</p></div></div><div class="decl sorried" id="rigidity_additive"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L104-L115">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#rigidity_additive"><span class="name">rigidity_additive</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W₁</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W₁</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E₁_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E₁_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W₂</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W₂</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E₂_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E₂_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ψ</span> : <span class="fn">E₁_pts</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">E₂_pts</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hψ_k</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsKIsomorphism">IsKIsomorphism</a> <span class="fn">k</span> <span class="fn">E₁_pts</span> <span class="fn">E₂_pts</span> <span class="fn">ψ</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hψ_zero</span> : <span class="fn"><span class="fn">ψ</span> <span class="fn">0</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn">0</span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">x </span><span class="fn">y</span> : <span class="fn">E₁_pts</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><span class="fn">ψ</span> (<span class="fn">x</span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn">y</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">ψ</span> <span class="fn">x</span></span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn"><span class="fn">ψ</span> <span class="fn">y</span></span></div></div><p>Rigidity / additivity: a $k$-isomorphism of elliptic curves that sends $0 \mapsto 0$ is
+automatically a group homomorphism. This is the abelian-variety rigidity lemma specialised to
+elliptic curves.</p></div></div><div class="decl" id="jacobian_galois_descent"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L117-L144">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#jacobian_galois_descent"><span class="name">jacobian_galois_descent</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W₁</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W₁</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E₁_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E₁_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W₂</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W₂</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E₂_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E₂_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hJ₁</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsJacobianOf">IsJacobianOf</a> <span class="fn">k</span> <span class="fn">W₁</span> <span class="fn">E₁_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hJ₂</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsJacobianOf">IsJacobianOf</a> <span class="fn">k</span> <span class="fn">W₂</span> <span class="fn">E₂_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">ψ</span> : <span class="fn">E₁_pts</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">E₂_pts</span>), <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsKIsomorphism">IsKIsomorphism</a> <span class="fn">k</span> <span class="fn">E₁_pts</span> <span class="fn">E₂_pts</span> <span class="fn">ψ</span></span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn">∀ (<span class="fn">x </span><span class="fn">y</span> : <span class="fn">E₁_pts</span>), <span class="fn"><span class="fn">ψ</span> (<span class="fn">x</span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn">y</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><span class="fn">ψ</span> <span class="fn">x</span></span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn"><span class="fn">ψ</span> <span class="fn">y</span></span></span></span></div></div><p>The Jacobian of a genus-one curve is unique up to a $k$-isomorphism of group structures:
+any two Jacobians of $C$ are isomorphic as elliptic curves over $k$.</p></div></div><div class="decl" id="torsor_basepoint_galois_compat"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L150-L167">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#torsor_basepoint_galois_compat"><span class="name">torsor_basepoint_galois_compat</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C_pts </span><span class="fn">G</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#Group">Group</a> <span class="fn">G</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">ga</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> <span class="fn">G</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/AddTorsor/Defs.html#AddTorsor">AddTorsor</a> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hga</span> : <span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction.IsEquivariant">IsEquivariant</a></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">Q₀</span> : <span class="fn">C_pts</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsGaloisCompatible">IsGaloisCompatible</a> <span class="fn">ga</span> <span class="fn"><span class="fn">(<a href="../../.././Mathlib/Algebra/AddTorsor/Defs.html#Equiv.vaddConst">Equiv.vaddConst</a> <span class="fn">Q₀</span>)</span>.<a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv.symm">symm</a></span></span></div></div><p>Choosing a basepoint $Q_0 \in C$ in a Galois-equivariant torsor produces a Galois-compatible
+bijection $(\mathrm{vaddConst}\,Q_0)^{-1} \colon C \to E$, with cocycle
+$P_\sigma = Q_0 -_v \sigma(Q_0)$.</p></div></div><div class="decl" id="galois_action_of_k_torsor"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L169-L181">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#galois_action_of_k_torsor"><span class="name">galois_action_of_k_torsor</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hT</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsETorsor">IsETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">∃ (<span class="fn">ga</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction">GaloisAction</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#AbsGaloisGroup">AbsGaloisGroup</a> <span class="fn">k</span>)</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>), <span class="fn"><span class="fn">ga</span>.<a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#GaloisAction.IsEquivariant">IsEquivariant</a></span></span></div></div><p>Any $k$-torsor for $E$ admits a Galois action: take the trivial action on the model. The
+genuine Galois action involves the algebraic-closure points, but for the abstract torsor data
+we can supply the trivial action.</p></div></div><div class="decl" id="isETorsor_imp_isJacobianOf"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L183-L201">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#isETorsor_imp_isJacobianOf"><span class="name">isETorsor_imp_isJacobianOf</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hT</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsETorsor">IsETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsJacobianOf">IsJacobianOf</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span></div></div><p>If $C$ is a $k$-torsor for $E$, then $W$ is a Jacobian of $C$: this is the forward direction
+of the torsor-iff-Jacobian theorem.</p></div></div><div class="decl" id="isActionMorphismOverk_of_galoisCompat"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L204-L213">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#isActionMorphismOverk_of_galoisCompat"><span class="name">isActionMorphismOverk_of_galoisCompat</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">hne</span> : <span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">C_pts</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">φ</span> : <span class="fn">C_pts</span> <a href="../../.././Mathlib/Logic/Equiv/Defs.html#Equiv">≃</a> <span class="fn">E_pts</span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsActionMorphismOverk">IsActionMorphismOverk</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span></div></div><p>The bijection $\varphi \colon C \to E$ induced from a Galois-compatible map gives an
+<code><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsActionMorphismOverk">IsActionMorphismOverk</a></code> instance, i.e. the resulting $E$-action on $C$ is a $k$-morphism.</p></div></div><div class="decl" id="isJacobianOf_imp_isETorsor"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L215-L232">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#isJacobianOf_imp_isETorsor"><span class="name">isJacobianOf_imp_isETorsor</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hJ</span> : <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsJacobianOf">IsJacobianOf</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsETorsor">IsETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span></div></div><p>If $W$ is a Jacobian of $C$, then $C$ is a $k$-torsor for $E$: this is the backward direction
+of the torsor-iff-Jacobian theorem.</p><details id="instances-for-list-isJacobianOf_imp_isETorsor" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="eTorsor_iff_jacobian"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/TorsorIffJacobian.lean#L234-L239">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#eTorsor_iff_jacobian"><span class="name">eTorsor_iff_jacobian</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">W</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve">WeierstrassCurve</a> <span class="fn">k</span></span>}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><span class="fn">W</span>.<a href="../../.././Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.html#WeierstrassCurve.IsElliptic">IsElliptic</a></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">E_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">E_pts</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">C_pts</span> : <a href="../../.././foundational_types.html">Type</a> u}</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/WeilChatelet.html#IsETorsor">IsETorsor</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span>)</span></span> <a href="../../.././Init/Core.html#Iff">↔</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/TorsorIffJacobian.html#IsJacobianOf">IsJacobianOf</a> <span class="fn">k</span> <span class="fn">W</span> <span class="fn">E_pts</span> <span class="fn">C_pts</span></span></div></div><p><em>Torsor iff Jacobian</em>: a genus-one curve $C$ is a $k$-torsor for $E$ iff $W$ is the
+Jacobian of $C$. This is the key duality underlying the Weil-Châtelet group.</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

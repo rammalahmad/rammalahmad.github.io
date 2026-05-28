@@ -1,0 +1,586 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.ArithmeticGeometry.code.AdelePlusFDim</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.ArithmeticGeometry.code.AdelePlusFDim";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">ArithmeticGeometry</span>.<span class="name">code</span>.<span class="name">AdelePlusFDim</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Mathlib/Order/ModularLattice.html">Mathlib.Order.ModularLattice</a></li><li><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html">Atlas.ArithmeticGeometry.code.AdeleQuotientDim</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.ArithmeticGeometry.code.AdelePlusFDim" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#AF_subspace"><span class="name">AF_subspace</span></a></div><div class="nav_link"><a class="break_within" href="#LF_subspace"><span class="name">LF_subspace</span></a></div><div class="nav_link"><a class="break_within" href="#AF_subspace_mono"><span class="name">AF_subspace_mono</span></a></div><div class="nav_link"><a class="break_within" href="#rrSpaceAdele"><span class="name">rrSpaceAdele</span></a></div><div class="nav_link"><a class="break_within" href="#rrSpaceAdele_zero_le_constants"><span class="name">rrSpaceAdele_zero_le_constants</span></a></div><div class="nav_link"><a class="break_within" href="#rrSpaceAdele_zero_finiteDimensional"><span class="name">rrSpaceAdele_zero_finiteDimensional</span></a></div><div class="nav_link"><a class="break_within" href="#rrSpaceAdele_mono"><span class="name">rrSpaceAdele_mono</span></a></div><div class="nav_link"><a class="break_within" href="#rrSpaceAdele_fd_step"><span class="name">rrSpaceAdele_fd_step</span></a></div><div class="nav_link"><a class="break_within" href="#rrSpaceAdele_finiteDimensional"><span class="name">rrSpaceAdele_finiteDimensional</span></a></div><div class="nav_link"><a class="break_within" href="#diagonalLinearMap_injective"><span class="name">diagonalLinearMap_injective</span></a></div><div class="nav_link"><a class="break_within" href="#rrSpaceAdele_map_eq"><span class="name">rrSpaceAdele_map_eq</span></a></div><div class="nav_link"><a class="break_within" href="#LF_subspace_finiteDimensional"><span class="name">LF_subspace_finiteDimensional</span></a></div><div class="nav_link"><a class="break_within" href="#LF_subspace_finrank"><span class="name">LF_subspace_finrank</span></a></div><div class="nav_link"><a class="break_within" href="#ellD"><span class="name">ellD</span></a></div><div class="nav_link"><a class="break_within" href="#lemma_22_9_fd_LF_quotient"><span class="name">lemma_22_9_fd_LF_quotient</span></a></div><div class="nav_link"><a class="break_within" href="#lemma_22_9_finrank_LF_quotient"><span class="name">lemma_22_9_finrank_LF_quotient</span></a></div><div class="nav_link"><a class="break_within" href="#finrank_sup_quotient_eq"><span class="name">finrank_sup_quotient_eq</span></a></div><div class="nav_link"><a class="break_within" href="#adeleDivisorDeg_add"><span class="name">adeleDivisorDeg_add</span></a></div><div class="nav_link"><a class="break_within" href="#adeleDivisorDeg_sub"><span class="name">adeleDivisorDeg_sub</span></a></div><div class="nav_link"><a class="break_within" href="#riemannDefect"><span class="name">riemannDefect</span></a></div><div class="nav_link"><a class="break_within" href="#AF_subspace_dim"><span class="name">AF_subspace_dim</span></a></div></nav><main>
+<div class="decl" id="AF_subspace"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L17-L22">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace"><span class="name">AF_subspace</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><span class="fn">P</span> → <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing">FunctionFieldAdeleRing</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span>)</span></span></div></div><p>The $k$-subspace $A(D) + F \subseteq \mathbb{A}_F$: the sum of the adele
+divisor space $A(D)$ and the principal adeles (the image of $F$ embedded
+diagonally).</p><details id="instances-for-list-AF_subspace" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="LF_subspace"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L24-L28">source</a></div><div class="attributes">@[reducible, inline]</div>
+<div class="decl_header"><span class="decl_kind">noncomputable abbrev</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#LF_subspace"><span class="name">LF_subspace</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><span class="fn">P</span> → <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing">FunctionFieldAdeleRing</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span>)</span></span></div></div><p>The $k$-subspace $A(D) \cap F$ inside $\mathbb{A}_F$: elements of the
+function field that satisfy the divisor bounds at every place.</p><details id="instances-for-list-LF_subspace" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="AF_subspace_mono"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L30-L34">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace_mono"><span class="name">AF_subspace_mono</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">A </span><span class="fn">B</span> : <span class="fn"><span class="fn">P</span> → <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hAB</span> : <span class="fn">∀ (<span class="fn">p</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">A</span> <span class="fn">p</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">B</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace">AF_subspace</a> <span class="fn">k</span> <span class="fn">A</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace">AF_subspace</a> <span class="fn">k</span> <span class="fn">B</span></span></div></div><p>Monotonicity of the $A(D) + F$ subspaces in the divisor: $A \le B$
+implies $A(A) + F \subseteq A(B) + F$.</p></div></div><div class="decl" id="rrSpaceAdele"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L36-L41">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele"><span class="name">rrSpaceAdele</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><span class="fn">P</span> → <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">k</span> <span class="fn">F</span></span></div></div><p>Riemann-Roch space $L(D) = \{f \in F \mid \mathrm{ord}_p(f) \ge -D(p) \text{ for all } p\}$ realized as the preimage of $A(D)$ under the diagonal
+embedding $F \hookrightarrow \mathbb{A}_F$.</p><details id="instances-for-list-rrSpaceAdele" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl sorried" id="rrSpaceAdele_zero_le_constants"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L43-L54">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name" title="declaration uses 'sorry'"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele_zero_le_constants"><span class="name">rrSpaceAdele_zero_le_constants</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_6)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">0</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra.linearMap">Algebra.linearMap</a> <span class="fn">k</span> <span class="fn">F</span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/Range.html#LinearMap.range">range</a></span></div></div><p>For the zero divisor, $L(0)$ consists of constants: $L(0) \subseteq k$
+(via the algebra map $k \hookrightarrow F$).</p></div></div><div class="decl" id="rrSpaceAdele_zero_finiteDimensional"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L56-L68">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele_zero_finiteDimensional"><span class="name">rrSpaceAdele_zero_finiteDimensional</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">0</span>)</span></span></span></div></div><p>$L(0)$ is finite-dimensional over $k$: it is contained in the
+$k$-algebra-image of $k$ inside $F$.</p></div></div><div class="decl" id="rrSpaceAdele_mono"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L70-L76">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele_mono"><span class="name">rrSpaceAdele_mono</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">D </span><span class="fn">D'</span> : <span class="fn"><span class="fn">P</span> → <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn">∀ (<span class="fn">p</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">D</span> <span class="fn">p</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">D'</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">D</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">D'</span></span></div></div><p>Monotonicity of Riemann-Roch spaces: $D \le D'$ implies
+$L(D) \subseteq L(D')$.</p></div></div><div class="decl" id="rrSpaceAdele_fd_step"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L78-L146">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele_fd_step"><span class="name">rrSpaceAdele_fd_step</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D </span><span class="fn">D'</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">h</span> : <span class="fn">∀ (<span class="fn">p</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">D</span> <span class="fn">p</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">D'</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hFD_D</span> : <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">D</span></span>)</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">D'</span></span>)</span></span></span></div></div><p>Inductive step for finite-dimensionality of $L(D)$: if $L(D)$ is
+finite-dimensional and $D \le D'$, then $L(D')$ is finite-dimensional, using
+Lemma 22.8 to bound $L(D')/L(D)$ inside $A(D')/A(D)$.</p></div></div><div class="decl" id="rrSpaceAdele_finiteDimensional"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L148-L181">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele_finiteDimensional"><span class="name">rrSpaceAdele_finiteDimensional</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_6)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">D</span></span>)</span></span></span></div></div><p>Lemma 22.9 (a). For any divisor $D$, the Riemann-Roch space $L(D)$ is
+finite-dimensional over the constant field $k$.</p></div></div><div class="decl" id="diagonalLinearMap_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L183-L189">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#diagonalLinearMap_injective"><span class="name">diagonalLinearMap_injective</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Init/Data/Function.html#Function.Injective">Function.Injective</a> <span class="fn">⇑<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.diagonalLinearMap">FunctionFieldAdeleRing.diagonalLinearMap</a> <span class="fn">k</span>)</span></span></span></div></div><p>The diagonal embedding $F \hookrightarrow \mathbb{A}_F$ is injective when
+the set of places is nonempty.</p></div></div><div class="decl" id="rrSpaceAdele_map_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L191-L204">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele_map_eq"><span class="name">rrSpaceAdele_map_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn"><span class="fn">P</span> → <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.map">Submodule.map</a> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.diagonalLinearMap">FunctionFieldAdeleRing.diagonalLinearMap</a> <span class="fn">k</span>)</span> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">D</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">D</span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span></span></div></div><p>Identification of $L(D)$ with $A(D) \cap F$ under the diagonal embedding:
+the image of $L(D)$ in $\mathbb{A}_F$ is precisely $A(D) \cap F$.</p></div></div><div class="decl" id="LF_subspace_finiteDimensional"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L206-L214">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#LF_subspace_finiteDimensional"><span class="name">LF_subspace_finiteDimensional</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">D</span></span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span>)</span></span></span></div></div><p>$A(D) \cap F$ is finite-dimensional, as image of the finite-dimensional
+$L(D)$ under the injective diagonal embedding.</p></div></div><div class="decl" id="LF_subspace_finrank"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L216-L225">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#LF_subspace_finrank"><span class="name">LF_subspace_finrank</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">D</span></span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span>)</span></span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#rrSpaceAdele">rrSpaceAdele</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">D</span></span>)</span></span></span></div></div><p>Dimension equality: $\dim_k (A(D) \cap F) = \dim_k L(D)$, since the
+diagonal embedding restricts to a $k$-linear isomorphism.</p></div></div><div class="decl" id="ellD"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L227-L230">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#ellD"><span class="name">ellD</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././Init/Prelude.html#Nat">ℕ</a></div></div><p>The number $\ell(D) = \dim_k L(D)$, the $k$-dimension of the Riemann-Roch
+space attached to $D$.</p><details id="instances-for-list-ellD" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="lemma_22_9_fd_LF_quotient"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L232-L264">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#lemma_22_9_fd_LF_quotient"><span class="name">lemma_22_9_fd_LF_quotient</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">A </span><span class="fn">B</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hAB</span> : <span class="fn">∀ (<span class="fn">p</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">A</span> <span class="fn">p</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">B</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span>
+  (<span class="fn">↥<span class="fn">(<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">B</span></span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span>)</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a>     <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">(<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">B</span></span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span>
+      <span class="fn">(<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">A</span></span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span>)</span></span>)</span></div></div><p>For $A \le B$, the quotient $(A(B) \cap F) / (A(A) \cap F)$ is
+finite-dimensional over $k$ (with the trivial case when $P$ is empty handled
+separately).</p></div></div><div class="decl" id="lemma_22_9_finrank_LF_quotient"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L266-L326">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#lemma_22_9_finrank_LF_quotient"><span class="name">lemma_22_9_finrank_LF_quotient</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">A </span><span class="fn">B</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hAB</span> : <span class="fn">∀ (<span class="fn">p</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">A</span> <span class="fn">p</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">B</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn">↑<span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">k</span>
+      (<span class="fn">↥<span class="fn">(<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">B</span></span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span>)</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a>         <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">(<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">B</span></span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span>
+          <span class="fn">(<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.adeleSpace">FunctionFieldAdeleRing.adeleSpace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">A</span></span></span> ⊓ <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.principalAdeles">FunctionFieldAdeleRing.principalAdeles</a> <span class="fn">k</span></span>)</span></span>))</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn">↑<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#ellD">ellD</a> <span class="fn">k</span> <span class="fn">B</span>)</span></span> <a href="../../.././Init/Prelude.html#HSub.hSub">-</a> <span class="fn">↑<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#ellD">ellD</a> <span class="fn">k</span> <span class="fn">A</span>)</span></span></div></div><p>Dimension of the LF-quotient: for $A \le B$,
+$$\dim_k \big((A(B) \cap F) / (A(A) \cap F)\big) = \ell(B) - \ell(A).$$</p></div></div><div class="decl" id="finrank_sup_quotient_eq"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L328-L428">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#finrank_sup_quotient_eq"><span class="name">finrank_sup_quotient_eq</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">R</span> : <a href="../../.././foundational_types.html">Type</a> u_4}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#DivisionRing">DivisionRing</a> <span class="fn">R</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">M</span> : <a href="../../.././foundational_types.html">Type</a> u_5}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Defs.html#AddCommGroup">AddCommGroup</a> <span class="fn">M</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Module/Defs.html#Module">Module</a> <span class="fn">R</span> <span class="fn">M</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">A </span><span class="fn">B </span><span class="fn">F_sub</span> : <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Defs.html#Submodule">Submodule</a> <span class="fn">R</span> <span class="fn">M</span></span>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hAB</span> : <span class="fn">A</span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn">B</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">hFD</span> : <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">R</span> (<span class="fn">↥<span class="fn">B</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a> <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">B</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span> <span class="fn">A</span></span>)</span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn">hFD_inf</span> : <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">R</span> (<span class="fn">↥<span class="fn">(<span class="fn">B</span> ⊓ <span class="fn">F_sub</span>)</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a> <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">(<span class="fn">B</span> ⊓ <span class="fn">F_sub</span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span> <span class="fn">(<span class="fn">A</span> ⊓ <span class="fn">F_sub</span>)</span></span>)</span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">R</span> (<span class="fn">↥<span class="fn">(<span class="fn">B</span> ⊔ <span class="fn">F_sub</span>)</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a> <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">(<span class="fn">B</span> ⊔ <span class="fn">F_sub</span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span> <span class="fn">(<span class="fn">A</span> ⊔ <span class="fn">F_sub</span>)</span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>   <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">R</span> (<span class="fn">↥<span class="fn">(<span class="fn">B</span> ⊔ <span class="fn">F_sub</span>)</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a> <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">(<span class="fn">B</span> ⊔ <span class="fn">F_sub</span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span> <span class="fn">(<span class="fn">A</span> ⊔ <span class="fn">F_sub</span>)</span></span>)</span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a>       <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">R</span> (<span class="fn">↥<span class="fn">(<span class="fn">B</span> ⊓ <span class="fn">F_sub</span>)</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a> <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">(<span class="fn">B</span> ⊓ <span class="fn">F_sub</span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span> <span class="fn">(<span class="fn">A</span> ⊓ <span class="fn">F_sub</span>)</span></span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a>     <span class="fn"><a href="../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">R</span> (<span class="fn">↥<span class="fn">B</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a> <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">B</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span> <span class="fn">A</span></span>)</span></div></div><p>Modular-lattice / second-isomorphism dimension identity. For submodules
+$A \le B$ and any $F$ of a module $M$, the dimension of
+$(B + F)/(A + F)$ plus the dimension of $(B \cap F)/(A \cap F)$ equals the
+dimension of $B/A$, and finite-dimensionality is inherited.</p></div></div><div class="decl" id="adeleDivisorDeg_add"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L430-L436">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#adeleDivisorDeg_add"><span class="name">adeleDivisorDeg_add</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">A </span><span class="fn">B</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#adeleDivisorDeg">adeleDivisorDeg</a> (<span class="fn">A</span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn">B</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#adeleDivisorDeg">adeleDivisorDeg</a> <span class="fn">A</span></span> <a href="../../.././Init/Prelude.html#HAdd.hAdd">+</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#adeleDivisorDeg">adeleDivisorDeg</a> <span class="fn">B</span></span></div></div><p>Additivity of divisor degree: $\deg(A + B) = \deg A + \deg B$.</p></div></div><div class="decl" id="adeleDivisorDeg_sub"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L438-L449">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#adeleDivisorDeg_sub"><span class="name">adeleDivisorDeg_sub</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">A </span><span class="fn">B</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#adeleDivisorDeg">adeleDivisorDeg</a> (<span class="fn">B</span> <a href="../../.././Init/Prelude.html#HSub.hSub">-</a> <span class="fn">A</span>)</span> <a href="../../.././Init/Prelude.html#Eq">=</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#adeleDivisorDeg">adeleDivisorDeg</a> <span class="fn">B</span></span> <a href="../../.././Init/Prelude.html#HSub.hSub">-</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#adeleDivisorDeg">adeleDivisorDeg</a> <span class="fn">A</span></span></div></div><p>Behavior of divisor degree under subtraction:
+$\deg(B - A) = \deg B - \deg A$.</p></div></div><div class="decl" id="riemannDefect"><div class="def"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L451-L456">source</a></div><div class="decl_header"><span class="decl_kind">noncomputable def</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#riemannDefect"><span class="name">riemannDefect</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">D</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a></div></div><p>The <em>Riemann defect</em> attached to a divisor $D$:
+$\delta(D) = \deg D + 1 - \ell(D)$, whose constant value (over varying $D$) is
+the genus $g$ in the Riemann-Roch theorem.</p><details id="instances-for-list-riemannDefect" class="instances-for-list"><summary>Instances For</summary><ul class="instances-for-enum"></ul></details></div></div><div class="decl" id="AF_subspace_dim"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/ArithmeticGeometry/code/AdelePlusFDim.lean#L458-L494">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace_dim"><span class="name">AF_subspace_dim</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">F</span> : <a href="../../.././foundational_types.html">Type</a> u_1}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">P</span> : <a href="../../.././foundational_types.html">Type</a> u_2}</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Init/Prelude.html#DecidableEq">DecidableEq</a> <span class="fn">P</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">O</span> : <span class="fn"><span class="fn">P</span> → <span class="fn"><a href="../../.././Mathlib/RingTheory/Valuation/ValuationSubring.html#ValuationSubring">ValuationSubring</a> <span class="fn">F</span></span></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">F</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.ConstantField">FunctionFieldAdeleRing.ConstantField</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.FunctionFieldProperty">FunctionFieldAdeleRing.FunctionFieldProperty</a> <span class="fn">F</span> <span class="fn">P</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/RiemannRoch.html#FunctionFieldAdeleRing.DiscreteValuationFamily">FunctionFieldAdeleRing.DiscreteValuationFamily</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdeleQuotientDim.html#HasResidueFieldSurjection">HasResidueFieldSurjection</a> <span class="fn">P</span> <span class="fn">F</span> <span class="fn">k</span> <span class="fn">O</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">A </span><span class="fn">B</span> : <span class="fn">P</span> <a href="../../.././Mathlib/Data/Finsupp/Defs.html#Finsupp">→₀</a> <a href="../../.././Init/Data/Int/Basic.html#Int">ℤ</a>)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">hAB</span> : <span class="fn">∀ (<span class="fn">p</span> : <span class="fn">P</span>), <span class="fn"><span class="fn">A</span> <span class="fn">p</span></span> <a href="../../.././Init/Prelude.html#LE.le">≤</a> <span class="fn"><span class="fn">B</span> <span class="fn">p</span></span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">k</span> (<span class="fn">↥<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace">AF_subspace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">B</span></span>)</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a> <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace">AF_subspace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">B</span></span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace">AF_subspace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">A</span></span>)</span></span>)</span> <a href="../../.././Init/Prelude.html#And">∧</a>   <span class="fn">↑<span class="fn">(<a href="../../.././Mathlib/LinearAlgebra/Dimension/Finrank.html#Module.finrank">Module.finrank</a> <span class="fn">k</span> (<span class="fn">↥<span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace">AF_subspace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">B</span></span>)</span></span> <a href="../../.././Mathlib/Algebra/Quotient.html#HasQuotient.Quotient">⧸</a> <span class="fn"><a href="../../.././Mathlib/Algebra/Module/Submodule/Map.html#Submodule.comap">Submodule.comap</a> <span class="fn"><span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace">AF_subspace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">B</span></span>)</span>.<a href="../../.././Mathlib/Algebra/Module/Submodule/LinearMap.html#Submodule.subtype">subtype</a></span> <span class="fn">(<a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#AF_subspace">AF_subspace</a> <span class="fn">k</span> <span class="fn">⇑<span class="fn">A</span></span>)</span></span>))</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>     <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#riemannDefect">riemannDefect</a> <span class="fn">k</span> <span class="fn">B</span></span> <a href="../../.././Init/Prelude.html#HSub.hSub">-</a> <span class="fn"><a href="../../.././Atlas/ArithmeticGeometry/code/AdelePlusFDim.html#riemannDefect">riemannDefect</a> <span class="fn">k</span> <span class="fn">A</span></span></div></div><p>Lemma 22.10. For divisors $A \le B$, the quotient
+$(A(B) + F) / (A(A) + F)$ is finite-dimensional over $k$ and its dimension is
+$\delta(B) - \delta(A)$, the difference of Riemann defects. Combines Lemmas
+22.8 and 22.9 via the modular-lattice identity.</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>

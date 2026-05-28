@@ -1,0 +1,242 @@
+<html lang="en"><head><meta charset="UTF-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="stylesheet" href="../../.././style.css"></link><link rel="icon" href="../../.././favicon.svg"></link><link rel="mask-icon" href="../../.././favicon.svg" color="#000000"></link><link rel="prefetch" href="../../.././/declarations/declaration-data.bmp" as="image"></link><title>Atlas.AlgebraicGeometryI.code.NormalizationVariety</title><script defer="true" src="../../.././mathjax-config.js"></script><script defer="true" src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="true" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script>const SITE_ROOT="../../.././";</script><script>const MODULE_NAME="Atlas.AlgebraicGeometryI.code.NormalizationVariety";</script><script type="module" src="../../.././jump-src.js"></script><script type="module" src="../../.././search.js"></script><script type="module" src="../../.././expand-nav.js"></script><script type="module" src="../../.././how-about.js"></script><script type="module" src="../../.././instances.js"></script><script type="module" src="../../.././importedBy.js"></script></head><body><input id="nav_toggle" type="checkbox"></input><header><h1><label for="nav_toggle"></label><span>Documentation</span></h1><h2 class="header_filename break_within"><span class="name">Atlas</span>.<span class="name">AlgebraicGeometryI</span>.<span class="name">code</span>.<span class="name">NormalizationVariety</span></h2><form id="search_form"><input type="text" name="q" autocomplete="off"></input>&#32;<button id="search_button" onclick="javascript: form.action='../../.././search.html';">Search</button></form></header><nav class="internal_nav"><p><a href="#top">return to top</a></p><p class="gh_nav_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean">source</a></p><div class="imports"><details><summary>Imports</summary><ul><li><a href="../../.././Init.html">Init</a></li><li><a href="../../.././Mathlib/AlgebraicGeometry/Normalization.html">Mathlib.AlgebraicGeometry.Normalization</a></li><li><a href="../../.././Mathlib/RingTheory/FiniteType.html">Mathlib.RingTheory.FiniteType</a></li><li><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/Finite.html">Mathlib.AlgebraicGeometry.Morphisms.Finite</a></li><li><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html">Mathlib.RingTheory.Finiteness.Defs</a></li><li><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html">Mathlib.RingTheory.IntegralClosure.IntegrallyClosed</a></li><li><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html">Mathlib.RingTheory.Localization.FractionRing</a></li><li><a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html">Mathlib.RingTheory.IntegralClosure.Algebra.Basic</a></li></ul></details><details><summary>Imported by</summary><ul id="imported-by-Atlas.AlgebraicGeometryI.code.NormalizationVariety" class="imported-by-list"></ul></details></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_is_finite"><span class="name">NormalizationVariety</span>.<span class="name">normalization_is_finite</span></a></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_finiteType"><span class="name">NormalizationVariety</span>.<span class="name">normalization_finiteType</span></a></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_is_normal"><span class="name">NormalizationVariety</span>.<span class="name">normalization_is_normal</span></a></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_map_injective"><span class="name">NormalizationVariety</span>.<span class="name">normalization_map_injective</span></a></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_existence"><span class="name">NormalizationVariety</span>.<span class="name">normalization_existence</span></a></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_factorization_scheme"><span class="name">NormalizationVariety</span>.<span class="name">normalization_factorization_scheme</span></a></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_fromNormalization_integral"><span class="name">NormalizationVariety</span>.<span class="name">normalization_fromNormalization_integral</span></a></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_toNormalization_dominant"><span class="name">NormalizationVariety</span>.<span class="name">normalization_toNormalization_dominant</span></a></div><div class="nav_link"><a class="break_within" href="#NormalizationVariety.normalization_sections_isIntegralClosure"><span class="name">NormalizationVariety</span>.<span class="name">normalization_sections_isIntegralClosure</span></a></div></nav><main>
+<div class="decl" id="NormalizationVariety.normalization_is_finite"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L15-L30">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_is_finite"><span class="name">NormalizationVariety</span>.<span class="name">normalization_is_finite</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/FiniteType.html#Algebra.FiniteType">Algebra.FiniteType</a> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">A</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">A</span> <span class="fn">E</span>)</span></span></span></div></div><p>The integral closure of a normal finitely-generated k-algebra A in a finite separable
+field extension E/K of its fraction field is a finite A-module: the normalization map
+Y → X is finite (Proposition 28, Lecture 17).</p></div></div><div class="decl" id="NormalizationVariety.normalization_finiteType"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L32-L48">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_finiteType"><span class="name">NormalizationVariety</span>.<span class="name">normalization_finiteType</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/FiniteType.html#Algebra.FiniteType">Algebra.FiniteType</a> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/FiniteType.html#Algebra.FiniteType">Algebra.FiniteType</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">A</span> <span class="fn">E</span>)</span></span></span></div></div><p>The normalization is itself a finitely-generated k-algebra: composing the finite
+A-module structure with finite-type A/k gives finite-type Y/k.</p></div></div><div class="decl" id="NormalizationVariety.normalization_is_normal"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L50-L58">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_is_normal"><span class="name">NormalizationVariety</span>.<span class="name">normalization_is_normal</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">A</span> <span class="fn">E</span>)</span></span></span></div></div><p>The integral closure of A in a finite extension of its fraction field is
+integrally closed; that is, the normalization variety is itself normal.</p></div></div><div class="decl" id="NormalizationVariety.normalization_map_injective"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L60-L70">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_map_injective"><span class="name">NormalizationVariety</span>.<span class="name">normalization_map_injective</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Init/Data/Function.html#Function.Injective">Function.Injective</a> <span class="fn">⇑<span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Defs.html#algebraMap">algebraMap</a> <span class="fn">A</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">A</span> <span class="fn">E</span>)</span></span>)</span></span></span></div></div><p>The structure map A → (integral closure of A in E) is injective, so the
+normalization map Y → X is dominant.</p></div></div><div class="decl" id="NormalizationVariety.normalization_existence"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L72-L97">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_existence"><span class="name">NormalizationVariety</span>.<span class="name">normalization_existence</span></a></span><span class="decl_args">
+<span class="fn">(<span class="fn">k</span> : <a href="../../.././foundational_types.html">Type</a> u_1)</span></span>
+<span class="decl_args">
+<span class="fn">(<span class="fn">A</span> : <a href="../../.././foundational_types.html">Type</a> u_2)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">k</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#CommRing">CommRing</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Ring/Defs.html#IsDomain">IsDomain</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/FiniteType.html#Algebra.FiniteType">Algebra.FiniteType</a> <span class="fn">k</span> <span class="fn">A</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">A</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">K</span> : <a href="../../.././foundational_types.html">Type</a> u_3)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/RingTheory/Localization/FractionRing.html#IsFractionRing">IsFractionRing</a> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">K</span></span>]</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">E</span> : <a href="../../.././foundational_types.html">Type</a> u_4)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Field/Defs.html#Field">Field</a> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/LinearAlgebra/FiniteDimensional/Defs.html#FiniteDimensional">FiniteDimensional</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">A</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">A</span> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Algebra/Defs.html#Algebra">Algebra</a> <span class="fn">k</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/Algebra/Group/Action/Defs.html#IsScalarTower">IsScalarTower</a> <span class="fn">k</span> <span class="fn">A</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/FieldTheory/Separable.html#Algebra.IsSeparable">Algebra.IsSeparable</a> <span class="fn">K</span> <span class="fn">E</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/RingTheory/Finiteness/Defs.html#Module.Finite">Module.Finite</a> <span class="fn">A</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">A</span> <span class="fn">E</span>)</span></span></span> <a href="../../.././Init/Prelude.html#And">∧</a>   <span class="fn"><a href="../../.././Mathlib/RingTheory/FiniteType.html#Algebra.FiniteType">Algebra.FiniteType</a> <span class="fn">k</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">A</span> <span class="fn">E</span>)</span></span></span> <a href="../../.././Init/Prelude.html#And">∧</a>     <span class="fn"><a href="../../.././Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.html#IsIntegrallyClosed">IsIntegrallyClosed</a> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">A</span> <span class="fn">E</span>)</span></span></span> <a href="../../.././Init/Prelude.html#And">∧</a> <span class="fn"><a href="../../.././Init/Data/Function.html#Function.Injective">Function.Injective</a> <span class="fn">⇑<span class="fn">(<a href="../../.././Mathlib/Algebra/Algebra/Defs.html#algebraMap">algebraMap</a> <span class="fn">A</span> <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">A</span> <span class="fn">E</span>)</span></span>)</span></span></span></div></div><p>Existence of the normalization variety (Proposition 28, Lecture 17): there exists
+a normal variety Y with a finite dominant map Y → X whose coordinate ring is the
+integral closure of A in E.</p></div></div><div class="decl" id="NormalizationVariety.normalization_factorization_scheme"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L100-L106">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_factorization_scheme"><span class="name">NormalizationVariety</span>.<span class="name">normalization_factorization_scheme</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme">AlgebraicGeometry.Scheme</a>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn">X</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">Y</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/QuasiCompact.html#AlgebraicGeometry.QuasiCompact">AlgebraicGeometry.QuasiCompact</a> <span class="fn">f</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/QuasiSeparated.html#AlgebraicGeometry.QuasiSeparated">AlgebraicGeometry.QuasiSeparated</a> <span class="fn">f</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.CategoryStruct.comp">CategoryTheory.CategoryStruct.comp</a> <span class="fn">(<a href="../../.././Mathlib/AlgebraicGeometry/Normalization.html#AlgebraicGeometry.Scheme.Hom.toNormalization">AlgebraicGeometry.Scheme.Hom.toNormalization</a> <span class="fn">f</span>)</span>
+    <span class="fn">(<a href="../../.././Mathlib/AlgebraicGeometry/Normalization.html#AlgebraicGeometry.Scheme.Hom.fromNormalization">AlgebraicGeometry.Scheme.Hom.fromNormalization</a> <span class="fn">f</span>)</span></span> <a href="../../.././Init/Prelude.html#Eq">=</a>   <span class="fn">f</span></div></div><p>The normalization factorization: any morphism f : X → Y factors as
+X → Norm(Y) → Y through the normalization.</p></div></div><div class="decl" id="NormalizationVariety.normalization_fromNormalization_integral"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L109-L114">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_fromNormalization_integral"><span class="name">NormalizationVariety</span>.<span class="name">normalization_fromNormalization_integral</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme">AlgebraicGeometry.Scheme</a>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn">X</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">Y</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/QuasiCompact.html#AlgebraicGeometry.QuasiCompact">AlgebraicGeometry.QuasiCompact</a> <span class="fn">f</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/QuasiSeparated.html#AlgebraicGeometry.QuasiSeparated">AlgebraicGeometry.QuasiSeparated</a> <span class="fn">f</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/Integral.html#AlgebraicGeometry.IsIntegralHom">AlgebraicGeometry.IsIntegralHom</a> <span class="fn">(<a href="../../.././Mathlib/AlgebraicGeometry/Normalization.html#AlgebraicGeometry.Scheme.Hom.fromNormalization">AlgebraicGeometry.Scheme.Hom.fromNormalization</a> <span class="fn">f</span>)</span></span></div></div><p>The structural map Norm(Y) → Y from the normalization is an integral morphism.</p></div></div><div class="decl" id="NormalizationVariety.normalization_toNormalization_dominant"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L117-L122">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_toNormalization_dominant"><span class="name">NormalizationVariety</span>.<span class="name">normalization_toNormalization_dominant</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme">AlgebraicGeometry.Scheme</a>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn">X</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">Y</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/QuasiCompact.html#AlgebraicGeometry.QuasiCompact">AlgebraicGeometry.QuasiCompact</a> <span class="fn">f</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/QuasiSeparated.html#AlgebraicGeometry.QuasiSeparated">AlgebraicGeometry.QuasiSeparated</a> <span class="fn">f</span></span>]</span></span>
+</span><span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/UnderlyingMap.html#AlgebraicGeometry.IsDominant">AlgebraicGeometry.IsDominant</a> <span class="fn">(<a href="../../.././Mathlib/AlgebraicGeometry/Normalization.html#AlgebraicGeometry.Scheme.Hom.toNormalization">AlgebraicGeometry.Scheme.Hom.toNormalization</a> <span class="fn">f</span>)</span></span></div></div><p>The map X → Norm(Y) into the normalization is dominant.</p></div></div><div class="decl" id="NormalizationVariety.normalization_sections_isIntegralClosure"><div class="theorem"><div class="gh_link"><a href="https://github.com/fairinternal/atlas/blob/a1f27ed23e598decd2fc7f1db614c128811da73d/Atlas/AlgebraicGeometryI/code/NormalizationVariety.lean#L125-L134">source</a></div><div class="decl_header"><span class="decl_kind">theorem</span>
+<span class="decl_name"><a class="break_within" href="../../.././Atlas/AlgebraicGeometryI/code/NormalizationVariety.html#NormalizationVariety.normalization_sections_isIntegralClosure"><span class="name">NormalizationVariety</span>.<span class="name">normalization_sections_isIntegralClosure</span></a></span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">X </span><span class="fn">Y</span> : <a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme">AlgebraicGeometry.Scheme</a>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">f</span> : <span class="fn">X</span> <a href="../../.././Mathlib/Combinatorics/Quiver/Basic.html#Quiver.Hom">⟶</a> <span class="fn">Y</span>)</span></span>
+<span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/QuasiCompact.html#AlgebraicGeometry.QuasiCompact">AlgebraicGeometry.QuasiCompact</a> <span class="fn">f</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">[<span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/Morphisms/QuasiSeparated.html#AlgebraicGeometry.QuasiSeparated">AlgebraicGeometry.QuasiSeparated</a> <span class="fn">f</span></span>]</span></span>
+</span><span class="impl_arg"><span class="decl_args">
+<span class="fn">{<span class="fn">U</span> : <span class="fn"><span class="fn">Y</span>.<a href="../../.././Mathlib/AlgebraicGeometry/Scheme.html#AlgebraicGeometry.Scheme.Opens">Opens</a></span>}</span></span>
+</span><span class="decl_args">
+<span class="fn">(<span class="fn">hU</span> : <span class="fn"><a href="../../.././Mathlib/AlgebraicGeometry/AffineScheme.html#AlgebraicGeometry.IsAffineOpen">AlgebraicGeometry.IsAffineOpen</a> <span class="fn">U</span></span>)</span></span>
+<span class="decl_args"> :</span><div class="decl_type"><span class="fn"><a href="../../.././Init/Prelude.html#Nonempty">Nonempty</a>
+  (<span class="fn"><span class="fn"><span class="fn"><span class="fn">(<a href="../../.././Mathlib/AlgebraicGeometry/Normalization.html#AlgebraicGeometry.Scheme.Hom.normalization">AlgebraicGeometry.Scheme.Hom.normalization</a> <span class="fn">f</span>)</span>.<a href="../../.././Mathlib/Geometry/RingedSpace/PresheafedSpace.html#AlgebraicGeometry.PresheafedSpace.presheaf">presheaf</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span>
+      <span class="fn">(<a href="../../.././Mathlib/Data/Opposite.html#Opposite.op">Opposite.op</a> <span class="fn">(<span class="fn"><span class="fn">(<a href="../../.././Mathlib/Topology/Category/TopCat/Opens.html#TopologicalSpace.Opens.map">TopologicalSpace.Opens.map</a> <span class="fn"><span class="fn">(<a href="../../.././Mathlib/AlgebraicGeometry/Normalization.html#AlgebraicGeometry.Scheme.Hom.fromNormalization">AlgebraicGeometry.Scheme.Hom.fromNormalization</a> <span class="fn">f</span>)</span>.<a href="../../.././Mathlib/Geometry/RingedSpace/PresheafedSpace.html#AlgebraicGeometry.PresheafedSpace.Hom.base">base</a></span>)</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">U</span>)</span>)</span></span> <a href="../../.././Mathlib/CategoryTheory/Iso.html#CategoryTheory.Iso">≅</a>     <span class="fn"><a href="../../.././Mathlib/Algebra/Category/Ring/Basic.html#CommRingCat.of">CommRingCat.of</a>
+      <span class="fn">↥<span class="fn">(<a href="../../.././Mathlib/RingTheory/IntegralClosure/Algebra/Basic.html#integralClosure">integralClosure</a> <span class="fn">↑<span class="fn">(<span class="fn"><span class="fn"><span class="fn">Y</span>.<a href="../../.././Mathlib/Geometry/RingedSpace/PresheafedSpace.html#AlgebraicGeometry.PresheafedSpace.presheaf">presheaf</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">(<a href="../../.././Mathlib/Data/Opposite.html#Opposite.op">Opposite.op</a> <span class="fn">U</span>)</span>)</span></span>
+          <span class="fn">↑<span class="fn">(<span class="fn"><span class="fn"><span class="fn">X</span>.<a href="../../.././Mathlib/Geometry/RingedSpace/PresheafedSpace.html#AlgebraicGeometry.PresheafedSpace.presheaf">presheaf</a></span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">(<a href="../../.././Mathlib/Data/Opposite.html#Opposite.op">Opposite.op</a> <span class="fn">(<span class="fn"><span class="fn">(<a href="../../.././Mathlib/Topology/Category/TopCat/Opens.html#TopologicalSpace.Opens.map">TopologicalSpace.Opens.map</a> <span class="fn"><span class="fn">f</span>.<a href="../../.././Mathlib/Geometry/RingedSpace/PresheafedSpace.html#AlgebraicGeometry.PresheafedSpace.Hom.base">base</a></span>)</span>.<a href="../../.././Mathlib/CategoryTheory/Functor/Basic.html#CategoryTheory.Functor.obj">obj</a></span> <span class="fn">U</span>)</span>)</span>)</span></span>)</span></span></span>)</span></div></div><p>Local description: on an affine open U ⊆ Y, the sections of the normalization
+over f⁻¹(U) form the integral closure of Γ(Y,U) in Γ(X, f⁻¹(U)).</p></div></div></main>
+<nav class="nav"><iframe src="../../.././navbar.html" class="navframe" frameBorder="0"></iframe></nav></body></html>
