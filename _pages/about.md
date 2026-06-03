@@ -18,6 +18,17 @@ Beyond academics, you can find me pursuing my hobbies, which include climbing, c
 
 # News
 
+## *28 May 2026*: Formalizing Mathematics at Scale
+
+Our paper **"Formalizing Mathematics at Scale"** is out! We introduce [ATLAS](https://rammalahmad.github.io/atlas/), a Lean 4 library of textbook mathematics autoformalized by LLMs, spanning 26 books across analysis, algebra, geometry, topology, combinatorics, probability, and more. Built with [AutoformBot](https://github.com/facebookresearch/autoform-bot), our autoformalization pipeline.
+
+- Paper: [arXiv:2605.29955](https://arxiv.org/abs/2605.29955)
+- ATLAS library: [GitHub](https://github.com/facebookresearch/atlas-lean)
+- AutoformBot: [GitHub](https://github.com/facebookresearch/autoform-bot)
+- Interactive visualizer: [rammalahmad.github.io/atlas](https://rammalahmad.github.io/atlas/)
+
+---
+
 ## *15 April 2025*: Paper Selected for Oral Presentation at UAI 2025
 
 Thrilled to announce that our research paper, "Correlated Quantization for Faster Nonconvex Distributed Optimization" has been accepted at [UAI 2025](https://www.auai.org/uai2025/). A heartfelt thank you to everyone involved in making this outcome possible!
