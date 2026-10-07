@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="theme-color" content="#10233f">
+  <meta name="description" content="Bleu Blanc Quiz : préparation interactive à l’examen civique, avec leçons, quiz, révisions et examens blancs.">
+  <title>Bleu Blanc Quiz — Préparation à l’examen civique</title>
+  <link rel="manifest" href="manifest.webmanifest?v=bbq1">
+  <link rel="stylesheet" href="styles.css?v=bbq1">
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation principale">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <strong class="brand-name"><span class="brand-blue">Bleu</span> Blanc <span class="brand-red">QUIZ</span></strong>
+          <small>La France que nous aimons</small>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <button class="nav-item is-active" data-route="dashboard" type="button">
+          <span class="nav-icon" aria-hidden="true">⌂</span><span>Aujourd’hui</span>
+        </button>
+        <button class="nav-item" data-route="learn" type="button">
+          <span class="nav-icon" aria-hidden="true">◇</span><span>Apprendre</span>
+        </button>
+        <button class="nav-item" data-route="practice" type="button">
+          <span class="nav-icon" aria-hidden="true">◎</span><span>S’entraîner</span>
+        </button>
+        <button class="nav-item" data-route="mock" type="button">
+          <span class="nav-icon" aria-hidden="true">◷</span><span>Examen blanc</span>
+        </button>
+        <button class="nav-item" data-route="review" type="button">
+          <span class="nav-icon" aria-hidden="true">↻</span><span>Réviser</span>
+          <span class="nav-badge" id="review-count">0</span>
+        </button>
+        <button class="nav-item" data-route="library" type="button">
+          <span class="nav-icon" aria-hidden="true">≡</span><span>Questions</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-route="settings" type="button">
+          <span class="nav-icon" aria-hidden="true">⚙</span><span>Réglages et sources</span>
+        </button>
+      </div>
+    </aside>
+    <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Fermer le menu" tabindex="-1"></button>
+
+    <div class="content-shell">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menu-button" type="button" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false">☰</button>
+        <div class="topbar-title">
+          <span class="eyebrow" id="route-eyebrow">Votre programme</span>
+          <h1 id="route-title">Aujourd’hui</h1>
+        </div>
+        <div class="topbar-actions">
+          <div class="streak-chip" title="Série de jours étudiés"><span aria-hidden="true">◆</span><strong id="streak-value">0</strong><span>jours de suite</span></div>
+          <button class="icon-button" id="theme-toggle" type="button" aria-label="Changer de thème">◐</button>
+        </div>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <section class="view is-active" id="view-dashboard" data-view="dashboard" aria-labelledby="dashboard-heading">
+          <div class="hero-card">
+            <div class="hero-copy">
+              <span class="pill pill-light">Préparation à l’examen civique</span>
+              <h2 id="dashboard-heading">Bonjour !</h2>
+              <p id="daily-message">Connaître la France que nous aimons, comprendre ses valeurs et progresser à son rythme.</p>
+              <div class="hero-actions">
+                <button class="button button-primary" id="continue-button" type="button">Commencer la révision du jour</button>
+                <button class="button button-ghost-light" data-go="mock" type="button">Faire un examen blanc</button>
+              </div>
+            </div>
+            <div class="readiness" aria-label="Niveau de préparation">
+              <div class="readiness-ring" id="readiness-ring"><span id="readiness-score">0%</span></div>
+              <strong>Préparation à l’examen civique</strong>
+              <small id="readiness-label">Établissons votre niveau de départ</small>
+            </div>
+          </div>
+
+          <div class="metrics-grid" aria-label="Statistiques d’étude">
+            <article class="metric-card"><span class="metric-icon blue">✓</span><div><small>Maîtrisées</small><strong id="mastered-count">0</strong><span>sur <b class="official-total">244</b> questions officielles</span></div></article>
+            <article class="metric-card"><span class="metric-icon red">!</span><div><small>À revoir</small><strong id="due-count">0</strong><span>révisions espacées</span></div></article>
+            <article class="metric-card"><span class="metric-icon gold">★</span><div><small>Meilleur examen blanc</small><strong id="best-mock">—</strong><span>objectif : 32/40</span></div></article>
+            <article class="metric-card"><span class="metric-icon teal">↗</span><div><small>Questions traitées</small><strong id="answered-count">0</strong><span>tentatives au total</span></div></article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel theme-progress-panel">
+              <div class="panel-header"><div><span class="eyebrow">Progression</span><h3>Vos cinq thèmes</h3></div><button class="text-button" data-go="learn" type="button">Étudier les thèmes →</button></div>
+              <div id="theme-progress-list" class="theme-progress-list"></div>
+            </article>
+
+            <article class="panel weak-panel">
+              <div class="panel-header"><div><span class="eyebrow">Coach adaptatif</span><h3>À renforcer</h3></div></div>
+              <div id="weak-list" class="weak-list"></div>
+              <button class="button button-soft full-width" id="practice-weak-button" type="button">Travailler mes points faibles</button>
+            </article>
+          </div>
+
+          <article class="panel plan-panel">
+            <div class="panel-header"><div><span class="eyebrow" id="plan-eyebrow">Parcours conseillé</span><h3>Votre programme</h3></div><span class="plan-status" id="plan-status">Date non définie</span></div>
+            <div class="plan-track" id="plan-track"></div>
+          </article>
+        </section>
+
+        <section class="view" id="view-learn" data-view="learn" aria-labelledby="learn-heading">
+          <div class="page-intro">
+            <div><span class="eyebrow">Comprendre avant de mémoriser</span><h2 id="learn-heading">Découvrir la France</h2><p>Des repères courts sur les valeurs, les droits, l’histoire, les institutions et la vie quotidienne.</p></div>
+            <div class="progress-summary"><strong id="lessons-complete">0/0</strong><span>leçons terminées</span></div>
+          </div>
+          <div class="filter-row" id="lesson-filters" role="group" aria-label="Filtrer les leçons"></div>
+          <div class="lesson-grid" id="lesson-grid"></div>
+        </section>
+
+        <section class="view" id="view-practice" data-view="practice" aria-labelledby="practice-heading">
+          <div class="page-intro">
+            <div><span class="eyebrow">Choisissez votre séance</span><h2 id="practice-heading">Entraînez-vous intelligemment</h2><p>Chaque réponse actualise votre calendrier de mémorisation et vos points faibles.</p></div>
+          </div>
+          <div class="mode-grid" id="practice-modes"></div>
+          <article class="panel custom-practice-panel">
+            <div class="panel-header"><div><span class="eyebrow">Composez une séance</span><h3>Entraînement personnalisé</h3></div></div>
+            <div class="custom-grid">
+              <label>Thème<select id="custom-theme"><option value="all">Tous les thèmes</option></select></label>
+              <label>Source<select id="custom-source"><option value="all">Questions officielles + situations</option><option value="official">Questions de connaissance officielles</option><option value="scenario">Mises en situation d’entraînement</option></select></label>
+              <label>Nombre<select id="custom-count"><option>10</option><option>20</option><option>40</option><option value="all">Toutes les questions correspondantes</option></select></label>
+              <button class="button button-primary" id="custom-start" type="button">Commencer</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" id="view-mock" data-view="mock" aria-labelledby="mock-heading">
+          <div class="mock-hero">
+            <div>
+              <span class="pill">Format officiel</span>
+              <h2 id="mock-heading">40 questions. 45 minutes.</h2>
+              <p>28 questions de connaissance et 12 mises en situation, réparties selon les cinq thèmes officiels. Il faut obtenir au moins 32 bonnes réponses.</p>
+              <div class="mock-facts"><span><b>40</b> questions</span><span><b>45</b> minutes</span><span><b>80 %</b> pour réussir</span></div>
+              <button class="button button-primary" id="start-mock" type="button">Commencer l’examen chronométré</button>
+              <button class="button button-secondary hidden" id="resume-mock" type="button">Reprendre l’examen enregistré</button>
+            </div>
+            <div class="mock-sheet" aria-hidden="true">
+              <div class="sheet-line wide"></div><div class="sheet-line"></div><div class="sheet-line"></div>
+              <div class="answer-dots"><i></i><i></i><i></i><i></i></div>
+              <div class="sheet-score">32<span>/40</span></div>
+            </div>
+          </div>
+          <div class="mock-history panel">
+            <div class="panel-header"><div><span class="eyebrow">Tentatives précédentes</span><h3>Historique des examens blancs</h3></div></div>
+            <div id="mock-history-list" class="history-list"></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-review" data-view="review" aria-labelledby="review-heading">
+          <div class="page-intro">
+            <div><span class="eyebrow">Répétition espacée</span><h2 id="review-heading">Votre file de révision</h2><p>Les notions oubliées ou mal maîtrisées reviennent au bon moment.</p></div>
+            <button class="button button-primary" id="start-review" type="button">Réviser les questions dues</button>
+          </div>
+          <div class="review-stats" id="review-stats"></div>
+          <article class="panel">
+            <div class="panel-header"><div><span class="eyebrow">Aperçu de la file</span><h3>Prochaines révisions</h3></div></div>
+            <div id="review-preview" class="review-preview"></div>
+          </article>
+        </section>
+
+        <section class="view" id="view-library" data-view="library" aria-labelledby="library-heading">
+          <div class="page-intro library-intro">
+            <div><span class="eyebrow">Couverture complète</span><h2 id="library-heading">Banque de questions</h2><p><b class="official-total">244</b> questions de connaissance publiées par le ministère, plus des mises en situation d’entraînement. Recherchez, filtrez et ajoutez des favoris.</p></div>
+          </div>
+          <div class="library-toolbar">
+            <label class="search-box"><span aria-hidden="true">⌕</span><input id="question-search" type="search" placeholder="Rechercher une question, une réponse ou une notion…"></label>
+            <select id="library-theme" aria-label="Filtrer par thème"><option value="all">Tous les thèmes</option></select>
+            <select id="library-source" aria-label="Filtrer par source"><option value="all">Toutes les sources</option><option value="official">Questions officielles</option><option value="scenario">Mises en situation</option><option value="bookmarked">Favoris</option></select>
+          </div>
+          <div class="library-meta"><span id="library-result-count">0 questions</span><span class="source-key"><i class="dot official"></i> Question publiée <i class="dot scenario"></i> Situation d’entraînement</span></div>
+          <div id="question-list" class="question-list"></div>
+          <button class="button button-soft load-more hidden" id="load-more" type="button">Afficher plus</button>
+        </section>
+
+        <section class="view" id="view-settings" data-view="settings" aria-labelledby="settings-heading">
+          <div class="page-intro"><div><span class="eyebrow">Vos données restent ici</span><h2 id="settings-heading">Réglages et sources</h2><p>Aucun compte, suivi statistique ou stockage en ligne. Votre progression reste uniquement dans ce navigateur.</p></div></div>
+          <div class="settings-grid">
+            <article class="panel">
+              <div class="panel-header"><div><span class="eyebrow">Préférences</span><h3>Réglages d’étude</h3></div></div>
+              <label class="setting-row"><span><b>Prénom ou pseudonyme</b><small>Affiché uniquement dans votre accueil</small></span><input type="text" id="display-name" maxlength="40" autocomplete="nickname" placeholder="Votre prénom"></label>
+              <label class="setting-row"><span><b>Objectif quotidien</b><small>Questions par jour</small></span><select id="daily-goal"><option>10</option><option selected>20</option><option>30</option><option>40</option></select></label>
+              <label class="setting-row"><span><b>Afficher les explications</b><small>Toutes les explications sont en français</small></span><input type="checkbox" id="english-hints" checked></label>
+              <label class="setting-row"><span><b>Réduire les animations</b><small>Limiter les animations de réussite</small></span><input type="checkbox" id="reduce-motion"></label>
+            </article>
+            <article class="panel">
+              <div class="panel-header"><div><span class="eyebrow">Sauvegarde</span><h3>Votre progression</h3></div></div>
+              <p class="muted">Exportez une sauvegarde JSON avant de changer de navigateur ou d’effacer les données du site.</p>
+              <div class="button-stack"><button class="button button-secondary" id="export-progress" type="button">Exporter la progression</button><label class="button button-secondary file-button">Importer une progression<input type="file" id="import-progress" accept="application/json"></label><button class="button button-danger" id="reset-progress" type="button">Effacer toute la progression</button></div>
+            </article>
+          </div>
+          <article class="panel sources-panel">
+            <div class="panel-header"><div><span class="eyebrow">Vérifié en octobre 2026</span><h3>Sources officielles et transparence</h3></div></div>
+            <div class="notice"><strong>D’où viennent les questions ?</strong><p>Cette préparation reprend les 244 formulations publiées par le ministère pour l’examen civique. Les choix, réponses, explications et situations ont été créés pour l’entraînement et vérifiés à partir de sources officielles.</p></div>
+            <ul class="source-list">
+              <li><a href="assets/questions-naturalisation-officielles.pdf" target="_blank" rel="noopener">Les 244 questions de connaissance officielles (PDF local)</a><span>Publié le 12 janvier 2026</span></li>
+              <li><a href="https://www.immigration.interieur.gouv.fr/documentation/guides-textes-et-brochures/questions-de-connaissance-pour-lexamen-civique-nationalite-francaise.html" target="_blank" rel="noopener">Page officielle du ministère</a><span>Source principale</span></li>
+              <li><a href="https://www.service-public.fr/particuliers/vosdroits/F39426" target="_blank" rel="noopener">Format civique officiel sur Service-Public.fr</a><span>Format, seuil et programme</span></li>
+              <li><a href="https://www.lefrancaisdesaffaires.fr/candidat/examen-civique/preparation/" target="_blank" rel="noopener">Préparation de la CCI Paris Île-de-France</a><span>Format et répartition des thèmes</span></li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="view quiz-view" id="view-quiz" data-view="quiz" aria-labelledby="quiz-title">
+          <div class="quiz-topline">
+            <button class="text-button" id="quit-quiz" type="button">← Quitter la séance</button>
+            <div class="quiz-progress-wrap"><div class="quiz-progress"><span id="quiz-progress-bar"></span></div><small id="quiz-progress-text">1 sur 10</small></div>
+            <div class="timer" id="quiz-timer" aria-live="polite">45:00</div>
+          </div>
+          <div class="quiz-layout">
+            <article class="quiz-card">
+              <div class="question-meta"><span class="theme-chip" id="quiz-theme">Thème</span><span class="source-chip" id="quiz-source">Question officielle</span><button class="bookmark-button" id="quiz-bookmark" type="button" aria-label="Ajouter cette question aux favoris">☆</button></div>
+              <h2 id="quiz-title">Question</h2>
+              <div class="answer-list" id="answer-list" role="group" aria-label="Choix de réponse"></div>
+              <div class="feedback-box hidden" id="feedback-box" aria-live="polite">
+                <div class="feedback-heading"><span id="feedback-icon">✓</span><strong id="feedback-title">Bonne réponse</strong></div>
+                <div class="wrong-answer-detail hidden" id="feedback-wrong-detail"><span>Pourquoi votre réponse est fausse</span><p id="feedback-wrong-reason"></p></div>
+                <div class="correct-answer-detail hidden" id="feedback-correct-detail"><span>Réponse correcte</span><p id="feedback-correct-answer"></p></div>
+                <p id="feedback-explanation"></p>
+                <div class="memory-hook" id="memory-hook"><span>À retenir</span><p></p></div>
+              </div>
+              <div class="quiz-actions"><span class="keyboard-hint">Touches 1 à 4 pour répondre</span><button class="button button-primary hidden" id="next-question" type="button">Question suivante →</button></div>
+            </article>
+            <aside class="session-panel">
+              <div><span class="eyebrow">Cette séance</span><h3 id="session-name">Entraînement</h3></div>
+              <div class="session-score"><strong id="session-correct">0</strong><span>bonnes réponses</span></div>
+              <div class="mini-stat"><span>Précision</span><strong id="session-accuracy">—</strong></div>
+              <div class="mini-stat"><span>Série actuelle</span><strong id="session-streak">0</strong></div>
+              <div class="session-dots" id="session-dots"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="view-results" data-view="results" aria-labelledby="results-heading">
+          <div class="results-card">
+            <div class="result-burst" id="result-burst">✓</div>
+            <span class="eyebrow" id="result-kicker">Séance terminée</span>
+            <h2 id="results-heading">Bravo.</h2>
+            <div class="result-score"><strong id="result-score">0/10</strong><span id="result-percent">0%</span></div>
+            <p id="result-message"></p>
+            <div class="result-breakdown" id="result-breakdown"></div>
+            <div class="result-corrections" id="result-corrections"></div>
+            <div class="result-actions"><button class="button button-primary" id="review-mistakes" type="button">Revoir mes erreurs</button><button class="button button-secondary" data-go="dashboard" type="button">Retour à l’accueil</button></div>
+          </div>
+        </section>
+
+        <section class="view lesson-view" id="view-lesson" data-view="lesson" aria-labelledby="lesson-title">
+          <button class="text-button" id="back-to-lessons" type="button">← Toutes les leçons</button>
+          <article class="lesson-article" id="lesson-article"></article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <dialog id="profile-dialog" class="profile-dialog" aria-labelledby="profile-dialog-title" aria-describedby="profile-dialog-description">
+    <form id="profile-form">
+      <span class="eyebrow">Bienvenue dans Bleu Blanc Quiz</span>
+      <h2 id="profile-dialog-title">Comment souhaitez-vous être appelé ?</h2>
+      <p id="profile-dialog-description">Choisissez un prénom ou un pseudonyme pour personnaliser votre espace.</p>
+      <label class="profile-name-field">Prénom ou pseudonyme<input type="text" id="profile-name" maxlength="40" autocomplete="nickname" placeholder="Par exemple : Camille" required></label>
+      <p class="form-error" id="profile-error" aria-live="polite"></p>
+      <button class="button button-primary" type="submit">Commencer</button>
+      <small>Ce nom et toute votre progression restent uniquement dans ce navigateur. Aucun compte n’est créé.</small>
+    </form>
+  </dialog>
+
+  <dialog id="confirm-dialog">
+    <form method="dialog">
+      <h2 id="dialog-title">Êtes-vous sûr ?</h2>
+      <p id="dialog-message">Cette action est irréversible.</p>
+      <div class="dialog-actions"><button class="button button-secondary" value="cancel">Annuler</button><button class="button button-danger" id="dialog-confirm" value="confirm">Confirmer</button></div>
+    </form>
+  </dialog>
+
+  <script src="data.js?v=bbq1"></script>
+  <script src="french-overrides.js?v=bbq1"></script>
+  <script src="app.js?v=bbq1"></script>
+</body>
+</html>

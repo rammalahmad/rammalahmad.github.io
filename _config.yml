@@ -191,6 +191,15 @@ collections:
 
 # Defaults
 defaults:
+  # Unlisted exam practice app
+  - scope:
+      path: "bleu-blanc-quiz"
+    values:
+      sitemap: false
+  - scope:
+      path: "france"
+    values:
+      sitemap: false
   # _posts
   - scope:
       path: ""
