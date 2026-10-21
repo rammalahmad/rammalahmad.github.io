@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#10233f">
   <meta name="description" content="Bleu Blanc Quiz : préparation interactive à l’examen civique, avec leçons, quiz, révisions et examens blancs.">
   <title>Bleu Blanc Quiz — Préparation à l’examen civique</title>
-  <link rel="manifest" href="manifest.webmanifest?v=bbq1">
-  <link rel="stylesheet" href="styles.css?v=bbq1">
+  <link rel="manifest" href="manifest.webmanifest?v=20261021-exhaustif">
+  <link rel="stylesheet" href="styles.css?v=20261021-exhaustif">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -78,15 +78,15 @@
                 <button class="button button-ghost-light" data-go="mock" type="button">Faire un examen blanc</button>
               </div>
             </div>
-            <div class="readiness" aria-label="Niveau de préparation">
+            <div class="readiness" aria-label="Indice indicatif d’entraînement, sans garantie de réussite" title="Énoncés officiels, notions des situations de base et trois derniers examens blancs. Les approfondissements ne sont pas des obligations supplémentaires.">
               <div class="readiness-ring" id="readiness-ring"><span id="readiness-score">0%</span></div>
-              <strong>Préparation à l’examen civique</strong>
+              <strong>Indice d’entraînement</strong>
               <small id="readiness-label">Établissons votre niveau de départ</small>
             </div>
           </div>
 
           <div class="metrics-grid" aria-label="Statistiques d’étude">
-            <article class="metric-card"><span class="metric-icon blue">✓</span><div><small>Maîtrisées</small><strong id="mastered-count">0</strong><span>sur <b class="official-total">244</b> questions officielles</span></div></article>
+            <article class="metric-card"><span class="metric-icon blue">✓</span><div><small>Maîtrisées</small><strong id="mastered-count">0</strong><span>sur <b class="question-total">0</b> QCM de préparation</span></div></article>
             <article class="metric-card"><span class="metric-icon red">!</span><div><small>À revoir</small><strong id="due-count">0</strong><span>révisions espacées</span></div></article>
             <article class="metric-card"><span class="metric-icon gold">★</span><div><small>Meilleur examen blanc</small><strong id="best-mock">—</strong><span>objectif : 32/40</span></div></article>
             <article class="metric-card"><span class="metric-icon teal">↗</span><div><small>Questions traitées</small><strong id="answered-count">0</strong><span>tentatives au total</span></div></article>
@@ -116,6 +116,7 @@
             <div><span class="eyebrow">Comprendre avant de mémoriser</span><h2 id="learn-heading">Découvrir la France</h2><p>Des repères courts sur les valeurs, les droits, l’histoire, les institutions et la vie quotidienne.</p></div>
             <div class="progress-summary"><strong id="lessons-complete">0/0</strong><span>leçons terminées</span></div>
           </div>
+          <label class="search-box lesson-search"><span aria-hidden="true">⌕</span><input id="lesson-search" type="search" placeholder="Rechercher une leçon ou une notion…" aria-label="Rechercher une leçon"></label>
           <div class="filter-row" id="lesson-filters" role="group" aria-label="Filtrer les leçons"></div>
           <div class="lesson-grid" id="lesson-grid"></div>
         </section>
@@ -124,12 +125,14 @@
           <div class="page-intro">
             <div><span class="eyebrow">Choisissez votre séance</span><h2 id="practice-heading">Entraînez-vous intelligemment</h2><p>Chaque réponse actualise votre calendrier de mémorisation et vos points faibles.</p></div>
           </div>
+          <p class="exhaustive-summary" id="exhaustive-summary" aria-live="polite"></p>
           <div class="mode-grid" id="practice-modes"></div>
           <article class="panel custom-practice-panel">
             <div class="panel-header"><div><span class="eyebrow">Composez une séance</span><h3>Entraînement personnalisé</h3></div></div>
             <div class="custom-grid">
               <label>Thème<select id="custom-theme"><option value="all">Tous les thèmes</option></select></label>
-              <label>Source<select id="custom-source"><option value="all">Questions officielles + situations</option><option value="official">Questions de connaissance officielles</option><option value="scenario">Mises en situation d’entraînement</option></select></label>
+              <label>Type de QCM<select id="custom-source"><option value="all">Tous les QCM</option><option value="official">Énoncés officiels</option><option value="study">QCM des fiches et du Livret</option><option value="scenario">Mises en situation d’entraînement</option><option value="fiche">Issus des fiches thématiques</option><option value="livret">Issus du Livret du citoyen</option></select></label>
+              <label class="resource-select">Fiche ou chapitre<select id="custom-resource"><option value="all">Toutes les fiches et ressources</option></select></label>
               <label>Nombre<select id="custom-count"><option>10</option><option>20</option><option>40</option><option value="all">Toutes les questions correspondantes</option></select></label>
               <button class="button button-primary" id="custom-start" type="button">Commencer</button>
             </div>
@@ -142,6 +145,7 @@
               <span class="pill">Format officiel</span>
               <h2 id="mock-heading">40 questions. 45 minutes.</h2>
               <p>28 questions de connaissance et 12 mises en situation, réparties selon les cinq thèmes officiels. Il faut obtenir au moins 32 bonnes réponses.</p>
+              <p class="mock-disclaimer">Simulation d’entraînement : les choix et les situations sont rédigés pour apprendre, pas extraits du véritable examen.</p>
               <div class="mock-facts"><span><b>40</b> questions</span><span><b>45</b> minutes</span><span><b>80 %</b> pour réussir</span></div>
               <button class="button button-primary" id="start-mock" type="button">Commencer l’examen chronométré</button>
               <button class="button button-secondary hidden" id="resume-mock" type="button">Reprendre l’examen enregistré</button>
@@ -172,20 +176,23 @@
 
         <section class="view" id="view-library" data-view="library" aria-labelledby="library-heading">
           <div class="page-intro library-intro">
-            <div><span class="eyebrow">Couverture complète</span><h2 id="library-heading">Banque de questions</h2><p><b class="official-total">244</b> questions de connaissance publiées par le ministère, plus des mises en situation d’entraînement. Recherchez, filtrez et ajoutez des favoris.</p></div>
+            <div><span class="eyebrow">Les cinq thèmes de l’examen</span><h2 id="library-heading">Banque de questions</h2><p><b class="official-total">259</b> énoncés du PDF officiel, <b class="study-total">0</b> QCM complémentaires des fiches et du Livret, et <b class="scenario-total">0</b> mises en situation d’entraînement. Chaque proposition est expliquée.</p></div>
           </div>
           <div class="library-toolbar">
             <label class="search-box"><span aria-hidden="true">⌕</span><input id="question-search" type="search" placeholder="Rechercher une question, une réponse ou une notion…"></label>
             <select id="library-theme" aria-label="Filtrer par thème"><option value="all">Tous les thèmes</option></select>
-            <select id="library-source" aria-label="Filtrer par source"><option value="all">Toutes les sources</option><option value="official">Questions officielles</option><option value="scenario">Mises en situation</option><option value="bookmarked">Favoris</option></select>
+            <select id="library-source" aria-label="Filtrer par type de QCM"><option value="all">Tous les QCM</option><option value="official">Énoncés officiels</option><option value="study">QCM des fiches et du Livret</option><option value="scenario">Mises en situation</option><option value="fiche">Fiches thématiques</option><option value="livret">Livret du citoyen</option><option value="bookmarked">Favoris</option></select>
+            <select id="library-resource" class="library-resource" aria-label="Filtrer par fiche ou chapitre"><option value="all">Toutes les fiches et ressources</option></select>
+            <select id="library-status" aria-label="Filtrer par progression"><option value="all">Tous les statuts</option><option value="unseen">Jamais vus</option><option value="learning">À consolider</option><option value="due">Révision due</option><option value="mastered">Maîtrisés</option></select>
+            <select id="library-level" aria-label="Filtrer par niveau"><option value="all">Bases et approfondissements</option><option value="base">Les bases</option><option value="advanced">Les approfondissements</option></select>
           </div>
-          <div class="library-meta"><span id="library-result-count">0 questions</span><span class="source-key"><i class="dot official"></i> Question publiée <i class="dot scenario"></i> Situation d’entraînement</span></div>
+          <div class="library-meta"><span id="library-result-count">0 QCM</span><span class="source-key"><i class="dot official"></i> Énoncé officiel <i class="dot study"></i> Fiches et Livret <i class="dot scenario"></i> Situation</span></div>
           <div id="question-list" class="question-list"></div>
           <button class="button button-soft load-more hidden" id="load-more" type="button">Afficher plus</button>
         </section>
 
         <section class="view" id="view-settings" data-view="settings" aria-labelledby="settings-heading">
-          <div class="page-intro"><div><span class="eyebrow">Vos données restent ici</span><h2 id="settings-heading">Réglages et sources</h2><p>Aucun compte, suivi statistique ou stockage en ligne. Votre progression reste uniquement dans ce navigateur.</p></div></div>
+          <div class="page-intro"><div><span class="eyebrow">Vos données restent ici</span><h2 id="settings-heading">Réglages et sources</h2><p>Sans compte ni envoi de statistiques à un serveur. Votre progression reste uniquement dans ce navigateur.</p></div></div>
           <div class="settings-grid">
             <article class="panel">
               <div class="panel-header"><div><span class="eyebrow">Préférences</span><h3>Réglages d’étude</h3></div></div>
@@ -202,13 +209,22 @@
           </div>
           <article class="panel sources-panel">
             <div class="panel-header"><div><span class="eyebrow">Vérifié en octobre 2026</span><h3>Sources officielles et transparence</h3></div></div>
-            <div class="notice"><strong>D’où viennent les questions ?</strong><p>Cette préparation reprend les 244 formulations publiées par le ministère pour l’examen civique. Les choix, réponses, explications et situations ont été créés pour l’entraînement et vérifiés à partir de sources officielles.</p></div>
+            <div class="notice"><strong>D’où viennent les QCM ?</strong><p>Les <b class="official-total">259</b> énoncés du PDF officiel sont tous présents, dont un doublon conservé. Leurs choix et corrections sont rédigés pour apprendre. Les <b class="study-total">0</b> QCM complémentaires et <b class="scenario-total">0</b> situations s’appuient sur les fiches et le Livret : ce ne sont pas des questions officielles supplémentaires.</p><p>Les situations du véritable examen ne sont pas publiées : aucune préparation ne peut garantir chaque question qui sera posée. Les fiches couvrent aussi des notions utiles aux autres parcours civiques ; le mode « énoncés officiels » cible la banque naturalisation.</p></div>
             <ul class="source-list">
-              <li><a href="assets/questions-naturalisation-officielles.pdf" target="_blank" rel="noopener">Les 244 questions de connaissance officielles (PDF local)</a><span>Publié le 12 janvier 2026</span></li>
+              <li><a href="assets/questions-naturalisation-officielles.pdf" target="_blank" rel="noopener">Les 259 énoncés de connaissance officiels (PDF local)</a><span>258 formulations distinctes ; audit page par page</span></li>
+              <li><a href="https://formation-civique.interieur.gouv.fr/fiches-par-thematiques/" target="_blank" rel="noopener">Toutes les fiches par thématique du ministère</a><span><b class="fiche-total">0</b> fiches reliées aux QCM</span></li>
+              <li><a href="assets/catalogue-fiches-2026-10-21.json" target="_blank" rel="noopener">Catalogue vérifié des fiches (inventaire local)</a><span>256 pages parcourues : 29 sommaires et 227 fiches, aucune fiche absente des sources</span></li>
+              <li><a href="https://www.immigration.interieur.gouv.fr/documentation/guides-textes-et-brochures/livret-du-citoyen.html" target="_blank" rel="noopener">Livret du citoyen — page officielle</a><span>Ressource recommandée pour l’examen civique</span></li>
+              <li><a href="assets/livret-du-citoyen-mai-2026.pdf" target="_blank" rel="noopener">Livret consulté (PDF local, 83 pages)</a><span>Le document porte la mention « édition mai 2026 ». Vérifiez les mises à jour sur la page officielle.</span></li>
               <li><a href="https://www.immigration.interieur.gouv.fr/documentation/guides-textes-et-brochures/questions-de-connaissance-pour-lexamen-civique-nationalite-francaise.html" target="_blank" rel="noopener">Page officielle du ministère</a><span>Source principale</span></li>
-              <li><a href="https://www.service-public.fr/particuliers/vosdroits/F39426" target="_blank" rel="noopener">Format civique officiel sur Service-Public.fr</a><span>Format, seuil et programme</span></li>
+              <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F39426" target="_blank" rel="noopener">Examen civique pour la naturalisation — Service-Public</a><span>Format, seuil et programme</span></li>
               <li><a href="https://www.lefrancaisdesaffaires.fr/candidat/examen-civique/preparation/" target="_blank" rel="noopener">Préparation de la CCI Paris Île-de-France</a><span>Format et répartition des thèmes</span></li>
             </ul>
+          </article>
+          <article class="panel coverage-panel">
+            <div class="panel-header"><div><span class="eyebrow">Ressource par ressource</span><h3>Votre parcours des fiches et du Livret</h3></div></div>
+            <p class="muted">Ouvrez un thème pour retrouver chaque fiche, ses QCM et votre progression, puis le détail des repères abordés ou encore à découvrir. Les nouveautés rejoignent aussi vos révisions espacées.</p>
+            <div id="coverage-list" class="coverage-list"></div>
           </article>
         </section>
 
@@ -222,6 +238,7 @@
             <article class="quiz-card">
               <div class="question-meta"><span class="theme-chip" id="quiz-theme">Thème</span><span class="source-chip" id="quiz-source">Question officielle</span><button class="bookmark-button" id="quiz-bookmark" type="button" aria-label="Ajouter cette question aux favoris">☆</button></div>
               <h2 id="quiz-title">Question</h2>
+              <div id="quiz-clarification"></div>
               <div class="answer-list" id="answer-list" role="group" aria-label="Choix de réponse"></div>
               <div class="feedback-box hidden" id="feedback-box" aria-live="polite">
                 <div class="feedback-heading"><span id="feedback-icon">✓</span><strong id="feedback-title">Bonne réponse</strong></div>
@@ -229,6 +246,8 @@
                 <div class="correct-answer-detail hidden" id="feedback-correct-detail"><span>Réponse correcte</span><p id="feedback-correct-answer"></p></div>
                 <p id="feedback-explanation"></p>
                 <div class="memory-hook" id="memory-hook"><span>À retenir</span><p></p></div>
+                <details id="feedback-option-details" class="feedback-options"><summary>Comprendre les quatre propositions</summary><div id="feedback-options"></div></details>
+                <div id="feedback-sources"></div>
               </div>
               <div class="quiz-actions"><span class="keyboard-hint">Touches 1 à 4 pour répondre</span><button class="button button-primary hidden" id="next-question" type="button">Question suivante →</button></div>
             </article>
@@ -286,8 +305,20 @@
     </form>
   </dialog>
 
-  <script src="data.js?v=bbq1"></script>
-  <script src="french-overrides.js?v=bbq1"></script>
-  <script src="app.js?v=bbq1"></script>
+  <script src="data.js?v=20261021-exhaustif"></script>
+  <script src="french-overrides.js?v=20261021-exhaustif"></script>
+  <script src="legacy-valeurs-institutions.js?v=20261021-exhaustif"></script>
+  <script src="legacy-droits-societe.js?v=20261021-exhaustif"></script>
+  <script src="legacy-histoire.js?v=20261021-exhaustif"></script>
+  <script src="official-complement.js?v=20261021-exhaustif"></script>
+  <script src="valeurs-institutions.js?v=20261021-exhaustif"></script>
+  <script src="droits-societe.js?v=20261021-exhaustif"></script>
+  <script src="histoire.js?v=20261021-exhaustif"></script>
+  <script src="geographie-culture.js?v=20261021-exhaustif"></script>
+  <script src="approfondissement-valeurs.js?v=20261021-exhaustif"></script>
+  <script src="approfondissement-droits-societe.js?v=20261021-exhaustif"></script>
+  <script src="approfondissement-histoire-culture.js?v=20261021-exhaustif"></script>
+  <script src="supplements.js?v=20261021-exhaustif"></script>
+  <script src="app.js?v=20261021-exhaustif"></script>
 </body>
 </html>

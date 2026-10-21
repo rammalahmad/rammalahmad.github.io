@@ -1227,7 +1227,7 @@
     "lead": "Reconnaissez instantanément les symboles officiels et séparez-les des clichés culturels.",
     "facts": [
       [
-        "Concevoir",
+        "Devise",
         "Liberté, Égalité, Fraternité"
       ],
       [
@@ -1239,7 +1239,7 @@
         "14 juillet"
       ],
       [
-        "Chiffre",
+        "Figure",
         "Marianne, avec un bonnet phrygien"
       ],
       [
@@ -1276,7 +1276,7 @@
       ],
       [
         "Discrimination",
-        "Illégal sur des terrains protégés"
+        "Interdite sur les critères protégés par la loi"
       ],
       [
         "Association",
@@ -1284,7 +1284,7 @@
       ],
       [
         "Expression",
-        "Gratuit, mais pas de diffamation, de menaces ou de discours de haine"
+        "Libre, dans les limites de la loi : pas de diffamation, de menaces ou d’incitation à la haine"
       ]
     ],
     "body": [
@@ -1312,20 +1312,20 @@
       ],
       [
         "Agents publics",
-        "Doit rester religieusement neutre au travail"
+        "Doivent rester religieusement neutres dans leurs fonctions"
       ],
       [
-        "Utilisateurs du service public",
-        "Peut exprimer ses convictions dans le cadre des règles d'ordre public"
+        "Usagers du service public",
+        "Peuvent exprimer leurs convictions en respectant les règles applicables"
       ],
       [
         "Élèves des écoles publiques",
-        "Aucun signe religieux visible"
+        "Pas de signes ou tenues manifestant ostensiblement une appartenance religieuse ; signes discrets autorisés"
       ]
     ],
     "body": [
       "La loi de 1905 sépare les Églises et l'État. La République ne reconnaît ni ne subventionne une religion d'État, tout en garantissant le libre exercice sous réserve de l'ordre public.",
-      "Les devoirs de neutralité s'appliquent aux agents publics. Les usagers d'une mairie n'ont pas le même devoir général de neutralité. Dans les écoles publiques, la loi de 2004 interdit les signes religieux ostentatoires pour les élèves ; des signes discrets sont autorisés."
+      "Les devoirs de neutralité s’appliquent aux agents publics. Les usagers d’une mairie n’ont pas le même devoir général de neutralité. Dans les écoles, collèges et lycées publics, la loi de 2004 interdit les signes ou tenues manifestant ostensiblement une appartenance religieuse ; les signes discrets sont autorisés."
     ],
     "example": "Un employé de la mairie doit servir chaque usager de manière impartiale et ne peut pas afficher de préférence religieuse dans l'exercice de ses fonctions publiques.",
     "trap": "Le 9 décembre est la Journée nationale de la Laïcité. L'antisémitisme signifie l'hostilité ou les préjugés contre le peuple juif."

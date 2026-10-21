@@ -3,6 +3,8 @@
 
   const DATA = window.CIVIQUE_DATA;
   const ORAL = window.CIVIQUE_ENTRETIEN || null;
+  const QUESTION_INDEX = new Map((DATA && DATA.questions || []).map((question) => [question.id, question]));
+  const SOURCE_INDEX = new Map((DATA && DATA.sources || []).map((source) => [source.id, source]));
   const STORAGE_KEY = "civique-coach-state-v1";
   const ROUTES = {
     dashboard: ["Votre programme", "Aujourd’hui"],
@@ -144,7 +146,121 @@
   }
 
   function questionById(id) {
-    return DATA.questions.find((q) => q.id === id);
+    return QUESTION_INDEX.get(id);
+  }
+
+  function questionKindLabel(question) {
+    const label = question.official ? "Énoncé officiel" : question.type === "scenario" ? "Mise en situation d’entraînement" : "QCM des fiches et du Livret";
+    return label + (isAdvanced(question) ? " · Approfondissement" : "");
+  }
+
+  function isAdvanced(question) {
+    return question.level === "approfondissement" || question.depth === "approfondissement" || question.priority === "extension";
+  }
+
+  function hasSeen(question) {
+    const stat = state.questionStats[question.id];
+    return Boolean(stat && stat.seen > 0);
+  }
+
+  function matchesQuestionStatus(question, status) {
+    const stat = state.questionStats[question.id];
+    if (status === "unseen") return !hasSeen(question);
+    if (status === "due") return hasSeen(question) && stat.due <= Date.now();
+    if (status === "learning") return hasSeen(question) && masteryFor(question) < 80;
+    if (status === "mastered") return masteryFor(question) >= 80;
+    return true;
+  }
+
+  function questionStatusLabel(question) {
+    if (!hasSeen(question)) return "Jamais vu";
+    const stat = state.questionStats[question.id];
+    if (stat.due <= Date.now()) return "À revoir · maîtrise " + masteryFor(question) + " %";
+    return (masteryFor(question) >= 80 ? "Maîtrisé" : "À consolider") + " · " + stat.correct + "/" + stat.seen + " réponses justes";
+  }
+
+  function matchesQuestionSource(question, selection) {
+    return selection === "all"
+      || (selection === "official" && question.official)
+      || (selection === "scenario" && question.type === "scenario")
+      || (selection === "study" && question.type === "study")
+      || (selection === "bookmarked" && state.bookmarks.includes(question.id))
+      || (["livret", "fiche"].includes(selection) && question.sourceIds.some((id) => SOURCE_INDEX.get(id).kind === selection));
+  }
+
+  function sourceHref(source) {
+    if (source.kind !== "livret" || !source.localPath) return source.url;
+    const page = Number(Array.isArray(source.pages) ? source.pages[0] : source.pages);
+    return source.localPath + (Number.isInteger(page) && page > 0 ? "#page=" + page : "");
+  }
+
+  function sourceLinks(sourceIds) {
+    const sources = (sourceIds || []).map((id) => SOURCE_INDEX.get(id)).filter(Boolean);
+    if (!sources.length) return "";
+    return '<div class="question-sources"><span>Références</span>' + sources.map((source) => '<a href="' + escapeHtml(sourceHref(source)) + '" target="_blank" rel="noopener">' + escapeHtml(source.title) + '</a>').join("") + '</div>';
+  }
+
+  function questionClarification(question) {
+    return question.clarification ? '<p class="question-clarification"><b>Précision pour cet entraînement :</b> ' + escapeHtml(question.clarification) + '</p>' : "";
+  }
+
+  function optionCorrections(question, options) {
+    return '<ul class="option-corrections">' + (options || [question.correct, ...question.wrong]).map((choice) => {
+      const correct = choice === question.correct;
+      return '<li class="' + (correct ? "option-right" : "option-wrong") + '"><strong><span aria-hidden="true">' + (correct ? "✓" : "×") + '</span> ' + escapeHtml(choice) + '</strong><p>' + escapeHtml(correct ? question.explanation : question.wrongReasons[choice]) + '</p></li>';
+    }).join("") + '</ul>';
+  }
+
+  function questionsForLesson(lesson) {
+    const related = {
+      symbols: ["fiche-symboles", "fiche-langue-francaise", "fiche-paroles-marseillaise"],
+      "liberty-equality": ["fiche-devise", "fiche-liberte", "fiche-egalite", "fiche-solidarite-association"],
+      laicite: ["fiche-laicite-fondements", "fiche-laicite-espaces", "fiche-laicite-expression", "fiche-laicite-ecole"],
+      constitution: ["fiche-constitution-etat-droit", "fiche-institutions-nationales", "fiche-fabrique-loi"],
+      elections: ["fiche-vote-democratie"],
+      territories: ["fiche-territoire-service-public", "fiche-carte-departements"],
+      europe: ["fiche-europe-construction", "fiche-europe-symboles", "fiche-europe-institutions"],
+      "fundamental-rights": ["fiche-ds-fondamentaux", "fiche-ds-libertes", "fiche-ds-dignite", "fiche-ds-corps", "fiche-ds-textes", "fiche-ds-justice"],
+      "civic-duties": ["fiche-ds-infractions", "fiche-ds-devoirs", "fiche-ds-violences", "fiche-ds-aider", "fiche-ds-environnement"],
+      "revolution-republic": ["h-origines", "h-chronologie", "h-revolution", "h-napoleon", "h-xixe", "h-iiie"],
+      "world-wars": ["h-guerre1914", "h-guerre1939", "h-shoah", "h-resistance"],
+      "postwar-europe": ["h-ve", "h-europe", "h-decolonisation", "h-immigration"],
+      "arts-culture": ["gc-patrimoine", "gc-gastronomie", "gc-litterature", "gc-peinture", "gc-sculpture", "gc-musique", "gc-francophonie", "gc-culture-access", "gc-sport", "gc-rayonnement"],
+      geography: ["gc-atlas", "gc-economie", "gc-regions", "gc-france-monde", "gc-ecologie"],
+      "family-civil": ["fiche-ds-couple", "fiche-ds-enfant", "fiche-ds-garde", "fiche-ds-maternite-sante"],
+      "health-emergency": ["fiche-ds-soins", "fiche-ds-assurance-maladie", "fiche-ds-patient", "fiche-ds-prevention"],
+      work: ["fiche-ds-emploi-orientation", "fiche-ds-formation", "fiche-ds-contrats", "fiche-ds-candidature", "fiche-ds-travail"],
+      school: ["fiche-ds-ecole", "fiche-ds-enfant", "fiche-ds-garde"],
+      "housing-environment": ["fiche-ds-logement", "fiche-ds-mobilite", "fiche-ds-civisme", "fiche-ds-environnement"]
+    };
+    const concepts = new Set([lesson.id, ...(related[lesson.id] || [])]);
+    const exact = DATA.questions.filter((question) => question.theme === lesson.theme && (concepts.has(question.concept) || (lesson.id === "digital-civic" && /en ligne|réseaux|internet|numérique|données personnelles|cyber|mot de passe|identifiants/i.test(question.prompt))));
+    if (exact.length) return exact;
+    const linked = DATA.questions.filter((question) => !question.official && question.sourceIds.some((id) => (lesson.sourceIds || []).includes(id)));
+    return linked.length ? linked : DATA.questions.filter((question) => question.theme === lesson.theme);
+  }
+
+  function practiceResource(id) {
+    const source = SOURCE_INDEX.get(id);
+    if (!source) return;
+    const pool = source.questionIds.map(questionById).filter(Boolean);
+    startSession(adaptiveQuestions(pool, 20), { name: source.title, feedback: true });
+  }
+
+  function factsForSource(source) {
+    return Array.from(new Map((source.facts || []).map((fact) => [fact.id, fact])).values());
+  }
+
+  function questionsForFact(fact) {
+    return uniqueQuestions((fact.questionIds || []).map(questionById).filter(Boolean));
+  }
+
+  function practiceFact(sourceId, index) {
+    const source = SOURCE_INDEX.get(sourceId);
+    const fact = source && factsForSource(source)[index];
+    if (!fact) return;
+    const pool = questionsForFact(fact);
+    startSession(adaptiveQuestions(pool, Math.min(10, pool.length)), { name: "Repère : " + fact.label, feedback: true });
   }
 
   function oralQuestionById(id) {
@@ -306,12 +422,93 @@
   }
 
   function smartDailyQuestions(count) {
-    const due = dueQuestions();
-    const unseen = shuffle(DATA.questions.filter((q) => !state.questionStats[q.id]));
-    const weak = DATA.questions
-      .filter((q) => state.questionStats[q.id])
-      .sort((a, b) => weaknessFor(b) - weaknessFor(a));
-    return uniqueQuestions([...due, ...weak, ...unseen]).slice(0, count);
+    return adaptiveQuestions(DATA.questions, count, true);
+  }
+
+  function exhaustiveQuestions(count, pool) {
+    pool = pool || DATA.questions;
+    const limit = Math.min(Math.max(0, count), pool.length);
+    const unseen = pool.filter((question) => !hasSeen(question));
+    if (!unseen.length) return adaptiveQuestions(pool, limit, true);
+    const groups = new Map();
+    pool.forEach((question) => {
+      if (!groups.has(question.concept)) groups.set(question.concept, { total: 0, seen: 0, picked: 0, questions: [] });
+      const group = groups.get(question.concept);
+      group.total += 1;
+      group.seen += Number(hasSeen(question));
+      if (!hasSeen(question)) group.questions.push(question);
+    });
+    const queues = shuffle(Array.from(groups.values()).filter((group) => group.questions.length));
+    queues.forEach((group) => {
+      group.questions = shuffle(group.questions).sort((a, b) => Number(isAdvanced(a)) - Number(isAdvanced(b)) || Number(b.official) - Number(a.official));
+    });
+    const selected = [];
+    while (selected.length < Math.min(limit, unseen.length)) {
+      const eligible = queues.filter((group) => group.questions.length);
+      eligible.sort((a, b) => Number(isAdvanced(a.questions[0])) - Number(isAdvanced(b.questions[0]))
+        || a.picked - b.picked
+        || (a.seen + a.picked) / a.total - (b.seen + b.picked) / b.total);
+      const group = eligible[0];
+      selected.push(group.questions.shift());
+      group.picked += 1;
+    }
+    // This discovery mode does not repeat a question while unseen material remains.
+    return selected;
+  }
+
+  function weakConcepts() {
+    const groups = new Map();
+    DATA.questions.filter(hasSeen).forEach((question) => {
+      if (!groups.has(question.concept)) groups.set(question.concept, { id: question.concept, questions: [], wrong: 0, seen: 0 });
+      const group = groups.get(question.concept);
+      const stat = state.questionStats[question.id];
+      group.questions.push(question);
+      group.wrong += stat.wrong;
+      group.seen += stat.seen;
+    });
+    return Array.from(groups.values()).map((group) => {
+      group.questions.sort((a, b) => weaknessFor(b) - weaknessFor(a));
+      group.mastery = Math.round(group.questions.reduce((sum, question) => sum + masteryFor(question), 0) / group.questions.length);
+      group.priority = (100 - group.mastery) + 25 * group.wrong / group.seen;
+      return group;
+    }).filter((group) => group.mastery < 80).sort((a, b) => b.priority - a.priority);
+  }
+
+  function conceptReviewQuestions(count, conceptIds) {
+    const concepts = conceptIds || weakConcepts().slice(0, 4).map((group) => group.id);
+    const pool = DATA.questions.filter((question) => concepts.includes(question.concept));
+    if (!pool.length) return smartDailyQuestions(count);
+    const limit = Math.min(count, pool.length);
+    const struggling = pool.filter((question) => hasSeen(question) && masteryFor(question) < 80).sort((a, b) => weaknessFor(b) - weaknessFor(a));
+    const anchorCount = Math.min(struggling.length, Math.max(1, Math.ceil(limit * .4)));
+    const anchors = struggling.slice(0, anchorCount);
+    const alternatives = pool.filter((question) => !anchors.some((anchor) => anchor.id === question.id));
+    return uniqueQuestions([...anchors, ...exhaustiveQuestions(limit - anchors.length, alternatives), ...adaptiveQuestions(alternatives, limit)]).slice(0, limit);
+  }
+
+  function adaptiveQuestions(pool, count, balanceThemes) {
+    const limit = Math.min(count, pool.length);
+    const ids = new Set(pool.map((question) => question.id));
+    const due = dueQuestions().filter((question) => ids.has(question.id));
+    const weak = pool.filter(hasSeen).sort((a, b) => weaknessFor(b) - weaknessFor(a));
+    let unseen = shuffle(pool.filter((question) => !hasSeen(question))).sort((a, b) => Number(isAdvanced(a)) - Number(isAdvanced(b)));
+    if (balanceThemes) {
+      const queues = Object.values(DATA.themes).map((theme) => ({ theme, picked: 0, official: unseen.filter((question) => question.theme === theme.id && question.official), extra: unseen.filter((question) => question.theme === theme.id && !question.official) }));
+      const balanced = [];
+      while (balanced.length < unseen.length) {
+        const eligible = shuffle(queues.filter((queue) => queue.official.length || queue.extra.length));
+        eligible.sort((a, b) => a.picked / a.theme.examCount - b.picked / b.theme.examCount);
+        const queue = eligible[0];
+        const useOfficial = queue.official.length && (queue.picked % 3 !== 2 || !queue.extra.length);
+        balanced.push((useOfficial ? queue.official : queue.extra).shift());
+        queue.picked += 1;
+      }
+      unseen = balanced;
+    }
+    // Keep room for new material even when a large review queue exists.
+    const newQuota = unseen.length ? Math.max(1, Math.ceil(limit * .4)) : 0;
+    const dueQuota = Math.min(due.length, limit - Math.min(newQuota, unseen.length));
+    return uniqueQuestions([...due.slice(0, dueQuota), ...unseen.slice(0, newQuota), ...weak.filter((question) => masteryFor(question) < 80).slice(0, Math.ceil(limit * .2)), ...unseen, ...due, ...weak]).slice(0, limit);
   }
 
   function studyStreak() {
@@ -331,9 +528,24 @@
   }
 
   function readiness() {
-    const official = DATA.questions.filter((q) => q.official);
-    const knowledge = official.reduce((sum, q) => sum + masteryFor(q), 0) / official.length;
-    const mockScores = state.mocks.map((m) => m.score / 40 * 100);
+    const allocation = { principles: [8, 3], rights: [8, 3], history: [6, 2], institutions: [4, 2], society: [2, 2] };
+    const knowledge = Object.entries(allocation).reduce((sum, [theme, counts]) => {
+      const official = new Map();
+      const situations = new Map();
+      DATA.questions.filter((question) => question.theme === theme).forEach((question) => {
+        if (question.official) {
+          const key = searchKey(question.prompt).replace(/[^a-z0-9]/g, "");
+          official.set(key, Math.max(official.get(key) || 0, masteryFor(question)));
+        } else if (question.type === "scenario" && !isAdvanced(question)) {
+          if (!situations.has(question.concept)) situations.set(question.concept, []);
+          if (hasSeen(question)) situations.get(question.concept).push(masteryFor(question));
+        }
+      });
+      const officialAverage = Array.from(official.values()).reduce((total, value) => total + value, 0) / Math.max(1, official.size);
+      const scenarioAverage = Array.from(situations.values()).reduce((total, values) => total + values.reduce((subtotal, value) => subtotal + value, 0) / Math.max(1, values.length), 0) / Math.max(1, situations.size);
+      return sum + (officialAverage * counts[0] + scenarioAverage * counts[1]) / DATA.metadata.examQuestions;
+    }, 0);
+    const mockScores = state.mocks.map((mock) => mock.score / 40 * 100);
     const mock = mockScores.length ? mockScores.slice(-3).reduce((a, b) => a + b, 0) / Math.min(3, mockScores.length) : knowledge;
     return Math.round(knowledge * 0.72 + mock * 0.28);
   }
@@ -398,19 +610,19 @@
   function renderDashboard() {
     renderGreeting();
     const due = dueQuestions();
-    const official = DATA.questions.filter((q) => q.official);
-    const mastered = official.filter((q) => masteryFor(q) >= 80).length;
+    const questions = DATA.questions;
+    const mastered = questions.filter((q) => masteryFor(q) >= 80).length;
     const score = readiness();
     $("#readiness-score").textContent = score + "%";
     $("#readiness-ring").style.setProperty("--score", score);
-    $("#readiness-label").textContent = score >= 85 ? "Prêt — entretenez vos acquis" : score >= 65 ? "La confiance se construit" : score >= 35 ? "Bonne progression" : "Établissons votre niveau de départ";
+    $("#readiness-label").textContent = score >= 85 ? "Bon indice — poursuivez les examens blancs" : score >= 65 ? "La confiance se construit" : score >= 35 ? "Bonne progression" : "Établissons votre niveau de départ";
     $("#mastered-count").textContent = mastered;
     $("#due-count").textContent = due.length;
     $("#answered-count").textContent = totalAnswered();
     $("#best-mock").textContent = state.mocks.length ? Math.max(...state.mocks.map((m) => m.score)) + "/40" : "—";
     $("#streak-value").textContent = studyStreak();
     $("#review-count").textContent = due.length;
-    $(".official-total").textContent = DATA.officialCount;
+    updateContentTotals();
 
     const daily = smartDailyQuestions(Number(state.prefs.dailyGoal));
     const continueButton = $("#continue-button");
@@ -423,25 +635,24 @@
     }
 
     $("#theme-progress-list").innerHTML = Object.values(DATA.themes).map((theme) => {
-      const questions = official.filter((q) => q.theme === theme.id);
-      const avg = Math.round(questions.reduce((sum, q) => sum + masteryFor(q), 0) / questions.length);
-      const seen = questions.filter((q) => state.questionStats[q.id]).length;
+      const themed = questions.filter((q) => q.theme === theme.id);
+      const avg = Math.round(themed.reduce((sum, q) => sum + masteryFor(q), 0) / Math.max(1, themed.length));
+      const seen = themed.filter(hasSeen).length;
       return '<div class="theme-row">' +
         '<span class="theme-symbol" style="background:' + theme.soft + ';color:' + theme.color + '">' + theme.icon + '</span>' +
-        '<div class="theme-name"><strong>' + theme.short + '</strong><small>' + seen + '/' + questions.length + ' vues</small></div>' +
+        '<div class="theme-name"><strong>' + theme.short + '</strong><small>' + seen + '/' + themed.length + ' vues</small></div>' +
         '<div class="bar" style="--bar-color:' + theme.color + '"><span style="width:' + avg + '%"></span></div>' +
         '<span class="theme-pct">' + avg + '%</span></div>';
     }).join("");
 
-    const weakest = official.filter((q) => state.questionStats[q.id]).sort((a, b) => weaknessFor(b) - weaknessFor(a)).slice(0, 4);
-    $("#weak-list").innerHTML = weakest.length ? weakest.map((q) => {
-      const s = state.questionStats[q.id];
-      return '<div class="weak-item"><span>!</span><div><strong>' + escapeHtml(q.prompt) + '</strong><small>' + DATA.themes[q.theme].short + ' · ' + s.correct + '/' + s.seen + ' bonnes réponses</small></div></div>';
+    const weakest = weakConcepts().slice(0, 4);
+    $("#weak-list").innerHTML = weakest.length ? weakest.map((group) => {
+      const lesson = DATA.lessons.find((item) => item.id === group.id);
+      return '<div class="weak-item"><span>!</span><div><strong>' + escapeHtml(lesson ? lesson.title : group.questions[0].prompt) + '</strong><small>' + group.wrong + ' erreur(s) sur ' + group.seen + ' réponses · maîtrise ' + group.mastery + ' %</small><button class="text-button" type="button" data-weak-concept="' + escapeHtml(group.id) + '">Revoir avec d’autres exemples →</button></div></div>';
     }).join("") : '<div class="empty-state"><strong>Aucun point faible pour l’instant</strong><span>Répondez à quelques questions pour entraîner le coach adaptatif.</span></div>';
     $("#practice-weak-button").disabled = !weakest.length;
     $("#practice-weak-button").onclick = () => {
-      const pool = official.filter((q) => state.questionStats[q.id]).sort((a, b) => weaknessFor(b) - weaknessFor(a)).slice(0, 20);
-      startSession(pool.length ? pool : shuffle(official).slice(0, 15), { name: "Travail des points faibles", feedback: true });
+      startSession(conceptReviewQuestions(20), { name: "Points faibles — comprendre et appliquer", feedback: true });
     };
     renderPlan();
   }
@@ -458,7 +669,7 @@
     const score = readiness();
     const current = clamp(Math.floor(score / (100 / phases.length)), 0, phases.length - 1);
     $("#plan-eyebrow").textContent = "Parcours conseillé";
-    $("#plan-status").textContent = score + " % exploré";
+    $("#plan-status").textContent = DATA.questions.filter(hasSeen).length + " / " + DATA.questions.length + " QCM explorés";
     $("#plan-track").innerHTML = phases.map((phase, index) => {
       const cls = index < current ? " is-done" : index === current ? " is-current" : "";
       return '<div class="plan-step' + cls + '"><small>Étape ' + (index + 1) + '</small><strong>' + phase[0] + '</strong><span>' + phase[1] + '</span></div>';
@@ -469,16 +680,19 @@
     const themes = Object.values(DATA.themes);
     $("#lesson-filters").innerHTML = ['<button class="filter-chip ' + (lessonFilter === "all" ? "is-active" : "") + '" data-lesson-filter="all">Toutes les leçons</button>']
       .concat(themes.map((t) => '<button class="filter-chip ' + (lessonFilter === t.id ? "is-active" : "") + '" data-lesson-filter="' + t.id + '">' + t.short + '</button>')).join("");
-    const visible = DATA.lessons.filter((l) => lessonFilter === "all" || l.theme === lessonFilter);
-    $("#lessons-complete").textContent = state.completedLessons.length + "/" + DATA.lessons.length;
+    const query = searchKey($("#lesson-search").value);
+    const visible = DATA.lessons.filter((lesson) => (lessonFilter === "all" || lesson.theme === lessonFilter) && (!query || searchKey([lesson.title, lesson.lead, ...lesson.facts.flat()].join(" ")).includes(query)));
+    $("#lessons-complete").textContent = DATA.lessons.filter((lesson) => state.completedLessons.includes(lesson.id)).length + "/" + DATA.lessons.length;
     $("#lesson-grid").innerHTML = visible.map((lesson, index) => {
       const theme = DATA.themes[lesson.theme];
       const complete = state.completedLessons.includes(lesson.id);
+      const pool = questionsForLesson(lesson);
+      const seen = pool.filter(hasSeen).length;
       return '<article class="lesson-card" data-lesson-id="' + lesson.id + '" tabindex="0" style="--card-color:' + theme.soft + ';--card-accent:' + theme.color + '">' +
         '<span class="lesson-number">' + String(index + 1).padStart(2, "0") + '</span>' +
-        '<h3>' + lesson.title + '</h3><p>' + lesson.lead + '</p>' +
+        '<h3>' + escapeHtml(lesson.title) + '</h3><p>' + escapeHtml(lesson.lead) + '</p><small class="lesson-coverage">' + seen + '/' + pool.length + ' QCM explorés</small>' +
         '<div class="lesson-footer"><span>' + lesson.minutes + ' min · ' + theme.short + '</span><span class="' + (complete ? "lesson-complete" : "") + '">' + (complete ? "✓ Terminée" : "Ouvrir →") + '</span></div></article>';
-    }).join("");
+    }).join("") || '<div class="empty-state"><strong>Aucune leçon correspondante</strong><span>Essayez un autre mot ou un autre thème.</span></div>';
   }
 
   function openLesson(id) {
@@ -492,10 +706,11 @@
       lesson.body.map((p) => '<p>' + p + '</p>').join("") +
       '<div class="example-box"><strong>Mise en situation</strong><p>' + lesson.example + '</p></div>' +
       '<div class="trap-box"><strong>Piège fréquent</strong><p>' + lesson.trap + '</p></div>' +
+      sourceLinks(lesson.sourceIds) +
       '<div class="lesson-actions"><button class="button button-primary" id="lesson-practice">S’entraîner sur cette notion</button><button class="button button-secondary" id="complete-lesson">' + (state.completedLessons.includes(id) ? "✓ Terminée" : "Marquer comme terminée") + '</button></div>';
     $("#lesson-practice").onclick = () => {
-      const pool = DATA.questions.filter((q) => q.concept === id || q.theme === lesson.theme);
-      startSession(shuffle(pool).slice(0, 12), { name: lesson.title, feedback: true });
+      const pool = questionsForLesson(lesson);
+      startSession(adaptiveQuestions(pool, 12), { name: lesson.title, feedback: true });
     };
     $("#complete-lesson").onclick = () => {
       if (!state.completedLessons.includes(id)) {
@@ -780,12 +995,18 @@
 
   function renderPractice() {
     const due = dueQuestions();
-    const unseenOfficial = DATA.questions.filter((q) => q.official && !state.questionStats[q.id]);
-    const weak = DATA.questions.filter((q) => state.questionStats[q.id]).sort((a, b) => weaknessFor(b) - weaknessFor(a));
+    const unseenOfficial = DATA.questions.filter((q) => q.official && !hasSeen(q));
+    const weak = weakConcepts();
+    const unseen = DATA.questions.filter((question) => !hasSeen(question));
+    const summary = $("#exhaustive-summary");
+    if (summary) summary.textContent = (DATA.questions.length - unseen.length) + '/' + DATA.questions.length + ' QCM explorés · ' + unseen.filter((question) => !isAdvanced(question)).length + ' QCM de base et ' + unseen.filter(isAdvanced).length + ' approfondissements encore à découvrir. Chaque séance et chaque réponse restent enregistrées.';
     const modes = [
+      { id: "integral", icon: "∞", color: "#168f86", soft: "#e6f7f4", title: "Le parcours intégral", desc: "Découvrez toute la banque par petites séances. Priorité aux questions jamais vues, en variant les notions ; les bases précèdent les approfondissements.", count: unseen.length ? unseen.length + " QCM encore à explorer" : "Toute la banque explorée : consolidez vos acquis" },
       { id: "daily", icon: "↗", color: "#2457d6", soft: "#eaf0ff", title: "Mélange quotidien adaptatif", desc: "Révisions dues, notions faibles et nouvelles questions dans une séance équilibrée.", count: state.prefs.dailyGoal + " questions" },
       { id: "due", icon: "↻", color: "#e44752", soft: "#fff0f1", title: "Révisions dues", desc: "La répétition espacée réactive les faits juste avant leur oubli.", count: due.length + " à revoir" },
-      { id: "weak", icon: "!", color: "#d59a28", soft: "#fff7df", title: "Travail des points faibles", desc: "Cible les questions les moins réussies et les notions difficiles.", count: weak.length ? Math.min(20, weak.length) + " sélectionnées" : "Établissez d’abord votre niveau" },
+      { id: "weak", icon: "!", color: "#d59a28", soft: "#fff7df", title: "Travail des points faibles", desc: "Reprenez vos erreurs, puis appliquez la même notion à d’autres questions et situations.", count: weak.length ? weak.length + " notions à consolider" : "Établissez d’abord votre niveau" },
+      { id: "study", icon: "▤", color: "#7656cf", soft: "#f1edff", title: "Parcours des fiches et du Livret", desc: "Explorez les notions des ressources officielles sous forme de QCM, avec une correction pour chaque proposition.", count: DATA.studyCount + " QCM complémentaires" },
+      { id: "official", icon: "✓", color: "#2457d6", soft: "#eaf0ff", title: "Les énoncés officiels", desc: "Retrouvez toutes les formulations du PDF de connaissances pour la naturalisation. Les choix sont conçus pour l’entraînement.", count: DATA.officialCount + " énoncés" },
       { id: "scenario", icon: "◇", color: "#168f86", soft: "#e6f7f4", title: "Atelier de mises en situation", desc: "Appliquez les principes républicains à des situations réalistes. Les situations officielles ne sont pas publiées.", count: DATA.scenarioCount + " exemples" }
     ];
     $("#practice-modes").innerHTML = modes.map((m) => '<article class="mode-card" style="--mode-color:' + m.color + ';--mode-soft:' + m.soft + '"><span class="mode-icon">' + m.icon + '</span><h3>' + m.title + '</h3><p>' + m.desc + '</p><small>' + m.count + '</small><button class="button button-soft" data-practice-mode="' + m.id + '">Commencer</button></article>').join("");
@@ -794,10 +1015,21 @@
     $$("[data-practice-mode]").forEach((button) => {
       button.onclick = () => {
         const mode = button.dataset.practiceMode;
+        if (mode === "integral") {
+          if (activeSession && activeSession.mode === "integral") resumeSession();
+          else startSession(exhaustiveQuestions(Number(state.prefs.dailyGoal)), { mode: "integral", name: "Parcours intégral — tout le programme", feedback: true });
+        }
         if (mode === "daily") startSession(smartDailyQuestions(Number(state.prefs.dailyGoal)), { name: "Mélange quotidien adaptatif", feedback: true });
         if (mode === "due") startSession((due.length ? due : unseenOfficial).slice(0, Math.max(10, Number(state.prefs.dailyGoal))), { name: "Révision des questions dues", feedback: true });
-        if (mode === "weak") startSession((weak.length ? weak : shuffle(DATA.questions.filter((q) => q.official))).slice(0, 20), { name: "Travail des points faibles", feedback: true });
-        if (mode === "scenario") startSession(shuffle(DATA.questions.filter((q) => !q.official)).slice(0, 20), { name: "Atelier de mises en situation", feedback: true });
+        if (mode === "weak") startSession(conceptReviewQuestions(20), { name: "Points faibles — comprendre et appliquer", feedback: true });
+        if (mode === "study") {
+          const pool = DATA.questions.filter((question) => question.type === "study");
+          const unseen = shuffle(pool.filter((question) => !hasSeen(question))).sort((a, b) => Number(isAdvanced(a)) - Number(isAdvanced(b)));
+          const seen = pool.filter(hasSeen).sort((a, b) => weaknessFor(b) - weaknessFor(a));
+          startSession([...unseen, ...seen].slice(0, 20), { name: "Fiches et Livret — QCM", feedback: true });
+        }
+        if (mode === "official") startSession(shuffle(DATA.questions.filter((question) => question.official)).slice(0, 20), { name: "Énoncés officiels", feedback: true });
+        if (mode === "scenario") startSession(shuffle(DATA.questions.filter((q) => q.type === "scenario")).slice(0, 20), { name: "Atelier de mises en situation", feedback: true });
       };
     });
   }
@@ -808,6 +1040,22 @@
       const current = select.value || "all";
       select.innerHTML = '<option value="all">Tous les thèmes</option>' + Object.values(DATA.themes).map((t) => '<option value="' + t.id + '">' + t.name + '</option>').join("");
       select.value = current;
+    });
+    populateResourceSelects();
+  }
+
+  function populateResourceSelects() {
+    ["custom", "library"].forEach((prefix) => {
+      const select = $("#" + prefix + "-resource");
+      const current = select.value || "all";
+      const theme = $("#" + prefix + "-theme").value;
+      const kind = $("#" + prefix + "-source").value;
+      const available = DATA.sources.filter((source) => source.questionIds.some((id) => {
+        const question = questionById(id);
+        return question && (theme === "all" || question.theme === theme) && matchesQuestionSource(question, kind);
+      }));
+      select.innerHTML = '<option value="all">Toutes les fiches et ressources</option>' + available.map((source) => '<option value="' + escapeHtml(source.id) + '">' + escapeHtml(source.title) + '</option>').join("");
+      select.value = available.some((source) => source.id === current) ? current : "all";
     });
   }
 
@@ -820,10 +1068,22 @@
       society: [2, 2]
     };
     const picked = [];
+    const prompts = new Set();
+    const takeDistinct = (pool, count) => {
+      const selected = [];
+      for (const question of pool) {
+        const key = searchKey(question.prompt).replace(/[^a-z0-9]/g, "");
+        if (prompts.has(key)) continue;
+        prompts.add(key);
+        selected.push(question);
+        if (selected.length === count) break;
+      }
+      return selected;
+    };
     Object.keys(allocation).forEach((theme) => {
       const officialPool = shuffle(DATA.questions.filter((q) => q.theme === theme && q.official));
-      const scenarioPool = shuffle(DATA.questions.filter((q) => q.theme === theme && !q.official));
-      picked.push(...officialPool.slice(0, allocation[theme][0]), ...scenarioPool.slice(0, allocation[theme][1]));
+      const scenarioPool = shuffle(DATA.questions.filter((q) => q.theme === theme && q.type === "scenario" && !isAdvanced(q)));
+      picked.push(...takeDistinct(officialPool, allocation[theme][0]), ...takeDistinct(scenarioPool, allocation[theme][1]));
     });
     return shuffle(picked);
   }
@@ -867,26 +1127,36 @@
     return String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[character]));
   }
 
+  function searchKey(value) {
+    return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr").trim();
+  }
+
   function renderLibrary() {
     populateThemeSelects();
-    const query = ($("#question-search").value || "").trim().toLocaleLowerCase("fr");
+    const query = searchKey($("#question-search").value);
     const theme = $("#library-theme").value;
     const source = $("#library-source").value;
+    const resource = $("#library-resource").value;
+    const status = $("#library-status") ? $("#library-status").value : "all";
+    const level = $("#library-level") ? $("#library-level").value : "all";
     let results = DATA.questions.filter((q) => {
       const matchesTheme = theme === "all" || q.theme === theme;
-      const matchesSource = source === "all" || (source === "official" && q.official) || (source === "scenario" && !q.official) || (source === "bookmarked" && state.bookmarks.includes(q.id));
-      const haystack = [q.prompt, q.correct, q.explanation, q.hook].join(" ").toLocaleLowerCase("fr");
-      return matchesTheme && matchesSource && (!query || haystack.includes(query));
+      const matchesSource = matchesQuestionSource(q, source);
+      const matchesResource = resource === "all" || q.sourceIds.includes(resource);
+      const sourceTitles = q.sourceIds.map((id) => SOURCE_INDEX.get(id).title);
+      const haystack = searchKey([q.prompt, q.correct, ...q.wrong, q.explanation, q.hook, ...sourceTitles].join(" "));
+      const matchesLevel = level === "all" || (level === "base" && !isAdvanced(q)) || (level === "advanced" && isAdvanced(q));
+      return matchesTheme && matchesSource && matchesResource && matchesLevel && matchesQuestionStatus(q, status) && (!query || haystack.includes(query));
     });
-    $("#library-result-count").textContent = results.length + " questions";
+    $("#library-result-count").textContent = results.length + " QCM · " + results.filter(hasSeen).length + " explorés";
     const visible = results.slice(0, libraryLimit);
     $("#question-list").innerHTML = visible.map((q) => {
       const themeData = DATA.themes[q.theme];
       const bookmarked = state.bookmarks.includes(q.id);
       return '<details class="bank-question"><summary><span class="bank-id">' + q.id + '</span><h3>' + escapeHtml(q.prompt) + '</h3><button class="bookmark-button ' + (bookmarked ? "is-bookmarked" : "") + '" data-bookmark="' + q.id + '" type="button" aria-label="Favori">' + (bookmarked ? "★" : "☆") + '</button></summary>' +
-        '<div class="bank-answer"><span class="source-chip ' + (q.official ? "" : "scenario") + '">' + (q.official ? "Question publiée par le ministère" : "Mise en situation d’entraînement") + '</span> <span class="theme-chip" style="background:' + themeData.soft + ';color:' + themeData.color + '">' + themeData.short + '</span>' +
-        '<p><strong>Réponse :</strong> ' + escapeHtml(q.correct) + '</p><p>' + escapeHtml(q.explanation) + '</p><p><b>À retenir :</b> ' + escapeHtml(q.hook) + '</p></div></details>';
-    }).join("");
+        '<div class="bank-answer"><span class="source-chip ' + q.type + '">' + questionKindLabel(q) + '</span> <span class="theme-chip" style="background:' + themeData.soft + ';color:' + themeData.color + '">' + themeData.short + '</span><p class="question-study-status">' + questionStatusLabel(q) + '</p>' +
+        questionClarification(q) + '<p><strong>Réponse :</strong> ' + escapeHtml(q.correct) + '</p>' + optionCorrections(q) + '<p><b>À retenir :</b> ' + escapeHtml(q.hook) + '</p>' + sourceLinks(q.sourceIds) + '<button class="button button-soft" data-practice-one="' + q.id + '" type="button">Réviser ce QCM</button></div></details>';
+    }).join("") || '<div class="empty-state"><strong>Aucun QCM correspondant</strong><span>Essayez un autre mot, thème ou filtre.</span></div>';
     $("#load-more").classList.toggle("hidden", results.length <= libraryLimit);
     $("#load-more").onclick = () => {
       libraryLimit += 40;
@@ -913,6 +1183,36 @@
     $("#daily-goal").value = String(state.prefs.dailyGoal);
     $("#english-hints").checked = state.prefs.englishHints;
     $("#reduce-motion").checked = state.prefs.reduceMotion;
+    renderSourceCoverage();
+  }
+
+  function updateContentTotals() {
+    const counts = { "official-total": DATA.officialCount, "study-total": DATA.studyCount, "scenario-total": DATA.scenarioCount, "question-total": DATA.questions.length, "fiche-total": DATA.metadata.ficheCount };
+    Object.entries(counts).forEach(([className, count]) => {
+      $$("." + className).forEach((element) => { element.textContent = count.toLocaleString("fr-FR"); });
+    });
+  }
+
+  function renderSourceCoverage() {
+    updateContentTotals();
+    $("#coverage-list").innerHTML = Object.values(DATA.themes).map((theme) => {
+      const sources = DATA.sources.filter((source) => source.theme === theme.id && ["fiche", "livret", "reference"].includes(source.kind) && source.questionIds.length);
+      const rows = sources.map((source) => {
+        const questions = source.questionIds.map(questionById);
+        const seen = questions.filter(hasSeen).length;
+        const mastered = questions.filter((question) => masteryFor(question) >= 80).length;
+        const percent = Math.round(seen / questions.length * 100);
+        const facts = factsForSource(source);
+        const factsSeen = facts.filter((fact) => questionsForFact(fact).some(hasSeen)).length;
+        const checklist = facts.length ? '<details class="coverage-facts"><summary>' + factsSeen + '/' + facts.length + ' repères abordés · Voir le détail</summary><p class="muted">Un repère est abordé après au moins une réponse à un QCM lié. Cela ne signifie pas qu’il est déjà maîtrisé.</p><ul>' + facts.map((fact, index) => {
+          const pool = questionsForFact(fact);
+          const covered = pool.some(hasSeen);
+          return '<li><span class="fact-state ' + (covered ? 'is-seen' : '') + '" aria-label="' + (covered ? 'Abordé' : 'À découvrir') + '">' + (covered ? '✓' : '○') + '</span><span>' + escapeHtml(fact.label) + '<small>' + pool.filter(hasSeen).length + '/' + pool.length + ' QCM explorés</small></span><button class="text-button" type="button" data-resource-fact="' + escapeHtml(source.id) + '" data-fact-index="' + index + '">Travailler</button></li>';
+        }).join('') + '</ul></details>' : '';
+        return '<div class="coverage-row"><div><a href="' + escapeHtml(sourceHref(source)) + '" target="_blank" rel="noopener">' + escapeHtml(source.title) + '</a><small>' + (source.kind === "livret" ? "Livret du citoyen" : source.kind === "fiche" ? "Fiche officielle" : "Référence complémentaire") + ' · ' + seen + '/' + questions.length + ' QCM explorés · ' + mastered + ' maîtrisés</small><div class="bar" style="--bar-color:' + theme.color + '"><span style="width:' + percent + '%"></span></div>' + checklist + '</div><button class="button button-soft" type="button" data-resource-practice="' + escapeHtml(source.id) + '">Réviser</button></div>';
+      }).join("");
+      return '<details class="coverage-theme"><summary><strong>' + escapeHtml(theme.name) + '</strong><span>' + sources.filter((source) => source.kind === "fiche").length + ' fiches</span></summary>' + rows + '</details>';
+    }).join("");
   }
 
   function exportProgress() {
@@ -978,13 +1278,16 @@
 
   function createSession(questions, options) {
     const chosen = uniqueQuestions(questions);
+    const startedAt = Date.now();
+    const remaining = options.remaining === undefined ? (options.timed ? DATA.metadata.durationMinutes * 60 : 0) : Math.max(0, Number(options.remaining) || 0);
     return {
       id: "session-" + Date.now(),
       mode: options.mode || "practice",
       name: options.name || "Entraînement",
       feedback: options.feedback !== false,
       timed: Boolean(options.timed),
-      remaining: options.remaining || (options.timed ? DATA.metadata.durationMinutes * 60 : 0),
+      remaining,
+      endsAt: options.timed ? startedAt + remaining * 1000 : null,
       questionIds: chosen.map((q) => q.id),
       optionOrders: {},
       index: 0,
@@ -1014,18 +1317,27 @@
       toast("Aucune séance n’est enregistrée.");
       return;
     }
-    if (activeSession.timed && activeSession.lastSavedAt) {
-      const elapsed = Math.floor((Date.now() - activeSession.lastSavedAt) / 1000);
-      activeSession.remaining = Math.max(0, activeSession.remaining - elapsed);
-    }
+    syncTimedSession();
     setRoute("quiz", { noRender: true });
     renderQuestion();
     startTimer();
   }
 
   function persistSession() {
+    syncTimedSession();
     if (activeSession) activeSession.lastSavedAt = Date.now();
     saveState();
+  }
+
+  function syncTimedSession() {
+    if (!activeSession || !activeSession.timed) return;
+    const now = Date.now();
+    if (!Number.isFinite(activeSession.endsAt)) {
+      const elapsed = activeSession.lastSavedAt ? Math.max(0, Math.floor((now - activeSession.lastSavedAt) / 1000)) : 0;
+      activeSession.endsAt = now + Math.max(0, activeSession.remaining - elapsed) * 1000;
+    }
+    activeSession.remaining = Math.max(0, Math.ceil((activeSession.endsAt - now) / 1000));
+    activeSession.lastSavedAt = now;
   }
 
   function currentQuestion() {
@@ -1055,12 +1367,13 @@
     $("#quiz-theme").textContent = theme.name;
     $("#quiz-theme").style.background = theme.soft;
     $("#quiz-theme").style.color = theme.color;
-    $("#quiz-source").textContent = question.official ? "Question officielle" : "Mise en situation";
-    $("#quiz-source").classList.toggle("scenario", !question.official);
+    $("#quiz-source").textContent = questionKindLabel(question);
+    $("#quiz-source").className = "source-chip " + question.type;
     $("#quiz-bookmark").textContent = state.bookmarks.includes(question.id) ? "★" : "☆";
     $("#quiz-bookmark").classList.toggle("is-bookmarked", state.bookmarks.includes(question.id));
     $("#quiz-bookmark").onclick = () => toggleBookmark(question.id);
     $("#quiz-title").textContent = question.prompt;
+    $("#quiz-clarification").innerHTML = questionClarification(question);
     $("#quiz-progress-text").textContent = (activeSession.index + 1) + " sur " + activeSession.questionIds.length;
     $("#quiz-progress-bar").style.width = ((activeSession.index + (answer ? 1 : 0)) / activeSession.questionIds.length * 100) + "%";
     $("#answer-list").innerHTML = choices.map((choice, index) => {
@@ -1088,6 +1401,11 @@
 
   function answerQuestion(choice) {
     if (!activeSession || activeSession.answers[activeSession.index]) return;
+    syncTimedSession();
+    if (activeSession.timed && activeSession.remaining <= 0) {
+      finishSession(true);
+      return;
+    }
     const question = currentQuestion();
     const correct = choice === question.correct;
     const record = { id: question.id, choice: choice, correct: correct, answeredAt: Date.now() };
@@ -1112,10 +1430,11 @@
       $("#feedback-wrong-reason").textContent = reason;
       $("#feedback-correct-answer").textContent = question.correct;
     }
-    $("#feedback-explanation").textContent = answer.correct
-      ? (state.prefs.englishHints ? question.explanation : "Réponse correcte : " + question.correct)
-      : "";
+    $("#feedback-explanation").textContent = !answer.correct || state.prefs.englishHints ? question.explanation : "Réponse correcte : " + question.correct;
     $("#memory-hook p").textContent = question.hook;
+    $("#feedback-options").innerHTML = optionCorrections(question, optionsFor(question));
+    $("#feedback-sources").innerHTML = sourceLinks(question.sourceIds);
+    $("#feedback-option-details").open = !answer.correct;
   }
 
   function nextQuestion() {
@@ -1145,18 +1464,19 @@
 
   function startTimer() {
     stopTimer();
+    syncTimedSession();
     if (!activeSession || !activeSession.timed) {
       $("#quiz-timer").classList.add("hidden");
       return;
     }
     $("#quiz-timer").classList.remove("hidden");
     if (activeSession.remaining <= 0) {
-      finishSession();
+      finishSession(true);
       return;
     }
     quizTimer = setInterval(() => {
       if (!activeSession) return;
-      activeSession.remaining = Math.max(0, activeSession.remaining - 1);
+      syncTimedSession();
       updateTimerDisplay();
       if (activeSession.remaining % 5 === 0) persistSession();
       if (activeSession.remaining <= 0) finishSession(true);
@@ -1187,7 +1507,7 @@
       session.questionIds.forEach((id, index) => {
         const question = questionById(id);
         const answer = session.answers[index];
-        updateQuestionStat(question, Boolean(answer && answer.correct));
+        if (question && answer && answer.choice) updateQuestionStat(question, Boolean(answer.correct));
       });
       session.statsApplied = true;
     }
@@ -1204,7 +1524,7 @@
         startedAt: session.startedAt,
         finishedAt: Date.now(),
         timedOut: Boolean(timedOut),
-        answers: answers.map((a) => ({ id: a.id, correct: a.correct }))
+        answers: answers.map((a) => ({ id: a.id, correct: a.correct, answered: Boolean(a.choice) }))
       });
       state.mocks = state.mocks.slice(-20);
     }
@@ -1231,7 +1551,7 @@
     $("#result-score").textContent = result.score + "/" + total;
     $("#result-percent").textContent = pct + "%";
     $("#result-message").textContent = isMock
-      ? (passed ? "Vous avez atteint le seuil officiel de 32/40. Continuez à réviser pour rendre ce résultat régulier." : "Le seuil officiel est de 32/40. Vos erreurs sont déjà programmées pour révision.")
+      ? (passed ? "Vous avez atteint le seuil officiel de 32/40. Continuez à réviser pour rendre ce résultat régulier." : "Le seuil officiel est de 32/40. Les réponses erronées sont programmées pour révision ; les questions sans réponse restent à explorer.")
       : "Chaque réponse a actualisé votre calendrier de révision adaptatif.";
     $("#result-breakdown").innerHTML = Object.values(DATA.themes).map((theme) => {
       const rows = result.answers.filter((a) => a.question.theme === theme.id);
@@ -1249,7 +1569,7 @@
           ? question.wrongReasons[answer.choice]
           : "Aucune réponse n’a été donnée. " + question.explanation;
         return '<details class="correction-card"' + (index === 0 ? " open" : "") + '><summary><span>' + String(index + 1).padStart(2, "0") + '</span><strong>' + escapeHtml(question.prompt) + '</strong></summary>' +
-          '<div><p class="chosen-answer"><b>Votre réponse :</b> ' + escapeHtml(chosen) + '</p><p class="why-wrong"><b>Pourquoi elle est fausse :</b> ' + escapeHtml(reason) + '</p><p class="right-answer"><b>Bonne réponse :</b> ' + escapeHtml(question.correct) + '</p><p class="correction-hook"><b>À retenir :</b> ' + escapeHtml(question.hook) + '</p></div></details>';
+          '<div><p class="chosen-answer"><b>Votre réponse :</b> ' + escapeHtml(chosen) + '</p><p class="why-wrong"><b>Pourquoi elle est fausse :</b> ' + escapeHtml(reason) + '</p><p class="right-answer"><b>Bonne réponse :</b> ' + escapeHtml(question.correct) + '</p>' + optionCorrections(question, result.session.optionOrders[question.id]) + '<p class="correction-hook"><b>À retenir :</b> ' + escapeHtml(question.hook) + '</p>' + sourceLinks(question.sourceIds) + '</div></details>';
       }).join("")
       : '<div class="all-correct-note">✓ Aucune erreur dans cette séance.</div>';
     const mistakes = mistakeAnswers.map((answer) => answer.question);
@@ -1269,10 +1589,11 @@
     const theme = $("#custom-theme").value;
     const source = $("#custom-source").value;
     const requested = $("#custom-count").value;
+    const resource = $("#custom-resource").value;
     let pool = DATA.questions.filter((q) => {
       const themeOk = theme === "all" || q.theme === theme;
-      const sourceOk = source === "all" || (source === "official" && q.official) || (source === "scenario" && !q.official);
-      return themeOk && sourceOk;
+      const sourceOk = matchesQuestionSource(q, source);
+      return themeOk && sourceOk && (resource === "all" || q.sourceIds.includes(resource));
     });
     pool = shuffle(pool);
     const count = requested === "all" ? pool.length : Number(requested);
@@ -1328,8 +1649,15 @@
       }
     });
     $("#back-to-lessons").addEventListener("click", () => setRoute("learn"));
+    $("#lesson-search").addEventListener("input", renderLessons);
+    $("#weak-list").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-weak-concept]");
+      if (button) startSession(conceptReviewQuestions(20, [button.dataset.weakConcept]), { name: "Notion à renforcer — autres exemples", feedback: true });
+    });
 
     $("#custom-start").addEventListener("click", startCustomSession);
+    $("#custom-theme").addEventListener("change", populateResourceSelects);
+    $("#custom-source").addEventListener("change", populateResourceSelects);
     $("#start-mock").addEventListener("click", () => {
       startSession(buildMockQuestions(), { mode: "mock", name: "Examen blanc chronométré", feedback: false, timed: true });
     });
@@ -1351,7 +1679,29 @@
       libraryLimit = 40;
       renderLibrary();
     });
+    $("#library-resource").addEventListener("change", () => {
+      libraryLimit = 40;
+      renderLibrary();
+    });
+    ["#library-status", "#library-level"].forEach((selector) => {
+      const select = $(selector);
+      if (select) select.addEventListener("change", () => { libraryLimit = 40; renderLibrary(); });
+    });
+    $("#coverage-list").addEventListener("click", (event) => {
+      const fact = event.target.closest("[data-resource-fact]");
+      if (fact) {
+        practiceFact(fact.dataset.resourceFact, Number(fact.dataset.factIndex));
+        return;
+      }
+      const button = event.target.closest("[data-resource-practice]");
+      if (button) practiceResource(button.dataset.resourcePractice);
+    });
     $("#question-list").addEventListener("click", (event) => {
+      const start = event.target.closest("[data-practice-one]");
+      if (start) {
+        startSession([questionById(start.dataset.practiceOne)], { name: "QCM ciblé", feedback: true });
+        return;
+      }
       const button = event.target.closest("[data-bookmark]");
       if (!button) return;
       event.preventDefault();
@@ -1443,9 +1793,7 @@
         persistSession();
         stopTimer();
       } else {
-        const elapsed = Math.floor((Date.now() - activeSession.lastSavedAt) / 1000);
-        activeSession.remaining = Math.max(0, activeSession.remaining - elapsed);
-        activeSession.lastSavedAt = Date.now();
+        syncTimedSession();
         updateTimerDisplay();
         startTimer();
       }
@@ -1454,7 +1802,7 @@
   }
 
   function init() {
-    if (!DATA || DATA.officialCount !== 244 || !DATA.version.endsWith("-fr") || DATA.questions.some((question) => !question.wrongReasons)) {
+    if (!DATA || DATA.officialCount !== 259 || !DATA.studyCount || !DATA.version.endsWith("-fr") || DATA.contentErrors.length || DATA.metadata.supplementCount < 8) {
       document.body.innerHTML = '<main style="padding:40px;font-family:sans-serif"><h1>Échec du chargement</h1><p>Les contenus complets n’ont pas pu être chargés.</p></main>';
       return;
     }
@@ -1463,7 +1811,7 @@
     applyPreferences();
     bindEvents();
     populateThemeSelects();
-    $(".official-total").textContent = DATA.officialCount;
+    updateContentTotals();
     renderDashboard();
     if (!state.metadata.displayName) showProfileDialog();
     if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {

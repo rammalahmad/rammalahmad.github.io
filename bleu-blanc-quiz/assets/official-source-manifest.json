@@ -1,0 +1,1875 @@
+{
+  "schemaVersion": 1,
+  "title": "Inventaire vérifié des intitulés officiels — examen civique mention naturalisation",
+  "verifiedAt": "2026-10-21",
+  "assetComparison": {
+    "shippedAsset": "outputs/examen-civique-coach/assets/questions-naturalisation-officielles.pdf",
+    "shippedAssetSha256": "482f5d9f91f0fd33e0726800022c66bd6bac6f8edadd0a2492820a7b5eb2bed6",
+    "organizerMirrorSha256": "5cef74d69fff1dadb5bea6eef015fc64ef9f3b8047e170b51ae6dfdaedf89e66",
+    "pages": 11,
+    "samePageAndRowPositions": true,
+    "extractablePromptsCompared": 244,
+    "extractablePromptsMatch": true,
+    "outlinedPromptsVisuallyCompared": 15,
+    "outlinedPromptsMatch": true,
+    "note": "Les fichiers diffèrent octet par octet et dans leur rendu typographique, mais les 259 intitulés visibles et leur placement page/ligne correspondent."
+  },
+  "sourceUrl": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2025/12/examen-civique-naturalisation-questions-de-connaissance.pdf",
+  "officialPageUrl": "https://www.lefrancaisdesaffaires.fr/candidat/examen-civique/presentation/",
+  "physicalRows": 259,
+  "uniquePrompts": 258,
+  "preservedBaseIds": 244,
+  "restoredOutlineRows": 15,
+  "normalization": "Comparaison insensible aux accents, espaces et ponctuation ; formulation visible conservée dans prompt.",
+  "countsByTheme": {
+    "principles": 38,
+    "institutions": 57,
+    "rights": 37,
+    "history": 83,
+    "society": 44
+  },
+  "duplicates": [
+    {
+      "prompt": "Qui peut se présenter aux élections présidentielles ?",
+      "ids": [
+        "O037",
+        "O045"
+      ],
+      "locations": [
+        {
+          "page": 3,
+          "row": 2
+        },
+        {
+          "page": 3,
+          "row": 10
+        }
+      ]
+    }
+  ],
+  "promptsByTheme": {
+    "principles": [
+      {
+        "id": "O001",
+        "page": 1,
+        "row": 1,
+        "prompt": "Complétez les paroles de la Marseillaise \"Allons enfants de la patrie...\"",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O002",
+        "page": 1,
+        "row": 2,
+        "prompt": "Dans le cadre d'un entretien d'embauche, que peut-on demander au candidat ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O003",
+        "page": 1,
+        "row": 3,
+        "prompt": "Déclarer ses revenus aux services fiscaux est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O004",
+        "page": 1,
+        "row": 4,
+        "prompt": "En France, les impôts permettent de financer les dépenses publiques. Quelle proposition est correcte ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O005",
+        "page": 1,
+        "row": 5,
+        "prompt": "La liberté d'association est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O006",
+        "page": 1,
+        "row": 6,
+        "prompt": "La liberté d'expression sur les réseaux sociaux en France est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O007",
+        "page": 1,
+        "row": 7,
+        "prompt": "Lequel de ces prénoms évoque un symbole de la République ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O008",
+        "page": 1,
+        "row": 8,
+        "prompt": "Lequel de ces symboles représente la République française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O009",
+        "page": 1,
+        "row": 9,
+        "prompt": "Où peut-on voir la devise de la République ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O010",
+        "page": 1,
+        "row": 10,
+        "prompt": "Lesquels sont des symboles officiels de la République française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O011",
+        "page": 1,
+        "row": 11,
+        "prompt": "Peut-on brûler publiquement un drapeau français ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O012",
+        "page": 1,
+        "row": 12,
+        "prompt": "Quand la sécurité sociale a-t-elle été établie en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O013",
+        "page": 1,
+        "row": 13,
+        "prompt": "Que commémore la fête nationale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O014",
+        "page": 1,
+        "row": 14,
+        "prompt": "Que porte Marianne sur la tête ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON001",
+        "page": 1,
+        "row": 15,
+        "prompt": "Que signifie le mot “fraternité” dans la devise française ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O015",
+        "page": 1,
+        "row": 16,
+        "prompt": "Quel symbole de la République peut-on voir sur les maillots de l'équipe de France de football ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O016",
+        "page": 1,
+        "row": 17,
+        "prompt": "Quelle est la devise de la République française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O017",
+        "page": 1,
+        "row": 18,
+        "prompt": "Qu'est-ce que la liberté d'association ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O018",
+        "page": 1,
+        "row": 19,
+        "prompt": "Qu'est-ce qu'une liberté ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON002",
+        "page": 1,
+        "row": 20,
+        "prompt": "Selon la Constitution, la France est une République...",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O019",
+        "page": 1,
+        "row": 21,
+        "prompt": "Sur quel document peut-on voir Marianne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O020",
+        "page": 1,
+        "row": 22,
+        "prompt": "Une des valeurs de la devise républicaine est l'Égalité. Qu'est-ce que cela signifie ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O021",
+        "page": 1,
+        "row": 23,
+        "prompt": "Une personne peut-elle changer librement de religion en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON003",
+        "page": 1,
+        "row": 24,
+        "prompt": "Selon le principe de laïcité, que signifie la neutralité de l’État ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O022",
+        "page": 1,
+        "row": 25,
+        "prompt": "Que peut faire un usager du service public dans une mairie ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O023",
+        "page": 1,
+        "row": 26,
+        "prompt": "En France, il est possible pour l'État de financer :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O024",
+        "page": 1,
+        "row": 27,
+        "prompt": "En quelle année la loi de séparation des Églises et de l'État a-t-elle été votée ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O025",
+        "page": 1,
+        "row": 28,
+        "prompt": "Que dit la loi de 1905 ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O026",
+        "page": 1,
+        "row": 29,
+        "prompt": "Que garantit le principe de laïcité ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O027",
+        "page": 1,
+        "row": 30,
+        "prompt": "Quel jour célèbre-t-on officiellement la laïcité en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O028",
+        "page": 2,
+        "row": 1,
+        "prompt": "Quel symbole religieux peut être porté dans une école publique dans le respect de la laïcité ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O029",
+        "page": 2,
+        "row": 2,
+        "prompt": "Quel terme désigne précisément la haine ou les préjugés contre les Juifs ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O030",
+        "page": 2,
+        "row": 3,
+        "prompt": "Quel texte est considéré comme le texte fondateur de la laïcité ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O031",
+        "page": 2,
+        "row": 4,
+        "prompt": "Quelle institution française doit rester neutre en matière de religion ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O032",
+        "page": 2,
+        "row": 5,
+        "prompt": "Qu'est-ce que la laïcité ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O033",
+        "page": 2,
+        "row": 6,
+        "prompt": "À l'école, la charte de la laïcité permet de :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O034",
+        "page": 2,
+        "row": 7,
+        "prompt": "Qui doit respecter et veiller à la neutralité religieuse dans les services publics ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O035",
+        "page": 2,
+        "row": 8,
+        "prompt": "Une personne déclare ne croire en aucun dieu. On peut dire :",
+        "restoredFromOutline": false
+      }
+    ],
+    "institutions": [
+      {
+        "id": "O036",
+        "page": 3,
+        "row": 1,
+        "prompt": "Comment est désigné le Premier ministre ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O037",
+        "page": 3,
+        "row": 2,
+        "prompt": "Qui peut se présenter aux élections présidentielles ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O038",
+        "page": 3,
+        "row": 3,
+        "prompt": "À qui appartient la souveraineté nationale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O039",
+        "page": 3,
+        "row": 4,
+        "prompt": "Qui est élu lors des élections municipales ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O040",
+        "page": 3,
+        "row": 5,
+        "prompt": "L'inscription sur les listes électorales est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O041",
+        "page": 3,
+        "row": 6,
+        "prompt": "Quelle condition est nécessaire pour voter aux élections présidentielles ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O042",
+        "page": 3,
+        "row": 7,
+        "prompt": "Quelle condition faut-il remplir pour être candidat aux élections municipales ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O043",
+        "page": 3,
+        "row": 8,
+        "prompt": "Parmi ces autorités, laquelle est élue ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O044",
+        "page": 3,
+        "row": 9,
+        "prompt": "Quelles sont les fonctions du maire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O045",
+        "page": 3,
+        "row": 10,
+        "prompt": "Qui peut se présenter aux élections présidentielles ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O046",
+        "page": 3,
+        "row": 11,
+        "prompt": "Une personne, n'ayant pas d'accès à internet, veut s'inscrire sur les listes électorales pour pouvoir voter aux prochaines élections politiques. Où peut-elle s'inscrire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O047",
+        "page": 3,
+        "row": 12,
+        "prompt": "À quel âge peut-on devenir électeur ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O048",
+        "page": 3,
+        "row": 13,
+        "prompt": "En France, est-ce obligatoire de voter ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O049",
+        "page": 3,
+        "row": 14,
+        "prompt": "A-t-on le droit de ne pas respecter une loi ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O050",
+        "page": 3,
+        "row": 15,
+        "prompt": "Comment sont désignés les députés ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O051",
+        "page": 3,
+        "row": 16,
+        "prompt": "Qui vote les lois ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O052",
+        "page": 3,
+        "row": 17,
+        "prompt": "La séparation des pouvoirs est un principe fondamental. Quels sont les trois pouvoirs concernés ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O053",
+        "page": 3,
+        "row": 18,
+        "prompt": "Qu'est-ce que l'État de droit ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O054",
+        "page": 3,
+        "row": 19,
+        "prompt": "Quelles sont les durées du mandat du conseil municipal et du maire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O055",
+        "page": 3,
+        "row": 20,
+        "prompt": "Qui est élu lors des élections législatives ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O056",
+        "page": 3,
+        "row": 21,
+        "prompt": "Quelle est la durée du mandat du Président de la République française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O057",
+        "page": 3,
+        "row": 22,
+        "prompt": "Quelle est la durée du mandat des députés ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O058",
+        "page": 3,
+        "row": 23,
+        "prompt": "Quelle est la durée du mandat des sénateurs ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O059",
+        "page": 3,
+        "row": 24,
+        "prompt": "Qui dirige l'action du gouvernement ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O060",
+        "page": 3,
+        "row": 25,
+        "prompt": "En France, est-ce possible d'adhérer à un parti politique ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O061",
+        "page": 3,
+        "row": 26,
+        "prompt": "Qui sanctionne l'auteur d'un vol ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O062",
+        "page": 3,
+        "row": 27,
+        "prompt": "Qui gère les collèges publics ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O063",
+        "page": 3,
+        "row": 28,
+        "prompt": "Qui gère les écoles primaires et maternelles publiques ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O064",
+        "page": 3,
+        "row": 29,
+        "prompt": "Comment sont désignés les maires ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O065",
+        "page": 4,
+        "row": 1,
+        "prompt": "Quelle collectivité territoriale est responsable des transports régionaux ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O066",
+        "page": 4,
+        "row": 2,
+        "prompt": "Quelle est l'une des voies possibles pour modifier la Constitution ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O067",
+        "page": 4,
+        "row": 3,
+        "prompt": "Qui assure l'intérim du président de la République en cas de décès ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O068",
+        "page": 4,
+        "row": 4,
+        "prompt": "Quel est le rôle du Conseil constitutionnel ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O069",
+        "page": 4,
+        "row": 5,
+        "prompt": "Quelle condition est obligatoire pour se présenter à l'élection présidentielle ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O070",
+        "page": 4,
+        "row": 6,
+        "prompt": "Combien y a-t-il de départements en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O071",
+        "page": 4,
+        "row": 7,
+        "prompt": "Comment est organisé le découpage administratif de la France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O072",
+        "page": 4,
+        "row": 8,
+        "prompt": "Qui représente l'État dans un département ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O073",
+        "page": 4,
+        "row": 9,
+        "prompt": "Quel est le rôle du Président de la République ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O074",
+        "page": 4,
+        "row": 10,
+        "prompt": "Quel est le rôle du Premier ministre ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O075",
+        "page": 4,
+        "row": 11,
+        "prompt": "Quel est le rôle du Défenseur des droits ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O076",
+        "page": 4,
+        "row": 12,
+        "prompt": "En quelle année la citoyenneté européenne a-t-elle été créée ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON004",
+        "page": 4,
+        "row": 13,
+        "prompt": "Quel est le dernier État à avoir intégré l’Union Européenne en 2013 ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O077",
+        "page": 4,
+        "row": 14,
+        "prompt": "Qui a composé l'hymne de l'Union européenne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O078",
+        "page": 4,
+        "row": 15,
+        "prompt": "Quand est célébrée la journée de l'Europe ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O079",
+        "page": 4,
+        "row": 16,
+        "prompt": "Où est le siège de la Banque centrale européenne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O080",
+        "page": 4,
+        "row": 17,
+        "prompt": "Où est le siège de la Commission européenne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O081",
+        "page": 4,
+        "row": 18,
+        "prompt": "Qui siège au Parlement européen ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON005",
+        "page": 4,
+        "row": 19,
+        "prompt": "Les citoyens de l’Union européenne peuvent-ils voter aux élections locales dans un autre État de l’Union ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O082",
+        "page": 4,
+        "row": 20,
+        "prompt": "Combien d'États font partie de l'Union européenne au 1er janvier 2025 ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O083",
+        "page": 4,
+        "row": 21,
+        "prompt": "En quelle année le traité de Maastricht, qui marque la fondation de l'Union européenne, a-t-il été signé ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O084",
+        "page": 4,
+        "row": 22,
+        "prompt": "Quel traité concerne la construction de l'Union européenne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O085",
+        "page": 4,
+        "row": 23,
+        "prompt": "Quel État a quitté l'Union Européenne en 2020 ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON006",
+        "page": 4,
+        "row": 24,
+        "prompt": "Quelle est la devise de l’Union Européenne ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O086",
+        "page": 4,
+        "row": 25,
+        "prompt": "Quel est l'hymne de l'Union Européenne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O087",
+        "page": 4,
+        "row": 26,
+        "prompt": "De quoi est composé le drapeau européen ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O088",
+        "page": 4,
+        "row": 27,
+        "prompt": "Qui élit les députés européens ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O089",
+        "page": 4,
+        "row": 28,
+        "prompt": "Où est le siège du Parlement européen ?",
+        "restoredFromOutline": false
+      }
+    ],
+    "rights": [
+      {
+        "id": "O090",
+        "page": 5,
+        "row": 1,
+        "prompt": "À quoi sert le droit de grève ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O091",
+        "page": 5,
+        "row": 2,
+        "prompt": "Au nom de quoi l'État justifie-t-il la restriction des droits ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O092",
+        "page": 5,
+        "row": 3,
+        "prompt": "Laquelle de ces citations est inscrite dans la Déclaration des Droits de l'Homme et du Citoyen de 1789 ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O093",
+        "page": 5,
+        "row": 4,
+        "prompt": "L'article 4 de la Déclaration des droits de l'homme et du citoyen affirme que \"la liberté consiste à pouvoir faire tout ce qui ne nuit pas à autrui\". Qu'est-ce que cela signifie ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O094",
+        "page": 5,
+        "row": 5,
+        "prompt": "Que dit l'article 1er de la Constitution française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O095",
+        "page": 5,
+        "row": 6,
+        "prompt": "Que garantit la liberté de la presse ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O096",
+        "page": 5,
+        "row": 7,
+        "prompt": "Que permet la liberté de circulation ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O097",
+        "page": 5,
+        "row": 8,
+        "prompt": "Que signifie être citoyen d'un État ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O098",
+        "page": 5,
+        "row": 9,
+        "prompt": "Que sont les droits fondamentaux ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O099",
+        "page": 5,
+        "row": 10,
+        "prompt": "Quel droit protège une personne contre une arrestation arbitraire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O100",
+        "page": 5,
+        "row": 11,
+        "prompt": "Quel est le texte fondateur établissant les droits et les devoirs de chaque citoyen ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O101",
+        "page": 5,
+        "row": 12,
+        "prompt": "Quel texte affirme que tous les hommes naissent libres et égaux en droits ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O102",
+        "page": 5,
+        "row": 13,
+        "prompt": "Quelle situation est une atteinte à la dignité humaine ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O103",
+        "page": 5,
+        "row": 14,
+        "prompt": "Qu'est-ce que la liberté d'expression ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O104",
+        "page": 5,
+        "row": 15,
+        "prompt": "Suite à une interpellation par la police, il est possible de :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O105",
+        "page": 5,
+        "row": 16,
+        "prompt": "Tous les citoyens français ont-ils une religion ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O106",
+        "page": 5,
+        "row": 17,
+        "prompt": "À quel âge est la majorité numérique en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O107",
+        "page": 5,
+        "row": 18,
+        "prompt": "Dans lequel de ces endroits est-on autorisé à fumer ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O108",
+        "page": 5,
+        "row": 19,
+        "prompt": "En France, la conduite sans permis d'une moto est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O109",
+        "page": 5,
+        "row": 20,
+        "prompt": "En quoi consiste le devoir de solidarité ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O110",
+        "page": 5,
+        "row": 21,
+        "prompt": "Est-ce légal d'être marié à plusieurs personnes en même temps ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O111",
+        "page": 5,
+        "row": 22,
+        "prompt": "Est-ce obligatoire de déclarer ses impôts chaque année en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O112",
+        "page": 5,
+        "row": 23,
+        "prompt": "Est-il obligatoire de porter secours à une personne en danger ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O113",
+        "page": 5,
+        "row": 24,
+        "prompt": "Être juré d'assises est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O114",
+        "page": 5,
+        "row": 25,
+        "prompt": "La vente d'alcool en France est interdite aux personnes de moins de :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O115",
+        "page": 5,
+        "row": 26,
+        "prompt": "Le non-respect du code de la route est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O116",
+        "page": 5,
+        "row": 27,
+        "prompt": "Lequel de ces crimes ou délits peut entrainer la privation des droits civils et politiques par un juge ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O117",
+        "page": 5,
+        "row": 28,
+        "prompt": "Pour obtenir une carte d'identité, il faut :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O118",
+        "page": 5,
+        "row": 29,
+        "prompt": "Pour quel motif peut-on limiter la liberté d'expression ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O119",
+        "page": 6,
+        "row": 1,
+        "prompt": "Que doit faire un citoyen s'il est appelé à être juré dans un procès d'assises ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O120",
+        "page": 6,
+        "row": 2,
+        "prompt": "Quel est l'âge de la majorité civile en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O121",
+        "page": 6,
+        "row": 3,
+        "prompt": "Quel est l'un des devoirs principaux d'un citoyen français ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O122",
+        "page": 6,
+        "row": 4,
+        "prompt": "Quelle est l'infraction la plus grave ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O123",
+        "page": 6,
+        "row": 5,
+        "prompt": "Qu'est-ce que la citoyenneté numérique ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O124",
+        "page": 6,
+        "row": 6,
+        "prompt": "Qu'est-ce que le devoir de mémoire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON007",
+        "page": 6,
+        "row": 7,
+        "prompt": "Qui peut être appelé à faire partie d’un jury d’assises en France ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O125",
+        "page": 6,
+        "row": 8,
+        "prompt": "Une personne est privée de ses droits civils et politiques pendant 5 ans suite à une condamnation. Parmi ces propositions laquelle est correcte ? Pendant 5 ans,...",
+        "restoredFromOutline": false
+      }
+    ],
+    "history": [
+      {
+        "id": "O126",
+        "page": 7,
+        "row": 1,
+        "prompt": "Parmi ces textes, lequel a été adopté sous Napoléon Ier ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O127",
+        "page": 7,
+        "row": 2,
+        "prompt": "Qui a été président de la Ve République ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON008",
+        "page": 7,
+        "row": 3,
+        "prompt": "Quel est l’objectif des lois scolaires de la IIIe République ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O128",
+        "page": 7,
+        "row": 4,
+        "prompt": "Que signifie la date du 14 juillet pour les Français ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON009",
+        "page": 7,
+        "row": 5,
+        "prompt": "Pourquoi l’année 1958 est importante pour la France ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O129",
+        "page": 7,
+        "row": 6,
+        "prompt": "Lequel de ces pays est un pays fondateur de l'Union Européenne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON010",
+        "page": 7,
+        "row": 7,
+        "prompt": "Simone Veil est une figure importante de l’histoire française. Elle a notamment :",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O130",
+        "page": 7,
+        "row": 8,
+        "prompt": "Dans quelle région est située une partie des plages du débarquement ayant permis d'engager la libération de la France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O131",
+        "page": 7,
+        "row": 9,
+        "prompt": "Dans quelle ville les rois de France étaient-ils couronnés ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O132",
+        "page": 7,
+        "row": 10,
+        "prompt": "Quel roi de France a été guillotiné pendant la Révolution française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O133",
+        "page": 7,
+        "row": 11,
+        "prompt": "En quelle année a débuté la Révolution française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O134",
+        "page": 7,
+        "row": 12,
+        "prompt": "En quelle année Napoléon Ier est-il devenu empereur ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O135",
+        "page": 7,
+        "row": 13,
+        "prompt": "Lequel de ces personnages a un lien avec la République française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O136",
+        "page": 7,
+        "row": 14,
+        "prompt": "De quand date l'appel à la résistance du général de Gaulle ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O137",
+        "page": 7,
+        "row": 15,
+        "prompt": "Qu'est-ce que la Shoah ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O138",
+        "page": 7,
+        "row": 16,
+        "prompt": "Quel pays a été une colonie française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON011",
+        "page": 7,
+        "row": 17,
+        "prompt": "Qui a rendu l’école gratuite, laïque et obligatoire ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O139",
+        "page": 7,
+        "row": 18,
+        "prompt": "Depuis quand les Français élisent-ils le président de la République au suffrage universel direct ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O140",
+        "page": 7,
+        "row": 19,
+        "prompt": "En quelle année l'Union européenne a-t-elle été fondée?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O141",
+        "page": 7,
+        "row": 20,
+        "prompt": "Quand a eu lieu la Seconde guerre mondiale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O142",
+        "page": 7,
+        "row": 21,
+        "prompt": "Quand a eu lieu la Première guerre mondiale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O143",
+        "page": 7,
+        "row": 22,
+        "prompt": "Sous quel président a été abolie la peine de mort en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O144",
+        "page": 7,
+        "row": 23,
+        "prompt": "Que célèbre-t-on le 8 mai ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O145",
+        "page": 7,
+        "row": 24,
+        "prompt": "Quelle est la première étape de la construction européenne en 1951 ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O146",
+        "page": 7,
+        "row": 25,
+        "prompt": "Qui était une figure de la Résistance française pendant la Seconde Guerre mondiale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O147",
+        "page": 7,
+        "row": 26,
+        "prompt": "Le 11 novembre est un jour férié. À quoi correspond cette date ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O148",
+        "page": 7,
+        "row": 27,
+        "prompt": "Depuis quand l'esclavage a-t-il été aboli en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O149",
+        "page": 7,
+        "row": 28,
+        "prompt": "Qui a aboli l'esclavage en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O150",
+        "page": 7,
+        "row": 29,
+        "prompt": "Depuis quelle année l'école publique est-elle gratuite ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O151",
+        "page": 7,
+        "row": 30,
+        "prompt": "En 1944, qu'est-ce qui a changé pour les femmes ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O152",
+        "page": 8,
+        "row": 1,
+        "prompt": "Quelle organisation a été créée en 1945 après la Seconde Guerre mondiale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O153",
+        "page": 8,
+        "row": 2,
+        "prompt": "En quelle année l'euro est-il devenu la monnaie officielle de la France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O154",
+        "page": 8,
+        "row": 3,
+        "prompt": "Lors de la seconde guerre mondiale, à quelle date la ville de Paris a-t-elle été libérée ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O155",
+        "page": 8,
+        "row": 4,
+        "prompt": "Quel était le principal port français impliqué dans la traite négrière au XVIIIe siècle ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O156",
+        "page": 8,
+        "row": 5,
+        "prompt": "Quel célèbre philosophe des Lumières a dénoncé l'esclavage ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON012",
+        "page": 8,
+        "row": 6,
+        "prompt": "Quelle œuvre a été écrite par Victor Hugo ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O157",
+        "page": 8,
+        "row": 7,
+        "prompt": "Quel peintre est français ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O158",
+        "page": 8,
+        "row": 8,
+        "prompt": "Quel plat est une spécialité de la cuisine française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O159",
+        "page": 8,
+        "row": 9,
+        "prompt": "Qui était Marie Curie ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O160",
+        "page": 8,
+        "row": 10,
+        "prompt": "Qui a peint \"La liberté guidant le peuple\" ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O161",
+        "page": 8,
+        "row": 11,
+        "prompt": "Dans quel grand musée parisien est exposée la Joconde ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O162",
+        "page": 8,
+        "row": 12,
+        "prompt": "Quel château célèbre se trouve près de Paris et symbolise le pouvoir royal de Louis XIV ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O163",
+        "page": 8,
+        "row": 13,
+        "prompt": "Où peut-on voir des peintures préhistoriques en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O164",
+        "page": 8,
+        "row": 14,
+        "prompt": "Quel peintre célèbre a peint les Nymphéas ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O165",
+        "page": 8,
+        "row": 15,
+        "prompt": "Pendant quelles journées peut-on visiter gratuitement des lieux culturels en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O166",
+        "page": 8,
+        "row": 16,
+        "prompt": "Que symbolise le 1er mai ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O167",
+        "page": 8,
+        "row": 17,
+        "prompt": "Qui était Monsieur Rouget de Lisle ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O168",
+        "page": 8,
+        "row": 18,
+        "prompt": "À quelle occasion a été construite la Tour Eiffel ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O169",
+        "page": 8,
+        "row": 19,
+        "prompt": "Quelle chaîne de montagnes est située entre la France et l'Italie ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O170",
+        "page": 8,
+        "row": 20,
+        "prompt": "Qui était Molière ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O171",
+        "page": 8,
+        "row": 21,
+        "prompt": "Qui était Charles Baudelaire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O172",
+        "page": 8,
+        "row": 22,
+        "prompt": "Qui était George Sand ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O173",
+        "page": 8,
+        "row": 23,
+        "prompt": "Qui était Simone de Beauvoir ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O174",
+        "page": 8,
+        "row": 24,
+        "prompt": "Qui était Albert Camus ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O175",
+        "page": 8,
+        "row": 25,
+        "prompt": "Qui était Marguerite Yourcenar ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O176",
+        "page": 8,
+        "row": 26,
+        "prompt": "Qui était Paul Cézanne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O177",
+        "page": 8,
+        "row": 27,
+        "prompt": "Qui était Auguste Rodin ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O178",
+        "page": 8,
+        "row": 28,
+        "prompt": "Qui était un célèbre compositeur français ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O179",
+        "page": 8,
+        "row": 29,
+        "prompt": "Qui était Auguste Renoir ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O180",
+        "page": 8,
+        "row": 30,
+        "prompt": "Quel musée est situé à Paris ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O181",
+        "page": 9,
+        "row": 1,
+        "prompt": "Quel monument historique se trouve sur une île en Normandie ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O182",
+        "page": 9,
+        "row": 2,
+        "prompt": "Quelle ville française fait partie des 10 plus grandes métropoles du pays ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O183",
+        "page": 9,
+        "row": 3,
+        "prompt": "Quelle île fait partie des Antilles françaises ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O184",
+        "page": 9,
+        "row": 4,
+        "prompt": "Quelle île est française ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O185",
+        "page": 9,
+        "row": 5,
+        "prompt": "Quelle est la plus haute montagne de France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O186",
+        "page": 9,
+        "row": 6,
+        "prompt": "Quelle île française est située dans l'océan indien ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O187",
+        "page": 9,
+        "row": 7,
+        "prompt": "Quel département français a une frontière avec le Brésil ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O188",
+        "page": 9,
+        "row": 8,
+        "prompt": "De quelle ville française décolle la fusée Ariane ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O189",
+        "page": 9,
+        "row": 9,
+        "prompt": "Quelle mer ou océan borde la France métropolitaine ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON013",
+        "page": 9,
+        "row": 10,
+        "prompt": "Quelle mer se situe entre la France et l’Angleterre ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O190",
+        "page": 9,
+        "row": 11,
+        "prompt": "Quelle île est un département d'outre-mer français ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O191",
+        "page": 9,
+        "row": 12,
+        "prompt": "Qu'est-ce que la France d'outre-mer ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O192",
+        "page": 9,
+        "row": 13,
+        "prompt": "Quelle est la population approximative de la France en 2025 ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O193",
+        "page": 9,
+        "row": 14,
+        "prompt": "Quel est le principal port maritime de France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O194",
+        "page": 9,
+        "row": 15,
+        "prompt": "Combien y a-t-il de régions en France métropolitaine ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON014",
+        "page": 9,
+        "row": 16,
+        "prompt": "Quelle chaîne de montagnes est située entre la France et l’Espagne ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O195",
+        "page": 9,
+        "row": 17,
+        "prompt": "Quelle île française se trouve au sud-est du continent africain ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O196",
+        "page": 9,
+        "row": 18,
+        "prompt": "Quel est le chef-lieu de la région Auvergne-Rhône-Alpes ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O197",
+        "page": 9,
+        "row": 19,
+        "prompt": "Quel est le chef-lieu de la région Bretagne ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O198",
+        "page": 9,
+        "row": 20,
+        "prompt": "Quel est le chef-lieu de la région Provence-Alpes-Côte d'Azur ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O199",
+        "page": 9,
+        "row": 21,
+        "prompt": "Quel est le 101ème département français depuis 2011 ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O200",
+        "page": 9,
+        "row": 22,
+        "prompt": "Quelle région française est réputée pour ses stations de ski ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O201",
+        "page": 9,
+        "row": 23,
+        "prompt": "Quel fleuve traverse Paris ?",
+        "restoredFromOutline": false
+      }
+    ],
+    "society": [
+      {
+        "id": "O202",
+        "page": 10,
+        "row": 1,
+        "prompt": "Où faut-il déclarer la naissance d'un enfant ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O203",
+        "page": 10,
+        "row": 2,
+        "prompt": "Quelle action peut réaliser le locataire d'un logement sans l'autorisation du propriétaire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O204",
+        "page": 10,
+        "row": 3,
+        "prompt": "Quel mariage est reconnu légalement ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O205",
+        "page": 10,
+        "row": 4,
+        "prompt": "Le stationnement sur une place réservée aux personnes handicapées :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O206",
+        "page": 10,
+        "row": 5,
+        "prompt": "Si une machine à laver est cassée, il est possible de :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O207",
+        "page": 10,
+        "row": 6,
+        "prompt": "Dans quel cas faut-il déclarer son enfant au service d'état civil ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O208",
+        "page": 10,
+        "row": 7,
+        "prompt": "Quand faut-il déclarer son enfant au service d'état civil ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O209",
+        "page": 10,
+        "row": 8,
+        "prompt": "Quel numéro d'urgence permet d'appeler la police ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O210",
+        "page": 10,
+        "row": 9,
+        "prompt": "Quel numéro d'urgence permet d'appeler le SAMU ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O211",
+        "page": 10,
+        "row": 10,
+        "prompt": "Auprès de quelle institution les parents peuvent inscrire leurs enfants à l'école publique ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O212",
+        "page": 10,
+        "row": 11,
+        "prompt": "En cas de divorce, qui exerce l'autorité parentale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O213",
+        "page": 10,
+        "row": 12,
+        "prompt": "Quelle aide permet aux personnes qui ont des difficultés financières d'avoir un avocat ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O214",
+        "page": 10,
+        "row": 13,
+        "prompt": "Qui peut demander le divorce de personnes mariées ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O215",
+        "page": 10,
+        "row": 14,
+        "prompt": "Auprès de quel organisme faut-il demander le remboursement des frais de santé ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O216",
+        "page": 10,
+        "row": 15,
+        "prompt": "La contraception :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "ON015",
+        "page": 10,
+        "row": 16,
+        "prompt": "Qu’est-ce que le principe de confidentialité dans le domaine de la santé ?",
+        "restoredFromOutline": true
+      },
+      {
+        "id": "O217",
+        "page": 10,
+        "row": 17,
+        "prompt": "À quoi sert la carte Vitale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O218",
+        "page": 10,
+        "row": 18,
+        "prompt": "À quoi sert une mutuelle santé ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O219",
+        "page": 10,
+        "row": 19,
+        "prompt": "Qu'est-ce que le tiers payant ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O220",
+        "page": 10,
+        "row": 20,
+        "prompt": "L'inscription à l'Assurance maladie est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O221",
+        "page": 10,
+        "row": 21,
+        "prompt": "L'avortement est-il possible en France ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O222",
+        "page": 10,
+        "row": 22,
+        "prompt": "Travailler sans être déclaré est :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O223",
+        "page": 10,
+        "row": 23,
+        "prompt": "Qu'est-ce que le SMIC ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O224",
+        "page": 10,
+        "row": 24,
+        "prompt": "Quelle est la première démarche à réaliser pour chercher un emploi ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O225",
+        "page": 10,
+        "row": 25,
+        "prompt": "Quelle est la durée légale du temps de travail par semaine ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O226",
+        "page": 10,
+        "row": 26,
+        "prompt": "Qui peut demander un congé parental d'éducation ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O227",
+        "page": 10,
+        "row": 27,
+        "prompt": "Une personne étrangère, en situation régulière, peut créer son entreprise :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O228",
+        "page": 10,
+        "row": 28,
+        "prompt": "Une femme peut-elle créer son entreprise ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O229",
+        "page": 10,
+        "row": 29,
+        "prompt": "Quels sont les textes qui définissent les règles au travail ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O230",
+        "page": 10,
+        "row": 30,
+        "prompt": "Quelles sont les affaires traitées par le conseil de prud'hommes ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O231",
+        "page": 11,
+        "row": 1,
+        "prompt": "Qui a le droit de se syndiquer ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O232",
+        "page": 11,
+        "row": 2,
+        "prompt": "Est-il possible de licencier une femme enceinte ou en congé maternité, en raison de sa grossesse ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O233",
+        "page": 11,
+        "row": 3,
+        "prompt": "L'instruction des enfants est obligatoire de :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O234",
+        "page": 11,
+        "row": 4,
+        "prompt": "Des parents ne respectent pas l'obligation d'instruction pour leurs enfants. Quelle sanction maximale risquent-ils ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O235",
+        "page": 11,
+        "row": 5,
+        "prompt": "Quelle est la définition de l'autorité parentale ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O236",
+        "page": 11,
+        "row": 6,
+        "prompt": "Quel motif d'absence est accepté par l'école ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O237",
+        "page": 11,
+        "row": 7,
+        "prompt": "Jusqu'à quel âge l'école est-elle obligatoire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O238",
+        "page": 11,
+        "row": 8,
+        "prompt": "À quel âge commence l'instruction obligatoire des enfants ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O239",
+        "page": 11,
+        "row": 9,
+        "prompt": "Comment s'appellent les établissements scolaires que les élèves intègrent après l'école élémentaire ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O240",
+        "page": 11,
+        "row": 10,
+        "prompt": "En tant que parent d'élève, il est possible de :",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O241",
+        "page": 11,
+        "row": 11,
+        "prompt": "Quelle instruction est prévue pour les enfants qui ne parlent pas français ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O242",
+        "page": 11,
+        "row": 12,
+        "prompt": "S'agissant de l'accueil des enfants en situation de handicap à l'école, laquelle des propositions est vraie ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O243",
+        "page": 11,
+        "row": 13,
+        "prompt": "Depuis le 1er juillet 2021, quelle est la durée du congé paternité ?",
+        "restoredFromOutline": false
+      },
+      {
+        "id": "O244",
+        "page": 11,
+        "row": 14,
+        "prompt": "Est-ce possible de punir physiquement ses enfants ?",
+        "restoredFromOutline": false
+      }
+    ]
+  }
+}
