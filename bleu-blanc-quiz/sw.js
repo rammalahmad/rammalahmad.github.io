@@ -1,4 +1,4 @@
-const CACHE = "bleu-blanc-quiz-public-20261024-officiel-exigeant";
+const CACHE = "bleu-blanc-quiz-public-20261024-rotation-examens";
 const APP_FILES = [
   "./",
   "./index.html",
@@ -21,6 +21,8 @@ const APP_FILES = [
   "./official-tricky-institutions.js",
   "./official-tricky-histoire-societe.js",
   "./official-training.js",
+  "./mock-blueprint.js",
+  "./mock-rotation.js",
   "./app.js",
   "./manifest.webmanifest",
   "./icon.svg",

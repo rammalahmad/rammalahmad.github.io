@@ -10,6 +10,7 @@ La France que nous aimons : une application publique, interactive et utilisable 
 - Des explications détaillées pour chaque mauvaise réponse
 - Des séances adaptatives et une répétition espacée des notions fragiles
 - Un parcours intégral par petites séances (20 QCM par défaut, taille réglable) : chaque question est explorée avant de commencer un nouveau tour
+- Un mode « Tout un thème » pour faire la liste complète de l’un des cinq grands thèmes, sans limite de séance
 - Une révision par notion qui reprend les erreurs et propose d’autres exemples pour vérifier la compréhension
 - Des examens blancs de 40 questions en 45 minutes
 - Une banque consultable avec recherche sans accents, filtres par thème, type, fiche ou chapitre, niveau, statut de progression et favoris
@@ -31,6 +32,18 @@ Un compteur séparé distingue les questions abordées avec ces choix exigeants,
 
 Les anciennes séances sauvegardées conservent leurs choix et corrections. Les nouvelles séances enregistrent aussi une copie de leurs options, pour reprendre exactement au même endroit après rechargement. Le remplacement d’une séance en cours demande confirmation ; les réponses d’un examen blanc interrompu sont comptabilisées sans créer un faux score d’examen complet.
 
+## Tout un grand thème
+
+Dans **S’entraîner → Tout un thème**, choisissez le contenu puis l’une des cinq cartes :
+
+- **Questions officielles — priorité** : toutes les questions officielles distinctes de ce thème (38, 56, 37, 83 et 44, dans l’ordre des cartes).
+- **Tout le thème — QCM et situations** : les connaissances officielles, les QCM complémentaires et les situations, y compris les approfondissements.
+- **Mises en situation** : toutes les situations pédagogiques du thème.
+
+La liste complète est parcourue sans limite de 20 questions et sans chronomètre. Les questions non abordées sont placées en premier, mais celles déjà vues restent dans la séance. Le doublon officiel n’est proposé qu’une fois : ce mode couvre 2 625 questions distinctes sur les 2 626 lignes de la banque.
+
+Les réponses, explications détaillées, favoris, ordre des choix et position sont sauvegardés dans le navigateur. La carte de la séance en cours affiche **Reprendre la séance**. Il n’existe qu’une séance active : commencer un autre thème demande confirmation et remplace sa reprise, sans effacer les réponses déjà données. Les longues séances affichent seulement 80 indicateurs de position à la fois ; aucune question n’est retirée.
+
 ## Confidentialité
 
 Aucun compte ni stockage en ligne n’est utilisé. Le prénom ou pseudonyme, les résultats et les préférences restent dans le stockage local du navigateur de chaque visiteur.
@@ -50,6 +63,51 @@ Depuis ce dossier, lancez :
 Ouvrez [l’application locale](http://localhost:8081/). Après la première ouverture et l’installation du cache, les QCM et les PDF joints sont utilisables hors ligne. Les liens vers les fiches externes nécessitent une connexion.
 
 La version publique reste centrée sur l’examen ; elle n’expose pas le module d’entretien ni les éléments personnels de la version complète.
+
+## Répartition des examens blancs
+
+Chaque nouvel examen blanc tire au hasard les questions dans les quotas suivants :
+
+| Thème | Connaissances | Mises en situation | Total |
+|---|---:|---:|---:|
+| Principes et valeurs de la République | 5 | 6 | 11 |
+| Système institutionnel et politique | 6 | 0 | 6 |
+| Droits et devoirs | 5 | 6 | 11 |
+| Histoire, géographie et culture | 8 | 0 | 8 |
+| Vivre dans la société française | 4 | 0 | 4 |
+| Total | 28 | 12 | 40 |
+
+Les connaissances sont sélectionnées parmi les 258 énoncés officiels distincts. Les situations restent pédagogiques et ne sont pas issues de la banque réelle. Les autres situations restent disponibles dans les entraînements libres. L’indice d’entraînement utilise la même pondération. Les séances déjà commencées conservent leurs questions et leurs choix ; aucune progression ni aucun historique n’est effacé.
+
+### Quotas par notion
+
+Les nouveaux examens respectent aussi les sous-quotas de l’[article 3 de l’arrêté du 10 octobre 2025](https://www.legifrance.gouv.fr/eli/arrete/2025/10/10/INTV2527907A/jo/article_3) :
+
+| Thème | Questions de connaissances | Situations |
+|---|---|---:|
+| Principes et valeurs | Devise et symboles : 3 ; laïcité : 2 | 6 |
+| Institutions | Démocratie et vote : 3 ; organisation de la République : 2 ; institutions européennes : 1 | 0 |
+| Droits et devoirs | Droits fondamentaux : 2 ; obligations et devoirs : 3 | 6 |
+| Histoire, géographie et culture | Périodes et personnages historiques : 3 ; territoires et géographie : 3 ; patrimoine : 2 | 0 |
+| Vie en société | Installation et résidence : 1 ; soins : 1 ; travail : 1 ; autorité parentale et éducation : 1 | 0 |
+
+Le fichier partagé [mock-blueprint.js](mock-blueprint.js) répartit explicitement les 258 énoncés distincts dans les 14 notions de connaissances. Ce classement question par question est pédagogique, et non une annotation ministérielle publiée. Les thèmes, énoncés, réponses et anciens identifiants restent inchangés. O045 conserve son rôle d’ancien alias de O037 ; les nouveaux tirages ne proposent que le représentant canonique.
+
+Le générateur respecte le quota de chaque notion, puis mélange les 40 questions. Aucune question n’est empruntée à une autre notion pour compléter un quota. Si une réserve devient insuffisante, aucun examen partiel n’est lancé.
+
+La page « Examen blanc » permet de déplier **Voir les quotas par notion**. Les anciens examens enregistrés gardent leur tirage et affichent un avertissement si leur plan est antérieur. Commencer un nouvel examen demande confirmation lorsqu’une séance est en cours ; les réponses d’un examen interrompu sont comptabilisées une seule fois, sans créer de faux score complet. La durée de 45 minutes, le seuil de 32/40, les sauvegardes et les choix exigeants sont conservés.
+
+### Rotation des questions entre examens
+
+Chaque nouvel examen donne la priorité aux questions qui n’ont encore jamais été proposées dans chaque notion. Les questions du dernier tirage passent après les autres ; si la réserve restante ne suffit pas, seules les répétitions nécessaires sont réintroduites, sans changer les quotas. À mesure que les notions sont parcourues, les questions les moins proposées puis les plus anciennes reviennent. Les égalités et l’ordre des 40 questions restent mélangés.
+
+Les réserves actuelles permettent deux nouveaux examens consécutifs entièrement différents. La rotation couvre les 258 énoncés officiels distincts et les 194 situations essentielles des deux thèmes concernés. Une petite notion peut revenir avant que toutes les questions d’une autre notion soient passées : ses quotas restent obligatoires.
+
+La mémoire de rotation est privée et stockée dans le même navigateur que la progression, dans un bloc indépendant des réussites et erreurs. Un nouvel examen est compté uniquement à son départ confirmé, avec sa séance. Préparer un tirage, annuler, reprendre ou terminer l’examen ne la consomme pas à nouveau. Un ancien examen interrompu est aussi conservé dans cette mémoire lorsqu’une séance d’entraînement le remplace, sans compter celle-ci comme un examen. Un compteur de couverture est affiché sur la page « Examen blanc ».
+
+Les anciens examens conservés (au maximum les 20 présents dans l’historique) et le mock actif servent à initialiser cette mémoire sans modifier leurs scores, réponses ou options. Même une question proposée mais laissée sans réponse est comptée comme proposée. Les anciens alias sont canonisés sans double crédit. Exporter/importer la progression conserve la rotation ; réinitialiser la progression la remet à zéro.
+
+Le module [mock-rotation.js](mock-rotation.js) est partagé entre les deux versions et précaché pour l’usage hors ligne. Aucun nom, réponse ou compteur n’est envoyé à un serveur.
 
 ## Transparence
 

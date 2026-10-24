@@ -8,7 +8,7 @@
   <meta name="description" content="Bleu Blanc Quiz : préparation interactive à l’examen civique, avec leçons, quiz, révisions et examens blancs.">
   <title>Bleu Blanc Quiz — Préparation à l’examen civique</title>
   <link rel="manifest" href="manifest.webmanifest?v=20261024-officiel-exigeant">
-  <link rel="stylesheet" href="styles.css?v=20261024-officiel-exigeant">
+  <link rel="stylesheet" href="styles.css?v=20261024-rotation-examens">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -144,6 +144,20 @@
             <div><span class="eyebrow">Choisissez votre séance</span><h2 id="practice-heading">Entraînez-vous intelligemment</h2><p>Chaque réponse actualise votre calendrier de mémorisation et vos points faibles.</p></div>
           </div>
           <p class="exhaustive-summary" id="exhaustive-summary" aria-live="polite"></p>
+          <article class="panel theme-practice-panel" aria-labelledby="theme-practice-heading">
+            <div class="panel-header">
+              <div><span class="eyebrow">Un grand thème à la fois</span><h3 id="theme-practice-heading">Tout un thème</h3></div>
+              <label class="theme-practice-control" for="theme-practice-source">Contenu
+                <select id="theme-practice-source">
+                  <option value="official">Questions officielles — priorité</option>
+                  <option value="all">Tout le thème — QCM et situations</option>
+                  <option value="scenario">Mises en situation</option>
+                </select>
+              </label>
+            </div>
+            <p>Parcourez la liste complète d’un thème, sans limite de 20 questions ni chronomètre. Les questions non abordées passent en premier ; les doublons officiels ne sont comptés qu’une fois. Votre séance est sauvegardée pour reprendre au même endroit. Une seule séance peut être en cours à la fois.</p>
+            <div class="theme-practice-grid" id="theme-practice-grid"></div>
+          </article>
           <div class="mode-grid" id="practice-modes"></div>
           <article class="panel custom-practice-panel">
             <div class="panel-header"><div><span class="eyebrow">Composez une séance</span><h3>Entraînement personnalisé</h3></div></div>
@@ -160,13 +174,22 @@
         <section class="view" id="view-mock" data-view="mock" aria-labelledby="mock-heading">
           <div class="mock-hero">
             <div>
-              <span class="pill">Format officiel</span>
+              <span class="pill">Format de l’examen</span>
               <h2 id="mock-heading">40 questions. 45 minutes.</h2>
-              <p>28 questions de connaissance et 12 mises en situation, réparties selon les cinq thèmes officiels. Il faut obtenir au moins 32 bonnes réponses.</p>
+              <p>28 questions de connaissances et 12 mises en situation : 6 sur les principes et valeurs de la République, 6 sur les droits et devoirs. Les trois autres thèmes comportent uniquement des questions de connaissances. Il faut obtenir au moins 32 bonnes réponses.</p>
+              <p class="mock-disclaimer" id="mock-distribution"></p>
+              <p class="mock-disclaimer">Les questions jamais proposées sont prioritaires dans chaque notion. Quand une réserve est épuisée, les moins utilisées reviennent pour réviser. Le dernier tirage est évité tant que la réserve le permet, sans changer les quotas.</p>
+              <p class="mock-disclaimer" id="mock-rotation-status"></p>
+              <details class="mock-topic-details">
+                <summary>Voir les quotas par notion</summary>
+                <ul id="mock-topic-distribution" class="mock-topic-distribution"></ul>
+                <p class="mock-disclaimer">Quotas de l’<a href="https://www.legifrance.gouv.fr/eli/arrete/2025/10/10/INTV2527907A/jo/article_3" target="_blank" rel="noopener">article 3 de l’arrêté du 10 octobre 2025</a>. Le rattachement de chaque énoncé à une notion est un classement pédagogique de l’application, pas une annotation officielle de la banque.</p>
+              </details>
               <p class="mock-disclaimer">Simulation d’entraînement : les choix et les situations sont rédigés pour apprendre, pas extraits du véritable examen.</p>
               <div class="mock-facts"><span><b>40</b> questions</span><span><b>45</b> minutes</span><span><b>80 %</b> pour réussir</span></div>
               <button class="button button-primary" id="start-mock" type="button">Commencer l’examen chronométré</button>
               <button class="button button-secondary hidden" id="resume-mock" type="button">Reprendre l’examen enregistré</button>
+              <p class="mock-disclaimer hidden" id="mock-resume-notice"></p>
             </div>
             <div class="mock-sheet" aria-hidden="true">
               <div class="sheet-line wide"></div><div class="sheet-line"></div><div class="sheet-line"></div>
@@ -275,6 +298,7 @@
               <div class="mini-stat"><span>Précision</span><strong id="session-accuracy">—</strong></div>
               <div class="mini-stat"><span>Série actuelle</span><strong id="session-streak">0</strong></div>
               <div class="session-dots" id="session-dots"></div>
+              <p class="session-dot-range hidden" id="session-dot-range"></p>
             </aside>
           </div>
         </section>
@@ -341,6 +365,8 @@
   <script src="official-tricky-institutions.js?v=20261024-officiel-exigeant"></script>
   <script src="official-tricky-histoire-societe.js?v=20261024-officiel-exigeant"></script>
   <script src="official-training.js?v=20261024-officiel-exigeant"></script>
-  <script src="app.js?v=20261024-officiel-exigeant"></script>
+  <script src="mock-blueprint.js?v=20261024-quotas-notions"></script>
+  <script src="mock-rotation.js?v=20261024-rotation-examens"></script>
+  <script src="app.js?v=20261024-rotation-examens"></script>
 </body>
 </html>

@@ -7,6 +7,10 @@
   const SOURCE_INDEX = new Map((DATA && DATA.sources || []).map((source) => [source.id, source]));
   const OFFICIAL_TRAINING = window.CIVIQUE_OFFICIAL_TRAINING;
   const STORAGE_KEY = "civique-coach-state-v1";
+  const MOCK_BLUEPRINT = window.CIVIQUE_MOCK_BLUEPRINT;
+  const MOCK_ROTATION = window.CIVIQUE_MOCK_ROTATION;
+  // Les totaux par thème sont dérivés des quotas par notion de l’article 3.
+  const MOCK_ALLOCATION = MOCK_BLUEPRINT ? MOCK_BLUEPRINT.allocation : {};
   const ROUTES = {
     dashboard: ["Votre programme", "Aujourd’hui"],
     learn: ["Histoire, valeurs et vie quotidienne", "Découvrir"],
@@ -51,6 +55,7 @@
       },
       prefs: {
         dailyGoal: 20,
+        themePracticeSource: "official",
         englishHints: true,
         reduceMotion: false,
         theme: "light"
@@ -59,6 +64,7 @@
       officialTrainingStats: {},
       activity: {},
       mocks: [],
+      mockRotation: null,
       completedLessons: [],
       bookmarks: [],
       activeSession: null,
@@ -535,8 +541,7 @@
   }
 
   function readiness() {
-    const allocation = { principles: [8, 3], rights: [8, 3], history: [6, 2], institutions: [4, 2], society: [2, 2] };
-    const knowledge = Object.entries(allocation).reduce((sum, [theme, counts]) => {
+    const knowledge = Object.entries(MOCK_ALLOCATION).reduce((sum, [theme, counts]) => {
       const official = new Map();
       const situations = new Map();
       DATA.questions.filter((question) => question.theme === theme).forEach((question) => {
@@ -1061,6 +1066,70 @@
     if (clear / total >= 0.75) celebrate();
   }
 
+  function themePracticeQuestions(themeId, source) {
+    if (!DATA.themes[themeId] || !["official", "all", "scenario"].includes(source)) return [];
+    if (source === "official") return OFFICIAL_TRAINING.questions.filter((question) => question.theme === themeId);
+    return DATA.questions.filter((question) => question.theme === themeId && (source === "scenario"
+      ? question.type === "scenario"
+      : !question.official || OFFICIAL_TRAINING.aliases.get(question.id) === question.id));
+  }
+
+  function themePracticeHasSeen(question, source) {
+    if (source === "official") {
+      const stat = state.officialTrainingStats[OFFICIAL_TRAINING.aliases.get(question.id)];
+      return Boolean(stat && Number(stat.seen) > 0);
+    }
+    if (hasSeen(question)) return true;
+    if (!question.official) return false;
+    const canonicalId = OFFICIAL_TRAINING.aliases.get(question.id);
+    for (const [id, canonical] of OFFICIAL_TRAINING.aliases) {
+      if (canonical === canonicalId && hasSeen(questionById(id))) return true;
+    }
+    return false;
+  }
+
+  function renderThemePractice() {
+    const select = $("#theme-practice-source");
+    const source = ["official", "all", "scenario"].includes(state.prefs.themePracticeSource) ? state.prefs.themePracticeSource : "official";
+    select.value = source;
+    const labels = { official: "questions officielles", all: "QCM du thème", scenario: "mises en situation" };
+    $("#theme-practice-grid").innerHTML = Object.keys(MOCK_ALLOCATION).map((themeId) => {
+      const theme = DATA.themes[themeId];
+      const pool = themePracticeQuestions(themeId, source);
+      const seen = pool.filter((question) => themePracticeHasSeen(question, source)).length;
+      const percent = pool.length ? Math.round(seen / pool.length * 100) : 0;
+      const canResume = activeSession && activeSession.mode === "theme" && activeSession.themeId === themeId && activeSession.themeSource === source;
+      const action = canResume ? "Reprendre la séance" : (seen === pool.length ? "Revoir les " : "Faire les ") + pool.length + " questions";
+      const status = canResume ? "Séance enregistrée : " + activeSession.answers.filter(Boolean).length + "/" + activeSession.questionIds.length + " réponses" : seen + "/" + pool.length + " questions abordées";
+      return '<article class="mode-card theme-practice-card' + (canResume ? ' is-resumable' : '') + '" data-theme-card="' + themeId + '" style="--mode-color:' + theme.color + ';--mode-soft:' + theme.soft + '"><span class="mode-icon" aria-hidden="true">' + theme.icon + '</span><h3>' + escapeHtml(theme.name) + '</h3><p>' + pool.length + ' ' + labels[source] + ' · liste complète, sans chronomètre</p><small>' + status + '</small><div class="bar" style="--bar-color:' + theme.color + '" role="progressbar" aria-label="Questions abordées : ' + escapeHtml(theme.name) + '" aria-valuemin="0" aria-valuemax="' + pool.length + '" aria-valuenow="' + seen + '"><span style="width:' + percent + '%"></span></div><button class="button button-soft" type="button" data-theme-practice="' + themeId + '"' + (pool.length ? '' : ' disabled') + '>' + action + '</button></article>';
+    }).join("");
+  }
+
+  function startThemePractice(themeId, source) {
+    const pool = themePracticeQuestions(themeId, source);
+    if (!pool.length) {
+      toast("Aucune question ne correspond à ce thème et à ce contenu.");
+      return;
+    }
+    if (activeSession && activeSession.mode === "theme" && activeSession.themeId === themeId && activeSession.themeSource === source) {
+      resumeSession();
+      return;
+    }
+    const begin = () => {
+      applyDeferredSessionStats(activeSession);
+      const questions = shuffle(pool).sort((a, b) => Number(themePracticeHasSeen(a, source)) - Number(themePracticeHasSeen(b, source)) || Number(isAdvanced(a)) - Number(isAdvanced(b)));
+      const labels = { official: "toutes les officielles", all: "tous les QCM", scenario: "toutes les mises en situation" };
+      state.prefs.themePracticeSource = source;
+      startSession(questions, { mode: "theme", themeId, themeSource: source, name: DATA.themes[themeId].name + " — " + labels[source], feedback: true });
+    };
+    if (activeSession) {
+      const message = activeSession.mode === "mock"
+        ? "Cet examen blanc sera interrompu, sans score d’examen complet. Vos réponses déjà données seront comptabilisées dans votre progression. Sa reprise sera remplacée par la séance de ce thème."
+        : "Vos réponses déjà données restent comptabilisées dans votre progression. La reprise de la séance actuelle sera remplacée par la séance de ce thème.";
+      confirmAction("Commencer tout le thème ?", message, begin);
+    } else begin();
+  }
+
   function renderPractice() {
     const due = dueQuestions();
     const unseenOfficial = DATA.questions.filter((q) => q.official && !hasSeen(q));
@@ -1081,6 +1150,7 @@
     ];
     $("#practice-modes").innerHTML = modes.map((m) => '<article class="mode-card" style="--mode-color:' + m.color + ';--mode-soft:' + m.soft + '"><span class="mode-icon">' + m.icon + '</span><h3>' + m.title + '</h3><p>' + m.desc + '</p><small>' + m.count + '</small><button class="button button-soft" data-practice-mode="' + m.id + '">Commencer</button></article>').join("");
     populateThemeSelects();
+    renderThemePractice();
 
     $$("[data-practice-mode]").forEach((button) => {
       button.onclick = () => {
@@ -1131,36 +1201,45 @@
   }
 
   function buildMockQuestions() {
-    const allocation = {
-      principles: [8, 3],
-      rights: [8, 3],
-      history: [6, 2],
-      institutions: [4, 2],
-      society: [2, 2]
+    if (!MOCK_ROTATION) return [];
+    return MOCK_ROTATION.draw(MOCK_ROTATION.read(state, activeSession));
+  }
+
+  function startMockExam() {
+    const questions = buildMockQuestions();
+    if (questions.length !== 40) {
+      toast("Impossible de préparer un examen respectant tous les quotas. Votre séance actuelle est conservée.");
+      return;
+    }
+    const begin = () => {
+      applyDeferredSessionStats(activeSession);
+      startSession(questions, { mode: "mock", name: "Examen blanc chronométré", feedback: false, timed: true });
     };
-    const picked = [];
-    const prompts = new Set();
-    const takeDistinct = (pool, count) => {
-      const selected = [];
-      for (const question of pool) {
-        const key = searchKey(question.prompt).replace(/[^a-z0-9]/g, "");
-        if (prompts.has(key)) continue;
-        prompts.add(key);
-        selected.push(question);
-        if (selected.length === count) break;
-      }
-      return selected;
-    };
-    Object.keys(allocation).forEach((theme) => {
-      const officialPool = shuffle(DATA.questions.filter((q) => q.theme === theme && q.official));
-      const scenarioPool = shuffle(DATA.questions.filter((q) => q.theme === theme && q.type === "scenario" && !isAdvanced(q)));
-      picked.push(...takeDistinct(officialPool, allocation[theme][0]), ...takeDistinct(scenarioPool, allocation[theme][1]));
-    });
-    return shuffle(picked);
+    if (activeSession) {
+      const message = activeSession.mode === "mock"
+        ? "L’examen enregistré sera interrompu, sans score d’examen complet. Vos réponses déjà données seront comptabilisées dans votre progression. Sa reprise sera remplacée par le nouvel examen."
+        : "Vos réponses déjà données restent comptabilisées. La reprise de votre séance actuelle sera remplacée par le nouvel examen.";
+      confirmAction("Commencer un nouvel examen ?", message, begin);
+    } else begin();
   }
 
   function renderMockPage() {
+    const rotation = MOCK_ROTATION.summary(MOCK_ROTATION.read(state, activeSession));
+    $("#mock-rotation-status").textContent = "Rotation privée dans ce navigateur : " + rotation.officialSeen + "/" + rotation.officialTotal
+      + " énoncés officiels et " + rotation.scenarioSeen + "/" + rotation.scenarioTotal + " situations déjà proposés en examen blanc.";
+    $("#mock-distribution").textContent = "Connaissances dans chaque nouvel examen blanc : " + Object.entries(MOCK_ALLOCATION).map(([theme, counts]) => DATA.themes[theme].name + " : " + counts[0]).join(" ; ") + ".";
+    $("#mock-topic-distribution").innerHTML = Object.entries(MOCK_ALLOCATION).map(([theme, counts]) =>
+      '<li data-mock-theme="' + theme + '"><strong>' + escapeHtml(DATA.themes[theme].name) + ' — ' + (counts[0] + counts[1]) + ' questions</strong><ul>' +
+      MOCK_BLUEPRINT.topics.filter((topic) => topic.theme === theme).map((topic) =>
+        '<li data-mock-topic="' + topic.id + '"><span class="mock-topic-count">' + topic.count + '</span> ' + escapeHtml(topic.name) + '</li>'
+      ).join("") + '</ul></li>'
+    ).join("");
     const canResume = activeSession && activeSession.mode === "mock";
+    const oldDraw = canResume && activeSession.mockBlueprintVersion !== MOCK_BLUEPRINT.version;
+    $("#mock-resume-notice").classList.toggle("hidden", !oldDraw);
+    $("#mock-resume-notice").textContent = oldDraw
+      ? "L’examen enregistré conserve son ancien tirage. Pour appliquer les nouveaux quotas par notion, commencez un nouvel examen ; son remplacement demandera confirmation."
+      : "";
     $("#resume-mock").classList.toggle("hidden", !canResume);
     $("#resume-mock").onclick = () => resumeSession();
     $("#mock-history-list").innerHTML = state.mocks.length ? state.mocks.slice().reverse().slice(0, 8).map((m) => {
@@ -1365,6 +1444,8 @@
     return {
       id: "session-" + Date.now(),
       mode: options.mode || "practice",
+      ...(options.mode === "theme" ? { themeId: options.themeId, themeSource: options.themeSource } : {}),
+      ...(options.mode === "mock" ? { mockBlueprintVersion: MOCK_BLUEPRINT.version } : {}),
       name: options.name || "Entraînement",
       feedback: options.feedback !== false,
       timed: Boolean(options.timed),
@@ -1376,7 +1457,7 @@
       questionVariants: OFFICIAL_TRAINING.snapshots(chosen),
       index: 0,
       answers: [],
-      startedAt: Date.now(),
+      startedAt,
       lastSavedAt: Date.now(),
       statsApplied: false
     };
@@ -1388,7 +1469,20 @@
       toast("Aucune question ne correspond à cette séance.");
       return;
     }
+    // Lire le tirage précédent avant de le remplacer ; préparer ou annuler un
+    // examen ne consomme aucune question dans la rotation.
+    const preserveMock = options.mode === "mock" || activeSession && activeSession.mode === "mock";
+    const rotation = preserveMock ? MOCK_ROTATION.read(state, activeSession) : null;
     activeSession = createSession(questions, options);
+    if (rotation) {
+      // Un ancien examen interrompu reste mémorisé même si une séance
+      // d’entraînement le remplace ; elle ne compte pas comme un nouvel examen.
+      state.mockRotation = rotation;
+      if (activeSession.mode === "mock") {
+        activeSession.id += "-examen-" + (rotation.attempts + 1);
+        state.mockRotation = MOCK_ROTATION.record(rotation, activeSession);
+      }
+    }
     saveState();
     setRoute("quiz", { noRender: true });
     renderQuestion();
@@ -1539,7 +1633,12 @@
       for (let i = answered.length - 1; i >= 0 && answered[i].correct; i -= 1) streak += 1;
     }
     $("#session-streak").textContent = activeSession.mode === "mock" ? "Masquée" : streak;
-    $("#session-dots").innerHTML = activeSession.questionIds.map((id, index) => {
+    const dotStart = Math.floor(activeSession.index / 80) * 80;
+    const dotEnd = Math.min(dotStart + 80, activeSession.questionIds.length);
+    $("#session-dot-range").classList.toggle("hidden", activeSession.questionIds.length <= 80);
+    $("#session-dot-range").textContent = "Questions " + (dotStart + 1) + "–" + dotEnd + " sur " + activeSession.questionIds.length;
+    $("#session-dots").innerHTML = activeSession.questionIds.slice(dotStart, dotEnd).map((id, offset) => {
+      const index = dotStart + offset;
       const answer = activeSession.answers[index];
       const cls = answer ? (activeSession.mode === "mock" ? "correct" : answer.correct ? "correct" : "wrong") : index === activeSession.index ? "current" : "";
       return '<i class="' + cls + '"></i>';
@@ -1743,12 +1842,19 @@
       if (button) startSession(conceptReviewQuestions(20, [button.dataset.weakConcept]), { name: "Notion à renforcer — autres exemples", feedback: true });
     });
 
+    $("#theme-practice-source").addEventListener("change", (event) => {
+      state.prefs.themePracticeSource = event.target.value;
+      saveState();
+      renderThemePractice();
+    });
+    $("#theme-practice-grid").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-theme-practice]");
+      if (button) startThemePractice(button.dataset.themePractice, $("#theme-practice-source").value);
+    });
     $("#custom-start").addEventListener("click", startCustomSession);
     $("#custom-theme").addEventListener("change", populateResourceSelects);
     $("#custom-source").addEventListener("change", populateResourceSelects);
-    $("#start-mock").addEventListener("click", () => {
-      startSession(buildMockQuestions(), { mode: "mock", name: "Examen blanc chronométré", feedback: false, timed: true });
-    });
+    $("#start-mock").addEventListener("click", startMockExam);
     $("#quit-quiz").addEventListener("click", () => {
       persistSession();
       setRoute("dashboard");
@@ -1890,6 +1996,10 @@
   }
 
   function init() {
+    if (!MOCK_BLUEPRINT || MOCK_BLUEPRINT.errors.length || !MOCK_ROTATION || MOCK_ROTATION.errors.length) {
+      document.body.innerHTML = '<main style="padding:40px;font-family:sans-serif"><h1>Échec du chargement</h1><p>Le plan des quotas de l’examen n’a pas pu être chargé. Votre progression enregistrée est conservée.</p></main>';
+      return;
+    }
     if (!DATA || DATA.officialCount !== 259 || !DATA.studyCount || !DATA.version.endsWith("-fr") || DATA.contentErrors.length || DATA.metadata.supplementCount < 8 || !OFFICIAL_TRAINING || OFFICIAL_TRAINING.errors.length) {
       document.body.innerHTML = '<main style="padding:40px;font-family:sans-serif"><h1>Échec du chargement</h1><p>Les contenus complets n’ont pas pu être chargés.</p></main>';
       return;
