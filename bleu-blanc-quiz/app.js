@@ -5,6 +5,7 @@
   const ORAL = window.CIVIQUE_ENTRETIEN || null;
   const QUESTION_INDEX = new Map((DATA && DATA.questions || []).map((question) => [question.id, question]));
   const SOURCE_INDEX = new Map((DATA && DATA.sources || []).map((source) => [source.id, source]));
+  const OFFICIAL_TRAINING = window.CIVIQUE_OFFICIAL_TRAINING;
   const STORAGE_KEY = "civique-coach-state-v1";
   const ROUTES = {
     dashboard: ["Votre programme", "Aujourd’hui"],
@@ -55,6 +56,7 @@
         theme: "light"
       },
       questionStats: {},
+      officialTrainingStats: {},
       activity: {},
       mocks: [],
       completedLessons: [],
@@ -83,6 +85,7 @@
         },
         prefs: { ...base.prefs, ...(saved.prefs || {}) },
         questionStats: saved.questionStats || {},
+        officialTrainingStats: saved.officialTrainingStats || {},
         activity: saved.activity || {},
         mocks: Array.isArray(saved.mocks) ? saved.mocks : [],
         completedLessons: Array.isArray(saved.completedLessons) ? saved.completedLessons : [],
@@ -151,7 +154,7 @@
 
   function questionKindLabel(question) {
     const label = question.official ? "Énoncé officiel" : question.type === "scenario" ? "Mise en situation d’entraînement" : "QCM des fiches et du Livret";
-    return label + (isAdvanced(question) ? " · Approfondissement" : "");
+    return label + (question.challenge ? " · Choix exigeants" : isAdvanced(question) ? " · Approfondissement" : "");
   }
 
   function isAdvanced(question) {
@@ -313,6 +316,10 @@
       stat.streak = 0;
       stat.interval = 0;
       stat.due = Date.now() + 5 * 60000;
+    }
+    if (question.official && question.challenge) {
+      state.officialTrainingStats = state.officialTrainingStats || {};
+      OFFICIAL_TRAINING.record(state.officialTrainingStats, question.id, wasCorrect);
     }
     const key = localDateKey();
     state.activity[key] = (state.activity[key] || 0) + 1;
@@ -607,7 +614,69 @@
     if (route === "settings") renderSettings();
   }
 
+
+  function officialProgress() {
+    return OFFICIAL_TRAINING.summary(state.officialTrainingStats);
+  }
+
+  function officialSelectionStats() {
+    const stats = { ...state.officialTrainingStats };
+    if (activeSession && activeSession.mode === "mock" && !activeSession.statsApplied) {
+      activeSession.questionIds.forEach((id, index) => {
+        const question = OFFICIAL_TRAINING.questionForSession(id, activeSession);
+        const answer = activeSession.answers[index];
+        if (question && question.official && question.challenge && answer && answer.choice) {
+          OFFICIAL_TRAINING.record(stats, id, Boolean(answer.correct));
+        }
+      });
+    }
+    return stats;
+  }
+
+  function startOfficialTraining(reviewOnly) {
+    const mode = reviewOnly ? "official-review" : "official-integral";
+    if (activeSession && activeSession.mode === mode && activeSession.choiceVersion === OFFICIAL_TRAINING.version) {
+      resumeSession();
+      return;
+    }
+    const begin = () => {
+      const questions = OFFICIAL_TRAINING.select(officialSelectionStats(), Number(state.prefs.dailyGoal), Boolean(reviewOnly));
+      if (!questions.length) {
+        toast("Aucune erreur officielle à retravailler pour le moment. Poursuivez les 258 questions ou faites un examen blanc.");
+        return;
+      }
+      applyDeferredSessionStats(activeSession);
+      startSession(questions, { mode, name: reviewOnly ? "Les 258 — révision des erreurs" : "Les 258 officielles — choix exigeants", feedback: true });
+    };
+    if (activeSession) {
+      const message = activeSession.mode === "mock"
+        ? "Cet examen blanc sera interrompu, sans score d’examen complet. Vos réponses déjà données seront comptabilisées dans votre progression. Sa reprise sera remplacée par cette séance ciblée."
+        : "Vos réponses déjà données restent comptabilisées dans votre progression. La reprise de la séance actuelle sera remplacée par cette séance ciblée.";
+      confirmAction("Passer au parcours officiel ?", message, begin);
+    } else begin();
+  }
+
+  function renderOfficialPriority() {
+    const progress = officialProgress();
+    const start = $("#official-start");
+    $("#official-seen").textContent = progress.seen + "/258";
+    $("#official-correct").textContent = progress.correct;
+    $("#official-mistakes").textContent = progress.mistakes;
+    $("#official-coverage-bar").style.width = Math.round(progress.seen / progress.total * 100) + "%";
+    $("#official-coverage").setAttribute("aria-valuenow", String(progress.seen));
+    $("#official-priority-note").textContent = progress.remaining
+      ? progress.remaining + " questions distinctes encore à découvrir en choix exigeants. Une bonne réponse au dernier essai ne garantit pas encore une maîtrise durable."
+      : "Les 258 questions ont été abordées. Consolidez les erreurs, puis vérifiez vos acquis avec des examens blancs et des situations.";
+    start.textContent = activeSession && activeSession.mode === "official-integral"
+      ? "Reprendre les 258"
+      : progress.remaining ? "Continuer : " + Math.min(progress.remaining, Number(state.prefs.dailyGoal)) + " officielles" : "Consolider les 258";
+    start.onclick = () => startOfficialTraining(false);
+    $("#official-review").disabled = !progress.mistakes && !(activeSession && activeSession.mode === "official-review");
+    $("#official-review").onclick = () => startOfficialTraining(true);
+  }
+
   function renderDashboard() {
+    renderOfficialPriority();
     renderGreeting();
     const due = dueQuestions();
     const questions = DATA.questions;
@@ -624,14 +693,13 @@
     $("#review-count").textContent = due.length;
     updateContentTotals();
 
-    const daily = smartDailyQuestions(Number(state.prefs.dailyGoal));
     const continueButton = $("#continue-button");
     if (activeSession) {
       continueButton.textContent = "Reprendre : " + activeSession.name;
       continueButton.onclick = () => resumeSession();
     } else {
-      continueButton.textContent = due.length ? "Réviser " + Math.min(due.length, state.prefs.dailyGoal) + " questions dues" : "Commencer les " + daily.length + " questions du jour";
-      continueButton.onclick = () => startSession(daily, { name: "Révision adaptative du jour", feedback: true });
+      continueButton.textContent = "Travailler les 258 questions officielles";
+      continueButton.onclick = () => startOfficialTraining(false);
     }
 
     $("#theme-progress-list").innerHTML = Object.values(DATA.themes).map((theme) => {
@@ -999,14 +1067,16 @@
     const weak = weakConcepts();
     const unseen = DATA.questions.filter((question) => !hasSeen(question));
     const summary = $("#exhaustive-summary");
-    if (summary) summary.textContent = (DATA.questions.length - unseen.length) + '/' + DATA.questions.length + ' QCM explorés · ' + unseen.filter((question) => !isAdvanced(question)).length + ' QCM de base et ' + unseen.filter(isAdvanced).length + ' approfondissements encore à découvrir. Chaque séance et chaque réponse restent enregistrées.';
+    const official = officialProgress();
+    if (summary) summary.textContent = 'Priorité aux 258 officielles : ' + official.seen + '/258 abordées en choix exigeants · ' + official.remaining + ' à découvrir · ' + official.mistakes + ' à retravailler. La banque complémentaire reste disponible, mais n’est pas un passage obligatoire avant l’examen.';
     const modes = [
+      { id: "official", icon: "✓", color: "#2457d6", soft: "#eaf0ff", title: "Priorité : les 258 officielles", desc: "Un parcours sans doublon et sans répétition avant d’avoir abordé les 258. Choix exigeants : dates proches, autorités et notions voisines.", count: official.remaining ? official.remaining + " encore à découvrir" : "258 abordées : consolidez" },
+      { id: "official-review", icon: "!", color: "#e44752", soft: "#fff0f1", title: "Mes erreurs officielles", desc: "Retravaillez immédiatement les questions officielles dont le dernier essai était incorrect, sans attendre la fin du parcours.", count: official.mistakes + " à retravailler" },
       { id: "integral", icon: "∞", color: "#168f86", soft: "#e6f7f4", title: "Le parcours intégral", desc: "Découvrez toute la banque par petites séances. Priorité aux questions jamais vues, en variant les notions ; les bases précèdent les approfondissements.", count: unseen.length ? unseen.length + " QCM encore à explorer" : "Toute la banque explorée : consolidez vos acquis" },
       { id: "daily", icon: "↗", color: "#2457d6", soft: "#eaf0ff", title: "Mélange quotidien adaptatif", desc: "Révisions dues, notions faibles et nouvelles questions dans une séance équilibrée.", count: state.prefs.dailyGoal + " questions" },
       { id: "due", icon: "↻", color: "#e44752", soft: "#fff0f1", title: "Révisions dues", desc: "La répétition espacée réactive les faits juste avant leur oubli.", count: due.length + " à revoir" },
       { id: "weak", icon: "!", color: "#d59a28", soft: "#fff7df", title: "Travail des points faibles", desc: "Reprenez vos erreurs, puis appliquez la même notion à d’autres questions et situations.", count: weak.length ? weak.length + " notions à consolider" : "Établissez d’abord votre niveau" },
       { id: "study", icon: "▤", color: "#7656cf", soft: "#f1edff", title: "Parcours des fiches et du Livret", desc: "Explorez les notions des ressources officielles sous forme de QCM, avec une correction pour chaque proposition.", count: DATA.studyCount + " QCM complémentaires" },
-      { id: "official", icon: "✓", color: "#2457d6", soft: "#eaf0ff", title: "Les énoncés officiels", desc: "Retrouvez toutes les formulations du PDF de connaissances pour la naturalisation. Les choix sont conçus pour l’entraînement.", count: DATA.officialCount + " énoncés" },
       { id: "scenario", icon: "◇", color: "#168f86", soft: "#e6f7f4", title: "Atelier de mises en situation", desc: "Appliquez les principes républicains à des situations réalistes. Les situations officielles ne sont pas publiées.", count: DATA.scenarioCount + " exemples" }
     ];
     $("#practice-modes").innerHTML = modes.map((m) => '<article class="mode-card" style="--mode-color:' + m.color + ';--mode-soft:' + m.soft + '"><span class="mode-icon">' + m.icon + '</span><h3>' + m.title + '</h3><p>' + m.desc + '</p><small>' + m.count + '</small><button class="button button-soft" data-practice-mode="' + m.id + '">Commencer</button></article>').join("");
@@ -1028,7 +1098,8 @@
           const seen = pool.filter(hasSeen).sort((a, b) => weaknessFor(b) - weaknessFor(a));
           startSession([...unseen, ...seen].slice(0, 20), { name: "Fiches et Livret — QCM", feedback: true });
         }
-        if (mode === "official") startSession(shuffle(DATA.questions.filter((question) => question.official)).slice(0, 20), { name: "Énoncés officiels", feedback: true });
+        if (mode === "official") startOfficialTraining(false);
+        if (mode === "official-review") startOfficialTraining(true);
         if (mode === "scenario") startSession(shuffle(DATA.questions.filter((q) => q.type === "scenario")).slice(0, 20), { name: "Atelier de mises en situation", feedback: true });
       };
     });
@@ -1139,7 +1210,8 @@
     const resource = $("#library-resource").value;
     const status = $("#library-status") ? $("#library-status").value : "all";
     const level = $("#library-level") ? $("#library-level").value : "all";
-    let results = DATA.questions.filter((q) => {
+    const pool = source === "official" ? OFFICIAL_TRAINING.questions : DATA.questions;
+    let results = pool.map((question) => OFFICIAL_TRAINING.displayQuestion(question.id)).filter((q) => {
       const matchesTheme = theme === "all" || q.theme === theme;
       const matchesSource = matchesQuestionSource(q, source);
       const matchesResource = resource === "all" || q.sourceIds.includes(resource);
@@ -1187,7 +1259,7 @@
   }
 
   function updateContentTotals() {
-    const counts = { "official-total": DATA.officialCount, "study-total": DATA.studyCount, "scenario-total": DATA.scenarioCount, "question-total": DATA.questions.length, "fiche-total": DATA.metadata.ficheCount };
+    const counts = { "official-total": DATA.officialCount, "official-unique-total": OFFICIAL_TRAINING.questions.length, "study-total": DATA.studyCount, "scenario-total": DATA.scenarioCount, "question-total": DATA.questions.length, "fiche-total": DATA.metadata.ficheCount };
     Object.entries(counts).forEach(([className, count]) => {
       $$("." + className).forEach((element) => { element.textContent = count.toLocaleString("fr-FR"); });
     });
@@ -1273,11 +1345,21 @@
     $("#dialog-title").textContent = title;
     $("#dialog-message").textContent = message;
     pendingConfirm = callback;
+    dialog.returnValue = "cancel";
     dialog.showModal();
   }
 
   function createSession(questions, options) {
-    const chosen = uniqueQuestions(questions);
+    let chosen = uniqueQuestions(questions);
+    if (chosen.every((question) => question.official)) {
+      const seen = new Set();
+      chosen = chosen.filter((question) => {
+        const id = OFFICIAL_TRAINING.aliases.get(question.id);
+        if (seen.has(id)) return false;
+        seen.add(id);
+        return true;
+      });
+    }
     const startedAt = Date.now();
     const remaining = options.remaining === undefined ? (options.timed ? DATA.metadata.durationMinutes * 60 : 0) : Math.max(0, Number(options.remaining) || 0);
     return {
@@ -1290,6 +1372,8 @@
       endsAt: options.timed ? startedAt + remaining * 1000 : null,
       questionIds: chosen.map((q) => q.id),
       optionOrders: {},
+      choiceVersion: OFFICIAL_TRAINING.version,
+      questionVariants: OFFICIAL_TRAINING.snapshots(chosen),
       index: 0,
       answers: [],
       startedAt: Date.now(),
@@ -1341,7 +1425,7 @@
   }
 
   function currentQuestion() {
-    return activeSession ? questionById(activeSession.questionIds[activeSession.index]) : null;
+    return activeSession ? OFFICIAL_TRAINING.questionForSession(activeSession.questionIds[activeSession.index], activeSession) : null;
   }
 
   function optionsFor(question) {
@@ -1499,20 +1583,24 @@
     $("#quiz-timer").classList.toggle("warning", activeSession.remaining <= 300);
   }
 
-  function finishSession(timedOut) {
-    if (!activeSession) return;
-    stopTimer();
-    const session = activeSession;
-    if (session.mode === "mock" && !session.statsApplied) {
+  function applyDeferredSessionStats(session) {
+    if (session && session.mode === "mock" && !session.statsApplied) {
       session.questionIds.forEach((id, index) => {
-        const question = questionById(id);
+        const question = OFFICIAL_TRAINING.questionForSession(id, session);
         const answer = session.answers[index];
         if (question && answer && answer.choice) updateQuestionStat(question, Boolean(answer.correct));
       });
       session.statsApplied = true;
     }
+  }
+
+  function finishSession(timedOut) {
+    if (!activeSession) return;
+    stopTimer();
+    const session = activeSession;
+    applyDeferredSessionStats(session);
     const answers = session.questionIds.map((id, index) => {
-      const question = questionById(id);
+      const question = OFFICIAL_TRAINING.questionForSession(id, session);
       const answer = session.answers[index] || { id: id, choice: null, correct: false };
       return { ...answer, question: question };
     });
@@ -1733,7 +1821,7 @@
     $("#export-progress").addEventListener("click", exportProgress);
     $("#import-progress").addEventListener("change", (event) => importProgress(event.target.files[0]));
     $("#reset-progress").addEventListener("click", () => {
-      confirmAction("Effacer toute la progression ?", "Cette action supprimera de ce navigateur l’historique, les séances orales, les notes, les grands quiz, les favoris et les leçons terminées.", () => {
+      confirmAction("Effacer toute la progression ?", "Cette action supprimera de ce navigateur les résultats, l’historique, les séances en cours, le suivi des 258, les favoris et les leçons terminées.", () => {
         state = defaultState();
         activeSession = null;
         activeOralSession = null;
@@ -1802,7 +1890,7 @@
   }
 
   function init() {
-    if (!DATA || DATA.officialCount !== 259 || !DATA.studyCount || !DATA.version.endsWith("-fr") || DATA.contentErrors.length || DATA.metadata.supplementCount < 8) {
+    if (!DATA || DATA.officialCount !== 259 || !DATA.studyCount || !DATA.version.endsWith("-fr") || DATA.contentErrors.length || DATA.metadata.supplementCount < 8 || !OFFICIAL_TRAINING || OFFICIAL_TRAINING.errors.length) {
       document.body.innerHTML = '<main style="padding:40px;font-family:sans-serif"><h1>Échec du chargement</h1><p>Les contenus complets n’ont pas pu être chargés.</p></main>';
       return;
     }

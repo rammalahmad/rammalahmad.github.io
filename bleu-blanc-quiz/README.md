@@ -21,6 +21,16 @@ La France que nous aimons : une application publique, interactive et utilisable 
 
 La version publique est volontairement centrée sur l’examen civique. Elle ne contient pas le module de préparation à l’entretien disponible dans la version complète privée.
 
+## Priorité aux 258 questions officielles
+
+Depuis la mise à jour du 24 octobre 2026, l’accueil, le premier mode d’entraînement et la banque de questions donnent la priorité aux **258 énoncés officiels distincts**. Les séances de 20 questions couvrent d’abord les questions non abordées, sans répétition ; le doublon du PDF n’est compté qu’une fois. Le parcours intégral des 2 626 QCM reste disponible comme complément, sans être un préalable à l’examen.
+
+Les quatre choix des nouvelles séances sont plus exigeants : dates proches, durées voisines et fonctions institutionnelles faciles à confondre. Chaque mauvais choix possède sa propre explication et un repère aide à mémoriser la bonne réponse. Ces choix sont pédagogiques, pas les options officielles du véritable examen.
+
+Un compteur séparé distingue les questions abordées avec ces choix exigeants, les bonnes réponses au dernier essai et les erreurs à retravailler immédiatement. Il commence à zéro sans effacer les anciens résultats ou favoris. Une bonne réponse récente ne garantit pas une maîtrise durable : les mises en situation et les examens blancs restent importants.
+
+Les anciennes séances sauvegardées conservent leurs choix et corrections. Les nouvelles séances enregistrent aussi une copie de leurs options, pour reprendre exactement au même endroit après rechargement. Le remplacement d’une séance en cours demande confirmation ; les réponses d’un examen blanc interrompu sont comptabilisées sans créer un faux score d’examen complet.
+
 ## Confidentialité
 
 Aucun compte ni stockage en ligne n’est utilisé. Le prénom ou pseudonyme, les résultats et les préférences restent dans le stockage local du navigateur de chaque visiteur.

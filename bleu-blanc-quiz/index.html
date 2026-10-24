@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#10233f">
   <meta name="description" content="Bleu Blanc Quiz : préparation interactive à l’examen civique, avec leçons, quiz, révisions et examens blancs.">
   <title>Bleu Blanc Quiz — Préparation à l’examen civique</title>
-  <link rel="manifest" href="manifest.webmanifest?v=20261021-exhaustif">
-  <link rel="stylesheet" href="styles.css?v=20261021-exhaustif">
+  <link rel="manifest" href="manifest.webmanifest?v=20261024-officiel-exigeant">
+  <link rel="stylesheet" href="styles.css?v=20261024-officiel-exigeant">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -68,6 +68,24 @@
 
       <main id="main" tabindex="-1">
         <section class="view is-active" id="view-dashboard" data-view="dashboard" aria-labelledby="dashboard-heading">
+          <article class="panel official-priority" aria-labelledby="official-priority-heading">
+            <span class="pill">Votre priorité</span>
+            <h2 id="official-priority-heading">Les <span class="official-unique-total">258</span> officielles, d’abord.</h2>
+            <p>Couvrez les questions de connaissance distinctes par petites séances, avec des choix exigeants et une correction pour chaque proposition. Le doublon du PDF n’est compté qu’une fois.</p>
+            <dl class="official-priority-metrics">
+              <div><dt>Abordées en choix exigeants</dt><dd id="official-seen">0/258</dd></div>
+              <div><dt>Réussies au dernier essai</dt><dd id="official-correct">0</dd></div>
+              <div><dt>À retravailler</dt><dd id="official-mistakes">0</dd></div>
+            </dl>
+            <div class="bar official-coverage" id="official-coverage" role="progressbar" aria-label="Questions officielles abordées en choix exigeants" aria-valuemin="0" aria-valuemax="258" aria-valuenow="0"><span id="official-coverage-bar"></span></div>
+            <p class="muted" id="official-priority-note">258 questions distinctes à découvrir.</p>
+            <div class="official-priority-actions">
+              <button class="button button-primary" id="official-start" type="button">Commencer les 258</button>
+              <button class="button button-secondary" id="official-review" type="button" disabled>Retravailler mes erreurs</button>
+              <button class="button button-soft" data-go="mock" type="button">Vérifier avec un examen blanc</button>
+            </div>
+            <p class="official-priority-disclaimer">Vos anciennes statistiques restent conservées ; ce compteur suit les nouveaux choix exigeants. Le ministère ne publie ni les choix ni le corrigé : ceux-ci sont conçus pour l’entraînement. L’épreuve comprend aussi 12 mises en situation : travaillez-les dans « S’entraîner ».</p>
+          </article>
           <div class="hero-card">
             <div class="hero-copy">
               <span class="pill pill-light">Préparation à l’examen civique</span>
@@ -181,7 +199,7 @@
           <div class="library-toolbar">
             <label class="search-box"><span aria-hidden="true">⌕</span><input id="question-search" type="search" placeholder="Rechercher une question, une réponse ou une notion…"></label>
             <select id="library-theme" aria-label="Filtrer par thème"><option value="all">Tous les thèmes</option></select>
-            <select id="library-source" aria-label="Filtrer par type de QCM"><option value="all">Tous les QCM</option><option value="official">Énoncés officiels</option><option value="study">QCM des fiches et du Livret</option><option value="scenario">Mises en situation</option><option value="fiche">Fiches thématiques</option><option value="livret">Livret du citoyen</option><option value="bookmarked">Favoris</option></select>
+            <select id="library-source" aria-label="Filtrer par type de QCM"><option value="all">Tous les QCM</option><option value="official" selected>Énoncés officiels</option><option value="study">QCM des fiches et du Livret</option><option value="scenario">Mises en situation</option><option value="fiche">Fiches thématiques</option><option value="livret">Livret du citoyen</option><option value="bookmarked">Favoris</option></select>
             <select id="library-resource" class="library-resource" aria-label="Filtrer par fiche ou chapitre"><option value="all">Toutes les fiches et ressources</option></select>
             <select id="library-status" aria-label="Filtrer par progression"><option value="all">Tous les statuts</option><option value="unseen">Jamais vus</option><option value="learning">À consolider</option><option value="due">Révision due</option><option value="mastered">Maîtrisés</option></select>
             <select id="library-level" aria-label="Filtrer par niveau"><option value="all">Bases et approfondissements</option><option value="base">Les bases</option><option value="advanced">Les approfondissements</option></select>
@@ -305,20 +323,24 @@
     </form>
   </dialog>
 
-  <script src="data.js?v=20261021-exhaustif"></script>
-  <script src="french-overrides.js?v=20261021-exhaustif"></script>
-  <script src="legacy-valeurs-institutions.js?v=20261021-exhaustif"></script>
-  <script src="legacy-droits-societe.js?v=20261021-exhaustif"></script>
-  <script src="legacy-histoire.js?v=20261021-exhaustif"></script>
-  <script src="official-complement.js?v=20261021-exhaustif"></script>
-  <script src="valeurs-institutions.js?v=20261021-exhaustif"></script>
-  <script src="droits-societe.js?v=20261021-exhaustif"></script>
-  <script src="histoire.js?v=20261021-exhaustif"></script>
-  <script src="geographie-culture.js?v=20261021-exhaustif"></script>
-  <script src="approfondissement-valeurs.js?v=20261021-exhaustif"></script>
-  <script src="approfondissement-droits-societe.js?v=20261021-exhaustif"></script>
-  <script src="approfondissement-histoire-culture.js?v=20261021-exhaustif"></script>
-  <script src="supplements.js?v=20261021-exhaustif"></script>
-  <script src="app.js?v=20261021-exhaustif"></script>
+  <script src="data.js?v=20261024-officiel-exigeant"></script>
+  <script src="french-overrides.js?v=20261024-officiel-exigeant"></script>
+  <script src="legacy-valeurs-institutions.js?v=20261024-officiel-exigeant"></script>
+  <script src="legacy-droits-societe.js?v=20261024-officiel-exigeant"></script>
+  <script src="legacy-histoire.js?v=20261024-officiel-exigeant"></script>
+  <script src="official-complement.js?v=20261024-officiel-exigeant"></script>
+  <script src="valeurs-institutions.js?v=20261024-officiel-exigeant"></script>
+  <script src="droits-societe.js?v=20261024-officiel-exigeant"></script>
+  <script src="histoire.js?v=20261024-officiel-exigeant"></script>
+  <script src="geographie-culture.js?v=20261024-officiel-exigeant"></script>
+  <script src="approfondissement-valeurs.js?v=20261024-officiel-exigeant"></script>
+  <script src="approfondissement-droits-societe.js?v=20261024-officiel-exigeant"></script>
+  <script src="approfondissement-histoire-culture.js?v=20261024-officiel-exigeant"></script>
+  <script src="supplements.js?v=20261024-officiel-exigeant"></script>
+  <script src="official-tricky-valeurs-droits.js?v=20261024-officiel-exigeant"></script>
+  <script src="official-tricky-institutions.js?v=20261024-officiel-exigeant"></script>
+  <script src="official-tricky-histoire-societe.js?v=20261024-officiel-exigeant"></script>
+  <script src="official-training.js?v=20261024-officiel-exigeant"></script>
+  <script src="app.js?v=20261024-officiel-exigeant"></script>
 </body>
 </html>
