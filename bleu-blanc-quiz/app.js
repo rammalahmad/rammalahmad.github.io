@@ -15,6 +15,7 @@
     dashboard: ["Votre programme", "Aujourd’hui"],
     learn: ["Histoire, valeurs et vie quotidienne", "Découvrir"],
     practice: ["Séances adaptatives", "S’entraîner"],
+    situations: ["Appliquer les principes à des cas concrets", "Mises en situation"],
     mock: ["Conditions réelles", "Examen blanc"],
     review: ["Mémoriser durablement", "Réviser"],
     library: ["Tous les repères", "Explorer"],
@@ -56,6 +57,8 @@
       prefs: {
         dailyGoal: 20,
         themePracticeSource: "official",
+        situationScope: "exam",
+        situationTheme: "all",
         englishHints: true,
         reduceMotion: false,
         theme: "light"
@@ -65,6 +68,7 @@
       activity: {},
       mocks: [],
       mockRotation: null,
+      situationLastTwelve: [],
       completedLessons: [],
       bookmarks: [],
       activeSession: null,
@@ -599,7 +603,7 @@
     if (route !== "oral") stopOralPrepTimer(true);
     currentRoute = route;
     $$(".view").forEach((view) => view.classList.toggle("is-active", view.dataset.view === route));
-    $$(".nav-item[data-route]").forEach((item) => item.classList.toggle("is-active", item.dataset.route === route));
+    $$(".nav-item[data-route]").forEach((item) => item.classList.toggle("is-active", item.dataset.route === route || route === "situations" && item.dataset.route === "practice"));
     $("#route-eyebrow").textContent = ROUTES[route][0];
     $("#route-title").textContent = ROUTES[route][1];
     setSidebarOpen(false);
@@ -613,6 +617,7 @@
     if (route === "learn") renderLessons();
     if (route === "entretien") renderEntretien();
     if (route === "practice") renderPractice();
+    if (route === "situations") renderSituationsPractice();
     if (route === "mock") renderMockPage();
     if (route === "review") renderReview();
     if (route === "library") renderLibrary();
@@ -1103,6 +1108,10 @@
       const status = canResume ? "Séance enregistrée : " + activeSession.answers.filter(Boolean).length + "/" + activeSession.questionIds.length + " réponses" : seen + "/" + pool.length + " questions abordées";
       return '<article class="mode-card theme-practice-card' + (canResume ? ' is-resumable' : '') + '" data-theme-card="' + themeId + '" style="--mode-color:' + theme.color + ';--mode-soft:' + theme.soft + '"><span class="mode-icon" aria-hidden="true">' + theme.icon + '</span><h3>' + escapeHtml(theme.name) + '</h3><p>' + pool.length + ' ' + labels[source] + ' · liste complète, sans chronomètre</p><small>' + status + '</small><div class="bar" style="--bar-color:' + theme.color + '" role="progressbar" aria-label="Questions abordées : ' + escapeHtml(theme.name) + '" aria-valuemin="0" aria-valuemax="' + pool.length + '" aria-valuenow="' + seen + '"><span style="width:' + percent + '%"></span></div><button class="button button-soft" type="button" data-theme-practice="' + themeId + '"' + (pool.length ? '' : ' disabled') + '>' + action + '</button></article>';
     }).join("");
+    const situationPool = situationPracticeQuestions("exam", "all");
+    const situationSeen = situationPool.filter(hasSeen).length;
+    const situationPercent = situationPool.length ? Math.round(situationSeen / situationPool.length * 100) : 0;
+    $("#theme-practice-grid").innerHTML += '<article class="mode-card theme-practice-card situations-entry" style="--mode-color:#168f86;--mode-soft:#e6f7f4"><span class="mode-icon" aria-hidden="true">◇</span><h3>Mises en situation</h3><p>Parcours transversal : appliquez les valeurs et les droits à des cas concrets. Ce n’est pas un sixième thème officiel.</p><small>' + situationSeen + '/' + situationPool.length + ' situations ciblées abordées · ' + DATA.scenarioCount + ' exemples au total</small><div class="bar" style="--bar-color:#168f86" role="progressbar" aria-label="Situations ciblées abordées" aria-valuemin="0" aria-valuemax="' + situationPool.length + '" aria-valuenow="' + situationSeen + '"><span style="width:' + situationPercent + '%"></span></div><button class="button button-soft" type="button" data-situations-open>Choisir ma séance</button></article>';
   }
 
   function startThemePractice(themeId, source) {
@@ -1129,6 +1138,122 @@
       confirmAction("Commencer tout le thème ?", message, begin);
     } else begin();
   }
+
+
+  function situationPracticeQuestions(scope, theme) {
+    const pool = scope === "all"
+      ? DATA.questions.filter((question) => question.type === "scenario" && !question.official)
+      : MOCK_BLUEPRINT.topics.filter((topic) => topic.kind === "scenario").flatMap((topic) => Array.from(topic.questions));
+    return uniqueQuestions(pool.filter((question) => theme === "all" || question.theme === theme));
+  }
+
+  function situationPracticeFilter() {
+    const scope = state.prefs.situationScope === "all" ? "all" : "exam";
+    const themes = scope === "all" ? Object.keys(MOCK_ALLOCATION) : ["principles", "rights"];
+    const theme = themes.includes(state.prefs.situationTheme) ? state.prefs.situationTheme : "all";
+    return { scope, theme, themes };
+  }
+
+  function situationIsMistake(question) {
+    const stat = state.questionStats[question.id];
+    return Boolean(stat && Number(stat.seen) > 0 && Number(stat.wrong) > 0 && Number(stat.streak) === 0);
+  }
+
+  function situationOrder(pool, previousIds) {
+    const previous = new Set(previousIds || []);
+    return shuffle(pool).sort((a, b) => Number(previous.has(a.id)) - Number(previous.has(b.id))
+      || Number(hasSeen(a)) - Number(hasSeen(b))
+      || Number(isAdvanced(a)) - Number(isAdvanced(b))
+      || weaknessFor(b) - weaknessFor(a));
+  }
+
+  function renderSituationsPractice() {
+    const filter = situationPracticeFilter();
+    const pool = situationPracticeQuestions(filter.scope, filter.theme);
+    const seen = pool.filter(hasSeen).length;
+    const mistakes = pool.filter(situationIsMistake).length;
+    const selectedTheme = filter.theme === "all" ? "tous les thèmes de ce périmètre" : DATA.themes[filter.theme].name;
+    $("#situations-scope").value = filter.scope;
+    $("#situations-theme").innerHTML = '<option value="all">Tous les thèmes de ce périmètre</option>' + filter.themes.map((id) => '<option value="' + id + '">' + escapeHtml(DATA.themes[id].name) + '</option>').join("");
+    $("#situations-theme").value = filter.theme;
+    $("#situations-summary").textContent = pool.length + " situations d’entraînement · " + selectedTheme + ". "
+      + (filter.scope === "exam" ? "Priorité aux deux thèmes qui portent les 12 situations de l’examen." : "Banque complémentaire : les trois autres thèmes et les approfondissements ne correspondent pas à des quotas de situations du véritable examen.");
+    $("#situations-seen").textContent = seen + "/" + pool.length;
+    $("#situations-mistakes").textContent = String(mistakes);
+    const progress = $("#situations-progress");
+    progress.setAttribute("aria-valuemax", String(pool.length));
+    progress.setAttribute("aria-valuenow", String(seen));
+    $("span", progress).style.width = (pool.length ? Math.round(seen / pool.length * 100) : 0) + "%";
+    const matches = (plan) => activeSession && activeSession.mode === "situations"
+      && activeSession.situationPlan === plan && activeSession.situationScope === filter.scope && activeSession.situationTheme === filter.theme;
+    $("#situations-start-full").textContent = matches("full") ? "Reprendre la liste complète" : "Faire les " + pool.length + " situations";
+    $("#situations-start-full").disabled = !pool.length;
+    $("#situations-start-errors").textContent = matches("errors") ? "Reprendre mes erreurs" : "Retravailler mes " + mistakes + " erreurs";
+    $("#situations-start-errors").disabled = !mistakes && !matches("errors");
+    $("#situations-start-twelve").textContent = activeSession && activeSession.mode === "situations" && activeSession.situationPlan === "twelve"
+      ? "Reprendre les 12 situations" : "Faire 12 situations : 6 + 6";
+    const saved = activeSession && activeSession.mode === "situations";
+    $("#situations-resume-panel").classList.toggle("hidden", !saved);
+    if (saved) $("#situations-resume-description").textContent = activeSession.name + " · "
+      + activeSession.answers.filter(Boolean).length + "/" + activeSession.questionIds.length + " réponses enregistrées. Reprenez cette séance sans changer ses questions ni ses choix.";
+    const guide = [
+      ["Repérer qui agit et où", "Un agent public en fonctions doit rester neutre. L’usager conserve sa liberté de conviction dans le respect du fonctionnement du service.", "Entrer dans une préfecture ne transforme pas un visiteur en agent public.", "PV-SERVICE"],
+      ["Examiner le motif du refus", "Un traitement défavorable fondé sur un critère protégé, comme l’origine, le sexe ou le handicap, peut constituer une discrimination.", "Une religion supposée à partir d’un prénom est aussi concernée.", "PV-EGA3"],
+      ["Critiquer une idée n’est pas menacer une personne", "La liberté d’expression permet de critiquer des idées ou une croyance, dans les limites de la loi. Elle ne permet pas d’appeler à la haine ou à la violence.", "Internet, une caricature ou une opinion personnelle ne suppriment pas les limites légales.", "PV-BLAS"],
+      ["Vérifier le consentement", "Le consentement doit être libre et spécifique ; il peut être retiré. Un accord pour un geste ne vaut pas pour tous les autres.", "Le mariage, le silence ou l’absence de résistance ne remplacent pas le consentement.", "fiche-ds-o09"],
+      ["Alerter sans aggraver le danger", "Face à une violence immédiate, alertez les services d’intervention et suivez leurs consignes, sans vous mettre en danger.", "Le 3919 écoute et oriente ; une agression en cours relève du 17 ou du 112.", "fiche-ds-o12"],
+      ["Choisir le recours compétent", "Selon le problème, on peut rechercher une information juridique, déposer plainte ou saisir le Défenseur des droits, notamment en cas de discrimination.", "Un service d’information ou de médiation ne possède pas tous les pouvoirs d’un tribunal.", "fiche-ds-r11"]
+    ];
+    $("#situations-guide-grid").innerHTML = guide.map(([title, text, trap, source]) => '<article class="situation-guide-card"><h4>' + escapeHtml(title) + '</h4><p>' + escapeHtml(text) + '</p><p class="situation-trap"><b>Le piège :</b> ' + escapeHtml(trap) + '</p>' + sourceLinks([source]) + '</article>').join("");
+  }
+
+  function startSituationsPractice(plan) {
+    if (!["full", "errors", "twelve"].includes(plan)) return;
+    const filter = plan === "twelve" ? { scope: "exam", theme: "all" } : situationPracticeFilter();
+    if (activeSession && activeSession.mode === "situations" && activeSession.situationPlan === plan
+      && activeSession.situationScope === filter.scope && activeSession.situationTheme === filter.theme) {
+      resumeSession();
+      return;
+    }
+    const pool = situationPracticeQuestions(filter.scope, filter.theme);
+    const errors = plan === "errors" ? pool.filter(situationIsMistake) : pool;
+    if (!errors.length) {
+      toast(plan === "errors" ? "Aucune erreur à retravailler dans ce périmètre." : "Aucune situation ne correspond à ce périmètre.");
+      return;
+    }
+    if (plan === "twelve" && ["principles", "rights"].some((theme) => pool.filter((question) => question.theme === theme).length < 6)) {
+      toast("La réserve ne permet pas une séance de 6 situations par thème. Aucune séance partielle n’est lancée.");
+      return;
+    }
+    const begin = () => {
+      applyDeferredSessionStats(activeSession);
+      let questions;
+      if (plan === "twelve") {
+        const lastIds = Array.isArray(state.situationLastTwelve) ? state.situationLastTwelve : [];
+        questions = shuffle(["principles", "rights"].flatMap((theme) => situationOrder(pool.filter((question) => question.theme === theme), lastIds).slice(0, 6)));
+        state.situationLastTwelve = questions.map((question) => question.id);
+      } else {
+        questions = situationOrder(errors);
+      }
+      if (!questions.length) {
+        toast("Aucune erreur à retravailler dans ce périmètre.");
+        return;
+      }
+      state.prefs.situationScope = filter.scope;
+      state.prefs.situationTheme = filter.theme;
+      const title = plan === "twelve" ? "Mises en situation — 6 valeurs + 6 droits"
+        : "Mises en situation — " + (plan === "errors" ? "mes erreurs" : "liste complète") + " · "
+          + (filter.theme === "all" ? (filter.scope === "exam" ? "ciblées examen" : "tous les compléments") : DATA.themes[filter.theme].name);
+      startSession(questions, { mode: "situations", situationScope: filter.scope, situationTheme: filter.theme, situationPlan: plan, name: title, feedback: true });
+    };
+    if (activeSession) {
+      const message = activeSession.mode === "mock"
+        ? "Cet examen blanc sera interrompu, sans score d’examen complet. Vos réponses déjà données seront comptabilisées. Sa reprise sera remplacée par la séance de mises en situation."
+        : "Vos réponses déjà données restent comptabilisées. La reprise de votre séance actuelle sera remplacée par cette séance de mises en situation.";
+      confirmAction("Commencer les mises en situation ?", message, begin);
+    } else begin();
+  }
+
 
   function renderPractice() {
     const due = dueQuestions();
@@ -1170,7 +1295,7 @@
         }
         if (mode === "official") startOfficialTraining(false);
         if (mode === "official-review") startOfficialTraining(true);
-        if (mode === "scenario") startSession(shuffle(DATA.questions.filter((q) => q.type === "scenario")).slice(0, 20), { name: "Atelier de mises en situation", feedback: true });
+        if (mode === "scenario") setRoute("situations");
       };
     });
   }
@@ -1445,6 +1570,7 @@
       id: "session-" + Date.now(),
       mode: options.mode || "practice",
       ...(options.mode === "theme" ? { themeId: options.themeId, themeSource: options.themeSource } : {}),
+      ...(options.mode === "situations" ? { situationScope: options.situationScope, situationTheme: options.situationTheme, situationPlan: options.situationPlan } : {}),
       ...(options.mode === "mock" ? { mockBlueprintVersion: MOCK_BLUEPRINT.version } : {}),
       name: options.name || "Entraînement",
       feedback: options.feedback !== false,
@@ -1850,7 +1976,25 @@
     $("#theme-practice-grid").addEventListener("click", (event) => {
       const button = event.target.closest("[data-theme-practice]");
       if (button) startThemePractice(button.dataset.themePractice, $("#theme-practice-source").value);
+      if (event.target.closest("[data-situations-open]")) setRoute("situations");
     });
+    $("#situations-back").addEventListener("click", () => setRoute("practice"));
+    $("#situations-scope").addEventListener("change", (event) => {
+      state.prefs.situationScope = event.target.value === "all" ? "all" : "exam";
+      state.prefs.situationTheme = situationPracticeFilter().theme;
+      saveState();
+      renderSituationsPractice();
+    });
+    $("#situations-theme").addEventListener("change", (event) => {
+      state.prefs.situationTheme = event.target.value;
+      state.prefs.situationTheme = situationPracticeFilter().theme;
+      saveState();
+      renderSituationsPractice();
+    });
+    $("#situations-start-full").addEventListener("click", () => startSituationsPractice("full"));
+    $("#situations-start-errors").addEventListener("click", () => startSituationsPractice("errors"));
+    $("#situations-start-twelve").addEventListener("click", () => startSituationsPractice("twelve"));
+    $("#situations-resume").addEventListener("click", resumeSession);
     $("#custom-start").addEventListener("click", startCustomSession);
     $("#custom-theme").addEventListener("change", populateResourceSelects);
     $("#custom-source").addEventListener("change", populateResourceSelects);

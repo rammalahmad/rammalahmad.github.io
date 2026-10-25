@@ -320,6 +320,40 @@ main { max-width: 1500px; margin: 0 auto; padding: 28px clamp(22px, 4vw, 58px) 7
 .theme-practice-card .bar { margin: 8px 0 18px; }
 .theme-practice-card .button { min-height: 44px; white-space: normal; }
 .theme-practice-card.is-resumable { border-color: var(--mode-color); }
+.situations-entry { border-color: color-mix(in srgb, var(--teal) 38%, var(--border)); }
+.situations-intro .button { flex-shrink: 0; min-height: 44px; white-space: normal; }
+.situations-exam-note { margin-bottom: 18px; }
+.situations-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.situations-controls select { min-height: 44px; }
+.situations-summary, .situations-help { color: var(--ink-soft); font-size: 12px; overflow-wrap: anywhere; }
+.situations-stats { display: flex; flex-wrap: wrap; gap: 18px 35px; margin: 18px 0; }
+.situations-stats strong, .situations-stats span { display: block; }
+.situations-stats strong { font: 700 25px/1.2 "Fraunces", Georgia, serif; color: var(--ink); }
+.situations-stats span { margin-top: 4px; color: var(--ink-soft); font-size: 11px; }
+.situations-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.situations-actions .button, .situations-twelve .button, .situations-resume-panel .button { min-height: 44px; white-space: normal; max-width: 100%; }
+.situations-twelve { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border); }
+.situations-twelve h4 { margin: 0 0 7px; font-size: 15px; }
+.situations-twelve p { margin: 0; color: var(--ink-soft); font-size: 12px; }
+.situations-resume-panel { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-top: 18px; }
+.situations-resume-panel h3 { margin: 0 0 8px; }
+.situations-resume-panel p { margin: 0; color: var(--ink-soft); font-size: 12px; overflow-wrap: anywhere; }
+.situations-guide-panel { margin-top: 18px; }
+.situations-guide-panel > p { color: var(--ink-soft); font-size: 12px; }
+.situations-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.situation-guide-card { min-width: 0; padding: 18px; border: 1px solid var(--border); border-radius: 15px; background: var(--surface-2); overflow-wrap: anywhere; }
+.situation-guide-card h4 { margin: 0 0 10px; font-size: 15px; }
+.situation-guide-card p { margin: 8px 0; color: var(--ink-soft); font-size: 12px; }
+.situation-guide-card .situation-trap { color: var(--ink); }
+.situation-guide-card .question-sources { margin-top: 13px; }
+@media (max-width: 700px) {
+  .situations-intro { align-items: stretch; flex-direction: column; gap: 14px; }
+  .situations-controls, .situations-guide-grid, .situations-twelve { grid-template-columns: minmax(0, 1fr); }
+  .situations-actions { flex-direction: column; }
+  .situations-actions .button, .situations-twelve .button { width: 100%; }
+  .situations-resume-panel { align-items: stretch; flex-direction: column; }
+}
+
 .custom-grid { display: grid; grid-template-columns: 1.3fr 1.3fr .7fr auto; gap: 13px; align-items: end; }
 label { font-size: 11px; font-weight: 700; color: var(--ink-soft); }
 select, input[type="date"], input[type="search"], input[type="text"] { width: 100%; min-height: 43px; margin-top: 5px; padding: 9px 12px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface-2); color: var(--ink); outline: 0; }

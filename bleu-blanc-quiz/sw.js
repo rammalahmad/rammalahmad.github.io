@@ -1,4 +1,4 @@
-const CACHE = "bleu-blanc-quiz-public-20261024-rotation-examens";
+const CACHE = "bleu-blanc-quiz-public-20261025-mises-en-situation";
 const APP_FILES = [
   "./",
   "./index.html",

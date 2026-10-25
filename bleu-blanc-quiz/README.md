@@ -32,6 +32,21 @@ Un compteur séparé distingue les questions abordées avec ces choix exigeants,
 
 Les anciennes séances sauvegardées conservent leurs choix et corrections. Les nouvelles séances enregistrent aussi une copie de leurs options, pour reprendre exactement au même endroit après rechargement. Le remplacement d’une séance en cours demande confirmation ; les réponses d’un examen blanc interrompu sont comptabilisées sans créer un faux score d’examen complet.
 
+## Parcours « Mises en situation »
+
+Dans **S’entraîner → Mises en situation**, une entrée dédiée propose trois séances :
+
+- **Liste complète** : les 194 situations pédagogiques ciblant les principes et valeurs (110) et les droits et devoirs (84), sans limite de 20 questions. Le filtre permet aussi de parcourir un seul de ces thèmes.
+- **6 valeurs + 6 droits** : 12 cas équilibrés, avec correction immédiate, sans chronomètre. Ce n’est pas un examen blanc de 40 questions. Le bouton cible toujours les deux thèmes de l’examen, indépendamment des filtres.
+- **Mes erreurs** : les situations dont la dernière réponse enregistrée était incorrecte, sans attendre leur échéance de répétition espacée.
+
+Le périmètre **Toutes les situations** donne accès aux 613 exemples existants, dont 419 compléments. Les situations des trois autres thèmes et les approfondissements restent du matériel pédagogique, sans quota correspondant dans les 12 situations de l’examen réel. Cette entrée transversale ne crée pas un sixième thème officiel.
+
+Les listes donnent la priorité aux cas non abordés, puis aux bases et aux points faibles. Les séances de 12 évitent les questions de la précédente quand la réserve le permet ; leur dernier tirage est enregistré seulement au départ confirmé. Toute reprise conserve l’ordre, les choix, les réponses et la progression, y compris après export/import. Remplacer une séance en cours demande confirmation. Les anciens QCM et leurs réponses ne sont pas modifiés.
+
+Six repères sourcés aident à raisonner : rôle et lieu pour la laïcité, discriminations, liberté d’expression, consentement, aide en sécurité et recours pour défendre ses droits. Ils s’appuient sur les contenus et références déjà intégrés à l’app ; les véritables situations et leurs choix ne sont pas publiés. Le classement « ciblées examen » est pédagogique, pas une liste officielle de scénarios.
+
+
 ## Tout un grand thème
 
 Dans **S’entraîner → Tout un thème**, choisissez le contenu puis l’une des cinq cartes :

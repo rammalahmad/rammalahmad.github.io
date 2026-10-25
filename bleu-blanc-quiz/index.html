@@ -8,7 +8,7 @@
   <meta name="description" content="Bleu Blanc Quiz : préparation interactive à l’examen civique, avec leçons, quiz, révisions et examens blancs.">
   <title>Bleu Blanc Quiz — Préparation à l’examen civique</title>
   <link rel="manifest" href="manifest.webmanifest?v=20261024-officiel-exigeant">
-  <link rel="stylesheet" href="styles.css?v=20261024-rotation-examens">
+  <link rel="stylesheet" href="styles.css?v=20261025-mises-en-situation">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -170,6 +170,45 @@
             </div>
           </article>
         </section>
+
+
+        <section class="view" id="view-situations" data-view="situations" aria-labelledby="situations-heading">
+          <div class="page-intro situations-intro">
+            <div><span class="eyebrow">Un parcours transversal</span><h2 id="situations-heading">Mises en situation</h2><p>Comprenez la règle, repérez le contexte, puis choisissez une seule réponse. Les cas ci-dessous sont des exemples pédagogiques, pas les situations confidentielles du véritable examen.</p></div>
+            <button class="button button-soft" id="situations-back" type="button">Retour à S’entraîner</button>
+          </div>
+          <div class="notice situations-exam-note"><strong>12 situations à l’examen : 6 + 6</strong><p>Six portent sur les principes et valeurs de la République, six sur les droits et devoirs. Ce parcours cible d’abord ces deux thèmes. Le détail vient de l’<a href="https://www.legifrance.gouv.fr/eli/arrete/2025/10/10/INTV2527907A/jo/article_3" target="_blank" rel="noopener">article 3 de l’arrêté du 10 octobre 2025</a>. « Mises en situation » n’est pas un sixième thème officiel.</p></div>
+          <article class="panel situations-practice-panel" aria-labelledby="situations-practice-heading">
+            <div class="panel-header"><div><span class="eyebrow">Appliquer, comprendre, mémoriser</span><h3 id="situations-practice-heading">Votre séance de situations</h3></div></div>
+            <div class="situations-controls">
+              <label for="situations-scope">Périmètre<select id="situations-scope"><option value="exam">Ciblées examen — valeurs et droits</option><option value="all">Toutes les situations — compléments inclus</option></select></label>
+              <label for="situations-theme">Thème<select id="situations-theme"><option value="all">Tous les thèmes de ce périmètre</option></select></label>
+            </div>
+            <p class="situations-summary" id="situations-summary" aria-live="polite"></p>
+            <div class="situations-stats"><div><strong id="situations-seen">0/194</strong><span>situations abordées</span></div><div><strong id="situations-mistakes">0</strong><span>dernière réponse incorrecte</span></div></div>
+            <div class="bar" id="situations-progress" style="--bar-color:#168f86" role="progressbar" aria-label="Situations du périmètre abordées" aria-valuemin="0" aria-valuemax="194" aria-valuenow="0"><span style="width:0%"></span></div>
+            <div class="situations-actions">
+              <button class="button button-primary" id="situations-start-full" type="button">Faire les 194 situations</button>
+              <button class="button button-soft" id="situations-start-errors" type="button">Retravailler mes erreurs</button>
+            </div>
+            <p class="situations-help">La liste complète n’a pas de limite de 20 questions : les cas jamais abordés passent en premier, puis les situations à consolider. Chaque erreur reçoit une explication spécifique. Votre progression et votre reprise restent privées, dans ce navigateur.</p>
+            <div class="situations-twelve">
+              <div><h4>Une séance courte : 6 valeurs + 6 droits</h4><p>12 cas ciblés, une réponse par question, avec correction immédiate et sans chronomètre. Ce bouton utilise toujours les deux thèmes de l’examen, quels que soient les filtres ci-dessus. Il ne s’agit pas d’un examen blanc de 40 questions. Deux nouvelles séances successives évitent les mêmes cas quand la réserve le permet.</p></div>
+              <button class="button button-soft" id="situations-start-twelve" type="button">Faire 12 situations : 6 + 6</button>
+            </div>
+          </article>
+          <article class="panel situations-resume-panel hidden" id="situations-resume-panel" aria-labelledby="situations-resume-heading">
+            <div><h3 id="situations-resume-heading">Votre séance est enregistrée</h3><p id="situations-resume-description"></p></div>
+            <button class="button button-primary" id="situations-resume" type="button">Reprendre ma séance</button>
+          </article>
+          <article class="panel situations-guide-panel" aria-labelledby="situations-guide-heading">
+            <div class="panel-header"><div><span class="eyebrow">La méthode avant les réflexes</span><h3 id="situations-guide-heading">Six repères pour raisonner</h3></div></div>
+            <p>Commencez par identifier les personnes, le lieu et le droit en jeu. Comparez ensuite les quatre propositions à la règle applicable : une réponse qui semble sympathique n’est pas forcément légale ou adaptée.</p>
+            <div class="situations-guide-grid" id="situations-guide-grid"></div>
+            <p class="situations-help">Ces repères et les exemples reposent sur les contenus et références déjà intégrés à l’app. Le classement « ciblées examen » est pédagogique. Les liens permettent de consulter les ressources officielles ; les choix, les corrections et les scénarios d’entraînement ne sont pas une banque officielle de situations.</p>
+          </article>
+        </section>
+
 
         <section class="view" id="view-mock" data-view="mock" aria-labelledby="mock-heading">
           <div class="mock-hero">
@@ -367,6 +406,6 @@
   <script src="official-training.js?v=20261024-officiel-exigeant"></script>
   <script src="mock-blueprint.js?v=20261024-quotas-notions"></script>
   <script src="mock-rotation.js?v=20261024-rotation-examens"></script>
-  <script src="app.js?v=20261024-rotation-examens"></script>
+  <script src="app.js?v=20261025-mises-en-situation"></script>
 </body>
 </html>
